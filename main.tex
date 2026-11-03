@@ -10,6 +10,8 @@
 \usepackage{verbatim}
 \usepackage{textcomp}
 \usepackage{gensymb}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,calc}
 
 \begin{document}
 
@@ -78,15 +80,130 @@ Nesta seção, apresenta-se a base teórica das técnicas e modelos adotados ao 
     \item \textbf{Fase 5 (Validação):} discussão dos resultados com as partes interessadas em \textit{workshop}.
 \end{itemize}
 
-\section{Modelagens e Racional}
+\section{Fase 1: Iniciação}
 
 \subsection{Diagrama de Contexto}
 
+O Diagrama de Contexto delimita a fronteira do Sistema de Controle do Robô de Monitoramento Multimodal de Cultivos (RMMC) e mostra os fluxos trocados com os atores e sistemas externos. O RMMC é tratado como uma única caixa, sem detalhar sua estrutura interna.
+
+Dois atores humanos interagem com o sistema. O \textbf{Planejador da Missão} envia os \textit{dados da missão} (alvos georreferenciados obrigatórios e opcionais). O \textbf{Controlador da Missão} recebe \textit{alertas de bateria e status da missão} e, quando necessário, devolve \textit{ajustes de alvos}, \textit{comandos de recarga} e \textit{comandos de controle}.
+
+Dentro da fronteira estão ainda dois sistemas: o \textbf{Drone}, que fornece os \textit{dados de topologia} do local, e a \textbf{Base de Recarga}, que fornece a \textit{corrente de recarga} ao robô. Fora dela, o \textbf{Software de Análise (\textit{Dashboard})} recebe os \textit{dados coletados} nos alvos.
+
+A Figura~\ref{fig:contexto} apresenta o diagrama. A linha tracejada delimita a fronteira do sistema, que contém o RMMC, o Controlador da Missão, o Drone e a Base de Recarga; o Planejador da Missão e o Software de Análise ficam fora dela. Os bonecos de palito representam atores humanos e as caixas representam sistemas.
+
+\begin{figure}[htbp]
+\centering
+\resizebox{\textwidth}{!}{%
+\begin{tikzpicture}[
+    >=Stealth, font=\small,
+    sys/.style={draw, thick, minimum width=2.4cm, minimum height=1.2cm, align=center},
+    ext/.style={draw, thick, minimum height=1cm, align=center},
+    flow/.style={->, thick},
+    lbl/.style={font=\scriptsize, align=center, fill=white, inner sep=1pt}
+]
+% fronteira do sistema
+\draw[dashed, thick] (1.5,-0.5) ellipse (6.2cm and 4.8cm);
+\node[sys] (rmmc) at (0,0) {\textbf{RMMC}};
+
+% atores (bonecos de palito)
+\newcommand{\actor}[3]{%
+  \begin{scope}[shift={(#2)}, thick]
+    \draw (0,0.55) circle (0.2);
+    \draw (0,0.35)--(0,-0.15);
+    \draw (-0.3,0.2)--(0.3,0.2);
+    \draw (0,-0.15)--(-0.25,-0.6);
+    \draw (0,-0.15)--(0.25,-0.6);
+  \end{scope}
+  \node[minimum width=1cm, minimum height=1.4cm] (#1) at (#2) {};
+  \node[align=center, above=0.05cm of #1] {#3};}
+\actor{pm}{-8.5,2.5}{Planejador\\da Missão}
+\actor{cm}{2.2,2.0}{Controlador\\da Missão}
+
+% sistemas externos
+\node[ext] (dr) at (5.2,-2.4) {Drone};
+\node[ext] (br) at (1,-3.6) {Base de\\Recarga};
+\node[ext] (sa) at (-7.5,-4.2) {Software de Análise\\(\textit{Dashboard})};
+
+% fluxos
+\draw[flow] (pm) -- node[lbl, sloped, above] {Dados da missão} (rmmc);
+\draw[flow] (rmmc) to[bend left=20] node[lbl, above left, pos=0.4] {Alertas de bateria\\e status da missão} (cm);
+\draw[flow] (cm) to[bend left=20] node[lbl, below right, pos=0.5] {Ajuste de alvos /\\comandos de recarga /\\comandos de controle} (rmmc);
+\draw[flow] (dr) -- node[lbl, sloped, above] {Dados de topologia} (rmmc);
+\draw[flow] (br) -- node[lbl, right] {Corrente\\de recarga} (rmmc);
+\draw[flow] (rmmc) -- node[lbl, sloped, above] {Dados coletados} (sa);
+\end{tikzpicture}}
+\caption{Diagrama de Contexto do RMMC.}
+\label{fig:contexto}
+\end{figure}
+
+
 \subsection{Stakeholder Onion Diagram}
+
+O \textit{Stakeholder Onion Diagram} (Figura~\ref{fig:onion}) classifica as partes interessadas em camadas concêntricas de envolvimento com o RMMC: \textit{Operational Area} (usuários diretos e tecnologias de interface), \textit{Containing Business} (cliente e beneficiários funcionais) e \textit{Wider Environment} (afetados, reguladores e fornecedor). A \textit{Development Team} aparece à parte.
+
+\begin{figure}[htbp]
+\centering
+\resizebox{!}{14cm}{%
+\begin{tikzpicture}[
+    font=\scriptsize,
+    tech/.style={draw, thick, fill=yellow!35, align=center, minimum width=2.4cm, minimum height=0.9cm},
+    org/.style={draw, thick, align=center, text width=1.8cm, minimum width=1.9cm, minimum height=0.9cm},
+    ring/.style={font=\scriptsize\bfseries, align=center}
+]
+\newcommand{\pessoa}[3]{%
+  \begin{scope}[shift={(#2)}, thick]
+    \draw (0,0.55) circle (0.2);
+    \draw (0,0.35)--(0,-0.15);
+    \draw (-0.3,0.2)--(0.3,0.2);
+    \draw (0,-0.15)--(-0.25,-0.6);
+    \draw (0,-0.15)--(0.25,-0.6);
+  \end{scope}
+  \node[align=center, anchor=north, text width=2.3cm] at ($(#2)+(0,-0.65)$) {#3};}
+
+% camadas
+\draw[thick, fill=gray!8]  (0,0) circle (8.6cm);
+\draw[thick, fill=gray!16] (0,0) circle (6.6cm);
+\draw[thick, fill=gray!26] (0,0) circle (4.3cm);
+\draw[thick, fill=white]   (0,0) circle (1.7cm);
+
+\node[align=center, text width=2.8cm] at (0,0) {\textbf{Sistema de Controle do Robô de Monitoramento Multimodal de Cultivos} (RMMC)};
+
+% Operational Area
+\node[ring] at (90:3.6) {OPERATIONAL AREA};
+\pessoa{c1}{150:3.0}{Controlador\\da Missão\\\textit{(user)}}
+\pessoa{c2}{30:3.0}{Planejador\\da Missão\\\textit{(user)}}
+\node[tech] at (210:3.0) {\textbf{Drone}\\interface de informação\\(topologia do local)};
+\node[tech] at (330:3.0) {\textbf{Software de Análise}\\interface de informação\\(\textit{dashboard} da missão)};
+\node[tech] at (270:3.2) {\textbf{Base de Recarga}\\interface de energia\\(recarga e retorno seguro)};
+\node[font=\scriptsize\itshape] at (270:2.2) {Interfacing Technologies};
+
+% Containing Business
+\node[ring] at (90:5.8) {CONTAINING BUSINESS};
+\pessoa{b1}{180:5.45}{Dono da Área Agrícola\\(Produtor Rural /\\Empresa Agrícola)\\\textit{(client / customer)}}
+\pessoa{b2}{0:5.45}{Funcionários da Fazenda\\(Eng. Agrônomo e\\Analista de Dados)\\\textit{(functional beneficiaries)}}
+
+% Wider Environment
+\node[ring] at (90:7.7) {WIDER ENVIRONMENT};
+\pessoa{w1}{235:7.3}{Equipe de Manutenção Física\\da Fazenda\\\textit{(negatively affected)}}
+\node[org, draw=red!70!black, fill=red!10] at (25:7.6) {Órgãos Reguladores\\(ANATEL / ANAC)\\\textit{(regulators)}};
+\node[org, draw=blue!70!black, fill=blue!10] at (155:7.6) {Fabricante das peças\\do Robô\\\textit{(fornecedor de hardware)}};
+
+% Development Team
+\node[ring] at (7.3,-6.2) {DEVELOPMENT TEAM};
+\pessoa{d1}{7.3,-7.2}{Grupo de Alunos\\(desenvolvedores do robô)\\\textit{(developers)}}
+\end{tikzpicture}}
+\caption{\textit{Stakeholder Onion Diagram} do RMMC.}
+\label{fig:onion}
+\end{figure}
+
+\section{Fase 2: Investigação}
 
 \subsection{Domain Scenarios}
 
 \subsection{Goal Model (v1)}
+
+\section{Fase 3: Decisão}
 
 \subsection{Impact Map}
 
@@ -100,7 +217,7 @@ Nesta seção, apresenta-se a base teórica das técnicas e modelos adotados ao 
 
 \subsection{Goal Model (final)}
 
-\subsection{Validação}
+\section{Fase 5: Validação}
 
 \section{Conclusão}
 
