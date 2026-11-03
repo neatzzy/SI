@@ -11,7 +11,58 @@
 \usepackage{textcomp}
 \usepackage{gensymb}
 \usepackage{tikz}
-\usetikzlibrary{arrows.meta,calc}
+\usetikzlibrary{arrows.meta,calc,shapes.symbols}
+\usepackage{adjustbox}
+
+% Estilos e macros dos Domain Scenarios
+\tikzset{
+    dsfig/.style={>=Stealth, font=\scriptsize},
+    dssys/.style={draw, thick, fill=blue!8, minimum width=2cm, minimum height=1.2cm, align=center},
+    dsext/.style={draw, thick, fill=gray!12, minimum width=2cm, minimum height=0.9cm, align=center},
+    dsobj/.style={draw, fill=white, minimum width=1.8cm, minimum height=0.8cm, align=center, inner sep=3pt},
+    dsstk/.style={draw=yellow!50!black, fill=yellow!40, align=center, inner sep=3pt, text width=3.4cm},
+    dsflow/.style={->, thick},
+    dslbl/.style={fill=white, inner sep=1pt, align=center},
+    dsstep/.style={circle, fill=black, text=white, inner sep=1pt, minimum size=0.45cm, font=\tiny\bfseries}
+}
+
+
+% Estilos do Goal Model (KAOS)
+\tikzset{
+    goal/.style={draw=none, align=center, inner sep=3pt, font=\fontsize{6.5}{7.5}\selectfont,
+      append after command={\pgfextra{\draw[thick] ($(\tikzlastnode.north west)+(0.14,0)$) -- (\tikzlastnode.north east) -- ($(\tikzlastnode.south east)-(0.14,0)$) -- (\tikzlastnode.south west) -- cycle;}}},
+    sgoal/.style={draw, thick, cloud, cloud puffs=11, aspect=2.2, align=center, inner sep=2pt, font=\fontsize{6.5}{7.5}\selectfont},
+    hub/.style={draw, thick, circle, fill=white, minimum size=0.22cm, inner sep=0pt}
+}
+
+% Ícones dos Domain Scenarios
+\newcommand{\dsic}[1]{\tikz[baseline=0pt,x=1cm,y=1cm]{\path (0,0) rectangle (0.8,0.75); #1}}
+\newcommand{\icdoc}{\dsic{\fill (0.15,0) rectangle (0.65,0.72); \draw[white] (0.25,0.5)--(0.55,0.5) (0.25,0.35)--(0.55,0.35) (0.25,0.2)--(0.55,0.2);}}
+\newcommand{\icalert}{\dsic{\fill (0.4,0.72)--(0.03,0.03)--(0.77,0.03)--cycle; \draw[white,thick] (0.4,0.5)--(0.4,0.26); \fill[white] (0.4,0.15) circle (0.035);}}
+\newcommand{\icbat}{\dsic{\draw[thick] (0.05,0.15) rectangle (0.65,0.55); \fill (0.65,0.28) rectangle (0.73,0.42); \fill (0.1,0.2) rectangle (0.4,0.5);}}
+\newcommand{\icpin}{\dsic{\fill (0.4,0.5) circle (0.22); \fill (0.19,0.4)--(0.4,0.02)--(0.61,0.4)--cycle; \fill[white] (0.4,0.5) circle (0.08);}}
+\newcommand{\icmap}{\dsic{\draw[thick,fill=white] (0.03,0.08) rectangle (0.77,0.68); \draw[thick,dashed,->] (0.12,0.2) .. controls (0.3,0.65) and (0.5,0.1) .. (0.68,0.55);}}
+\newcommand{\icdisk}{\dsic{\draw[thick] (0.1,0.05) rectangle (0.7,0.7); \fill (0.22,0.42) rectangle (0.58,0.7); \draw[thick] (0.25,0.05) rectangle (0.55,0.25);}}
+\newcommand{\icgear}{\dsic{\draw[thick] (0.4,0.37) circle (0.19); \foreach \a in {0,45,...,315}{\draw[line width=2.5pt] (0.4,0.37)+(\a:0.2)--+(\a:0.3);}}}
+\newcommand{\icmag}{\dsic{\draw[thick] (0.3,0.45) circle (0.22); \draw[line width=2.5pt] (0.46,0.29)--(0.72,0.03);}}
+\newcommand{\icdata}{\dsic{\fill (0.1,0.05) rectangle (0.25,0.3); \fill (0.32,0.05) rectangle (0.47,0.5); \fill (0.54,0.05) rectangle (0.69,0.7);}}
+\newcommand{\icmon}{\dsic{\fill (0.03,0.2) rectangle (0.77,0.72); \fill[white] (0.08,0.25) rectangle (0.72,0.67); \fill (0.35,0.1) rectangle (0.45,0.2); \fill (0.2,0.04) rectangle (0.6,0.1);}}
+\newcommand{\icrobot}{\dsic{\draw[thick,fill=blue!25] (0.12,0.2) rectangle (0.68,0.56); \fill (0.27,0.4) circle (0.045); \fill (0.53,0.4) circle (0.045); \draw[thick] (0.4,0.56)--(0.4,0.72); \fill (0.2,0.12) circle (0.09); \fill (0.6,0.12) circle (0.09);}}
+\newcommand{\icdrone}{\dsic{\fill (0.28,0.3) rectangle (0.52,0.42); \draw[thick] (0.28,0.38)--(0.1,0.52) (0.52,0.38)--(0.7,0.52); \draw[thick] (0.02,0.56)--(0.18,0.56) (0.62,0.56)--(0.78,0.56);}}
+\newcommand{\icbase}{\dsic{\fill (0.1,0.03) rectangle (0.7,0.12); \fill (0.45,0.72)--(0.2,0.4)--(0.37,0.4)--(0.32,0.14)--(0.6,0.48)--(0.43,0.48)--cycle;}}
+% \dsn{nome}{x,y}{ícone}{rótulo}
+\newcommand{\dsn}[4]{\node[align=center, inner sep=2pt, minimum width=1.7cm] (#1) at (#2) {#3\\[1pt] #4};}
+% \dsactor{nome}{x,y}{rótulo}
+\newcommand{\dsactor}[3]{%
+  \begin{scope}[shift={(#2)}]
+    \fill[gray!70!black] (0,0.45) circle (0.2);
+    \fill[gray!70!black, rounded corners=4pt] (-0.33,-0.5) rectangle (0.33,0.15);
+  \end{scope}
+  \node[minimum width=1cm, minimum height=1.4cm] (#1) at (#2) {};
+  \node[align=center, above=0.05cm of #1] {#3};}
+% \fl[opções]{origem}{destino}{ação}{passo}  /  \flo sem número de passo
+\newcommand{\fl}[5][]{\draw[dsflow,#1] (#2) to node[dslbl,pos=0.58]{#4} node[dsstep,pos=0.12]{#5} (#3);}
+\newcommand{\flo}[4][]{\draw[dsflow,#1] (#2) to node[dslbl,pos=0.5]{#4} (#3);}
 
 \begin{document}
 
@@ -201,7 +252,423 @@ O \textit{Stakeholder Onion Diagram} (Figura~\ref{fig:onion}) classifica as part
 
 \subsection{Domain Scenarios}
 
+Os \textit{Domain Scenarios} narram sequências de eventos do mundo em que o RMMC atua. Cada passo segue a estrutura \textit{ator primário, ação, objeto, participante}, e os estados citados entre parênteses nos cenários aparecem em \textit{stickers}.
+
+\subsubsection{Cenário 1: ciclo completo sem falhas, com alvo opcional}
+
+\noindent\textbf{Contexto:} início de uma missão de monitoramento com bateria carregada e recursos suficientes.\\
+\textbf{Resultado:} todos os alvos obrigatórios e opcionais são visitados e os dados são entregues ao software de análise.
+
+\begin{figure}[htbp]
+\centering
+\resizebox{\textwidth}{!}{%
+\begin{tikzpicture}[dsfig]
+\dsactor{pm}{0,0}{Planejador\\da Missão}
+\dsn{dm}{3.2,1.4}{\icdoc}{Dados da\\missão}
+\dsn{la}{3.2,-1.4}{\icdoc}{Lista de alvos\\(A1 obrigatório,\\A2 opcional)}
+\dsn{rmmc}{7,0}{\scalebox{1.6}{\icrobot}}{\textbf{RMMC}}
+\dsn{bat}{7,3.6}{\icbat}{Nível de\\bateria}
+\node[dsstk] at (4.6,3.6) {(status ok)};
+\dsn{ac}{11.5,3.6}{\icmag}{Acessibilidade\\do alvo}
+\node[dsstk] at (11.5,4.8) {(status ok)};
+\dsn{dr}{15.5,3.6}{\icdrone}{Drone}
+\dsn{a1}{11.5,1.3}{\icpin}{Alvo A1\\(obrigatório)}
+\dsn{a2}{11.5,-0.5}{\icpin}{Alvo A2\\(opcional)}
+\dsn{dc}{7,-3.4}{\icdata}{Dados\\coletados}
+\dsn{br}{3.6,-4.3}{\icbase}{Base de\\Recarga}
+\dsn{dcol}{11.5,-3.4}{\icdata}{Dados da\\coleta}
+\dsn{sa}{15.5,-3.4}{\icmon}{Software\\de Análise}
+\fl{pm}{dm}{envia}{1}
+\flo{dm}{rmmc}{para}
+\fl{pm}{la}{envia}{2}
+\flo{la}{rmmc}{para}
+\fl{rmmc}{bat}{verifica}{3,7}
+\fl{rmmc}{ac}{verifica}{4,8}
+\flo{ac}{dr}{com dados do}
+\fl{rmmc}{a1}{vai até}{5}
+\fl{rmmc}{a2}{vai até}{9}
+\fl{rmmc}{dc}{coleta com qualidade}{6,10}
+\fl{rmmc}{br}{retorna para}{11}
+\fl{rmmc}{dcol}{envia}{12}
+\flo{dcol}{sa}{para}
+\end{tikzpicture}}
+\caption{Cenário 1: ciclo completo da missão sem falhas.}
+\label{fig:cen1}
+\end{figure}
+
+\subsubsection{Cenário 2: ciclo da missão com alvo opcional dispensado por bateria}
+
+\noindent O RMMC conclui o alvo obrigatório, mas a bateria não comporta o alvo opcional A2. Ele retorna à base e entrega os dados coletados.
+
+\begin{figure}[htbp]
+\centering
+\resizebox{\textwidth}{!}{%
+\begin{tikzpicture}[dsfig]
+\dsactor{pm}{0,0}{Planejador\\da Missão}
+\dsn{dm}{3.2,1.4}{\icdoc}{Dados da\\missão}
+\dsn{la}{3.2,-1.4}{\icdoc}{Lista de alvos\\(A1 obrigatório,\\A2 opcional)}
+\dsn{rmmc}{7,0}{\scalebox{1.6}{\icrobot}}{\textbf{RMMC}}
+\dsn{bat}{7,3.6}{\icbat}{Nível de\\bateria}
+\node[dsstk] at (4.2,4.3) {3: (status ok)};
+\node[dsstk] at (4.2,3.0) {7: (status not ok)};
+\dsn{ac}{11.5,3.6}{\icmag}{Acessibilidade\\do alvo A1}
+\node[dsstk] at (11.5,4.8) {(status ok)};
+\dsn{dr}{15.5,3.6}{\icdrone}{Drone}
+\dsn{a1}{11.5,0.4}{\icpin}{Alvo A1\\(obrigatório)}
+\dsn{dc}{7,-3.4}{\icdata}{Dados\\coletados}
+\dsn{br}{3.6,-4.3}{\icbase}{Base de\\Recarga}
+\dsn{dcol}{11.5,-3.4}{\icdata}{Dados da\\coleta}
+\dsn{sa}{15.5,-3.4}{\icmon}{Software\\de Análise}
+\fl{pm}{dm}{envia}{1}
+\flo{dm}{rmmc}{para}
+\fl{pm}{la}{envia}{2}
+\flo{la}{rmmc}{para}
+\fl{rmmc}{bat}{verifica}{3,7}
+\fl{rmmc}{ac}{verifica}{4}
+\flo{ac}{dr}{com dados do}
+\fl{rmmc}{a1}{vai até}{5}
+\fl{rmmc}{dc}{coleta com qualidade}{6}
+\fl{rmmc}{br}{retorna para}{8}
+\fl{rmmc}{dcol}{envia}{9}
+\flo{dcol}{sa}{para}
+\end{tikzpicture}}
+\caption{Cenário 2: alvo opcional dispensado por bateria insuficiente.}
+\label{fig:cen2}
+\end{figure}
+
+\subsubsection{Cenário 3: bateria insuficiente antes do início e controlador altera a lista de alvos}
+
+\noindent\textbf{Resultado:} a missão prossegue normalmente após a decisão do controlador.
+
+\begin{figure}[htbp]
+\centering
+\resizebox{\textwidth}{!}{%
+\begin{tikzpicture}[dsfig]
+\dsactor{pm}{0,0}{Planejador\\da Missão}
+\dsactor{cm}{15.5,0}{Controlador\\da Missão}
+\dsn{dm}{3.2,0}{\icdoc}{Dados da\\missão}
+\dsn{rmmc}{7,0}{\scalebox{1.6}{\icrobot}}{\textbf{RMMC}}
+\dsn{bat}{7,3.6}{\icbat}{Nível de\\bateria}
+\node[dsstk] at (3.9,3.6) {2: (insuficiente)};
+\node[dsstk] at (11.2,4.8) {4: (insuficiente para a missão atual quando cheia)};
+\dsn{al}{11.5,0}{\icalert}{Alerta de\\bateria}
+\dsn{la}{11.5,-3.4}{\icdoc}{Lista de\\alvos}
+\fl{pm}{dm}{envia}{1}
+\flo{dm}{rmmc}{para}
+\fl{rmmc}{bat}{verifica}{2}
+\fl{rmmc}{al}{alerta}{3}
+\flo{al}{cm}{para}
+\fl[bend right=8]{cm}{bat}{verifica}{4}
+\fl[bend left=20]{cm}{la}{altera}{5}
+\fl[bend right=20]{cm}{la}{manda}{6}
+\flo{la}{rmmc}{para}
+\end{tikzpicture}}
+\caption{Cenário 3: controlador altera a lista de alvos.}
+\label{fig:cen3}
+\end{figure}
+
+\subsubsection{Cenário 4: bateria insuficiente antes do início e controlador manda recarregar}
+
+\noindent\textbf{Resultado:} a missão prossegue normalmente após a decisão do controlador.
+
+\begin{figure}[htbp]
+\centering
+\resizebox{\textwidth}{!}{%
+\begin{tikzpicture}[dsfig]
+\dsactor{pm}{0,0}{Planejador\\da Missão}
+\dsactor{cm}{15.5,0}{Controlador\\da Missão}
+\dsn{dm}{3.2,0}{\icdoc}{Dados da\\missão}
+\dsn{rmmc}{7,0}{\scalebox{1.6}{\icrobot}}{\textbf{RMMC}}
+\dsn{bat}{7,3.6}{\icbat}{Nível de\\bateria}
+\node[dsstk] at (3.9,3.6) {2: (insuficiente)};
+\node[dsstk] at (11.2,4.8) {4: (suficiente para a missão atual quando cheia)};
+\dsn{al}{11.5,0}{\icalert}{Alerta de\\bateria}
+\dsn{cr}{11.5,-3.4}{\icdoc}{Comando de\\recarga}
+\dsn{br}{7,-5}{\icbase}{Base de\\Recarga}
+\fl{pm}{dm}{envia}{1}
+\flo{dm}{rmmc}{para}
+\fl{rmmc}{bat}{verifica}{2}
+\fl{rmmc}{al}{alerta}{3}
+\flo{al}{cm}{para}
+\fl[bend right=8]{cm}{bat}{verifica}{4}
+\fl{cm}{cr}{manda}{5}
+\flo{cr}{rmmc}{para}
+\fl[bend right=20]{rmmc}{br}{vai autonomamente até\\(com dados do drone)}{6}
+\fl[bend right=20]{br}{rmmc}{recarrega}{7}
+\end{tikzpicture}}
+\caption{Cenário 4: controlador manda o RMMC recarregar antes de prosseguir.}
+\label{fig:cen4}
+\end{figure}
+
+\subsubsection{Cenário 5: bateria abaixo do Limiar de Retorno Seguro (LRS) durante a missão}
+
+\noindent\textbf{Contexto:} o RMMC está executando uma missão e se deslocando no campo.
+
+\begin{figure}[htbp]
+\centering
+\resizebox{\textwidth}{!}{%
+\begin{tikzpicture}[dsfig]
+\dsactor{cm}{15.5,0}{Controlador\\da Missão}
+\dsn{rmmc}{7,0}{\scalebox{1.6}{\icrobot}}{\textbf{RMMC}}
+\dsn{bat}{7,3.6}{\icbat}{Nível de\\bateria}
+\node[dsstk] at (3.9,3.6) {(menor que LRS)};
+\dsn{est}{2.5,-1.6}{\icdisk}{Estado\\atual}
+\dsn{ap}{2.5,1.6}{\icpin}{Alvo\\pendente}
+\dsn{al}{11.5,0}{\icalert}{Alerta de\\bateria}
+\dsn{br}{7,-5}{\icbase}{Base de\\Recarga}
+\fl{rmmc}{bat}{verifica}{1}
+\fl[bend right=15]{rmmc}{est}{salva}{2}
+\fl[bend right=15]{rmmc}{al}{notifica}{3}
+\flo{al}{cm}{para}
+\fl[bend right=20]{rmmc}{br}{retorna autonomamente\\(com dados do drone)}{4}
+\fl[bend right=20]{br}{rmmc}{recarrega}{5}
+\fl[bend left=15]{rmmc}{est}{consulta}{6}
+\fl{rmmc}{ap}{vai até}{7}
+\end{tikzpicture}}
+\caption{Cenário 5: retorno à base por bateria abaixo do LRS.}
+\label{fig:cen5}
+\end{figure}
+
+\subsubsection{Cenário 6: alvo inacessível}
+
+\begin{figure}[htbp]
+\centering
+\resizebox{\textwidth}{!}{%
+\begin{tikzpicture}[dsfig]
+\dsactor{pm}{0,0}{Planejador\\da Missão}
+\dsactor{cm}{15.5,-1.2}{Controlador\\da Missão}
+\dsn{dm}{3.2,0}{\icdoc}{Dados da\\missão}
+\dsn{rmmc}{7,0}{\scalebox{1.6}{\icrobot}}{\textbf{RMMC}}
+\dsn{bat}{7,3.6}{\icbat}{Nível de\\bateria}
+\node[dsstk] at (4.2,3.6) {(status ok)};
+\dsn{ac}{11.5,3.6}{\icmag}{Acessibilidade\\do próximo alvo}
+\node[dsstk] at (9,5.5) {3: (status not ok, obstáculo topológico no caminho)};
+\node[dsstk] at (14,5.5) {5: (status not ok, obstáculo em todos os caminhos alternativos)};
+\dsn{dr}{15.5,3.6}{\icdrone}{Drone}
+\dsn{ro}{2.5,-3.2}{\icmap}{Rotas\\alternativas}
+\dsn{al}{11.5,-3.6}{\icpin}{Alvo}
+\node[dsstk] at (14.6,-4.6) {(inacessível)};
+\dsn{st}{11.5,-1.2}{\icdoc}{Status\\da missão}
+\dsn{pr}{7,-4.4}{\icpin}{Próximo\\alvo}
+\fl{pm}{dm}{envia}{1}
+\flo{dm}{rmmc}{para}
+\fl{rmmc}{bat}{verifica}{2}
+\fl{rmmc}{ac}{verifica}{3,5}
+\flo{ac}{dr}{com dados do}
+\fl[bend right=15]{rmmc}{ro}{recalcula}{4}
+\fl{rmmc}{al}{registra como\\``inacessível''}{6}
+\fl{rmmc}{st}{envia}{7}
+\flo{st}{cm}{para}
+\fl{rmmc}{pr}{continua para}{8}
+\end{tikzpicture}}
+\caption{Cenário 6: alvo registrado como inacessível.}
+\label{fig:cen6}
+\end{figure}
+
+\subsubsection{Cenário 7: coleta com qualidade insuficiente}
+
+\noindent\textbf{Contexto:} o RMMC está executando uma missão e se deslocando no campo.
+
+\begin{figure}[htbp]
+\centering
+\resizebox{\textwidth}{!}{%
+\begin{tikzpicture}[dsfig]
+\dsactor{cm}{15.5,-1.2}{Controlador\\da Missão}
+\dsn{rmmc}{7,0}{\scalebox{1.6}{\icrobot}}{\textbf{RMMC}}
+\dsn{dc}{7,4.4}{\icdata}{Dado do\\alvo atual}
+\node[dsstk] at (11.2,4.4) {2,5,8: (abaixo do limiar, conforme o tipo de dado coletado)};
+\dsn{ps}{2.5,2.2}{\icgear}{Posição de observação\\e parâmetros\\do sensor}
+\dsn{rg}{2.5,-2.6}{\icdata}{Dados da\\coleta}
+\node[dsstk] at (2.5,-4.2) {(com qualidade insuficiente)};
+\dsn{st}{11.5,-1.2}{\icdoc}{Status\\do alvo}
+\dsn{pr}{7,-4.4}{\icpin}{Próximo alvo\\da lista}
+\draw[dsflow,bend left=30] (rmmc) to node[dslbl,left,pos=0.6]{coleta} node[dsstep,pos=0.3]{1,4,7} (dc);
+\draw[dsflow,bend right=30] (rmmc) to node[dslbl,right,pos=0.6]{verifica\\qualidade} node[dsstep,pos=0.3]{2,5,8} (dc);
+\fl{rmmc}{ps}{ajusta}{3,6}
+\fl[bend left=15]{rmmc}{rg}{salva internamente}{9}
+\fl[bend right=15]{rmmc}{rg}{registra}{10}
+\fl{rmmc}{st}{envia}{11}
+\flo{st}{cm}{para}
+\fl{rmmc}{pr}{segue para}{12}
+\end{tikzpicture}}
+\caption{Cenário 7: dado coletado com qualidade insuficiente após três tentativas.}
+\label{fig:cen7}
+\end{figure}
+
 \subsection{Goal Model (v1)}
+
+A Figura~\ref{fig:gm1-geral} apresenta a visão geral do \textit{Goal Model} (v1), com o objetivo raiz, os objetivos G1 a G5 e os \textit{softgoals}. Os refinamentos de cada objetivo aparecem nas figuras seguintes.
+
+
+\begin{figure}[htbp]
+\centering
+\adjustbox{max width=\linewidth}{%
+\begin{tikzpicture}
+\node[goal,text width=2.50cm] (n0) at (7.60,0.00) {\textbf{Raiz}\\\textit{Achieve} [Dados confiáveis dos alvos disponíveis para análise agrícola]};
+\node[goal,text width=2.50cm] (n1) at (1.60,-4.80) {\textbf{G1}\\\textit{Achieve} [Missão iniciada com energia suficiente]};
+\node[goal,text width=2.50cm] (n2) at (4.60,-4.80) {\textbf{G2}\\\textit{Achieve} [Cada alvo obrigatório com resultado explícito de visita]};
+\node[goal,text width=2.50cm] (n3) at (7.60,-4.80) {\textbf{G3}\\\textit{Achieve} [Dados coletados entregues ao Software de Análise]};
+\node[goal,text width=2.50cm] (n4) at (10.60,-4.80) {\textbf{G4}\\\textit{Maintain} [Controlador apto a intervir]};
+\node[goal,text width=2.50cm] (n5) at (13.60,-4.80) {\textbf{G5}\\\textit{Avoid} [RMMC sem energia para retornar à base]};
+\node[sgoal,text width=2.50cm] (n6) at (1.30,-1.80) {\textit{Maximize} [Qualidade dos dados coletados]};
+\node[sgoal,text width=2.50cm] (n7) at (13.90,-1.80) {\textit{Maximize} [Cobertura dos alvos opcionais]};
+\node[hub] (heeb3f2) at (7.60,-2.40) {};
+\draw[thick] (n1) -- (heeb3f2);
+\draw[thick] (n2) -- (heeb3f2);
+\draw[thick] (n3) -- (heeb3f2);
+\draw[thick] (n4) -- (heeb3f2);
+\draw[thick] (n5) -- (heeb3f2);
+\draw[thick] (n6) -- (heeb3f2);
+\draw[thick] (n7) -- (heeb3f2);
+\draw[->,thick] (heeb3f2) -- (n0);
+\end{tikzpicture}}
+\caption{\textit{Goal Model} (v1) do RMMC em KAOS: visão geral.}
+\label{fig:gm1-geral}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering
+\adjustbox{max width=\linewidth}{%
+\begin{tikzpicture}
+\node[goal,text width=2.33cm] (n0) at (13.39,-5.46) {\textbf{G1}\\\textit{Achieve} [Missão iniciada com energia suficiente]};
+\node[goal,text width=3.42cm] (n1) at (10.21,-7.97) {\textbf{G1.1}\\\textit{Achieve} [Suficiência da bateria para a missão avaliada antes do início]};
+\node[goal,text width=2.33cm] (n2) at (13.90,-7.98) {\textbf{G1.2}\\\textit{Achieve} [Início da missão autorizado]};
+\node[goal,text width=2.62cm] (n3) at (12.68,-10.60) {\textbf{G1.2.1}\\\textit{Achieve} [Início imediato com bateria suficiente]};
+\node[goal,text width=2.33cm] (n4) at (15.80,-10.59) {\textbf{G1.2.2}\\\textit{Achieve} [Início após intervenção do Controlador]};
+\node[goal,text width=2.33cm] (n5) at (14.02,-13.04) {\textbf{G1.2.2.1}\\\textit{Achieve} [RMMC recarregado antes do início]};
+\node[goal,text width=2.33cm] (n6) at (17.31,-13.21) {\textbf{G1.2.2.2}\\\textit{Achieve} [Lista de alvos ajustada à capacidade da bateria]};
+\node[hub] (hfd21a0) at (13.20,-6.58) {};
+\draw[thick] (n1) -- (hfd21a0);
+\draw[thick] (n2) -- (hfd21a0);
+\draw[->,thick] (hfd21a0) -- (n0);
+\node[hub] (h1e11ce) at (13.07,-9.15) {};
+\draw[thick] (n3) -- (h1e11ce);
+\draw[->,thick] (h1e11ce) -- (n2);
+\node[hub] (h035a34) at (14.67,-9.12) {};
+\draw[thick] (n4) -- (h035a34);
+\draw[->,thick] (h035a34) -- (n2);
+\node[hub] (he21852) at (14.70,-11.69) {};
+\draw[thick] (n5) -- (he21852);
+\draw[->,thick] (he21852) -- (n4);
+\node[hub] (hf0ac28) at (16.31,-11.66) {};
+\draw[thick] (n6) -- (hf0ac28);
+\draw[->,thick] (hf0ac28) -- (n4);
+\end{tikzpicture}}
+\caption{\textit{Goal Model} (v1): objetivo G1: missão iniciada com energia suficiente.}
+\label{fig:gm1-g1}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering
+\adjustbox{max width=\linewidth}{%
+\begin{tikzpicture}
+\node[goal,text width=2.65cm] (n0) at (28.43,-5.50) {\textbf{G2}\\\textit{Achieve} [Cada alvo obrigatório com resultado explícito de visita]};
+\node[goal,text width=2.74cm] (n1) at (25.97,-8.03) {\textbf{G2.1}\\\textit{Achieve} [Alvo visitado e coletado]};
+\node[goal,text width=3.58cm] (n2) at (31.31,-8.06) {\textbf{G2.2}\\\textit{Achieve} [Alvo registrado como inacessível após esgotar os caminhos alternativos]};
+\node[goal,text width=2.33cm] (n3) at (24.19,-10.43) {\textbf{G2.1.1}\\\textit{Achieve} [Alvo alcançado]};
+\node[goal,text width=2.88cm] (n4) at (27.88,-10.43) {\textbf{G2.1.2}\\\textit{Achieve} [Coleta do alvo concluída]};
+\node[goal,text width=2.58cm] (n5) at (21.16,-13.09) {\textbf{G2.1.1.1}\\\textit{Achieve} [Alvo alcançado pelo caminho planejado]};
+\node[goal,text width=2.69cm] (n6) at (24.16,-13.13) {\textbf{G2.1.1.2}\\\textit{Achieve} [Alvo alcançado por caminho alternativo]};
+\node[goal,text width=2.33cm] (n7) at (27.28,-13.30) {\textbf{G2.1.2.1}\\\textit{Achieve} [Dado com qualidade na primeira tentativa]};
+\node[goal,text width=2.33cm] (n8) at (29.77,-13.32) {\textbf{G2.1.2.2}\\\textit{Achieve} [Dado com qualidade após novas tentativas]};
+\node[goal,text width=2.33cm] (n9) at (32.29,-13.30) {\textbf{G2.1.2.3}\\\textit{Achieve} [Coleta registrada com qualidade insuficiente]};
+\node[hub] (hc3fbb5) at (27.07,-6.62) {};
+\draw[thick] (n1) -- (hc3fbb5);
+\draw[->,thick] (hc3fbb5) -- (n0);
+\node[hub] (hdeb3c4) at (29.59,-6.55) {};
+\draw[thick] (n2) -- (hdeb3c4);
+\draw[->,thick] (hdeb3c4) -- (n0);
+\node[hub] (h881e38) at (25.83,-9.12) {};
+\draw[thick] (n3) -- (h881e38);
+\draw[thick] (n4) -- (h881e38);
+\draw[->,thick] (h881e38) -- (n1);
+\node[hub] (h4862e3) at (22.40,-11.64) {};
+\draw[thick] (n5) -- (h4862e3);
+\draw[->,thick] (h4862e3) -- (n3);
+\node[hub] (hde19b7) at (23.98,-11.62) {};
+\draw[thick] (n6) -- (hde19b7);
+\draw[->,thick] (hde19b7) -- (n3);
+\node[hub] (h1b68c5) at (27.48,-11.52) {};
+\draw[thick] (n7) -- (h1b68c5);
+\draw[->,thick] (h1b68c5) -- (n4);
+\node[hub] (he12391) at (28.61,-11.55) {};
+\draw[thick] (n8) -- (he12391);
+\draw[->,thick] (he12391) -- (n4);
+\node[hub] (h8efc72) at (29.72,-11.55) {};
+\draw[thick] (n9) -- (h8efc72);
+\draw[->,thick] (h8efc72) -- (n4);
+\end{tikzpicture}}
+\caption{\textit{Goal Model} (v1): objetivo G2: resultado explícito de visita para cada alvo obrigatório.}
+\label{fig:gm1-g2}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering
+\adjustbox{max width=\linewidth}{%
+\begin{tikzpicture}
+\node[goal,text width=3.62cm] (n0) at (39.30,-5.48) {\textbf{G3}\\\textit{Achieve} [Dados coletados entregues ao Software de Análise]};
+\node[goal,text width=3.11cm] (n1) at (41.57,-8.23) {\textbf{G3.1}\\\textit{Achieve} [Dado associado ao alvo e ao processo de coleta internamente no RMMC]};
+\node[goal,text width=2.64cm] (n2) at (38.18,-8.13) {\textbf{G3.2}\\\textit{Achieve} [Dados consolidados entregues após o retorno à base]};
+\node[goal,text width=3.16cm] (n3) at (40.00,-10.65) {\textbf{N1}\\\textit{Achieve} [RMMC na Base de Recarga com segurança]};
+\node[goal,text width=2.81cm] (n4) at (36.19,-10.80) {\textbf{G3.2.1}\\\textit{Achieve} [Dados consolidados enviados ao Software de Análise]};
+\node[hub] (h31388c) at (39.11,-6.53) {};
+\draw[thick] (n1) -- (h31388c);
+\draw[thick] (n2) -- (h31388c);
+\draw[->,thick] (h31388c) -- (n0);
+\node[hub] (h1e78d9) at (37.98,-9.22) {};
+\draw[thick] (n3) -- (h1e78d9);
+\draw[thick] (n4) -- (h1e78d9);
+\draw[->,thick] (h1e78d9) -- (n2);
+\end{tikzpicture}}
+\caption{\textit{Goal Model} (v1): objetivo G3: dados coletados entregues ao Software de Análise.}
+\label{fig:gm1-g3}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering
+\adjustbox{max width=\linewidth}{%
+\begin{tikzpicture}
+\node[goal,text width=3.84cm] (n0) at (47.01,-5.43) {\textbf{G4}\\\textit{Maintain} [Controlador apto a intervir]};
+\node[goal,text width=3.07cm] (n1) at (45.72,-8.10) {\textbf{G4.1}\\\textit{Achieve} [Alertas e status de alvo comunicados ao Controlador]};
+\node[goal,text width=2.81cm] (n2) at (49.00,-8.11) {\textbf{G4.2}\\\textit{Achieve} [Decisões do Controlador aplicadas pelo RMMC]};
+\node[hub] (hbb09de) at (46.83,-6.58) {};
+\draw[thick] (n1) -- (hbb09de);
+\draw[thick] (n2) -- (hbb09de);
+\draw[->,thick] (hbb09de) -- (n0);
+\end{tikzpicture}}
+\caption{\textit{Goal Model} (v1): objetivo G4: Controlador apto a intervir.}
+\label{fig:gm1-g4}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering
+\adjustbox{max width=\linewidth}{%
+\begin{tikzpicture}
+\node[goal,text width=3.49cm] (n0) at (53.91,-5.38) {\textbf{G5}\\\textit{Avoid} [RMMC sem energia para retornar à base]};
+\node[goal,text width=3.04cm] (n1) at (53.12,-7.99) {\textbf{G5.1}\\\textit{Achieve} [Missão concluída sem atingir o LRS]};
+\node[goal,text width=2.97cm] (n2) at (57.51,-8.08) {\textbf{G5.2}\\\textit{Achieve} [Missão retomada após interrupção por LRS]};
+\node[goal,text width=2.33cm] (n3) at (56.37,-10.80) {\textbf{G5.2.1}\\\textit{Achieve} [Queda abaixo do LRS detectada]};
+\node[goal,text width=2.33cm] (n4) at (59.40,-10.94) {\textbf{G5.2.2}\\\textit{Achieve} [Estado da missão preservado antes do retorno]};
+\node[goal,text width=3.16cm] (n5) at (49.86,-10.65) {\textbf{N1}\\\textit{Achieve} [RMMC na Base de Recarga com segurança]};
+\node[goal,text width=2.57cm] (n6) at (52.95,-10.78) {\textbf{N2}\\\textit{Achieve} [RMMC recarregado na Base de Recarga]};
+\node[goal,text width=2.33cm] (n7) at (62.25,-10.29) {\textbf{G5.2.3}\\\textit{Achieve} [Visita retomada ao alvo pendente a partir do estado salvo]};
+\node[hub] (h44acec) at (53.31,-6.65) {};
+\draw[thick] (n1) -- (h44acec);
+\draw[->,thick] (h44acec) -- (n0);
+\node[hub] (h35a3a2) at (55.53,-6.58) {};
+\draw[thick] (n2) -- (h35a3a2);
+\draw[->,thick] (h35a3a2) -- (n0);
+\node[hub] (he65f1f) at (57.31,-9.35) {};
+\draw[thick] (n3) -- (he65f1f);
+\draw[thick] (n4) -- (he65f1f);
+\draw[thick] (n5) -- (he65f1f);
+\draw[thick] (n6) -- (he65f1f);
+\draw[thick] (n7) -- (he65f1f);
+\draw[->,thick] (he65f1f) -- (n2);
+\end{tikzpicture}}
+\caption{\textit{Goal Model} (v1): objetivo G5: evitar RMMC sem energia para retornar à base.}
+\label{fig:gm1-g5}
+\end{figure}
 
 \section{Fase 3: Decisão}
 
