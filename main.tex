@@ -1,0 +1,112 @@
+\documentclass[a4paper, 12pt]{article}
+
+\usepackage[portuges]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{indentfirst}
+\usepackage{graphicx}
+\setlength{\marginparwidth}{2cm}
+\usepackage[colorinlistoftodos]{todonotes}
+\usepackage{verbatim}
+\usepackage{textcomp}
+\usepackage{gensymb}
+
+\begin{document}
+
+\begin{titlepage}
+\begin{center}
+\textbf{\LARGE Universidade de Brasília}\\[0.5cm] 
+\textbf{\large Departamento de Ciência da Computação}\\[0.2cm]
+\vspace{20pt}
+\includegraphics{Logo_UnB.png}\\[1cm]
+
+\par
+\vspace{32pt}
+\textbf{\LARGE Projeto Final de Sistemas de Informação}\\
+\vspace{30pt}
+\textbf {\Large Autores:}\\[0.2cm]
+\Large {Davi Galvão Guerra		24/1038577}\\[0.1cm]
+\Large {Élvis Corrêa Miranda Júnior	24/1038700}\\[0.1cm]
+\Large {Gustavo Alves Dias	24/1020779}\\[0.1cm]
+\Large {Leonardo Mileo Moreira Krauss Guimarães    24/1032690}\\[0.1cm]
+\Large {Pedro Marcinoni Varão Ribeiro Viera da Rosa    24/1002396}\\[0.1cm]
+
+\end{center}
+
+\par
+\vfill
+\begin{center}
+{{\normalsize Brasília}\\
+{\normalsize \today}}
+\end{center}
+\end{titlepage}
+
+%Sumário
+\newpage
+\tableofcontents
+\thispagestyle{empty}
+%End Sumário
+
+\newpage
+\section{Resumo}
+
+Este trabalho aplica o processo de Engenharia de Requisitos ao problema do \textit{Monitoramento Multimodal de Cultivos}, no qual um robô autônomo percorre uma área agrícola para coletar dados de um conjunto predefinido de alvos georreferenciados, com apoio de um drone que fornece informações sobre a topologia do local. O contexto envolve restrições relevantes: verificação de bateria antes e durante a missão, tratamento de alvos inacessíveis por meio de posições alternativas, avaliação de qualidade dos dados com até duas novas tentativas, retorno seguro à base com retomada da missão após a recarga, visita a alvos opcionais apenas quando houver tempo e energia, e possibilidade de monitoramento e intervenção humana.
+
+O desenvolvimento seguiu as fases de Iniciação, Investigação, Decisão, Formulação e Validação. Foram utilizados Diagrama de Contexto e \textit{Stakeholder Onion Diagram}, Cenários de Domínio, Mapa de Impacto, Especificação por Exemplos (\textit{Example Map} com BDDs) e \textit{Goal Models} em KAOS, evoluídos nas versões v1, v2 e final, com uso de \textit{goal patterns}. O resultado é um conjunto de objetivos, requisitos de máquina e suposições de domínio claros, relevantes, completos e rastreáveis, discutidos com as partes interessadas em \textit{workshop} de validação.
+
+\textbf{Palavras-chave:} Engenharia de Requisitos, Goal Models, Impact Map, Behaviour Driven Development.
+
+\section{Introdução}
+
+O presente relatório descreve o processo de Engenharia de Requisitos aplicado ao problema do \textit{Monitoramento Multimodal de Cultivos}. Na agricultura de precisão, decisões como irrigação, adubação e controle de pragas dependem de dados frequentes, confiáveis e georreferenciados sobre a lavoura. A coleta manual desses dados é lenta, cara e pouco repetível, o que motiva o uso de um robô autônomo que percorre a área cultivada e coleta dados em um conjunto predefinido de alvos georreferenciados, com apoio de um drone que fornece informações sobre a topologia do local.
+
+A complexidade do problema reside nas restrições operacionais do ambiente agrícola, com destaque para o gerenciamento autônomo de energia. A bateria do robô deve ser verificada antes do início da missão e também durante a execução, de modo que sempre reste carga para o retorno seguro à base. Ao chegar à base, o robô recarrega e retoma a missão, sem repetir alvos já concluídos. Além disso, um alvo pode estar inacessível por obstáculo, terreno intransitável ou alagamento. Nesse caso, o sistema deve recorrer a posições alternativas de coleta em vez de abandonar o alvo imediatamente.
+
+Há ainda requisitos de qualidade e de adaptação. Cada coleta precisa ter a qualidade avaliada, e uma leitura insatisfatória pode ser repetida até duas vezes antes de ser registrada como falha. Os alvos opcionais só devem ser visitados quando sobrarem tempo e energia, sem comprometer os alvos obrigatórios nem o retorno à base. Por fim, o sistema deve permitir que um operador humano acompanhe a missão e intervenha quando necessário.
+
+Essas restrições interagem entre si: visitar um alvo opcional consome a energia que poderia ser necessária para repetir uma coleta, e uma posição alternativa mais distante reduz a margem de retorno. Para traduzir essas regras em especificações claras e verificáveis, este documento apresenta a modelagem do sistema ao longo das fases de Iniciação, Investigação, Decisão, Formulação e Validação. A abordagem parte do entendimento das partes interessadas e das fronteiras do sistema, passa pela investigação de cenários e pela definição de objetivos, e chega à especificação por exemplos e à validação com as partes interessadas.
+
+\section{Fundamentação Teórica}
+
+Nesta seção, apresenta-se a base teórica das técnicas e modelos adotados ao longo das fases do projeto:
+
+\begin{itemize}
+    \item \textbf{Fase 1 (Iniciação):} utilização do \textit{Context Diagram} para mapear a fronteira do sistema e suas interações com os atores, acompanhado do \textit{Stakeholder Onion Diagram} para classificar as partes interessadas em camadas de envolvimento.
+    \item \textbf{Fase 2 (Investigação):} emprego de \textit{Domain Scenarios} para narrar o fluxo de eventos e o tratamento de exceções, e construção da primeira versão do \textit{Goal Model} em KAOS para traduzir as regras do domínio em objetivos.
+    \item \textbf{Fase 3 (Decisão):} aplicação do \textit{Impact Map} para alinhar os objetivos com o comportamento dos atores e as funcionalidades do sistema, resultando na evolução para o \textit{Goal Model} (v2), com uso de \textit{goal patterns}.
+    \item \textbf{Fase 4 (Formulação):} uso de \textit{Specification by Example} (\textit{Example Maps} e BDDs) para criar critérios de aceite executáveis, consolidando os requisitos no \textit{Goal Model} final.
+    \item \textbf{Fase 5 (Validação):} discussão dos resultados com as partes interessadas em \textit{workshop}.
+\end{itemize}
+
+\section{Modelagens e Racional}
+
+\subsection{Diagrama de Contexto}
+
+\subsection{Stakeholder Onion Diagram}
+
+\subsection{Domain Scenarios}
+
+\subsection{Goal Model (v1)}
+
+\subsection{Impact Map}
+
+\subsection{Goal Model (v2) e Goal-Feature Mapping}
+
+\section{Fase 4: Formulação}
+
+\subsection{Specification by Example: Example Mapping}
+
+\subsection{Specification by Example: BDD (Gherkin)}
+
+\subsection{Goal Model (final)}
+
+\subsection{Validação}
+
+\section{Conclusão}
+
+
+\section{Referência}
+
+\noindent
+
+\end{document}

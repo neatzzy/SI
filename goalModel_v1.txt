@@ -1,0 +1,1441 @@
+{
+  "actors": [],
+  "orphans": [
+    {
+      "id": "1995fa98-1766-452b-9263-c88051f801c8",
+      "text": "Achieve [Dados confiáveis dos alvos disponíveis para análise agrícola]",
+      "type": "kaos.BehavioralGoal",
+      "x": 2327,
+      "y": 8,
+      "customProperties": {
+        "Type": "",
+        "Category": "",
+        "Source": "",
+        "Priority": "",
+        "Issue": "",
+        "FormalSpec": "",
+        "FitCriterion": "",
+        "Stability": "",
+        "Description": "Raiz"
+      }
+    },
+    {
+      "id": "22a5fcb1-8eed-4b64-af63-22fbf49f108e",
+      "text": "Maximize [Qualidade dos dados coletados]",
+      "type": "kaos.Softgoal",
+      "x": 3211,
+      "y": 163,
+      "customProperties": {
+        "Type": "softgoal",
+        "Category": "",
+        "Source": "",
+        "Priority": "",
+        "Issue": "",
+        "FormalSpec": "",
+        "FitCriterion": "",
+        "Stability": "",
+        "Description": "Softgoal"
+      }
+    },
+    {
+      "id": "a860d987-0be1-4789-bb9a-3f0636b2caa0",
+      "text": "Maximize [Cobertura dos alvos opcionais]",
+      "type": "kaos.Softgoal",
+      "x": 3227,
+      "y": 59,
+      "customProperties": {
+        "Type": "softgoal",
+        "Category": "",
+        "Source": "",
+        "Priority": "",
+        "Issue": "",
+        "FormalSpec": "",
+        "FitCriterion": "",
+        "Stability": "",
+        "Description": "Softgoal"
+      }
+    },
+    {
+      "id": "b25d06be-06ec-4001-97c4-36c4658ec373",
+      "text": "Achieve [Missão iniciada com energia suficiente]",
+      "type": "kaos.BehavioralGoal",
+      "x": 690,
+      "y": 278,
+      "customProperties": {
+        "Type": "",
+        "Category": "",
+        "Source": "",
+        "Priority": "",
+        "Issue": "",
+        "FormalSpec": "",
+        "FitCriterion": "",
+        "Stability": "",
+        "Description": "Nó G1"
+      }
+    },
+    {
+      "id": "a51f57ce-5d6d-40a0-9624-166514ac68a7",
+      "text": "Achieve [Suficiência da bateria para a missão avaliada antes do início]",
+      "type": "kaos.BehavioralGoal",
+      "x": 477,
+      "y": 421,
+      "customProperties": {
+        "Type": "",
+        "Category": "",
+        "Source": "",
+        "Priority": "",
+        "Issue": "",
+        "FormalSpec": "",
+        "FitCriterion": "",
+        "Stability": "",
+        "Description": "Nó G1.1"
+      }
+    },
+    {
+      "id": "faf81854-19d1-4ddd-a2f4-1c631587fd99",
+      "text": "Achieve [Início da missão autorizado]",
+      "type": "kaos.BehavioralGoal",
+      "x": 719,
+      "y": 422,
+      "customProperties": {
+        "Type": "",
+        "Category": "",
+        "Source": "",
+        "Priority": "",
+        "Issue": "",
+        "FormalSpec": "",
+        "FitCriterion": "",
+        "Stability": "",
+        "Description": "Nó G1.2"
+      }
+    },
+    {
+      "id": "a43ea435-ac15-4881-ad41-1fd24e296351",
+      "text": "Achieve [Início imediato com bateria suficiente]",
+      "type": "kaos.BehavioralGoal",
+      "x": 641,
+      "y": 570,
+      "customProperties": {
+        "Type": "",
+        "Category": "",
+        "Source": "",
+        "Priority": "",
+        "Issue": "",
+        "FormalSpec": "",
+        "FitCriterion": "",
+        "Stability": "",
+        "Description": "Nó G1.2.1"
+      }
+    },
+    {
+      "id": "54da61e2-a1ad-4a32-8a8f-0d4200106a76",
+      "text": "Achieve [Início após intervenção do Controlador]",
+      "type": "kaos.BehavioralGoal",
+      "x": 828,
+      "y": 571,
+      "customProperties": {
+        "Type": "",
+        "Category": "",
+        "Source": "",
+        "Priority": "",
+        "Issue": "",
+        "FormalSpec": "",
+        "FitCriterion": "",
+        "Stability": "",
+        "Description": "Nó G1.2.2"
+      }
+    },
+    {
+      "id": "5804325d-cf6b-47e1-8565-49fe243d56cb",
+      "text": "Achieve [RMMC recarregado antes do início]",
+      "type": "kaos.BehavioralGoal",
+      "x": 726,
+      "y": 711,
+      "customProperties": {
+        "Type": "",
+        "Category": "",
+        "Source": "",
+        "Priority": "",
+        "Issue": "",
+        "FormalSpec": "",
+        "FitCriterion": "",
+        "Stability": "",
+        "Description": "Nó G1.2.2.1"
+      }
+    },
+    {
+      "id": "ef058ed2-b723-4509-89d3-3780148e4c98",
+      "text": "Achieve [Lista de alvos ajustada à capacidade da bateria]",
+      "type": "kaos.BehavioralGoal",
+      "x": 914,
+      "y": 712,
+      "customProperties": {
+        "Type": "",
+        "Category": "",
+        "Source": "",
+        "Priority": "",
+        "Issue": "",
+        "FormalSpec": "",
+        "FitCriterion": "",
+        "Stability": "",
+        "Description": "Nó G1.2.2.2"
+      }
+    },
+    {
+      "id": "85e9112d-f472-486d-b6b2-e4105a1fcd4e",
+      "text": "Achieve [RMMC na Base de Recarga com segurança]",
+      "type": "kaos.BehavioralGoal",
+      "x": 2187,
+      "y": 579,
+      "customProperties": {
+        "Type": "",
+        "Category": "",
+        "Source": "",
+        "Priority": "",
+        "Issue": "",
+        "FormalSpec": "",
+        "FitCriterion": "",
+        "Stability": "",
+        "Description": "Nó N1"
+      }
+    },
+    {
+      "id": "5ae07c47-b373-454c-9fb6-f83769b3026b",
+      "text": "Achieve [RMMC recarregado na Base de Recarga]",
+      "type": "kaos.BehavioralGoal",
+      "x": 2944,
+      "y": 582,
+      "customProperties": {
+        "Type": "",
+        "Category": "",
+        "Source": "",
+        "Priority": "",
+        "Issue": "",
+        "FormalSpec": "",
+        "FitCriterion": "",
+        "Stability": "",
+        "Description": "Nó N2"
+      }
+    },
+    {
+      "id": "01055785-26dd-4c64-9c4d-c0364f22069a",
+      "text": "Achieve [Cada alvo obrigatório com resultado explícito de visita]",
+      "type": "kaos.BehavioralGoal",
+      "x": 1540,
+      "y": 278,
+      "customProperties": {
+        "Type": "",
+        "Category": "",
+        "Source": "",
+        "Priority": "",
+        "Issue": "",
+        "FormalSpec": "",
+        "FitCriterion": "",
+        "Stability": "",
+        "Description": "Nó G2"
+      }
+    },
+    {
+      "id": "2e5d202a-27d9-440e-abc8-b844ee970772",
+      "text": "Achieve [Alvo visitado e coletado]",
+      "type": "kaos.BehavioralGoal",
+      "x": 1397,
+      "y": 425,
+      "customProperties": {
+        "Type": "",
+        "Category": "",
+        "Source": "",
+        "Priority": "",
+        "Issue": "",
+        "FormalSpec": "",
+        "FitCriterion": "",
+        "Stability": "",
+        "Description": "Nó G2.1"
+      }
+    },
+    {
+      "id": "00d26e28-aaff-4916-b214-cb5fa66d5ca2",
+      "text": "Achieve [Alvo alcançado]",
+      "type": "kaos.BehavioralGoal",
+      "x": 1307,
+      "y": 571,
+      "customProperties": {
+        "Type": "",
+        "Category": "",
+        "Source": "",
+        "Priority": "",
+        "Issue": "",
+        "FormalSpec": "",
+        "FitCriterion": "",
+        "Stability": "",
+        "Description": "Nó G2.1.1"
+      }
+    },
+    {
+      "id": "263de8d9-1358-4454-8c7e-e69bbe56a360",
+      "text": "Achieve [Alvo alcançado pelo caminho planejado]",
+      "type": "kaos.BehavioralGoal",
+      "x": 1127,
+      "y": 713,
+      "customProperties": {
+        "Type": "",
+        "Category": "",
+        "Source": "",
+        "Priority": "",
+        "Issue": "",
+        "FormalSpec": "",
+        "FitCriterion": "",
+        "Stability": "",
+        "Description": "Nó G2.1.1.1"
+      }
+    },
+    {
+      "id": "f1e056d7-6ff4-4377-b13e-382a8b7a17a5",
+      "text": "Achieve [Alvo alcançado por caminho alternativo]",
+      "type": "kaos.BehavioralGoal",
+      "x": 1295,
+      "y": 716,
+      "customProperties": {
+        "Type": "",
+        "Category": "",
+        "Source": "",
+        "Priority": "",
+        "Issue": "",
+        "FormalSpec": "",
+        "FitCriterion": "",
+        "Stability": "",
+        "Description": "Nó G2.1.1.2"
+      }
+    },
+    {
+      "id": "7d48c88a-eaa8-42c0-b7e3-e57b502cc1f6",
+      "text": "Achieve [Coleta do alvo concluída]",
+      "type": "kaos.BehavioralGoal",
+      "x": 1502,
+      "y": 573,
+      "customProperties": {
+        "Type": "",
+        "Category": "",
+        "Source": "",
+        "Priority": "",
+        "Issue": "",
+        "FormalSpec": "",
+        "FitCriterion": "",
+        "Stability": "",
+        "Description": "Nó G2.1.2"
+      }
+    },
+    {
+      "id": "4aeb50ba-17a1-457c-8093-a005323991a9",
+      "text": "Achieve [Dado com qualidade na primeira tentativa]",
+      "type": "kaos.BehavioralGoal",
+      "x": 1484,
+      "y": 717,
+      "customProperties": {
+        "Type": "",
+        "Category": "",
+        "Source": "",
+        "Priority": "",
+        "Issue": "",
+        "FormalSpec": "",
+        "FitCriterion": "",
+        "Stability": "",
+        "Description": "Nó G2.1.2.1"
+      }
+    },
+    {
+      "id": "dcd2a2d5-e876-46d0-986e-09f7fd354c97",
+      "text": "Achieve [Dado com qualidade após novas tentativas]",
+      "type": "kaos.BehavioralGoal",
+      "x": 1626,
+      "y": 718,
+      "customProperties": {
+        "Type": "",
+        "Category": "",
+        "Source": "",
+        "Priority": "",
+        "Issue": "",
+        "FormalSpec": "",
+        "FitCriterion": "",
+        "Stability": "",
+        "Description": "Nó G2.1.2.2"
+      }
+    },
+    {
+      "id": "a7e2941a-4c11-42cd-bab8-77ca1b0bfaf0",
+      "text": "Achieve [Coleta registrada com qualidade insuficiente]",
+      "type": "kaos.BehavioralGoal",
+      "x": 1770,
+      "y": 717,
+      "customProperties": {
+        "Type": "",
+        "Category": "",
+        "Source": "",
+        "Priority": "",
+        "Issue": "",
+        "FormalSpec": "",
+        "FitCriterion": "",
+        "Stability": "",
+        "Description": "Nó G2.1.2.3"
+      }
+    },
+    {
+      "id": "2a4d3cc6-88fc-4da1-b6c2-e316f89aae3a",
+      "text": "Achieve [Alvo registrado como inacessível após esgotar os caminhos alternativos]",
+      "type": "kaos.BehavioralGoal",
+      "x": 1678,
+      "y": 426,
+      "customProperties": {
+        "Type": "",
+        "Category": "",
+        "Source": "",
+        "Priority": "",
+        "Issue": "",
+        "FormalSpec": "",
+        "FitCriterion": "",
+        "Stability": "",
+        "Description": "Nó G2.2"
+      }
+    },
+    {
+      "id": "be6f52a7-aace-4e12-9127-c45d9738e8dc",
+      "text": "Achieve [Dados coletados entregues ao Software de Análise]",
+      "type": "kaos.BehavioralGoal",
+      "x": 2134,
+      "y": 280,
+      "customProperties": {
+        "Type": "",
+        "Category": "",
+        "Source": "",
+        "Priority": "",
+        "Issue": "",
+        "FormalSpec": "",
+        "FitCriterion": "",
+        "Stability": "",
+        "Description": "Nó G3"
+      }
+    },
+    {
+      "id": "a746586f-2f05-444d-8c92-2f076675c665",
+      "text": "Achieve [Dado associado ao alvo e ao processo de coleta internamente no RMMC]",
+      "type": "kaos.BehavioralGoal",
+      "x": 2278,
+      "y": 425,
+      "customProperties": {
+        "Type": "",
+        "Category": "",
+        "Source": "",
+        "Priority": "",
+        "Issue": "",
+        "FormalSpec": "",
+        "FitCriterion": "",
+        "Stability": "",
+        "Description": "Nó G3.1"
+      }
+    },
+    {
+      "id": "08e481bc-028e-40e7-9647-1bafdd87533f",
+      "text": "Achieve [Dados consolidados entregues após o retorno à base]",
+      "type": "kaos.BehavioralGoal",
+      "x": 2098,
+      "y": 425,
+      "customProperties": {
+        "Type": "",
+        "Category": "",
+        "Source": "",
+        "Priority": "",
+        "Issue": "",
+        "FormalSpec": "",
+        "FitCriterion": "",
+        "Stability": "",
+        "Description": "Nó G3.2"
+      }
+    },
+    {
+      "id": "568d51cf-9037-4598-9b76-0f59f7f5ad62",
+      "text": "Achieve [Dados consolidados enviados ao Software de Análise]",
+      "type": "kaos.BehavioralGoal",
+      "x": 1979,
+      "y": 577,
+      "customProperties": {
+        "Type": "",
+        "Category": "",
+        "Source": "",
+        "Priority": "",
+        "Issue": "",
+        "FormalSpec": "",
+        "FitCriterion": "",
+        "Stability": "",
+        "Description": "Nó G3.2.1"
+      }
+    },
+    {
+      "id": "b082e9a5-9821-41a3-aeeb-975958bf184a",
+      "text": "Maintain [Controlador apto a intervir]",
+      "type": "kaos.BehavioralGoal",
+      "x": 2568,
+      "y": 278,
+      "customProperties": {
+        "Type": "",
+        "Category": "",
+        "Source": "",
+        "Priority": "",
+        "Issue": "",
+        "FormalSpec": "",
+        "FitCriterion": "",
+        "Stability": "",
+        "Description": "Nó G4"
+      }
+    },
+    {
+      "id": "ba221adb-22f3-485b-a908-d854251b3504",
+      "text": "Achieve [Alertas e status de alvo comunicados ao Controlador]",
+      "type": "kaos.BehavioralGoal",
+      "x": 2516,
+      "y": 426,
+      "customProperties": {
+        "Type": "",
+        "Category": "",
+        "Source": "",
+        "Priority": "",
+        "Issue": "",
+        "FormalSpec": "",
+        "FitCriterion": "",
+        "Stability": "",
+        "Description": "Nó G4.1"
+      }
+    },
+    {
+      "id": "cd5c951a-5107-4854-b085-99fd7bcea249",
+      "text": "Achieve [Decisões do Controlador aplicadas pelo RMMC]",
+      "type": "kaos.BehavioralGoal",
+      "x": 2711,
+      "y": 426,
+      "customProperties": {
+        "Type": "",
+        "Category": "",
+        "Source": "",
+        "Priority": "",
+        "Issue": "",
+        "FormalSpec": "",
+        "FitCriterion": "",
+        "Stability": "",
+        "Description": "Nó G4.2"
+      }
+    },
+    {
+      "id": "a9e1cc6e-d4a6-4306-b2d1-336f9e12be82",
+      "text": "Avoid [RMMC sem energia para retornar à base]",
+      "type": "kaos.BehavioralGoal",
+      "x": 2972,
+      "y": 277,
+      "customProperties": {
+        "Type": "",
+        "Category": "",
+        "Source": "",
+        "Priority": "",
+        "Issue": "",
+        "FormalSpec": "",
+        "FitCriterion": "",
+        "Stability": "",
+        "Description": "Nó G5"
+      }
+    },
+    {
+      "id": "c7a95aef-bf81-41f7-bf9f-a1fe41bfb453",
+      "text": "Achieve [Missão concluída sem atingir o LRS]",
+      "type": "kaos.BehavioralGoal",
+      "x": 2940,
+      "y": 428,
+      "customProperties": {
+        "Type": "",
+        "Category": "",
+        "Source": "",
+        "Priority": "",
+        "Issue": "",
+        "FormalSpec": "",
+        "FitCriterion": "",
+        "Stability": "",
+        "Description": "Nó G5.1"
+      }
+    },
+    {
+      "id": "34561342-19dd-4c1b-9fcc-47667a58541c",
+      "text": "Achieve [Missão retomada após interrupção por LRS]",
+      "type": "kaos.BehavioralGoal",
+      "x": 3193,
+      "y": 426,
+      "customProperties": {
+        "Type": "",
+        "Category": "",
+        "Source": "",
+        "Priority": "",
+        "Issue": "",
+        "FormalSpec": "",
+        "FitCriterion": "",
+        "Stability": "",
+        "Description": "Nó G5.2"
+      }
+    },
+    {
+      "id": "d1795027-d77b-4a6e-9d2a-53c5da1499c9",
+      "text": "Achieve [Queda abaixo do LRS detectada]",
+      "type": "kaos.BehavioralGoal",
+      "x": 3146,
+      "y": 583,
+      "customProperties": {
+        "Type": "",
+        "Category": "",
+        "Source": "",
+        "Priority": "",
+        "Issue": "",
+        "FormalSpec": "",
+        "FitCriterion": "",
+        "Stability": "",
+        "Description": "Nó G5.2.1"
+      }
+    },
+    {
+      "id": "e4dc258b-b2d2-445b-9132-328a9e5ed946",
+      "text": "Achieve [Estado da missão preservado antes do retorno]",
+      "type": "kaos.BehavioralGoal",
+      "x": 3319,
+      "y": 582,
+      "customProperties": {
+        "Type": "",
+        "Category": "",
+        "Source": "",
+        "Priority": "",
+        "Issue": "",
+        "FormalSpec": "",
+        "FitCriterion": "",
+        "Stability": "",
+        "Description": "Nó G5.2.2"
+      }
+    },
+    {
+      "id": "2d084a91-0076-4dfd-be12-aa5e1858b3df",
+      "text": "Achieve [Visita retomada ao alvo pendente a partir do estado salvo]",
+      "type": "kaos.BehavioralGoal",
+      "x": 3482,
+      "y": 545,
+      "customProperties": {
+        "Type": "",
+        "Category": "",
+        "Source": "",
+        "Priority": "",
+        "Issue": "",
+        "FormalSpec": "",
+        "FitCriterion": "",
+        "Stability": "",
+        "Description": "Nó G5.2.3"
+      }
+    }
+  ],
+  "dependencies": [],
+  "links": [
+    {
+      "hub": {
+        "id": "eeb3f28d-cbd4-4a66-9319-e59e7dd2df3b",
+        "text": "RefinementLinkHub",
+        "type": "kaos.RefinementLinkHub",
+        "x": 2434,
+        "y": 200,
+        "customProperties": {
+          "SysRef": "",
+          "Status": "",
+          "Tactic": ""
+        }
+      },
+      "starts": [
+        {
+          "id": "fe422dd7-ae30-4c4b-9dae-0e6764f45f0d",
+          "type": "kaos.RefinementLinkStart",
+          "source": "b25d06be-06ec-4001-97c4-36c4658ec373",
+          "target": "eeb3f28d-cbd4-4a66-9319-e59e7dd2df3b"
+        },
+        {
+          "id": "571f2176-9e35-46a3-aea9-26ada6f5c227",
+          "type": "kaos.RefinementLinkStart",
+          "source": "01055785-26dd-4c64-9c4d-c0364f22069a",
+          "target": "eeb3f28d-cbd4-4a66-9319-e59e7dd2df3b"
+        },
+        {
+          "id": "444407b8-fa32-48e9-bd98-1d2635b435cf",
+          "type": "kaos.RefinementLinkStart",
+          "source": "be6f52a7-aace-4e12-9127-c45d9738e8dc",
+          "target": "eeb3f28d-cbd4-4a66-9319-e59e7dd2df3b"
+        },
+        {
+          "id": "aa87d06a-e7d8-4ad2-899e-257cb6dabf82",
+          "type": "kaos.RefinementLinkStart",
+          "source": "b082e9a5-9821-41a3-aeeb-975958bf184a",
+          "target": "eeb3f28d-cbd4-4a66-9319-e59e7dd2df3b"
+        },
+        {
+          "id": "57c37af2-9f01-4ae7-87dd-259da97aa6ad",
+          "type": "kaos.RefinementLinkStart",
+          "source": "a9e1cc6e-d4a6-4306-b2d1-336f9e12be82",
+          "target": "eeb3f28d-cbd4-4a66-9319-e59e7dd2df3b"
+        },
+        {
+          "id": "5a9441cf-b03c-442c-95a8-dbf79a2a93dc",
+          "type": "kaos.RefinementLinkStart",
+          "source": "22a5fcb1-8eed-4b64-af63-22fbf49f108e",
+          "target": "eeb3f28d-cbd4-4a66-9319-e59e7dd2df3b"
+        },
+        {
+          "id": "59f0cac2-e9f2-4efa-9dcd-083ed9fa8e02",
+          "type": "kaos.RefinementLinkStart",
+          "source": "a860d987-0be1-4789-bb9a-3f0636b2caa0",
+          "target": "eeb3f28d-cbd4-4a66-9319-e59e7dd2df3b"
+        }
+      ],
+      "end": {
+        "id": "ebb0d3ac-0f4e-4684-8263-97b39b883ce7",
+        "type": "kaos.RefinementLinkEnd",
+        "source": "eeb3f28d-cbd4-4a66-9319-e59e7dd2df3b",
+        "target": "1995fa98-1766-452b-9263-c88051f801c8"
+      }
+    },
+    {
+      "hub": {
+        "id": "fd21a0df-b79d-4bd8-baab-46c54be39646",
+        "text": "RefinementLinkHub",
+        "type": "kaos.RefinementLinkHub",
+        "x": 744,
+        "y": 366,
+        "customProperties": {
+          "SysRef": "",
+          "Status": "",
+          "Tactic": ""
+        }
+      },
+      "starts": [
+        {
+          "id": "33d0040f-75da-4e52-9c3b-fab8f2a56f3c",
+          "type": "kaos.RefinementLinkStart",
+          "source": "a51f57ce-5d6d-40a0-9624-166514ac68a7",
+          "target": "fd21a0df-b79d-4bd8-baab-46c54be39646"
+        },
+        {
+          "id": "107ef0da-7052-446e-94cd-8228dcedc3ae",
+          "type": "kaos.RefinementLinkStart",
+          "source": "faf81854-19d1-4ddd-a2f4-1c631587fd99",
+          "target": "fd21a0df-b79d-4bd8-baab-46c54be39646"
+        }
+      ],
+      "end": {
+        "id": "afdf8f17-656e-4c51-a67f-2eb32c6f5177",
+        "type": "kaos.RefinementLinkEnd",
+        "source": "fd21a0df-b79d-4bd8-baab-46c54be39646",
+        "target": "b25d06be-06ec-4001-97c4-36c4658ec373"
+      }
+    },
+    {
+      "hub": {
+        "id": "1e11ce9b-8ceb-4a13-bca8-3f3d6d9633f0",
+        "text": "RefinementLinkHub",
+        "type": "kaos.RefinementLinkHub",
+        "x": 737,
+        "y": 513,
+        "customProperties": {
+          "SysRef": "",
+          "Status": "",
+          "Tactic": ""
+        }
+      },
+      "starts": [
+        {
+          "id": "776920cc-17aa-44ad-8b79-5b80c1e585d7",
+          "type": "kaos.RefinementLinkStart",
+          "source": "a43ea435-ac15-4881-ad41-1fd24e296351",
+          "target": "1e11ce9b-8ceb-4a13-bca8-3f3d6d9633f0"
+        }
+      ],
+      "end": {
+        "id": "e60e148a-d3e3-4a52-9e90-4cbb09ae4a4d",
+        "type": "kaos.RefinementLinkEnd",
+        "source": "1e11ce9b-8ceb-4a13-bca8-3f3d6d9633f0",
+        "target": "faf81854-19d1-4ddd-a2f4-1c631587fd99"
+      }
+    },
+    {
+      "hub": {
+        "id": "035a34c0-d0dd-4adc-a8bf-bec93f138a7b",
+        "text": "RefinementLinkHub",
+        "type": "kaos.RefinementLinkHub",
+        "x": 828,
+        "y": 511,
+        "customProperties": {
+          "SysRef": "",
+          "Status": "",
+          "Tactic": ""
+        }
+      },
+      "starts": [
+        {
+          "id": "f6b808d9-7f6a-4b17-9ead-13645e9054e5",
+          "type": "kaos.RefinementLinkStart",
+          "source": "54da61e2-a1ad-4a32-8a8f-0d4200106a76",
+          "target": "035a34c0-d0dd-4adc-a8bf-bec93f138a7b"
+        }
+      ],
+      "end": {
+        "id": "37f92272-7a85-48c2-b240-32a586816c93",
+        "type": "kaos.RefinementLinkEnd",
+        "source": "035a34c0-d0dd-4adc-a8bf-bec93f138a7b",
+        "target": "faf81854-19d1-4ddd-a2f4-1c631587fd99"
+      }
+    },
+    {
+      "hub": {
+        "id": "e2185279-e85b-470a-ae32-e2d514ab120d",
+        "text": "RefinementLinkHub",
+        "type": "kaos.RefinementLinkHub",
+        "x": 830,
+        "y": 658,
+        "customProperties": {
+          "SysRef": "",
+          "Status": "",
+          "Tactic": ""
+        }
+      },
+      "starts": [
+        {
+          "id": "32bdd36e-79f3-4c15-8f78-580a7c2fc6ac",
+          "type": "kaos.RefinementLinkStart",
+          "source": "5804325d-cf6b-47e1-8565-49fe243d56cb",
+          "target": "e2185279-e85b-470a-ae32-e2d514ab120d"
+        }
+      ],
+      "end": {
+        "id": "e284a028-0ad4-4025-ac53-e0e473dbd72e",
+        "type": "kaos.RefinementLinkEnd",
+        "source": "e2185279-e85b-470a-ae32-e2d514ab120d",
+        "target": "54da61e2-a1ad-4a32-8a8f-0d4200106a76"
+      }
+    },
+    {
+      "hub": {
+        "id": "f0ac28a8-1f0e-4712-b12d-4e77038a9c24",
+        "text": "RefinementLinkHub",
+        "type": "kaos.RefinementLinkHub",
+        "x": 922,
+        "y": 656,
+        "customProperties": {
+          "SysRef": "",
+          "Status": "",
+          "Tactic": ""
+        }
+      },
+      "starts": [
+        {
+          "id": "c680dda2-46fa-483e-8b46-9fa6f82cfd25",
+          "type": "kaos.RefinementLinkStart",
+          "source": "ef058ed2-b723-4509-89d3-3780148e4c98",
+          "target": "f0ac28a8-1f0e-4712-b12d-4e77038a9c24"
+        }
+      ],
+      "end": {
+        "id": "c37a69fa-4622-4d47-9be7-d1174e9a8600",
+        "type": "kaos.RefinementLinkEnd",
+        "source": "f0ac28a8-1f0e-4712-b12d-4e77038a9c24",
+        "target": "54da61e2-a1ad-4a32-8a8f-0d4200106a76"
+      }
+    },
+    {
+      "hub": {
+        "id": "c3fbb528-4216-4bdf-9ee7-621ff7ae0430",
+        "text": "RefinementLinkHub",
+        "type": "kaos.RefinementLinkHub",
+        "x": 1537,
+        "y": 368,
+        "customProperties": {
+          "SysRef": "",
+          "Status": "",
+          "Tactic": ""
+        }
+      },
+      "starts": [
+        {
+          "id": "4646570f-9731-49e7-8270-55e1c8cc6035",
+          "type": "kaos.RefinementLinkStart",
+          "source": "2e5d202a-27d9-440e-abc8-b844ee970772",
+          "target": "c3fbb528-4216-4bdf-9ee7-621ff7ae0430"
+        }
+      ],
+      "end": {
+        "id": "042d23f0-4ebd-4c0d-bf3e-82481133d155",
+        "type": "kaos.RefinementLinkEnd",
+        "source": "c3fbb528-4216-4bdf-9ee7-621ff7ae0430",
+        "target": "01055785-26dd-4c64-9c4d-c0364f22069a"
+      }
+    },
+    {
+      "hub": {
+        "id": "deb3c45b-3284-4adc-8766-92dc0315dad9",
+        "text": "RefinementLinkHub",
+        "type": "kaos.RefinementLinkHub",
+        "x": 1681,
+        "y": 364,
+        "customProperties": {
+          "SysRef": "",
+          "Status": "",
+          "Tactic": ""
+        }
+      },
+      "starts": [
+        {
+          "id": "4200d76f-7887-47ce-a6a2-0a84c91fb87b",
+          "type": "kaos.RefinementLinkStart",
+          "source": "2a4d3cc6-88fc-4da1-b6c2-e316f89aae3a",
+          "target": "deb3c45b-3284-4adc-8766-92dc0315dad9"
+        }
+      ],
+      "end": {
+        "id": "8600841e-6575-4d2e-b871-0b9d2dfbe122",
+        "type": "kaos.RefinementLinkEnd",
+        "source": "deb3c45b-3284-4adc-8766-92dc0315dad9",
+        "target": "01055785-26dd-4c64-9c4d-c0364f22069a"
+      }
+    },
+    {
+      "hub": {
+        "id": "881e38b3-0ced-4c4c-820f-3a19a86b9614",
+        "text": "RefinementLinkHub",
+        "type": "kaos.RefinementLinkHub",
+        "x": 1466,
+        "y": 511,
+        "customProperties": {
+          "SysRef": "",
+          "Status": "",
+          "Tactic": ""
+        }
+      },
+      "starts": [
+        {
+          "id": "b8df3e3a-25be-4990-8dff-afb27d9336d9",
+          "type": "kaos.RefinementLinkStart",
+          "source": "00d26e28-aaff-4916-b214-cb5fa66d5ca2",
+          "target": "881e38b3-0ced-4c4c-820f-3a19a86b9614"
+        },
+        {
+          "id": "658688f2-81eb-4a37-bb93-a75d96355365",
+          "type": "kaos.RefinementLinkStart",
+          "source": "7d48c88a-eaa8-42c0-b7e3-e57b502cc1f6",
+          "target": "881e38b3-0ced-4c4c-820f-3a19a86b9614"
+        }
+      ],
+      "end": {
+        "id": "fb8a5671-5595-4324-9f9f-461e96b8b8c4",
+        "type": "kaos.RefinementLinkEnd",
+        "source": "881e38b3-0ced-4c4c-820f-3a19a86b9614",
+        "target": "2e5d202a-27d9-440e-abc8-b844ee970772"
+      }
+    },
+    {
+      "hub": {
+        "id": "4862e34f-15d5-4067-a68e-74524bc2f614",
+        "text": "RefinementLinkHub",
+        "type": "kaos.RefinementLinkHub",
+        "x": 1270,
+        "y": 655,
+        "customProperties": {
+          "SysRef": "",
+          "Status": "",
+          "Tactic": ""
+        }
+      },
+      "starts": [
+        {
+          "id": "047da0d0-8ec3-475d-90ed-c50bcece34d0",
+          "type": "kaos.RefinementLinkStart",
+          "source": "263de8d9-1358-4454-8c7e-e69bbe56a360",
+          "target": "4862e34f-15d5-4067-a68e-74524bc2f614"
+        }
+      ],
+      "end": {
+        "id": "398193b5-64d8-45b5-a9e4-a6416b6f8f44",
+        "type": "kaos.RefinementLinkEnd",
+        "source": "4862e34f-15d5-4067-a68e-74524bc2f614",
+        "target": "00d26e28-aaff-4916-b214-cb5fa66d5ca2"
+      }
+    },
+    {
+      "hub": {
+        "id": "de19b755-150d-4f73-96b7-baff61bcd479",
+        "text": "RefinementLinkHub",
+        "type": "kaos.RefinementLinkHub",
+        "x": 1360,
+        "y": 654,
+        "customProperties": {
+          "SysRef": "",
+          "Status": "",
+          "Tactic": ""
+        }
+      },
+      "starts": [
+        {
+          "id": "ff213eee-4ee9-4be0-bb25-c6cc352db46e",
+          "type": "kaos.RefinementLinkStart",
+          "source": "f1e056d7-6ff4-4377-b13e-382a8b7a17a5",
+          "target": "de19b755-150d-4f73-96b7-baff61bcd479"
+        }
+      ],
+      "end": {
+        "id": "c565a70b-03cf-4b14-9614-f3ec5a3b9650",
+        "type": "kaos.RefinementLinkEnd",
+        "source": "de19b755-150d-4f73-96b7-baff61bcd479",
+        "target": "00d26e28-aaff-4916-b214-cb5fa66d5ca2"
+      }
+    },
+    {
+      "hub": {
+        "id": "1b68c58e-b947-4b62-a0a4-b0e5be1f40e9",
+        "text": "RefinementLinkHub",
+        "type": "kaos.RefinementLinkHub",
+        "x": 1560,
+        "y": 648,
+        "customProperties": {
+          "SysRef": "",
+          "Status": "",
+          "Tactic": ""
+        }
+      },
+      "starts": [
+        {
+          "id": "141683d7-0116-443d-b267-3a97fedaa38a",
+          "type": "kaos.RefinementLinkStart",
+          "source": "4aeb50ba-17a1-457c-8093-a005323991a9",
+          "target": "1b68c58e-b947-4b62-a0a4-b0e5be1f40e9"
+        }
+      ],
+      "end": {
+        "id": "33b76e2a-5e63-44bd-8aed-76825ef5de34",
+        "type": "kaos.RefinementLinkEnd",
+        "source": "1b68c58e-b947-4b62-a0a4-b0e5be1f40e9",
+        "target": "7d48c88a-eaa8-42c0-b7e3-e57b502cc1f6"
+      }
+    },
+    {
+      "hub": {
+        "id": "e1239130-a842-4ca6-a7b1-70b8e0ec18e5",
+        "text": "RefinementLinkHub",
+        "type": "kaos.RefinementLinkHub",
+        "x": 1625,
+        "y": 650,
+        "customProperties": {
+          "SysRef": "",
+          "Status": "",
+          "Tactic": ""
+        }
+      },
+      "starts": [
+        {
+          "id": "1ff33feb-a8aa-416c-861c-38da42df7c8c",
+          "type": "kaos.RefinementLinkStart",
+          "source": "dcd2a2d5-e876-46d0-986e-09f7fd354c97",
+          "target": "e1239130-a842-4ca6-a7b1-70b8e0ec18e5"
+        }
+      ],
+      "end": {
+        "id": "7c934204-1d8b-4d80-8fe5-a0de26a7b8dc",
+        "type": "kaos.RefinementLinkEnd",
+        "source": "e1239130-a842-4ca6-a7b1-70b8e0ec18e5",
+        "target": "7d48c88a-eaa8-42c0-b7e3-e57b502cc1f6"
+      }
+    },
+    {
+      "hub": {
+        "id": "8efc7277-645f-4374-9e4a-fc7e96db11f8",
+        "text": "RefinementLinkHub",
+        "type": "kaos.RefinementLinkHub",
+        "x": 1688,
+        "y": 650,
+        "customProperties": {
+          "SysRef": "",
+          "Status": "",
+          "Tactic": ""
+        }
+      },
+      "starts": [
+        {
+          "id": "b501ae54-ccad-468f-80f5-fc08b131dadd",
+          "type": "kaos.RefinementLinkStart",
+          "source": "a7e2941a-4c11-42cd-bab8-77ca1b0bfaf0",
+          "target": "8efc7277-645f-4374-9e4a-fc7e96db11f8"
+        }
+      ],
+      "end": {
+        "id": "e38e6065-1f62-4266-9486-5ec0f3b491f1",
+        "type": "kaos.RefinementLinkEnd",
+        "source": "8efc7277-645f-4374-9e4a-fc7e96db11f8",
+        "target": "7d48c88a-eaa8-42c0-b7e3-e57b502cc1f6"
+      }
+    },
+    {
+      "hub": {
+        "id": "31388c7a-4fb4-4d93-900e-92700f6cf011",
+        "text": "RefinementLinkHub",
+        "type": "kaos.RefinementLinkHub",
+        "x": 2225,
+        "y": 363,
+        "customProperties": {
+          "SysRef": "",
+          "Status": "",
+          "Tactic": ""
+        }
+      },
+      "starts": [
+        {
+          "id": "5fabcfe0-fdcf-4f03-9fc0-39811624ff88",
+          "type": "kaos.RefinementLinkStart",
+          "source": "a746586f-2f05-444d-8c92-2f076675c665",
+          "target": "31388c7a-4fb4-4d93-900e-92700f6cf011"
+        },
+        {
+          "id": "2f806960-a326-44a3-b2cd-90711e5dcaf4",
+          "type": "kaos.RefinementLinkStart",
+          "source": "08e481bc-028e-40e7-9647-1bafdd87533f",
+          "target": "31388c7a-4fb4-4d93-900e-92700f6cf011"
+        }
+      ],
+      "end": {
+        "id": "d09020fe-d1d4-4e40-be2e-e7173eeedbd6",
+        "type": "kaos.RefinementLinkEnd",
+        "source": "31388c7a-4fb4-4d93-900e-92700f6cf011",
+        "target": "be6f52a7-aace-4e12-9127-c45d9738e8dc"
+      }
+    },
+    {
+      "hub": {
+        "id": "1e78d978-56e2-49b7-a7f8-683238ae3118",
+        "text": "RefinementLinkHub",
+        "type": "kaos.RefinementLinkHub",
+        "x": 2160,
+        "y": 517,
+        "customProperties": {
+          "SysRef": "",
+          "Status": "",
+          "Tactic": ""
+        }
+      },
+      "starts": [
+        {
+          "id": "ba7ceb3a-84a7-49ae-9ccf-d7f88b91f535",
+          "type": "kaos.RefinementLinkStart",
+          "source": "85e9112d-f472-486d-b6b2-e4105a1fcd4e",
+          "target": "1e78d978-56e2-49b7-a7f8-683238ae3118"
+        },
+        {
+          "id": "89cc0ad3-7141-4b08-9cce-48e98b138ff4",
+          "type": "kaos.RefinementLinkStart",
+          "source": "568d51cf-9037-4598-9b76-0f59f7f5ad62",
+          "target": "1e78d978-56e2-49b7-a7f8-683238ae3118"
+        }
+      ],
+      "end": {
+        "id": "e2b3a5a6-384e-4289-b326-00692e548ee9",
+        "type": "kaos.RefinementLinkEnd",
+        "source": "1e78d978-56e2-49b7-a7f8-683238ae3118",
+        "target": "08e481bc-028e-40e7-9647-1bafdd87533f"
+      }
+    },
+    {
+      "hub": {
+        "id": "bb09de75-1887-4629-9f7f-0e450c54f509",
+        "text": "RefinementLinkHub",
+        "type": "kaos.RefinementLinkHub",
+        "x": 2666,
+        "y": 366,
+        "customProperties": {
+          "SysRef": "",
+          "Status": "",
+          "Tactic": ""
+        }
+      },
+      "starts": [
+        {
+          "id": "93d47c1a-c25f-4329-9d37-0a7c37d3c5b2",
+          "type": "kaos.RefinementLinkStart",
+          "source": "ba221adb-22f3-485b-a908-d854251b3504",
+          "target": "bb09de75-1887-4629-9f7f-0e450c54f509"
+        },
+        {
+          "id": "f5a0b501-bf8d-4d9a-90ba-30612df7121f",
+          "type": "kaos.RefinementLinkStart",
+          "source": "cd5c951a-5107-4854-b085-99fd7bcea249",
+          "target": "bb09de75-1887-4629-9f7f-0e450c54f509"
+        }
+      ],
+      "end": {
+        "id": "f9574279-e39a-40c1-89fe-9062902ea5f6",
+        "type": "kaos.RefinementLinkEnd",
+        "source": "bb09de75-1887-4629-9f7f-0e450c54f509",
+        "target": "b082e9a5-9821-41a3-aeeb-975958bf184a"
+      }
+    },
+    {
+      "hub": {
+        "id": "44acec7c-f740-4096-be12-90fc99f82105",
+        "text": "RefinementLinkHub",
+        "type": "kaos.RefinementLinkHub",
+        "x": 3036,
+        "y": 370,
+        "customProperties": {
+          "SysRef": "",
+          "Status": "",
+          "Tactic": ""
+        }
+      },
+      "starts": [
+        {
+          "id": "f85a0161-c5ec-4e1e-8080-b62d20ab1a10",
+          "type": "kaos.RefinementLinkStart",
+          "source": "c7a95aef-bf81-41f7-bf9f-a1fe41bfb453",
+          "target": "44acec7c-f740-4096-be12-90fc99f82105"
+        }
+      ],
+      "end": {
+        "id": "b89eb8d4-dceb-4219-be15-a08f0ad708f9",
+        "type": "kaos.RefinementLinkEnd",
+        "source": "44acec7c-f740-4096-be12-90fc99f82105",
+        "target": "a9e1cc6e-d4a6-4306-b2d1-336f9e12be82"
+      }
+    },
+    {
+      "hub": {
+        "id": "35a3a275-599c-4592-a9c2-bbf84aa3c2d4",
+        "text": "RefinementLinkHub",
+        "type": "kaos.RefinementLinkHub",
+        "x": 3163,
+        "y": 366,
+        "customProperties": {
+          "SysRef": "",
+          "Status": "",
+          "Tactic": ""
+        }
+      },
+      "starts": [
+        {
+          "id": "326aa9d9-edc5-424b-8718-1500729ca1d0",
+          "type": "kaos.RefinementLinkStart",
+          "source": "34561342-19dd-4c1b-9fcc-47667a58541c",
+          "target": "35a3a275-599c-4592-a9c2-bbf84aa3c2d4"
+        }
+      ],
+      "end": {
+        "id": "4841b1b9-a610-4da0-b60a-65a90d2d4d92",
+        "type": "kaos.RefinementLinkEnd",
+        "source": "35a3a275-599c-4592-a9c2-bbf84aa3c2d4",
+        "target": "a9e1cc6e-d4a6-4306-b2d1-336f9e12be82"
+      }
+    },
+    {
+      "hub": {
+        "id": "e65f1f37-68ce-47ff-93e6-a3e0089a4a5e",
+        "text": "RefinementLinkHub",
+        "type": "kaos.RefinementLinkHub",
+        "x": 3265,
+        "y": 524,
+        "customProperties": {
+          "SysRef": "",
+          "Status": "",
+          "Tactic": ""
+        }
+      },
+      "starts": [
+        {
+          "id": "11ef6cb6-1716-45ba-9b8c-30dfc9420ee9",
+          "type": "kaos.RefinementLinkStart",
+          "source": "d1795027-d77b-4a6e-9d2a-53c5da1499c9",
+          "target": "e65f1f37-68ce-47ff-93e6-a3e0089a4a5e"
+        },
+        {
+          "id": "4aff3f22-6c05-4b5e-b0ed-46764159dc06",
+          "type": "kaos.RefinementLinkStart",
+          "source": "e4dc258b-b2d2-445b-9132-328a9e5ed946",
+          "target": "e65f1f37-68ce-47ff-93e6-a3e0089a4a5e"
+        },
+        {
+          "id": "af1dae34-3836-4825-b46c-83ae585bdcd0",
+          "type": "kaos.RefinementLinkStart",
+          "source": "85e9112d-f472-486d-b6b2-e4105a1fcd4e",
+          "target": "e65f1f37-68ce-47ff-93e6-a3e0089a4a5e"
+        },
+        {
+          "id": "7ff05fde-fb5c-490f-ab74-4c16c1e1a5b7",
+          "type": "kaos.RefinementLinkStart",
+          "source": "5ae07c47-b373-454c-9fb6-f83769b3026b",
+          "target": "e65f1f37-68ce-47ff-93e6-a3e0089a4a5e"
+        },
+        {
+          "id": "b060c8d3-d033-45bf-8013-08967579d879",
+          "type": "kaos.RefinementLinkStart",
+          "source": "2d084a91-0076-4dfd-be12-aa5e1858b3df",
+          "target": "e65f1f37-68ce-47ff-93e6-a3e0089a4a5e"
+        }
+      ],
+      "end": {
+        "id": "7f10e132-97b8-4c96-baeb-94c345954907",
+        "type": "kaos.RefinementLinkEnd",
+        "source": "e65f1f37-68ce-47ff-93e6-a3e0089a4a5e",
+        "target": "34561342-19dd-4c1b-9fcc-47667a58541c"
+      }
+    }
+  ],
+  "display": {
+    "1995fa98-1766-452b-9263-c88051f801c8": {
+      "width": 264.78125,
+      "height": 165.453125
+    },
+    "22a5fcb1-8eed-4b64-af63-22fbf49f108e": {
+      "width": 148.78125,
+      "height": 98.453125
+    },
+    "a860d987-0be1-4789-bb9a-3f0636b2caa0": {
+      "width": 150,
+      "height": 92
+    },
+    "b25d06be-06ec-4001-97c4-36c4658ec373": {
+      "width": 150,
+      "height": 68
+    },
+    "a51f57ce-5d6d-40a0-9624-166514ac68a7": {
+      "width": 212.78125,
+      "height": 68.453125
+    },
+    "faf81854-19d1-4ddd-a2f4-1c631587fd99": {
+      "width": 150,
+      "height": 68
+    },
+    "a43ea435-ac15-4881-ad41-1fd24e296351": {
+      "width": 166.78125,
+      "height": 71.453125
+    },
+    "54da61e2-a1ad-4a32-8a8f-0d4200106a76": {
+      "width": 150,
+      "height": 68
+    },
+    "5804325d-cf6b-47e1-8565-49fe243d56cb": {
+      "width": 150,
+      "height": 68
+    },
+    "ef058ed2-b723-4509-89d3-3780148e4c98": {
+      "width": 150,
+      "height": 86
+    },
+    "85e9112d-f472-486d-b6b2-e4105a1fcd4e": {
+      "width": 197.78125,
+      "height": 59.453125
+    },
+    "5ae07c47-b373-454c-9fb6-f83769b3026b": {
+      "width": 163.78125,
+      "height": 68.453125
+    },
+    "01055785-26dd-4c64-9c4d-c0364f22069a": {
+      "width": 168.78125,
+      "height": 72.453125
+    },
+    "2e5d202a-27d9-440e-abc8-b844ee970772": {
+      "width": 173.78125,
+      "height": 67.453125
+    },
+    "00d26e28-aaff-4916-b214-cb5fa66d5ca2": {
+      "width": 150,
+      "height": 50
+    },
+    "263de8d9-1358-4454-8c7e-e69bbe56a360": {
+      "width": 164.78125,
+      "height": 69.453125
+    },
+    "f1e056d7-6ff4-4377-b13e-382a8b7a17a5": {
+      "width": 170.78125,
+      "height": 68.453125
+    },
+    "7d48c88a-eaa8-42c0-b7e3-e57b502cc1f6": {
+      "width": 181.78125,
+      "height": 46.453125
+    },
+    "4aeb50ba-17a1-457c-8093-a005323991a9": {
+      "width": 150,
+      "height": 86
+    },
+    "dcd2a2d5-e876-46d0-986e-09f7fd354c97": {
+      "width": 150,
+      "height": 86
+    },
+    "a7e2941a-4c11-42cd-bab8-77ca1b0bfaf0": {
+      "width": 150,
+      "height": 86
+    },
+    "2a4d3cc6-88fc-4da1-b6c2-e316f89aae3a": {
+      "width": 221.78125,
+      "height": 69.453125
+    },
+    "be6f52a7-aace-4e12-9127-c45d9738e8dc": {
+      "width": 223.78125,
+      "height": 66.453125
+    },
+    "a746586f-2f05-444d-8c92-2f076675c665": {
+      "width": 194.78125,
+      "height": 90.453125
+    },
+    "08e481bc-028e-40e7-9647-1bafdd87533f": {
+      "width": 167.78125,
+      "height": 79.453125
+    },
+    "568d51cf-9037-4598-9b76-0f59f7f5ad62": {
+      "width": 177.78125,
+      "height": 80.453125
+    },
+    "b082e9a5-9821-41a3-aeeb-975958bf184a": {
+      "width": 236.78125,
+      "height": 64.453125
+    },
+    "ba221adb-22f3-485b-a908-d854251b3504": {
+      "width": 192.78125,
+      "height": 73.453125
+    },
+    "cd5c951a-5107-4854-b085-99fd7bcea249": {
+      "width": 177.78125,
+      "height": 74.453125
+    },
+    "a9e1cc6e-d4a6-4306-b2d1-336f9e12be82": {
+      "width": 216.78125,
+      "height": 60.453125
+    },
+    "c7a95aef-bf81-41f7-bf9f-a1fe41bfb453": {
+      "width": 190.78125,
+      "height": 57.453125
+    },
+    "34561342-19dd-4c1b-9fcc-47667a58541c": {
+      "width": 186.78125,
+      "height": 71.453125
+    },
+    "d1795027-d77b-4a6e-9d2a-53c5da1499c9": {
+      "width": 150,
+      "height": 68
+    },
+    "e4dc258b-b2d2-445b-9132-328a9e5ed946": {
+      "width": 150,
+      "height": 86
+    },
+    "2d084a91-0076-4dfd-be12-aa5e1858b3df": {
+      "width": 150,
+      "height": 86
+    }
+  },
+  "tool": "dsm3-goals",
+  "metamodelVersion": "1.0",
+  "saveDate": "Tue, 03 Nov 2026 00:55:23 GMT",
+  "diagram": {
+    "width": 4620,
+    "height": 1680,
+    "name": "Goal Model v1 - RMMC",
+    "customProperties": {
+      "Description": "Goal Model v1 do RMMC (Robô de Monitoramento Multimodal de Cultivos)."
+    }
+  }
+}
