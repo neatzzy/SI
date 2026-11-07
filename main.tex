@@ -11,7 +11,7 @@
 \usepackage{textcomp}
 \usepackage{gensymb}
 \usepackage{tikz}
-\usetikzlibrary{arrows.meta,calc,shapes.symbols}
+\usetikzlibrary{arrows.meta,calc,shapes.symbols,shapes.geometric}
 \usepackage{adjustbox}
 \usepackage{pdflscape}
 
@@ -65,6 +65,19 @@
 % \fl[opções]{origem}{destino}{ação}{passo}  /  \flo sem número de passo
 \newcommand{\fl}[5][]{\draw[dsflow,#1] (#2) to node[dslbl,pos=0.58]{#4} node[dsstep,pos=0.12]{#5} (#3);}
 \newcommand{\flo}[4][]{\draw[dsflow,#1] (#2) to node[dslbl,pos=0.5]{#4} (#3);}
+
+% Estilos dos Impact Maps
+\tikzset{
+    imhd/.style={anchor=north west, font=\scriptsize\bfseries, text=black!60, inner sep=1pt},
+    imgoal/.style={trapezium, trapezium left angle=75, trapezium right angle=105, trapezium stretches body, draw=blue!60!black, thick, fill=blue!12, align=center, font=\scriptsize\bfseries, inner xsep=0.1cm, inner ysep=3pt},
+    imda/.style={trapezium, trapezium left angle=75, trapezium right angle=105, trapezium stretches body, draw=yellow!50!black, fill=yellow!25, align=center, font=\scriptsize, inner xsep=0.1cm, inner ysep=3pt},
+    imexp/.style={imda, draw=red!60!black, fill=red!15},
+    imact/.style={draw=yellow!50!black, fill=yellow!30, rounded corners=3pt, align=center, font=\scriptsize\bfseries, inner sep=3pt},
+    imimp/.style={draw=green!40!black, fill=green!12, rounded corners=8pt, align=center, font=\scriptsize, inner sep=3pt},
+    imdel/.style={draw=violet!60, fill=violet!10, align=center, font=\scriptsize, inner sep=3pt},
+    imdis/.style={draw=black!50, dashed, fill=black!5, text=black!60, align=center, font=\scriptsize, inner sep=3pt},
+    imed/.style={rounded corners=3pt, black!60}
+}
 
 \begin{document}
 
@@ -632,6 +645,442 @@ Nesta versão, os refinamentos são feitos por meio de \textit{AND-refinements},
 \section{Fase 3: Decisão}
 
 \subsection{Impact Map}
+
+Cada \textit{Impact Map} (Figuras~\ref{fig:im-G1-1} a \ref{fig:im-G5-2}) relaciona um \textit{goal} (por quê) aos atores (quem), aos impactos (como) e aos \textit{deliverables} (o quê).
+
+\begin{figure}[htbp]
+  \centering
+  \begin{adjustbox}{max width=\textwidth}
+    \begin{tikzpicture}
+      \node[imhd] at (0,0) {GOAL (Por quê?)}; \node[imhd] at (3.7499999999999996,0) {ATORES (Quem?)}; \node[imhd] at (6.800000000000001,0) {IMPACTOS (Como?)}; \node[imhd] at (10.55,0) {DELIVERABLES (O quê?)};
+      \node[imgoal,text width=2.3cm,minimum height=2.84cm] (g) at (1.55,-4.57) {\textit{Achieve} [Suficiência da bateria para a missão avaliada antes do início] (G1.1)};
+      \node[imhd,text width=3cm,anchor=north west,font=\scriptsize\mdseries,text=black] at (0,-6.14) {\textit{Métrica:} 100\% das missões com avaliação de bateria antes da partida};
+      \draw[imed] (g.east) -- (3.52,-4.57) -- (3.52,-2.87) -- (3.75,-2.87);
+      \draw[imed] (g.east) -- (3.52,-4.57) -- (3.52,-6.87) -- (3.75,-6.87);
+      \node[imact,text width=1.9cm,minimum height=1.40cm] (a1) at (4.85,-2.87) {Controlador da Missão};
+      \node[imimp,text width=2.7cm,minimum height=1.40cm] at (8.3,-2.87) {Confia que a missão só parte com carga suficiente};
+      \draw[imed] (a1.east) -- (6.80,-2.87);
+      \node[imdel,text width=4.2cm,minimum height=1.40cm] at (12.8,-1.50) {Estimador de consumo da missão (rota + nº e tipo de coletas)};
+      \draw[imed] (9.80,-2.87) -- (10.18,-2.87) -- (10.18,-1.50) -- (10.55,-1.50);
+      \node[imdel,text width=4.2cm,minimum height=1.40cm] at (12.8,-3.05) {Verificação pré-missão: carga atual contra necessária};
+      \draw[imed] (9.80,-2.87) -- (10.18,-2.87) -- (10.18,-3.05) -- (10.55,-3.05);
+      \node[imdis,text width=4.2cm,minimum height=1.04cm] at (12.8,-4.42) {Regra fixa: só inicia com 100\% de carga};
+      \draw[imed] (9.80,-2.87) -- (10.18,-2.87) -- (10.18,-4.42) -- (10.55,-4.42);
+      \node[imact,text width=1.9cm,minimum height=1.04cm] (a2) at (4.85,-6.87) {Planejador da Missão};
+      \node[imimp,text width=2.7cm,minimum height=1.40cm] at (8.3,-6.87) {Fornece dados completos para a estimativa};
+      \draw[imed] (a2.east) -- (6.80,-6.87);
+      \node[imdel,text width=4.2cm,minimum height=1.40cm] at (12.8,-6.09) {Entrada da missão com alvos, ordem e tipos de dados obrigatórios};
+      \draw[imed] (9.80,-6.87) -- (10.18,-6.87) -- (10.18,-6.09) -- (10.55,-6.09);
+      \node[imdis,text width=4.2cm,minimum height=1.40cm] at (12.8,-7.64) {Custo energético estimado exibido durante o planejamento};
+      \draw[imed] (9.80,-6.87) -- (10.18,-6.87) -- (10.18,-7.64) -- (10.55,-7.64);
+      \node[imhd,anchor=north west] at (0,-8.84) {Domain assumptions que surgiram (levar para o goal model v2):};
+      \node[imda,text width=3.5cm,minimum width=4.6cm,minimum height=1.04cm] at (2.3,-10.11) {Consumo por trecho do terreno é previsível};
+      \node[imda,text width=3.5cm,minimum width=4.6cm,minimum height=1.04cm] at (7.1,-10.11) {Sensor de bateria mede a carga corretamente};
+    \end{tikzpicture}
+  \end{adjustbox}
+  \caption{\textit{Impact Map} do goal G1.1.}
+  \label{fig:im-G1-1}
+\end{figure}
+
+\begin{figure}[htbp]
+  \centering
+  \begin{adjustbox}{max width=\textwidth}
+    \begin{tikzpicture}
+      \node[imhd] at (0,0) {GOAL (Por quê?)}; \node[imhd] at (3.7499999999999996,0) {ATORES (Quem?)}; \node[imhd] at (6.800000000000001,0) {IMPACTOS (Como?)}; \node[imhd] at (10.55,0) {DELIVERABLES (O quê?)};
+      \node[imgoal,text width=2.3cm,minimum height=1.76cm] (g) at (1.55,-7.64) {\textit{Achieve} [Início da missão autorizado] (G1.2)};
+      \node[imhd,text width=3cm,anchor=north west,font=\scriptsize\mdseries,text=black] at (0,-8.67) {\textit{Métrica:} 100\% das missões iniciadas com carga suficiente para os alvos obrigatórios da lista vigente};
+      \draw[imed] (g.east) -- (3.52,-7.64) -- (3.52,-5.94) -- (3.75,-5.94);
+      \draw[imed] (g.east) -- (3.52,-7.64) -- (3.52,-13.00) -- (3.75,-13.00);
+      \node[imact,text width=1.9cm,minimum height=1.40cm] (a1) at (4.85,-5.94) {Controlador da Missão};
+      \node[imimp,text width=2.7cm,minimum height=2.12cm] at (8.3,-2.10) {Só intervém quando a carga não basta, sem precisar aprovar toda missão};
+      \draw[imed] (a1.east) -- (6.38,-5.94) -- (6.38,-2.10) -- (6.80,-2.10);
+      \node[imdel,text width=4.2cm,minimum height=1.40cm] at (12.8,-1.50) {Autorização automática do início quando a carga cobre os alvos obrigatórios};
+      \draw[imed] (9.80,-2.10) -- (10.18,-2.10) -- (10.18,-1.50) -- (10.55,-1.50);
+      \node[imdis,text width=4.2cm,minimum height=1.04cm] at (12.8,-2.87) {Exigir aprovação do Controlador em toda missão};
+      \draw[imed] (9.80,-2.10) -- (10.18,-2.10) -- (10.18,-2.87) -- (10.55,-2.87);
+      \node[imimp,text width=2.7cm,minimum height=1.76cm] at (8.3,-5.94) {Decide rapidamente entre recarregar e ajustar a missão};
+      \draw[imed] (a1.east) -- (6.80,-5.94);
+      \node[imdel,text width=4.2cm,minimum height=2.12cm] at (12.8,-4.75) {Bloqueio do início com alerta e diagnóstico (carga atual $\times$ necessária $\times$ capacidade máxima)};
+      \draw[imed] (9.80,-5.94) -- (10.18,-5.94) -- (10.18,-4.75) -- (10.55,-4.75);
+      \node[imdel,text width=4.2cm,minimum height=1.04cm] at (12.8,-6.48) {Tela de decisão: ‘recarregar’ / ‘ajustar lista’};
+      \draw[imed] (9.80,-5.94) -- (10.18,-5.94) -- (10.18,-6.48) -- (10.55,-6.48);
+      \node[imdis,text width=4.2cm,minimum height=1.04cm] at (12.8,-7.67) {Sugestão automática de alvos a remover};
+      \draw[imed] (9.80,-5.94) -- (10.18,-5.94) -- (10.18,-7.67) -- (10.55,-7.67);
+      \node[imimp,text width=2.7cm,minimum height=1.76cm] at (8.3,-9.78) {Ajusta a lista ou a ordem de visita quando a recarga não resolve};
+      \draw[imed] (a1.east) -- (6.38,-5.94) -- (6.38,-9.78) -- (6.80,-9.78);
+      \node[imdel,text width=4.2cm,minimum height=1.04cm] at (12.8,-9.01) {Edição da lista de alvos e da ordem de visita};
+      \draw[imed] (9.80,-9.78) -- (10.18,-9.78) -- (10.18,-9.01) -- (10.55,-9.01);
+      \node[imdel,text width=4.2cm,minimum height=1.40cm] at (12.8,-10.38) {Nova estimativa de consumo antes de liberar o início};
+      \draw[imed] (9.80,-9.78) -- (10.18,-9.78) -- (10.18,-10.38) -- (10.55,-10.38);
+      \node[imact,text width=1.9cm,minimum height=1.04cm] (a2) at (4.85,-13.00) {Base de Recarga};
+      \node[imimp,text width=2.7cm,minimum height=1.40cm] at (8.3,-13.00) {Recarrega o RMMC sempre que a recarga é ordenada};
+      \draw[imed] (a2.east) -- (6.80,-13.00);
+      \node[imdel,text width=4.2cm,minimum height=1.40cm] at (12.8,-12.23) {Deslocamento autônomo até a base e acoplamento automático};
+      \draw[imed] (9.80,-13.00) -- (10.18,-13.00) -- (10.18,-12.23) -- (10.55,-12.23);
+      \node[imdel,text width=4.2cm,minimum height=1.40cm] at (12.8,-13.78) {Aviso de carga completa para liberar a nova avaliação};
+      \draw[imed] (9.80,-13.00) -- (10.18,-13.00) -- (10.18,-13.78) -- (10.55,-13.78);
+      \node[imhd,anchor=north west] at (0,-14.98) {Domain assumptions e expectations que surgiram (levar para o goal model v2):};
+      \node[imda,text width=3.5cm,minimum width=4.6cm,minimum height=1.40cm] at (2.3,-16.43) {Tempo de recarga é compatível com a janela da missão};
+      \node[imda,text width=3.5cm,minimum width=4.6cm,minimum height=1.40cm] at (7.1,-16.43) {Estimativa de consumo reflete o consumo real};
+      \node[imexp,text width=3.5cm,minimum width=4.6cm,minimum height=1.40cm] at (11.9,-16.43) {Controlador está disponível antes do início (expectation)};
+    \end{tikzpicture}
+  \end{adjustbox}
+  \caption{\textit{Impact Map} do goal G1.2.}
+  \label{fig:im-G1-2}
+\end{figure}
+
+\begin{figure}[htbp]
+  \centering
+  \begin{adjustbox}{max width=\textwidth}
+    \begin{tikzpicture}
+      \node[imhd] at (0,0) {GOAL (Por quê?)}; \node[imhd] at (3.7499999999999996,0) {ATORES (Quem?)}; \node[imhd] at (6.800000000000001,0) {IMPACTOS (Como?)}; \node[imhd] at (10.55,0) {DELIVERABLES (O quê?)};
+      \node[imgoal,text width=2.3cm,minimum height=1.40cm] (g) at (1.55,-5.91) {\textit{Achieve} [Alvo alcançado] (G2.1.1)};
+      \node[imhd,text width=3cm,anchor=north west,font=\scriptsize\mdseries,text=black] at (0,-6.76) {\textit{Métrica:} $\geq$ 95\% dos alvos acessíveis alcançados sem intervenção humana};
+      \draw[imed] (g.east) -- (3.52,-5.91) -- (3.52,-2.10) -- (3.75,-2.10);
+      \draw[imed] (g.east) -- (3.52,-5.91) -- (3.52,-6.51) -- (3.75,-6.51);
+      \draw[imed] (g.east) -- (3.52,-5.91) -- (3.52,-10.32) -- (3.75,-10.32);
+      \node[imact,text width=1.9cm,minimum height=0.68cm] (a1) at (4.85,-2.10) {Drone};
+      \node[imimp,text width=2.7cm,minimum height=1.76cm] at (8.3,-2.10) {Fornece a topologia atualizada do trecho até o próximo alvo};
+      \draw[imed] (a1.east) -- (6.80,-2.10);
+      \node[imdel,text width=4.2cm,minimum height=1.40cm] at (12.8,-1.50) {Requisição de topologia ao drone antes de cada deslocamento};
+      \draw[imed] (9.80,-2.10) -- (10.18,-2.10) -- (10.18,-1.50) -- (10.55,-1.50);
+      \node[imdis,text width=4.2cm,minimum height=1.04cm] at (12.8,-2.87) {Sobrevoo periódico em intervalo fixo};
+      \draw[imed] (9.80,-2.10) -- (10.18,-2.10) -- (10.18,-2.87) -- (10.55,-2.87);
+      \node[imact,text width=1.9cm,minimum height=1.40cm] (a2) at (4.85,-6.51) {Controlador da Missão};
+      \node[imimp,text width=2.7cm,minimum height=1.76cm] at (8.3,-6.51) {Não precisa guiar o robô manualmente diante de obstáculos};
+      \draw[imed] (a2.east) -- (6.80,-6.51);
+      \node[imdel,text width=4.2cm,minimum height=1.40cm] at (12.8,-4.54) {Verificação de acessibilidade do alvo com a topologia do drone};
+      \draw[imed] (9.80,-6.51) -- (10.18,-6.51) -- (10.18,-4.54) -- (10.55,-4.54);
+      \node[imdel,text width=4.2cm,minimum height=1.04cm] at (12.8,-5.91) {Planejamento de rota até o alvo sobre a topologia};
+      \draw[imed] (9.80,-6.51) -- (10.18,-6.51) -- (10.18,-5.91) -- (10.55,-5.91);
+      \node[imdel,text width=4.2cm,minimum height=1.40cm] at (12.8,-7.28) {Busca de rota ou de posição de acesso alternativa quando há obstáculo};
+      \draw[imed] (9.80,-6.51) -- (10.18,-6.51) -- (10.18,-7.28) -- (10.55,-7.28);
+      \node[imdis,text width=4.2cm,minimum height=1.04cm] at (12.8,-8.65) {Desvio reativo só com sensores locais};
+      \draw[imed] (9.80,-6.51) -- (10.18,-6.51) -- (10.18,-8.65) -- (10.55,-8.65);
+      \node[imact,text width=1.9cm,minimum height=1.04cm] (a3) at (4.85,-10.32) {Planejador da Missão};
+      \node[imimp,text width=2.7cm,minimum height=1.40cm] at (8.3,-10.32) {Cadastra alvos com coordenadas válidas};
+      \draw[imed] (a3.east) -- (6.80,-10.32);
+      \node[imdel,text width=4.2cm,minimum height=1.04cm] at (12.8,-10.32) {Validação das coordenadas na entrada da missão};
+      \draw[imed] (9.80,-10.32) -- (10.55,-10.32);
+      \node[imhd,anchor=north west] at (0,-11.52) {Domain assumptions que surgiram (levar para o goal model v2):};
+      \node[imda,text width=3.5cm,minimum width=4.6cm,minimum height=1.76cm] at (2.3,-13.15) {Obstáculos permanecem estáveis entre a leitura do drone e a passagem do robô};
+      \node[imda,text width=3.5cm,minimum width=4.6cm,minimum height=1.04cm] at (7.1,-12.79) {Georreferenciamento dos alvos é preciso};
+    \end{tikzpicture}
+  \end{adjustbox}
+  \caption{\textit{Impact Map} do goal G2.1.1.}
+  \label{fig:im-G2-1-1}
+\end{figure}
+
+\begin{figure}[htbp]
+  \centering
+  \begin{adjustbox}{max width=\textwidth}
+    \begin{tikzpicture}
+      \node[imhd] at (0,0) {GOAL (Por quê?)}; \node[imhd] at (3.7499999999999996,0) {ATORES (Quem?)}; \node[imhd] at (6.800000000000001,0) {IMPACTOS (Como?)}; \node[imhd] at (10.55,0) {DELIVERABLES (O quê?)};
+      \node[imgoal,text width=2.3cm,minimum height=1.76cm] (g) at (1.55,-8.67) {\textit{Achieve} [Coleta do alvo concluída] (G2.1.2)};
+      \node[imhd,text width=3cm,anchor=north west,font=\scriptsize\mdseries,text=black] at (0,-9.70) {\textit{Métrica:} 100\% dos alvos alcançados com coleta registrada (aprovada ou ‘qualidade insuficiente’)};
+      \draw[imed] (g.east) -- (3.52,-8.67) -- (3.52,-2.10) -- (3.75,-2.10);
+      \draw[imed] (g.east) -- (3.52,-8.67) -- (3.52,-7.90) -- (3.75,-7.90);
+      \draw[imed] (g.east) -- (3.52,-8.67) -- (3.52,-14.47) -- (3.75,-14.47);
+      \node[imact,text width=1.9cm,minimum height=1.04cm] (a1) at (4.85,-2.10) {Planejador da Missão};
+      \node[imimp,text width=2.7cm,minimum height=1.76cm] at (8.3,-2.10) {Define o critério de qualidade aceitável para cada tipo de dado};
+      \draw[imed] (a1.east) -- (6.80,-2.10);
+      \node[imdel,text width=4.2cm,minimum height=1.40cm] at (12.8,-1.50) {Critério de qualidade configurável por tipo de dado};
+      \draw[imed] (9.80,-2.10) -- (10.18,-2.10) -- (10.18,-1.50) -- (10.55,-1.50);
+      \node[imdis,text width=4.2cm,minimum height=1.04cm] at (12.8,-2.87) {Parâmetros de sensor sugeridos pelo Planejador};
+      \draw[imed] (9.80,-2.10) -- (10.18,-2.10) -- (10.18,-2.87) -- (10.55,-2.87);
+      \node[imact,text width=1.9cm,minimum height=1.76cm] (a2) at (4.85,-7.90) {Engenheiro Agrônomo / Analista de Dados};
+      \node[imimp,text width=2.7cm,minimum height=1.76cm] at (8.3,-6.09) {Recebe dados que atendem ao critério sempre que possível};
+      \draw[imed] (a2.east) -- (6.38,-7.90) -- (6.38,-6.09) -- (6.80,-6.09);
+      \node[imdel,text width=4.2cm,minimum height=1.40cm] at (12.8,-4.54) {Configuração do sensor e posição padrão por tipo de dado};
+      \draw[imed] (9.80,-6.09) -- (10.18,-6.09) -- (10.18,-4.54) -- (10.55,-4.54);
+      \node[imdel,text width=4.2cm,minimum height=1.04cm] at (12.8,-5.91) {Avaliação automática da qualidade de cada leitura};
+      \draw[imed] (9.80,-6.09) -- (10.18,-6.09) -- (10.18,-5.91) -- (10.55,-5.91);
+      \node[imdel,text width=4.2cm,minimum height=1.76cm] at (12.8,-7.46) {Até 2 novas tentativas com ajuste da posição de observação ou dos parâmetros do sensor};
+      \draw[imed] (9.80,-6.09) -- (10.18,-6.09) -- (10.18,-7.46) -- (10.55,-7.46);
+      \node[imimp,text width=2.7cm,minimum height=1.40cm] at (8.3,-10.29) {Sabe quais coletas falharam e em que condições};
+      \draw[imed] (a2.east) -- (6.38,-7.90) -- (6.38,-10.29) -- (6.80,-10.29);
+      \node[imdel,text width=4.2cm,minimum height=1.40cm] at (12.8,-9.34) {Registro ‘realizada com qualidade insuficiente’ com a melhor leitura obtida};
+      \draw[imed] (9.80,-10.29) -- (10.18,-10.29) -- (10.18,-9.34) -- (10.55,-9.34);
+      \node[imdel,text width=4.2cm,minimum height=1.76cm] at (12.8,-11.07) {Associação de cada dado ao alvo e às informações da coleta (tentativas, parâmetros, horário)};
+      \draw[imed] (9.80,-10.29) -- (10.18,-10.29) -- (10.18,-11.07) -- (10.55,-11.07);
+      \node[imact,text width=1.9cm,minimum height=1.40cm] (a3) at (4.85,-14.47) {Controlador da Missão};
+      \node[imimp,text width=2.7cm,minimum height=1.76cm] at (8.3,-14.47) {Acompanha o resultado de cada coleta sem precisar intervir};
+      \draw[imed] (a3.east) -- (6.80,-14.47);
+      \node[imdel,text width=4.2cm,minimum height=1.76cm] at (12.8,-13.28) {Envio do status da coleta (aprovada ou qualidade insuficiente, nº de tentativas)};
+      \draw[imed] (9.80,-14.47) -- (10.18,-14.47) -- (10.18,-13.28) -- (10.55,-13.28);
+      \node[imdel,text width=4.2cm,minimum height=1.04cm] at (12.8,-14.83) {Continuação automática para o próximo alvo};
+      \draw[imed] (9.80,-14.47) -- (10.18,-14.47) -- (10.18,-14.83) -- (10.55,-14.83);
+      \node[imdis,text width=4.2cm,minimum height=1.04cm] at (12.8,-16.02) {Comando manual ‘tentar de novo’};
+      \draw[imed] (9.80,-14.47) -- (10.18,-14.47) -- (10.18,-16.02) -- (10.55,-16.02);
+      \node[imhd,anchor=north west] at (0,-17.04) {Domain assumptions que surgiram (levar para o goal model v2):};
+      \node[imda,text width=3.5cm,minimum width=4.6cm,minimum height=1.04cm] at (2.3,-18.31) {Sensores estão calibrados};
+      \node[imda,text width=3.5cm,minimum width=4.6cm,minimum height=1.40cm] at (7.1,-18.49) {Condições do alvo não mudam entre as tentativas};
+    \end{tikzpicture}
+  \end{adjustbox}
+  \caption{\textit{Impact Map} do goal G2.1.2.}
+  \label{fig:im-G2-1-2}
+\end{figure}
+
+\begin{figure}[htbp]
+  \centering
+  \begin{adjustbox}{max width=\textwidth}
+    \begin{tikzpicture}
+      \node[imhd] at (0,0) {GOAL (Por quê?)}; \node[imhd] at (3.7499999999999996,0) {ATORES (Quem?)}; \node[imhd] at (6.800000000000001,0) {IMPACTOS (Como?)}; \node[imhd] at (10.55,0) {DELIVERABLES (O quê?)};
+      \node[imgoal,text width=2.3cm,minimum height=2.84cm] (g) at (1.55,-4.55) {\textit{Achieve} [Alvo registrado como inacessível após esgotar os caminhos alternativos] (G2.2)};
+      \node[imhd,text width=3cm,anchor=north west,font=\scriptsize\mdseries,text=black] at (0,-6.12) {\textit{Métrica:} 0 alvos obrigatórios sem resultado registrado};
+      \draw[imed] (g.east) -- (3.75,-4.55);
+      \node[imact,text width=1.9cm,minimum height=1.40cm] (a1) at (4.85,-4.55) {Controlador da Missão};
+      \node[imimp,text width=2.7cm,minimum height=1.76cm] at (8.3,-3.29) {Não precisa intervir quando o alvo não tem caminho};
+      \draw[imed] (a1.east) -- (6.38,-4.55) -- (6.38,-3.29) -- (6.80,-3.29);
+      \node[imdel,text width=4.2cm,minimum height=1.40cm] at (12.8,-1.50) {Critério de esgotamento: todas as rotas e posições alternativas bloqueadas};
+      \draw[imed] (9.80,-3.29) -- (10.18,-3.29) -- (10.18,-1.50) -- (10.55,-1.50);
+      \node[imdis,text width=4.2cm,minimum height=1.04cm] at (12.8,-2.87) {Limite de tentativas ou de tempo};
+      \draw[imed] (9.80,-3.29) -- (10.18,-3.29) -- (10.18,-2.87) -- (10.55,-2.87);
+      \node[imdel,text width=4.2cm,minimum height=1.04cm] at (12.8,-4.06) {Registro do status ‘inacessível’ com motivo};
+      \draw[imed] (9.80,-3.29) -- (10.18,-3.29) -- (10.18,-4.06) -- (10.55,-4.06);
+      \node[imdel,text width=4.2cm,minimum height=1.04cm] at (12.8,-5.25) {Continuação automática para o próximo alvo};
+      \draw[imed] (9.80,-3.29) -- (10.18,-3.29) -- (10.18,-5.25) -- (10.55,-5.25);
+      \node[imimp,text width=2.7cm,minimum height=1.04cm] at (8.3,-7.19) {Fica sabendo e pode reagir};
+      \draw[imed] (a1.east) -- (6.38,-4.55) -- (6.38,-7.19) -- (6.80,-7.19);
+      \node[imdel,text width=4.2cm,minimum height=1.04cm] at (12.8,-6.59) {Notificação de alvo inacessível};
+      \draw[imed] (9.80,-7.19) -- (10.18,-7.19) -- (10.18,-6.59) -- (10.55,-6.59);
+      \node[imdis,text width=4.2cm,minimum height=1.04cm] at (12.8,-7.78) {Comando para remover/adiar o alvo};
+      \draw[imed] (9.80,-7.19) -- (10.18,-7.19) -- (10.18,-7.78) -- (10.55,-7.78);
+      \node[imhd,anchor=north west] at (0,-8.80) {Domain assumptions que surgiram (levar para o goal model v2):};
+      \node[imda,text width=3.5cm,minimum width=4.6cm,minimum height=1.40cm] at (2.3,-10.25) {Topologia do drone cobre toda a área entre o RMMC e o alvo};
+    \end{tikzpicture}
+  \end{adjustbox}
+  \caption{\textit{Impact Map} do goal G2.2.}
+  \label{fig:im-G2-2}
+\end{figure}
+
+\begin{figure}[htbp]
+  \centering
+  \begin{adjustbox}{max width=\textwidth}
+    \begin{tikzpicture}
+      \node[imhd] at (0,0) {GOAL (Por quê?)}; \node[imhd] at (3.7499999999999996,0) {ATORES (Quem?)}; \node[imhd] at (6.800000000000001,0) {IMPACTOS (Como?)}; \node[imhd] at (10.55,0) {DELIVERABLES (O quê?)};
+      \node[imgoal,text width=2.3cm,minimum height=2.48cm] (g) at (1.55,-4.57) {\textit{Achieve} [Dados consolidados enviados ao Software de Análise] (G3.1)};
+      \node[imhd,text width=3cm,anchor=north west,font=\scriptsize\mdseries,text=black] at (0,-5.96) {\textit{Métrica:} 100\% das missões com pacote de dados entregue e confirmado após o retorno à base};
+      \draw[imed] (g.east) -- (3.52,-4.57) -- (3.52,-2.63) -- (3.75,-2.63);
+      \draw[imed] (g.east) -- (3.52,-4.57) -- (3.52,-6.63) -- (3.75,-6.63);
+      \node[imact,text width=1.9cm,minimum height=1.76cm] (a1) at (4.85,-2.63) {Engenheiro Agrônomo / Analista de Dados};
+      \node[imimp,text width=2.7cm,minimum height=1.76cm] at (8.3,-2.63) {Começa a análise logo após a missão, sem reorganizar dados à mão};
+      \draw[imed] (a1.east) -- (6.80,-2.63);
+      \node[imdel,text width=4.2cm,minimum height=2.12cm] at (12.8,-1.86) {Consolidação em pacote único da missão, com o resultado de cada alvo (coletado, qualidade insuficiente ou inacessível)};
+      \draw[imed] (9.80,-2.63) -- (10.18,-2.63) -- (10.18,-1.86) -- (10.55,-1.86);
+      \node[imdel,text width=4.2cm,minimum height=1.40cm] at (12.8,-3.77) {Formato de dados acordado com o Software de Análise};
+      \draw[imed] (9.80,-2.63) -- (10.18,-2.63) -- (10.18,-3.77) -- (10.55,-3.77);
+      \node[imact,text width=1.9cm,minimum height=1.04cm] (a2) at (4.85,-6.63) {Software de Análise};
+      \node[imimp,text width=2.7cm,minimum height=1.76cm] at (8.3,-6.63) {Recebe o pacote completo da missão e confirma o recebimento};
+      \draw[imed] (a2.east) -- (6.80,-6.63);
+      \node[imdel,text width=4.2cm,minimum height=1.04cm] at (12.8,-5.44) {Envio automático ao chegar à base};
+      \draw[imed] (9.80,-6.63) -- (10.18,-6.63) -- (10.18,-5.44) -- (10.55,-5.44);
+      \node[imdel,text width=4.2cm,minimum height=1.04cm] at (12.8,-6.63) {Reenvio até a confirmação de recebimento};
+      \draw[imed] (9.80,-6.63) -- (10.55,-6.63);
+      \node[imdis,text width=4.2cm,minimum height=1.04cm] at (12.8,-7.82) {Envio parcial em tempo real};
+      \draw[imed] (9.80,-6.63) -- (10.18,-6.63) -- (10.18,-7.82) -- (10.55,-7.82);
+      \node[imhd,anchor=north west] at (0,-8.84) {Domain assumptions que surgiram (levar para o goal model v2):};
+      \node[imda,text width=3.5cm,minimum width=4.6cm,minimum height=1.04cm] at (2.3,-10.11) {Há canal de comunicação disponível na base};
+    \end{tikzpicture}
+  \end{adjustbox}
+  \caption{\textit{Impact Map} do goal G3.1.}
+  \label{fig:im-G3-1}
+\end{figure}
+
+\begin{figure}[htbp]
+  \centering
+  \begin{adjustbox}{max width=\textwidth}
+    \begin{tikzpicture}
+      \node[imhd] at (0,0) {GOAL (Por quê?)}; \node[imhd] at (3.7499999999999996,0) {ATORES (Quem?)}; \node[imhd] at (6.800000000000001,0) {IMPACTOS (Como?)}; \node[imhd] at (10.55,0) {DELIVERABLES (O quê?)};
+      \node[imgoal,text width=2.3cm,minimum height=2.12cm] (g) at (1.55,-5.45) {\textit{Achieve} [RMMC na Base de Recarga com segurança] (G3.2)};
+      \node[imhd,text width=3cm,anchor=north west,font=\scriptsize\mdseries,text=black] at (0,-6.66) {\textit{Métrica:} 100\% dos retornos concluídos sem intervenção humana};
+      \draw[imed] (g.east) -- (3.52,-5.45) -- (3.52,-3.18) -- (3.75,-3.18);
+      \draw[imed] (g.east) -- (3.52,-5.45) -- (3.52,-6.71) -- (3.75,-6.71);
+      \draw[imed] (g.east) -- (3.52,-5.45) -- (3.52,-8.97) -- (3.75,-8.97);
+      \node[imact,text width=1.9cm,minimum height=1.40cm] (a1) at (4.85,-3.18) {Controlador da Missão};
+      \node[imimp,text width=2.7cm,minimum height=1.40cm] at (8.3,-2.51) {Não precisa conduzir o retorno à base};
+      \draw[imed] (a1.east) -- (6.38,-3.18) -- (6.38,-2.51) -- (6.80,-2.51);
+      \node[imdel,text width=4.2cm,minimum height=1.04cm] at (12.8,-1.32) {Cálculo da rota de retorno sobre a topologia};
+      \draw[imed] (9.80,-2.51) -- (10.18,-2.51) -- (10.18,-1.32) -- (10.55,-1.32);
+      \node[imdel,text width=4.2cm,minimum height=1.04cm] at (12.8,-2.51) {Navegação autônoma de retorno};
+      \draw[imed] (9.80,-2.51) -- (10.55,-2.51);
+      \node[imdis,text width=4.2cm,minimum height=1.04cm] at (12.8,-3.70) {Retorno teleoperado pelo Controlador};
+      \draw[imed] (9.80,-2.51) -- (10.18,-2.51) -- (10.18,-3.70) -- (10.55,-3.70);
+      \node[imimp,text width=2.7cm,minimum height=1.04cm] at (8.3,-5.04) {Acompanha o retorno};
+      \draw[imed] (a1.east) -- (6.38,-3.18) -- (6.38,-5.04) -- (6.80,-5.04);
+      \node[imdel,text width=4.2cm,minimum height=1.04cm] at (12.8,-5.04) {Status de posição durante o retorno};
+      \draw[imed] (9.80,-5.04) -- (10.55,-5.04);
+      \node[imact,text width=1.9cm,minimum height=0.68cm] (a2) at (4.85,-6.71) {Drone};
+      \node[imimp,text width=2.7cm,minimum height=1.40cm] at (8.3,-6.71) {Fornece dados para o trajeto de volta};
+      \draw[imed] (a2.east) -- (6.80,-6.71);
+      \node[imdel,text width=4.2cm,minimum height=0.68cm] at (12.8,-6.71) {Topologia sob demanda};
+      \draw[imed] (9.80,-6.71) -- (10.55,-6.71);
+      \node[imact,text width=1.9cm,minimum height=1.04cm] (a3) at (4.85,-8.97) {Base de Recarga};
+      \node[imimp,text width=2.7cm,minimum height=1.04cm] at (8.3,-8.97) {Guia o acoplamento do RMMC};
+      \draw[imed] (a3.east) -- (6.80,-8.97);
+      \node[imdel,text width=4.2cm,minimum height=1.04cm] at (12.8,-8.38) {Sinal de localização para acoplamento};
+      \draw[imed] (9.80,-8.97) -- (10.18,-8.97) -- (10.18,-8.38) -- (10.55,-8.38);
+      \node[imdel,text width=4.2cm,minimum height=1.04cm] at (12.8,-9.57) {Acoplamento automático à base};
+      \draw[imed] (9.80,-8.97) -- (10.18,-8.97) -- (10.18,-9.57) -- (10.55,-9.57);
+      \node[imhd,anchor=north west] at (0,-10.59) {Domain assumptions que surgiram (levar para o goal model v2):};
+      \node[imda,text width=3.5cm,minimum width=4.6cm,minimum height=1.40cm] at (2.3,-12.04) {Sempre existe um caminho transitável até a base};
+    \end{tikzpicture}
+  \end{adjustbox}
+  \caption{\textit{Impact Map} do goal G3.2.}
+  \label{fig:im-G3-2}
+\end{figure}
+
+\begin{figure}[htbp]
+  \centering
+  \begin{adjustbox}{max width=\textwidth}
+    \begin{tikzpicture}
+      \node[imhd] at (0,0) {GOAL (Por quê?)}; \node[imhd] at (3.7499999999999996,0) {ATORES (Quem?)}; \node[imhd] at (6.800000000000001,0) {IMPACTOS (Como?)}; \node[imhd] at (10.55,0) {DELIVERABLES (O quê?)};
+      \node[imgoal,text width=2.3cm,minimum height=2.48cm] (g) at (1.55,-5.22) {\textit{Achieve} [Alertas e status de alvo comunicados ao Controlador] (G4.1)};
+      \node[imhd,text width=3cm,anchor=north west,font=\scriptsize\mdseries,text=black] at (0,-6.61) {\textit{Métrica:} 100\% dos alertas críticos entregues em até 10 s e confirmados pelo Controlador};
+      \draw[imed] (g.east) -- (3.75,-5.22);
+      \node[imact,text width=1.9cm,minimum height=1.40cm] (a1) at (4.85,-5.22) {Controlador da Missão};
+      \node[imimp,text width=2.7cm,minimum height=1.40cm] at (8.3,-2.51) {Acompanha a missão sem vigiar o robô o tempo todo};
+      \draw[imed] (a1.east) -- (6.38,-5.22) -- (6.38,-2.51) -- (6.80,-2.51);
+      \node[imdel,text width=4.2cm,minimum height=1.04cm] at (12.8,-1.32) {Painel de status da missão};
+      \draw[imed] (9.80,-2.51) -- (10.18,-2.51) -- (10.18,-1.32) -- (10.55,-1.32);
+      \node[imdel,text width=4.2cm,minimum height=1.40cm] at (12.8,-2.69) {Envio de status a cada evento (resultado do alvo, qualidade, bateria)};
+      \draw[imed] (9.80,-2.51) -- (10.18,-2.51) -- (10.18,-2.69) -- (10.55,-2.69);
+      \node[imdis,text width=4.2cm,minimum height=0.68cm] at (12.8,-3.88) {Notificação no celular};
+      \draw[imed] (9.80,-2.51) -- (10.18,-2.51) -- (10.18,-3.88) -- (10.55,-3.88);
+      \node[imimp,text width=2.7cm,minimum height=1.40cm] at (8.3,-5.22) {Percebe primeiro o que exige decisão};
+      \draw[imed] (a1.east) -- (6.80,-5.22);
+      \node[imdel,text width=4.2cm,minimum height=1.04cm] at (12.8,-5.22) {Classificação dos alertas por prioridade};
+      \draw[imed] (9.80,-5.22) -- (10.55,-5.22);
+      \node[imimp,text width=2.7cm,minimum height=1.40cm] at (8.3,-7.93) {Confirma que viu os alertas críticos};
+      \draw[imed] (a1.east) -- (6.38,-5.22) -- (6.38,-7.93) -- (6.80,-7.93);
+      \node[imdel,text width=4.2cm,minimum height=1.04cm] at (12.8,-6.74) {Confirmação de leitura dos alertas críticos};
+      \draw[imed] (9.80,-7.93) -- (10.18,-7.93) -- (10.18,-6.74) -- (10.55,-6.74);
+      \node[imdel,text width=4.2cm,minimum height=1.04cm] at (12.8,-7.93) {Reenvio do alerta até a confirmação};
+      \draw[imed] (9.80,-7.93) -- (10.55,-7.93);
+      \node[imdis,text width=4.2cm,minimum height=1.04cm] at (12.8,-9.12) {Envio único sem confirmação};
+      \draw[imed] (9.80,-7.93) -- (10.18,-7.93) -- (10.18,-9.12) -- (10.55,-9.12);
+      \node[imhd,anchor=north west] at (0,-10.14) {Domain assumptions e expectations que surgiram (levar para o goal model v2):};
+      \node[imda,text width=3.5cm,minimum width=4.6cm,minimum height=1.04cm] at (2.3,-11.41) {Há cobertura de comunicação no campo};
+      \node[imexp,text width=3.5cm,minimum width=4.6cm,minimum height=1.40cm] at (7.1,-11.59) {Controlador está disponível durante a missão (expectation)};
+    \end{tikzpicture}
+  \end{adjustbox}
+  \caption{\textit{Impact Map} do goal G4.1.}
+  \label{fig:im-G4-1}
+\end{figure}
+
+\begin{figure}[htbp]
+  \centering
+  \begin{adjustbox}{max width=\textwidth}
+    \begin{tikzpicture}
+      \node[imhd] at (0,0) {GOAL (Por quê?)}; \node[imhd] at (3.7499999999999996,0) {ATORES (Quem?)}; \node[imhd] at (6.800000000000001,0) {IMPACTOS (Como?)}; \node[imhd] at (10.55,0) {DELIVERABLES (O quê?)};
+      \node[imgoal,text width=2.3cm,minimum height=2.12cm] (g) at (1.55,-3.85) {\textit{Achieve} [Decisões do Controlador aplicadas pelo RMMC] (G4.2)};
+      \node[imhd,text width=3cm,anchor=north west,font=\scriptsize\mdseries,text=black] at (0,-5.06) {\textit{Métrica:} 100\% dos comandos aplicados ou rejeitados com motivo};
+      \draw[imed] (g.east) -- (3.75,-3.85);
+      \node[imact,text width=1.9cm,minimum height=1.40cm] (a1) at (4.85,-3.85) {Controlador da Missão};
+      \node[imimp,text width=2.7cm,minimum height=1.04cm] at (8.3,-1.92) {Envia decisões claras};
+      \draw[imed] (a1.east) -- (6.38,-3.85) -- (6.38,-1.92) -- (6.80,-1.92);
+      \node[imdel,text width=4.2cm,minimum height=1.40cm] at (12.8,-1.50) {Comandos padronizados (recarregar, ajustar lista, abortar, retomar)};
+      \draw[imed] (9.80,-1.92) -- (10.18,-1.92) -- (10.18,-1.50) -- (10.55,-1.50);
+      \node[imdis,text width=4.2cm,minimum height=0.68cm] at (12.8,-2.69) {Comandos em texto livre};
+      \draw[imed] (9.80,-1.92) -- (10.18,-1.92) -- (10.18,-2.69) -- (10.55,-2.69);
+      \node[imimp,text width=2.7cm,minimum height=1.04cm] at (8.3,-4.26) {Sabe que a decisão foi aplicada};
+      \draw[imed] (a1.east) -- (6.38,-3.85) -- (6.38,-4.26) -- (6.80,-4.26);
+      \node[imdel,text width=4.2cm,minimum height=1.04cm] at (12.8,-3.85) {Recepção e execução do comando};
+      \draw[imed] (9.80,-4.26) -- (10.18,-4.26) -- (10.18,-3.85) -- (10.55,-3.85);
+      \node[imdel,text width=4.2cm,minimum height=0.68cm] at (12.8,-4.86) {Confirmação de execução};
+      \draw[imed] (9.80,-4.26) -- (10.18,-4.26) -- (10.18,-4.86) -- (10.55,-4.86);
+      \node[imimp,text width=2.7cm,minimum height=1.40cm] at (8.3,-6.20) {Não põe o robô em risco por engano};
+      \draw[imed] (a1.east) -- (6.38,-3.85) -- (6.38,-6.20) -- (6.80,-6.20);
+      \node[imdel,text width=4.2cm,minimum height=1.04cm] at (12.8,-6.20) {Rejeição de comando inseguro com justificativa};
+      \draw[imed] (9.80,-6.20) -- (10.55,-6.20);
+      \node[imhd,anchor=north west] at (0,-7.40) {Domain assumptions que surgiram (levar para o goal model v2):};
+      \node[imda,text width=3.5cm,minimum width=4.6cm,minimum height=1.40cm] at (2.3,-8.85) {Há canal de comunicação entre estação e RMMC};
+      \node[imda,text width=3.5cm,minimum width=4.6cm,minimum height=1.04cm] at (7.1,-8.67) {Controlador tem autoridade sobre a missão};
+    \end{tikzpicture}
+  \end{adjustbox}
+  \caption{\textit{Impact Map} do goal G4.2.}
+  \label{fig:im-G4-2}
+\end{figure}
+
+\begin{figure}[htbp]
+  \centering
+  \begin{adjustbox}{max width=\textwidth}
+    \begin{tikzpicture}
+      \node[imhd] at (0,0) {GOAL (Por quê?)}; \node[imhd] at (3.7499999999999996,0) {ATORES (Quem?)}; \node[imhd] at (6.800000000000001,0) {IMPACTOS (Como?)}; \node[imhd] at (10.55,0) {DELIVERABLES (O quê?)};
+      \node[imgoal,text width=2.3cm,minimum height=2.48cm] (g) at (1.55,-3.51) {\textit{Achieve} [Missão executada dentro da autonomia da bateria] (G5.1)};
+      \node[imhd,text width=3cm,anchor=north west,font=\scriptsize\mdseries,text=black] at (0,-4.90) {\textit{Métrica:} $\geq$ 90\% das missões concluídas sem interrupção por LRS};
+      \draw[imed] (g.east) -- (3.52,-3.51) -- (3.52,-1.92) -- (3.75,-1.92);
+      \draw[imed] (g.east) -- (3.52,-3.51) -- (3.52,-4.85) -- (3.75,-4.85);
+      \node[imact,text width=1.9cm,minimum height=1.40cm] (a1) at (4.85,-1.92) {Controlador da Missão};
+      \node[imimp,text width=2.7cm,minimum height=1.40cm] at (8.3,-1.92) {Confia que a missão não para por falta de energia};
+      \draw[imed] (a1.east) -- (6.80,-1.92);
+      \node[imdel,text width=4.2cm,minimum height=1.04cm] at (12.8,-1.32) {Rota otimizada por energia};
+      \draw[imed] (9.80,-1.92) -- (10.18,-1.92) -- (10.18,-1.32) -- (10.55,-1.32);
+      \node[imdis,text width=4.2cm,minimum height=1.04cm] at (12.8,-2.51) {Seguir a ordem fixa do planejador};
+      \draw[imed] (9.80,-1.92) -- (10.18,-1.92) -- (10.18,-2.51) -- (10.55,-2.51);
+      \node[imact,text width=1.9cm,minimum height=1.04cm] (a2) at (4.85,-4.85) {Planejador da Missão};
+      \node[imimp,text width=2.7cm,minimum height=1.04cm] at (8.3,-4.00) {Dimensiona missões à autonomia};
+      \draw[imed] (a2.east) -- (6.38,-4.85) -- (6.38,-4.00) -- (6.80,-4.00);
+      \node[imdel,text width=4.2cm,minimum height=1.04cm] at (12.8,-4.00) {Feedback de custo energético no planejamento};
+      \draw[imed] (9.80,-4.00) -- (10.55,-4.00);
+      \node[imimp,text width=2.7cm,minimum height=1.40cm] at (8.3,-5.52) {Inclui opcionais sem pôr os obrigatórios em risco};
+      \draw[imed] (a2.east) -- (6.38,-4.85) -- (6.38,-5.52) -- (6.80,-5.52);
+      \node[imdel,text width=4.2cm,minimum height=1.40cm] at (12.8,-5.52) {Visita a opcionais só após os obrigatórios, com margem de energia e de tempo};
+      \draw[imed] (9.80,-5.52) -- (10.55,-5.52);
+      \node[imhd,anchor=north west] at (0,-6.72) {Domain assumptions que surgiram (levar para o goal model v2):};
+      \node[imda,text width=3.5cm,minimum width=4.6cm,minimum height=1.04cm] at (2.3,-7.99) {Estimativa de consumo é confiável};
+    \end{tikzpicture}
+  \end{adjustbox}
+  \caption{\textit{Impact Map} do goal G5.1.}
+  \label{fig:im-G5-1}
+\end{figure}
+
+\begin{figure}[htbp]
+  \centering
+  \begin{adjustbox}{max width=\textwidth}
+    \begin{tikzpicture}
+      \node[imhd] at (0,0) {GOAL (Por quê?)}; \node[imhd] at (3.7499999999999996,0) {ATORES (Quem?)}; \node[imhd] at (6.800000000000001,0) {IMPACTOS (Como?)}; \node[imhd] at (10.55,0) {DELIVERABLES (O quê?)};
+      \node[imgoal,text width=2.3cm,minimum height=2.48cm] (g) at (1.55,-7.26) {\textit{Achieve} [Retorno seguro ao atingir o LRS e retomada após a recarga] (G5.2)};
+      \node[imhd,text width=3cm,anchor=north west,font=\scriptsize\mdseries,text=black] at (0,-8.65) {\textit{Métrica:} 100\% das interrupções por LRS com retorno à base sem intervenção humana; $\geq$ 90\% das missões interrompidas concluídas após a recarga};
+      \draw[imed] (g.east) -- (3.52,-7.26) -- (3.52,-5.74) -- (3.75,-5.74);
+      \draw[imed] (g.east) -- (3.52,-7.26) -- (3.52,-12.43) -- (3.75,-12.43);
+      \node[imact,text width=1.9cm,minimum height=1.40cm] (a1) at (4.85,-5.74) {Controlador da Missão};
+      \node[imimp,text width=2.7cm,minimum height=1.76cm] at (8.3,-2.28) {Fica sabendo da interrupção sem precisar vigiar a bateria};
+      \draw[imed] (a1.east) -- (6.38,-5.74) -- (6.38,-2.28) -- (6.80,-2.28);
+      \node[imdel,text width=4.2cm,minimum height=1.40cm] at (12.8,-1.50) {Monitoramento contínuo da bateria com gatilho no LRS};
+      \draw[imed] (9.80,-2.28) -- (10.18,-2.28) -- (10.18,-1.50) -- (10.55,-1.50);
+      \node[imdel,text width=4.2cm,minimum height=1.40cm] at (12.8,-3.05) {Interrupção da missão e alerta ao Controlador com o estado salvo};
+      \draw[imed] (9.80,-2.28) -- (10.18,-2.28) -- (10.18,-3.05) -- (10.55,-3.05);
+      \node[imimp,text width=2.7cm,minimum height=1.40cm] at (8.3,-7.37) {Deixa a retomada acontecer sozinha e só acompanha};
+      \draw[imed] (a1.east) -- (6.38,-5.74) -- (6.38,-7.37) -- (6.80,-7.37);
+      \node[imdel,text width=4.2cm,minimum height=1.04cm] at (12.8,-4.57) {Salvamento do estado da missão ao interromper};
+      \draw[imed] (9.80,-7.37) -- (10.18,-7.37) -- (10.18,-4.57) -- (10.55,-4.57);
+      \node[imdel,text width=4.2cm,minimum height=0.68cm] at (12.8,-5.58) {Retorno autônomo à base};
+      \draw[imed] (9.80,-7.37) -- (10.18,-7.37) -- (10.18,-5.58) -- (10.55,-5.58);
+      \node[imdel,text width=4.2cm,minimum height=1.40cm] at (12.8,-6.77) {Retomada automática a partir do estado salvo após a recarga};
+      \draw[imed] (9.80,-7.37) -- (10.18,-7.37) -- (10.18,-6.77) -- (10.55,-6.77);
+      \node[imdel,text width=4.2cm,minimum height=0.68cm] at (12.8,-7.96) {Status ‘missão retomada’};
+      \draw[imed] (9.80,-7.37) -- (10.18,-7.37) -- (10.18,-7.96) -- (10.55,-7.96);
+      \node[imdis,text width=4.2cm,minimum height=1.04cm] at (12.8,-8.97) {Reiniciar a missão do zero};
+      \draw[imed] (9.80,-7.37) -- (10.18,-7.37) -- (10.18,-8.97) -- (10.55,-8.97);
+      \node[imdis,text width=4.2cm,minimum height=1.04cm] at (12.8,-10.16) {Ajuste da lista antes da retomada};
+      \draw[imed] (9.80,-7.37) -- (10.18,-7.37) -- (10.18,-10.16) -- (10.55,-10.16);
+      \node[imact,text width=1.9cm,minimum height=1.04cm] (a2) at (4.85,-12.43) {Base de Recarga};
+      \node[imimp,text width=2.7cm,minimum height=1.76cm] at (8.3,-12.43) {Recarrega o RMMC e sinaliza quando a carga está completa};
+      \draw[imed] (a2.east) -- (6.80,-12.43);
+      \node[imdel,text width=4.2cm,minimum height=1.04cm] at (12.8,-11.65) {Acoplamento e recarga automáticos};
+      \draw[imed] (9.80,-12.43) -- (10.18,-12.43) -- (10.18,-11.65) -- (10.55,-11.65);
+      \node[imdel,text width=4.2cm,minimum height=1.40cm] at (12.8,-13.02) {Detecção de carga completa para disparar a retomada};
+      \draw[imed] (9.80,-12.43) -- (10.18,-12.43) -- (10.18,-13.02) -- (10.55,-13.02);
+      \node[imhd,anchor=north west] at (0,-14.22) {Domain assumptions que surgiram (levar para o goal model v2):};
+      \node[imda,text width=3.5cm,minimum width=4.6cm,minimum height=1.40cm] at (2.3,-15.67) {O LRS basta para chegar à base de qualquer ponto da área};
+      \node[imda,text width=3.5cm,minimum width=4.6cm,minimum height=1.40cm] at (7.1,-15.67) {Alvos pendentes continuam relevantes após a recarga};
+      \node[imda,text width=3.5cm,minimum width=4.6cm,minimum height=1.40cm] at (11.9,-15.67) {Tempo de recarga é compatível com a janela da missão};
+    \end{tikzpicture}
+  \end{adjustbox}
+  \caption{\textit{Impact Map} do goal G5.2.}
+  \label{fig:im-G5-2}
+\end{figure}
 
 \subsection{Goal Model (v2) e Goal-Feature Mapping}
 
