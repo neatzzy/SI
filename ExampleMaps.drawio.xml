@@ -1,0 +1,1084 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxfile host="app.diagrams.net" pages="11">
+  <diagram name="F01 Avaliar a bateria antes da missão" id="_giUaeIoF--sDhLrFuNq">
+    <mxGraphModel dx="986" dy="1638" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="1920" pageHeight="586" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="F01-2" parent="1" style="text;html=1;align=left;verticalAlign=middle;fontSize=30;fontColor=#3333CC;" value="F01: Avaliar a bateria antes da missão" vertex="1">
+          <mxGeometry height="44" width="1500" x="40" y="20" as="geometry" />
+        </mxCell>
+        <mxCell id="F01-3" parent="1" style="text;html=1;align=left;verticalAlign=middle;fontSize=15;fontColor=#555555;" value="Contribui para: Achieve [Suficiência da bateria para a missão avaliada antes do início] (G1.1)" vertex="1">
+          <mxGeometry height="29" width="1800" x="40" y="66" as="geometry" />
+        </mxCell>
+        <mxCell id="F01-4" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;fillColor=#FFFF00;strokeColor=#555555;fontColor=#333333;fontStyle=1;fontSize=14;shadow=1;dashed=1;strokeWidth=3;strokeColor=#777777;" value="Avaliar a bateria antes da missão" vertex="1">
+          <mxGeometry height="70" width="250" x="835" y="273" as="geometry" />
+        </mxCell>
+        <mxCell id="F01-5" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;fillColor=#00BFFF;strokeColor=#555555;fontColor=#333333;fontStyle=1;fontSize=14;shadow=1;" value="Estimar o consumo da missão pela rota e pelas coletas" vertex="1">
+          <mxGeometry height="58" width="290" x="1170" y="193" as="geometry" />
+        </mxCell>
+        <mxCell id="F01-6" edge="1" parent="1" source="F01-4" style="edgeStyle=orthogonalEdgeStyle;curved=1;endArrow=none;html=1;strokeColor=#999999;strokeWidth=2;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="F01-5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="F01-7" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;fillColor=#00FF00;strokeColor=#555555;fontColor=#333333;fontStyle=1;fontSize=14;shadow=1;" value="Rota de 1,2 km e 3 coletas =&gt; consumo estimado de 38%" vertex="1">
+          <mxGeometry height="58" width="350" x="1530" y="159" as="geometry" />
+        </mxCell>
+        <mxCell id="F01-8" edge="1" parent="1" source="F01-5" style="edgeStyle=orthogonalEdgeStyle;curved=1;endArrow=none;html=1;strokeColor=#999999;strokeWidth=2;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="F01-7">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="F01-9" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;fillColor=#00FF00;strokeColor=#555555;fontColor=#333333;fontStyle=1;fontSize=14;shadow=1;" value="Mesma rota com +2 coletas térmicas =&gt; consumo estimado de 47%" vertex="1">
+          <mxGeometry height="58" width="350" x="1530" y="227" as="geometry" />
+        </mxCell>
+        <mxCell id="F01-10" edge="1" parent="1" source="F01-5" style="edgeStyle=orthogonalEdgeStyle;curved=1;endArrow=none;html=1;strokeColor=#999999;strokeWidth=2;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="F01-9">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="F01-11" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;fillColor=#00BFFF;strokeColor=#555555;fontColor=#333333;fontStyle=1;fontSize=14;shadow=1;" value="Exibir o custo energético estimado durante o planejamento" vertex="1">
+          <mxGeometry height="58" width="290" x="1170" y="313" as="geometry" />
+        </mxCell>
+        <mxCell id="F01-12" edge="1" parent="1" source="F01-4" style="edgeStyle=orthogonalEdgeStyle;curved=1;endArrow=none;html=1;strokeColor=#999999;strokeWidth=2;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="F01-11">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="F01-13" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;fillColor=#00FF00;strokeColor=#555555;fontColor=#333333;fontStyle=1;fontSize=14;shadow=1;" value="Planejador inclui o alvo A4 =&gt; custo estimado sobe de 38% para 45%" vertex="1">
+          <mxGeometry height="58" width="350" x="1530" y="313" as="geometry" />
+        </mxCell>
+        <mxCell id="F01-14" edge="1" parent="1" source="F01-11" style="edgeStyle=orthogonalEdgeStyle;curved=1;endArrow=none;html=1;strokeColor=#999999;strokeWidth=2;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="F01-13">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="F01-15" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;fillColor=#FF8C00;strokeColor=#555555;fontColor=#333333;fontStyle=1;fontSize=14;shadow=1;" value="Qual a margem de segurança sobre o consumo estimado?" vertex="1">
+          <mxGeometry height="58" width="290" x="1170" y="399" as="geometry" />
+        </mxCell>
+        <mxCell id="F01-16" edge="1" parent="1" source="F01-4" style="edgeStyle=orthogonalEdgeStyle;curved=1;endArrow=none;html=1;strokeColor=#999999;strokeWidth=2;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="F01-15">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="F01-17" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;fillColor=#00BFFF;strokeColor=#555555;fontColor=#333333;fontStyle=1;fontSize=14;shadow=1;" value="Comparar a carga atual com a necessária antes da partida" vertex="1">
+          <mxGeometry height="58" width="290" x="460" y="159" as="geometry" />
+        </mxCell>
+        <mxCell id="F01-18" edge="1" parent="1" source="F01-4" style="edgeStyle=orthogonalEdgeStyle;curved=1;endArrow=none;html=1;strokeColor=#999999;strokeWidth=2;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" target="F01-17">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="F01-19" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;fillColor=#00FF00;strokeColor=#555555;fontColor=#333333;fontStyle=1;fontSize=14;shadow=1;" value="Carga 60%, necessária 38% =&gt; bateria suficiente" vertex="1">
+          <mxGeometry height="58" width="350" x="40" y="125" as="geometry" />
+        </mxCell>
+        <mxCell id="F01-20" edge="1" parent="1" source="F01-17" style="edgeStyle=orthogonalEdgeStyle;curved=1;endArrow=none;html=1;strokeColor=#999999;strokeWidth=2;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" target="F01-19">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="F01-21" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;fillColor=#00FF00;strokeColor=#555555;fontColor=#333333;fontStyle=1;fontSize=14;shadow=1;" value="Carga 30%, necessária 38% =&gt; bateria insuficiente" vertex="1">
+          <mxGeometry height="58" width="350" x="40" y="193" as="geometry" />
+        </mxCell>
+        <mxCell id="F01-22" edge="1" parent="1" source="F01-17" style="edgeStyle=orthogonalEdgeStyle;curved=1;endArrow=none;html=1;strokeColor=#999999;strokeWidth=2;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" target="F01-21">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="F01-23" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;fillColor=#00BFFF;strokeColor=#555555;fontColor=#333333;fontStyle=1;fontSize=14;shadow=1;" value="Exigir lista completa: alvos, ordem e tipos de dado" vertex="1">
+          <mxGeometry height="58" width="290" x="460" y="313" as="geometry" />
+        </mxCell>
+        <mxCell id="F01-24" edge="1" parent="1" source="F01-4" style="edgeStyle=orthogonalEdgeStyle;curved=1;endArrow=none;html=1;strokeColor=#999999;strokeWidth=2;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" target="F01-23">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="F01-25" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;fillColor=#00FF00;strokeColor=#555555;fontColor=#333333;fontStyle=1;fontSize=14;shadow=1;" value="Alvo A2 sem tipo de dado =&gt; missão não é avaliada" vertex="1">
+          <mxGeometry height="58" width="350" x="40" y="279" as="geometry" />
+        </mxCell>
+        <mxCell id="F01-26" edge="1" parent="1" source="F01-23" style="edgeStyle=orthogonalEdgeStyle;curved=1;endArrow=none;html=1;strokeColor=#999999;strokeWidth=2;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" target="F01-25">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="F01-27" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;fillColor=#00FF00;strokeColor=#555555;fontColor=#333333;fontStyle=1;fontSize=14;shadow=1;" value="Lista completa =&gt; avaliação de bateria é executada" vertex="1">
+          <mxGeometry height="58" width="350" x="40" y="347" as="geometry" />
+        </mxCell>
+        <mxCell id="F01-28" edge="1" parent="1" source="F01-23" style="edgeStyle=orthogonalEdgeStyle;curved=1;endArrow=none;html=1;strokeColor=#999999;strokeWidth=2;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" target="F01-27">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="F01-29" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;fillColor=#FF8C00;strokeColor=#555555;fontColor=#333333;fontStyle=1;fontSize=14;shadow=1;" value="A carga necessária inclui a energia do retorno à base?" vertex="1">
+          <mxGeometry height="58" width="290" x="460" y="433" as="geometry" />
+        </mxCell>
+        <mxCell id="F01-30" edge="1" parent="1" source="F01-4" style="edgeStyle=orthogonalEdgeStyle;curved=1;endArrow=none;html=1;strokeColor=#999999;strokeWidth=2;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" target="F01-29">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="F01-31" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFF00;strokeColor=#555555;fontSize=12;fontColor=#333333;" value="Funcionalidade" vertex="1">
+          <mxGeometry height="26" width="137" x="40" y="541" as="geometry" />
+        </mxCell>
+        <mxCell id="F01-32" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#00BFFF;strokeColor=#555555;fontSize=12;fontColor=#333333;" value="Regra (requisito)" vertex="1">
+          <mxGeometry height="26" width="151" x="197" y="541" as="geometry" />
+        </mxCell>
+        <mxCell id="F01-33" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#00FF00;strokeColor=#555555;fontSize=12;fontColor=#333333;" value="Exemplo (cenário)" vertex="1">
+          <mxGeometry height="26" width="159" x="368" y="541" as="geometry" />
+        </mxCell>
+        <mxCell id="F01-34" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FF8C00;strokeColor=#555555;fontSize=12;fontColor=#333333;" value="Pergunta / suposição em aberto" vertex="1">
+          <mxGeometry height="26" width="256" x="547" y="541" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram name="F02 Autorizar o início da missão" id="GPryaQxj7DKQgmiIvYSD">
+    <mxGraphModel grid="0" page="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" pageScale="1" pageWidth="1920" pageHeight="554" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="F02-2" parent="1" style="text;html=1;align=left;verticalAlign=middle;fontSize=30;fontColor=#3333CC;" value="F02: Autorizar o início da missão" vertex="1">
+          <mxGeometry height="44" width="1500" x="40" y="20" as="geometry" />
+        </mxCell>
+        <mxCell id="F02-3" parent="1" style="text;html=1;align=left;verticalAlign=middle;fontSize=15;fontColor=#555555;" value="Contribui para: Achieve [Início da missão autorizado] (G1.2)" vertex="1">
+          <mxGeometry height="29" width="1800" x="40" y="66" as="geometry" />
+        </mxCell>
+        <mxCell id="F02-4" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;fillColor=#FFFF00;strokeColor=#555555;fontColor=#333333;fontStyle=1;fontSize=14;shadow=1;dashed=1;strokeWidth=3;strokeColor=#777777;" value="Autorizar o início da missão" vertex="1">
+          <mxGeometry height="70" width="250" x="835" y="257" as="geometry" />
+        </mxCell>
+        <mxCell id="F02-5" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;fillColor=#00BFFF;strokeColor=#555555;fontColor=#333333;fontStyle=1;fontSize=14;shadow=1;" value="Autorizar o início automaticamente se a carga cobre os alvos obrigatórios" vertex="1">
+          <mxGeometry height="76" width="290" x="1170" y="125" as="geometry" />
+        </mxCell>
+        <mxCell id="F02-6" edge="1" parent="1" source="F02-4" style="edgeStyle=orthogonalEdgeStyle;curved=1;endArrow=none;html=1;strokeColor=#999999;strokeWidth=2;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="F02-5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="F02-7" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;fillColor=#00FF00;strokeColor=#555555;fontColor=#333333;fontStyle=1;fontSize=14;shadow=1;" value="Carga 80%, necessária 45% =&gt; missão inicia sem aprovação" vertex="1">
+          <mxGeometry height="58" width="350" x="1530" y="134" as="geometry" />
+        </mxCell>
+        <mxCell id="F02-8" edge="1" parent="1" source="F02-5" style="edgeStyle=orthogonalEdgeStyle;curved=1;endArrow=none;html=1;strokeColor=#999999;strokeWidth=2;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="F02-7">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="F02-9" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;fillColor=#00BFFF;strokeColor=#555555;fontColor=#333333;fontStyle=1;fontSize=14;shadow=1;" value="Recarregar antes do início quando o Controlador ordenar" vertex="1">
+          <mxGeometry height="58" width="290" x="1170" y="268" as="geometry" />
+        </mxCell>
+        <mxCell id="F02-10" edge="1" parent="1" source="F02-4" style="edgeStyle=orthogonalEdgeStyle;curved=1;endArrow=none;html=1;strokeColor=#999999;strokeWidth=2;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="F02-9">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="F02-11" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;fillColor=#00FF00;strokeColor=#555555;fontColor=#333333;fontStyle=1;fontSize=14;shadow=1;" value="Ordem &#39;recarregar&#39; =&gt; RMMC vai à base, carrega, reavalia e inicia" vertex="1">
+          <mxGeometry height="58" width="350" x="1530" y="229" as="geometry" />
+        </mxCell>
+        <mxCell id="F02-12" edge="1" parent="1" source="F02-9" style="edgeStyle=orthogonalEdgeStyle;curved=1;endArrow=none;html=1;strokeColor=#999999;strokeWidth=2;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="F02-11">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="F02-13" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;fillColor=#00FF00;strokeColor=#555555;fontColor=#333333;fontStyle=1;fontSize=14;shadow=1;" value="Necessária 110% da capacidade =&gt; recarga não resolve, lista precisa ser ajustada" vertex="1">
+          <mxGeometry height="76" width="350" x="1530" y="297" as="geometry" />
+        </mxCell>
+        <mxCell id="F02-14" edge="1" parent="1" source="F02-9" style="edgeStyle=orthogonalEdgeStyle;curved=1;endArrow=none;html=1;strokeColor=#999999;strokeWidth=2;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="F02-13">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="F02-15" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;fillColor=#FF8C00;strokeColor=#555555;fontColor=#333333;fontStyle=1;fontSize=14;shadow=1;" value="O sistema deve sugerir quais alvos remover?" vertex="1">
+          <mxGeometry height="58" width="290" x="1170" y="401" as="geometry" />
+        </mxCell>
+        <mxCell id="F02-16" edge="1" parent="1" source="F02-4" style="edgeStyle=orthogonalEdgeStyle;curved=1;endArrow=none;html=1;strokeColor=#999999;strokeWidth=2;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="F02-15">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="F02-17" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;fillColor=#00BFFF;strokeColor=#555555;fontColor=#333333;fontStyle=1;fontSize=14;shadow=1;" value="Bloquear o início e alertar o Controlador se a carga é insuficiente" vertex="1">
+          <mxGeometry height="76" width="290" x="460" y="125" as="geometry" />
+        </mxCell>
+        <mxCell id="F02-18" edge="1" parent="1" source="F02-4" style="edgeStyle=orthogonalEdgeStyle;curved=1;endArrow=none;html=1;strokeColor=#999999;strokeWidth=2;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" target="F02-17">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="F02-19" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;fillColor=#00FF00;strokeColor=#555555;fontColor=#333333;fontStyle=1;fontSize=14;shadow=1;" value="Carga 30%, necessária 45%, máxima 100% =&gt; alerta com os 3 valores e missão não inicia" vertex="1">
+          <mxGeometry height="76" width="350" x="40" y="125" as="geometry" />
+        </mxCell>
+        <mxCell id="F02-20" edge="1" parent="1" source="F02-17" style="edgeStyle=orthogonalEdgeStyle;curved=1;endArrow=none;html=1;strokeColor=#999999;strokeWidth=2;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" target="F02-19">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="F02-21" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;fillColor=#00BFFF;strokeColor=#555555;fontColor=#333333;fontStyle=1;fontSize=14;shadow=1;" value="Reavaliar a bateria após o Controlador ajustar a lista" vertex="1">
+          <mxGeometry height="58" width="290" x="460" y="263" as="geometry" />
+        </mxCell>
+        <mxCell id="F02-22" edge="1" parent="1" source="F02-4" style="edgeStyle=orthogonalEdgeStyle;curved=1;endArrow=none;html=1;strokeColor=#999999;strokeWidth=2;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" target="F02-21">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="F02-23" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;fillColor=#00FF00;strokeColor=#555555;fontColor=#333333;fontStyle=1;fontSize=14;shadow=1;" value="Remove A3 (opcional): necessária cai de 45% para 40%, carga 60% =&gt; inicia" vertex="1">
+          <mxGeometry height="58" width="350" x="40" y="229" as="geometry" />
+        </mxCell>
+        <mxCell id="F02-24" edge="1" parent="1" source="F02-21" style="edgeStyle=orthogonalEdgeStyle;curved=1;endArrow=none;html=1;strokeColor=#999999;strokeWidth=2;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" target="F02-23">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="F02-25" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;fillColor=#00FF00;strokeColor=#555555;fontColor=#333333;fontStyle=1;fontSize=14;shadow=1;" value="Após o ajuste necessária 70%, carga 60% =&gt; continua bloqueada" vertex="1">
+          <mxGeometry height="58" width="350" x="40" y="297" as="geometry" />
+        </mxCell>
+        <mxCell id="F02-26" edge="1" parent="1" source="F02-21" style="edgeStyle=orthogonalEdgeStyle;curved=1;endArrow=none;html=1;strokeColor=#999999;strokeWidth=2;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" target="F02-25">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="F02-27" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;fillColor=#FF8C00;strokeColor=#555555;fontColor=#333333;fontStyle=1;fontSize=14;shadow=1;" value="Por quanto tempo a missão pode aguardar a decisão do Controlador?" vertex="1">
+          <mxGeometry height="76" width="290" x="460" y="383" as="geometry" />
+        </mxCell>
+        <mxCell id="F02-28" edge="1" parent="1" source="F02-4" style="edgeStyle=orthogonalEdgeStyle;curved=1;endArrow=none;html=1;strokeColor=#999999;strokeWidth=2;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" target="F02-27">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="F02-29" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFF00;strokeColor=#555555;fontSize=12;fontColor=#333333;" value="Funcionalidade" vertex="1">
+          <mxGeometry height="26" width="137" x="40" y="509" as="geometry" />
+        </mxCell>
+        <mxCell id="F02-30" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#00BFFF;strokeColor=#555555;fontSize=12;fontColor=#333333;" value="Regra (requisito)" vertex="1">
+          <mxGeometry height="26" width="151" x="197" y="509" as="geometry" />
+        </mxCell>
+        <mxCell id="F02-31" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#00FF00;strokeColor=#555555;fontSize=12;fontColor=#333333;" value="Exemplo (cenário)" vertex="1">
+          <mxGeometry height="26" width="159" x="368" y="509" as="geometry" />
+        </mxCell>
+        <mxCell id="F02-32" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FF8C00;strokeColor=#555555;fontSize=12;fontColor=#333333;" value="Pergunta / suposição em aberto" vertex="1">
+          <mxGeometry height="26" width="256" x="547" y="509" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram name="F03 Alcançar o alvo" id="AHjZ-JiFF5IEwfxaOWAE">
+    <mxGraphModel grid="0" page="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" pageScale="1" pageWidth="1920" pageHeight="568" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="F03-2" parent="1" style="text;html=1;align=left;verticalAlign=middle;fontSize=30;fontColor=#3333CC;" value="F03: Alcançar o alvo" vertex="1">
+          <mxGeometry height="44" width="1500" x="40" y="20" as="geometry" />
+        </mxCell>
+        <mxCell id="F03-3" parent="1" style="text;html=1;align=left;verticalAlign=middle;fontSize=15;fontColor=#555555;" value="Contribui para: Achieve [Alvo alcançado] (G2.1.1)" vertex="1">
+          <mxGeometry height="29" width="1800" x="40" y="66" as="geometry" />
+        </mxCell>
+        <mxCell id="F03-4" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;fillColor=#FFFF00;strokeColor=#555555;fontColor=#333333;fontStyle=1;fontSize=14;shadow=1;dashed=1;strokeWidth=3;strokeColor=#777777;" value="Alcançar o alvo" vertex="1">
+          <mxGeometry height="70" width="250" x="835" y="264" as="geometry" />
+        </mxCell>
+        <mxCell id="F03-5" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;fillColor=#00BFFF;strokeColor=#555555;fontColor=#333333;fontStyle=1;fontSize=14;shadow=1;" value="Verificar a acessibilidade do alvo com a topologia do drone antes de ir" vertex="1">
+          <mxGeometry height="76" width="290" x="1170" y="175" as="geometry" />
+        </mxCell>
+        <mxCell id="F03-6" edge="1" parent="1" source="F03-4" style="edgeStyle=orthogonalEdgeStyle;curved=1;endArrow=none;html=1;strokeColor=#999999;strokeWidth=2;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="F03-5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="F03-7" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;fillColor=#00FF00;strokeColor=#555555;fontColor=#333333;fontStyle=1;fontSize=14;shadow=1;" value="Drone informa trecho livre até A1 =&gt; RMMC segue para A1" vertex="1">
+          <mxGeometry height="58" width="350" x="1530" y="150" as="geometry" />
+        </mxCell>
+        <mxCell id="F03-8" edge="1" parent="1" source="F03-5" style="edgeStyle=orthogonalEdgeStyle;curved=1;endArrow=none;html=1;strokeColor=#999999;strokeWidth=2;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="F03-7">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="F03-9" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;fillColor=#00FF00;strokeColor=#555555;fontColor=#333333;fontStyle=1;fontSize=14;shadow=1;" value="Drone informa árvore caída até A1 =&gt; caminho planejado é bloqueado" vertex="1">
+          <mxGeometry height="58" width="350" x="1530" y="218" as="geometry" />
+        </mxCell>
+        <mxCell id="F03-10" edge="1" parent="1" source="F03-5" style="edgeStyle=orthogonalEdgeStyle;curved=1;endArrow=none;html=1;strokeColor=#999999;strokeWidth=2;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="F03-9">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="F03-11" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;fillColor=#00BFFF;strokeColor=#555555;fontColor=#333333;fontStyle=1;fontSize=14;shadow=1;" value="Requisitar a topologia ao drone antes de cada deslocamento" vertex="1">
+          <mxGeometry height="58" width="290" x="1170" y="304" as="geometry" />
+        </mxCell>
+        <mxCell id="F03-12" edge="1" parent="1" source="F03-4" style="edgeStyle=orthogonalEdgeStyle;curved=1;endArrow=none;html=1;strokeColor=#999999;strokeWidth=2;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="F03-11">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="F03-13" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;fillColor=#00FF00;strokeColor=#555555;fontColor=#333333;fontStyle=1;fontSize=14;shadow=1;" value="Parte de A1 para A2 =&gt; requisita topologia do trecho A1–A2" vertex="1">
+          <mxGeometry height="58" width="350" x="1530" y="304" as="geometry" />
+        </mxCell>
+        <mxCell id="F03-14" edge="1" parent="1" source="F03-11" style="edgeStyle=orthogonalEdgeStyle;curved=1;endArrow=none;html=1;strokeColor=#999999;strokeWidth=2;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="F03-13">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="F03-15" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;fillColor=#FF8C00;strokeColor=#555555;fontColor=#333333;fontStyle=1;fontSize=14;shadow=1;" value="O que fazer se o drone não responder?" vertex="1">
+          <mxGeometry height="58" width="290" x="1170" y="390" as="geometry" />
+        </mxCell>
+        <mxCell id="F03-16" edge="1" parent="1" source="F03-4" style="edgeStyle=orthogonalEdgeStyle;curved=1;endArrow=none;html=1;strokeColor=#999999;strokeWidth=2;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="F03-15">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="F03-17" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;fillColor=#00BFFF;strokeColor=#555555;fontColor=#333333;fontStyle=1;fontSize=14;shadow=1;" value="Buscar rota ou posição de coleta alternativa diante de obstáculo" vertex="1">
+          <mxGeometry height="58" width="290" x="460" y="159" as="geometry" />
+        </mxCell>
+        <mxCell id="F03-18" edge="1" parent="1" source="F03-4" style="edgeStyle=orthogonalEdgeStyle;curved=1;endArrow=none;html=1;strokeColor=#999999;strokeWidth=2;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" target="F03-17">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="F03-19" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;fillColor=#00FF00;strokeColor=#555555;fontColor=#333333;fontStyle=1;fontSize=14;shadow=1;" value="Rota norte bloqueada, rota leste livre =&gt; alcança A1 pela leste" vertex="1">
+          <mxGeometry height="58" width="350" x="40" y="125" as="geometry" />
+        </mxCell>
+        <mxCell id="F03-20" edge="1" parent="1" source="F03-17" style="edgeStyle=orthogonalEdgeStyle;curved=1;endArrow=none;html=1;strokeColor=#999999;strokeWidth=2;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" target="F03-19">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="F03-21" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;fillColor=#00FF00;strokeColor=#555555;fontColor=#333333;fontStyle=1;fontSize=14;shadow=1;" value="Todas as rotas bloqueadas, posição a 3 m livre =&gt; coleta da posição alternativa" vertex="1">
+          <mxGeometry height="58" width="350" x="40" y="193" as="geometry" />
+        </mxCell>
+        <mxCell id="F03-22" edge="1" parent="1" source="F03-17" style="edgeStyle=orthogonalEdgeStyle;curved=1;endArrow=none;html=1;strokeColor=#999999;strokeWidth=2;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" target="F03-21">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="F03-23" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;fillColor=#00BFFF;strokeColor=#555555;fontColor=#333333;fontStyle=1;fontSize=14;shadow=1;" value="Rejeitar coordenadas inválidas no cadastro de alvos" vertex="1">
+          <mxGeometry height="58" width="290" x="460" y="300" as="geometry" />
+        </mxCell>
+        <mxCell id="F03-24" edge="1" parent="1" source="F03-4" style="edgeStyle=orthogonalEdgeStyle;curved=1;endArrow=none;html=1;strokeColor=#999999;strokeWidth=2;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" target="F03-23">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="F03-25" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;fillColor=#00FF00;strokeColor=#555555;fontColor=#333333;fontStyle=1;fontSize=14;shadow=1;" value="Latitude 95° =&gt; alvo rejeitado" vertex="1">
+          <mxGeometry height="40" width="350" x="40" y="279" as="geometry" />
+        </mxCell>
+        <mxCell id="F03-26" edge="1" parent="1" source="F03-23" style="edgeStyle=orthogonalEdgeStyle;curved=1;endArrow=none;html=1;strokeColor=#999999;strokeWidth=2;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" target="F03-25">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="F03-27" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;fillColor=#00FF00;strokeColor=#555555;fontColor=#333333;fontStyle=1;fontSize=14;shadow=1;" value="Coordenada fora da área da fazenda =&gt; alvo rejeitado" vertex="1">
+          <mxGeometry height="58" width="350" x="40" y="329" as="geometry" />
+        </mxCell>
+        <mxCell id="F03-28" edge="1" parent="1" source="F03-23" style="edgeStyle=orthogonalEdgeStyle;curved=1;endArrow=none;html=1;strokeColor=#999999;strokeWidth=2;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" target="F03-27">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="F03-29" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;fillColor=#FF8C00;strokeColor=#555555;fontColor=#333333;fontStyle=1;fontSize=14;shadow=1;" value="Qual a distância máxima de uma posição alternativa?" vertex="1">
+          <mxGeometry height="58" width="290" x="460" y="415" as="geometry" />
+        </mxCell>
+        <mxCell id="F03-30" edge="1" parent="1" source="F03-4" style="edgeStyle=orthogonalEdgeStyle;curved=1;endArrow=none;html=1;strokeColor=#999999;strokeWidth=2;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" target="F03-29">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="F03-31" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFF00;strokeColor=#555555;fontSize=12;fontColor=#333333;" value="Funcionalidade" vertex="1">
+          <mxGeometry height="26" width="137" x="40" y="523" as="geometry" />
+        </mxCell>
+        <mxCell id="F03-32" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#00BFFF;strokeColor=#555555;fontSize=12;fontColor=#333333;" value="Regra (requisito)" vertex="1">
+          <mxGeometry height="26" width="151" x="197" y="523" as="geometry" />
+        </mxCell>
+        <mxCell id="F03-33" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#00FF00;strokeColor=#555555;fontSize=12;fontColor=#333333;" value="Exemplo (cenário)" vertex="1">
+          <mxGeometry height="26" width="159" x="368" y="523" as="geometry" />
+        </mxCell>
+        <mxCell id="F03-34" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FF8C00;strokeColor=#555555;fontSize=12;fontColor=#333333;" value="Pergunta / suposição em aberto" vertex="1">
+          <mxGeometry height="26" width="256" x="547" y="523" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram name="F04 Coletar o dado do alvo com qualidade" id="rcxb2EDD_5V6Kt33rqip">
+    <mxGraphModel grid="0" page="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" pageScale="1" pageWidth="1920" pageHeight="604" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="F04-2" parent="1" style="text;html=1;align=left;verticalAlign=middle;fontSize=30;fontColor=#3333CC;" value="F04: Coletar o dado do alvo com qualidade" vertex="1">
+          <mxGeometry height="44" width="1500" x="40" y="20" as="geometry" />
+        </mxCell>
+        <mxCell id="F04-3" parent="1" style="text;html=1;align=left;verticalAlign=middle;fontSize=15;fontColor=#555555;" value="Contribui para: Achieve [Coleta do alvo concluída] (G2.1.2) · Maximize [Qualidade dos dados coletados]" vertex="1">
+          <mxGeometry height="29" width="1800" x="40" y="66" as="geometry" />
+        </mxCell>
+        <mxCell id="F04-4" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;fillColor=#FFFF00;strokeColor=#555555;fontColor=#333333;fontStyle=1;fontSize=14;shadow=1;dashed=1;strokeWidth=3;strokeColor=#777777;" value="Coletar o dado do alvo com qualidade" vertex="1">
+          <mxGeometry height="70" width="250" x="835" y="282" as="geometry" />
+        </mxCell>
+        <mxCell id="F04-5" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;fillColor=#00BFFF;strokeColor=#555555;fontColor=#333333;fontStyle=1;fontSize=14;shadow=1;" value="Avaliar a qualidade de cada leitura por critério configurável" vertex="1">
+          <mxGeometry height="58" width="290" x="1170" y="159" as="geometry" />
+        </mxCell>
+        <mxCell id="F04-6" edge="1" parent="1" source="F04-4" style="edgeStyle=orthogonalEdgeStyle;curved=1;endArrow=none;html=1;strokeColor=#999999;strokeWidth=2;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="F04-5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="F04-7" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;fillColor=#00FF00;strokeColor=#555555;fontColor=#333333;fontStyle=1;fontSize=14;shadow=1;" value="Nitidez 0,9, limiar 0,8 =&gt; leitura aprovada" vertex="1">
+          <mxGeometry height="58" width="350" x="1530" y="125" as="geometry" />
+        </mxCell>
+        <mxCell id="F04-8" edge="1" parent="1" source="F04-5" style="edgeStyle=orthogonalEdgeStyle;curved=1;endArrow=none;html=1;strokeColor=#999999;strokeWidth=2;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="F04-7">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="F04-9" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;fillColor=#00FF00;strokeColor=#555555;fontColor=#333333;fontStyle=1;fontSize=14;shadow=1;" value="Nitidez 0,6, limiar 0,8 =&gt; leitura reprovada" vertex="1">
+          <mxGeometry height="58" width="350" x="1530" y="193" as="geometry" />
+        </mxCell>
+        <mxCell id="F04-10" edge="1" parent="1" source="F04-5" style="edgeStyle=orthogonalEdgeStyle;curved=1;endArrow=none;html=1;strokeColor=#999999;strokeWidth=2;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="F04-9">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="F04-11" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;fillColor=#00BFFF;strokeColor=#555555;fontColor=#333333;fontStyle=1;fontSize=14;shadow=1;" value="Registrar &#39;qualidade insuficiente&#39; com a melhor leitura e seguir" vertex="1">
+          <mxGeometry height="58" width="290" x="1170" y="279" as="geometry" />
+        </mxCell>
+        <mxCell id="F04-12" edge="1" parent="1" source="F04-4" style="edgeStyle=orthogonalEdgeStyle;curved=1;endArrow=none;html=1;strokeColor=#999999;strokeWidth=2;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="F04-11">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="F04-13" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;fillColor=#00FF00;strokeColor=#555555;fontColor=#333333;fontStyle=1;fontSize=14;shadow=1;" value="Nitidez 0,5; 0,6 e 0,55 =&gt; registra a de 0,6 e vai ao próximo alvo" vertex="1">
+          <mxGeometry height="58" width="350" x="1530" y="279" as="geometry" />
+        </mxCell>
+        <mxCell id="F04-14" edge="1" parent="1" source="F04-11" style="edgeStyle=orthogonalEdgeStyle;curved=1;endArrow=none;html=1;strokeColor=#999999;strokeWidth=2;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="F04-13">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="F04-15" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;fillColor=#FF8C00;strokeColor=#555555;fontColor=#333333;fontStyle=1;fontSize=14;shadow=1;" value="Quem define o limiar de qualidade de cada tipo de dado?" vertex="1">
+          <mxGeometry height="58" width="290" x="1170" y="365" as="geometry" />
+        </mxCell>
+        <mxCell id="F04-16" edge="1" parent="1" source="F04-4" style="edgeStyle=orthogonalEdgeStyle;curved=1;endArrow=none;html=1;strokeColor=#999999;strokeWidth=2;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="F04-15">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="F04-17" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;fillColor=#FF8C00;strokeColor=#555555;fontColor=#333333;fontStyle=1;fontSize=14;shadow=1;" value="O Controlador pode mandar &#39;tentar de novo&#39; manualmente?" vertex="1">
+          <mxGeometry height="58" width="290" x="1170" y="451" as="geometry" />
+        </mxCell>
+        <mxCell id="F04-18" edge="1" parent="1" source="F04-4" style="edgeStyle=orthogonalEdgeStyle;curved=1;endArrow=none;html=1;strokeColor=#999999;strokeWidth=2;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="F04-17">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="F04-19" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;fillColor=#00BFFF;strokeColor=#555555;fontColor=#333333;fontStyle=1;fontSize=14;shadow=1;" value="Repetir até 2 vezes, ajustando posição ou parâmetro do sensor" vertex="1">
+          <mxGeometry height="58" width="290" x="460" y="206" as="geometry" />
+        </mxCell>
+        <mxCell id="F04-20" edge="1" parent="1" source="F04-4" style="edgeStyle=orthogonalEdgeStyle;curved=1;endArrow=none;html=1;strokeColor=#999999;strokeWidth=2;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" target="F04-19">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="F04-21" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;fillColor=#00FF00;strokeColor=#555555;fontColor=#333333;fontStyle=1;fontSize=14;shadow=1;" value="1ª reprovada, 2ª aprovada após ajuste de ganho =&gt; coleta aprovada com 2 tentativas" vertex="1">
+          <mxGeometry height="76" width="350" x="40" y="159" as="geometry" />
+        </mxCell>
+        <mxCell id="F04-22" edge="1" parent="1" source="F04-19" style="edgeStyle=orthogonalEdgeStyle;curved=1;endArrow=none;html=1;strokeColor=#999999;strokeWidth=2;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" target="F04-21">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="F04-23" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;fillColor=#00FF00;strokeColor=#555555;fontColor=#333333;fontStyle=1;fontSize=14;shadow=1;" value="3 leituras reprovadas =&gt; não faz a 4ª tentativa" vertex="1">
+          <mxGeometry height="58" width="350" x="40" y="245" as="geometry" />
+        </mxCell>
+        <mxCell id="F04-24" edge="1" parent="1" source="F04-19" style="edgeStyle=orthogonalEdgeStyle;curved=1;endArrow=none;html=1;strokeColor=#999999;strokeWidth=2;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" target="F04-23">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="F04-25" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;fillColor=#00BFFF;strokeColor=#555555;fontColor=#333333;fontStyle=1;fontSize=14;shadow=1;" value="Associar cada dado ao alvo e às informações da coleta" vertex="1">
+          <mxGeometry height="58" width="290" x="460" y="331" as="geometry" />
+        </mxCell>
+        <mxCell id="F04-26" edge="1" parent="1" source="F04-4" style="edgeStyle=orthogonalEdgeStyle;curved=1;endArrow=none;html=1;strokeColor=#999999;strokeWidth=2;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" target="F04-25">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="F04-27" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;fillColor=#00FF00;strokeColor=#555555;fontColor=#333333;fontStyle=1;fontSize=14;shadow=1;" value="Dado coletado em A1 =&gt; guarda alvo A1, nº de tentativas, parâmetros e horário" vertex="1">
+          <mxGeometry height="58" width="350" x="40" y="331" as="geometry" />
+        </mxCell>
+        <mxCell id="F04-28" edge="1" parent="1" source="F04-25" style="edgeStyle=orthogonalEdgeStyle;curved=1;endArrow=none;html=1;strokeColor=#999999;strokeWidth=2;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" target="F04-27">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="F04-29" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;fillColor=#FF8C00;strokeColor=#555555;fontColor=#333333;fontStyle=1;fontSize=14;shadow=1;" value="Ajustar primeiro a posição ou o parâmetro do sensor?" vertex="1">
+          <mxGeometry height="58" width="290" x="460" y="417" as="geometry" />
+        </mxCell>
+        <mxCell id="F04-30" edge="1" parent="1" source="F04-4" style="edgeStyle=orthogonalEdgeStyle;curved=1;endArrow=none;html=1;strokeColor=#999999;strokeWidth=2;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" target="F04-29">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="F04-31" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFF00;strokeColor=#555555;fontSize=12;fontColor=#333333;" value="Funcionalidade" vertex="1">
+          <mxGeometry height="26" width="137" x="40" y="559" as="geometry" />
+        </mxCell>
+        <mxCell id="F04-32" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#00BFFF;strokeColor=#555555;fontSize=12;fontColor=#333333;" value="Regra (requisito)" vertex="1">
+          <mxGeometry height="26" width="151" x="197" y="559" as="geometry" />
+        </mxCell>
+        <mxCell id="F04-33" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#00FF00;strokeColor=#555555;fontSize=12;fontColor=#333333;" value="Exemplo (cenário)" vertex="1">
+          <mxGeometry height="26" width="159" x="368" y="559" as="geometry" />
+        </mxCell>
+        <mxCell id="F04-34" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FF8C00;strokeColor=#555555;fontSize=12;fontColor=#333333;" value="Pergunta / suposição em aberto" vertex="1">
+          <mxGeometry height="26" width="256" x="547" y="559" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram name="F05 Registrar alvo inacessível" id="aJPuS84uEGXLAjuMeZzW">
+    <mxGraphModel grid="0" page="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" pageScale="1" pageWidth="1920" pageHeight="518" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="F05-2" parent="1" style="text;html=1;align=left;verticalAlign=middle;fontSize=30;fontColor=#3333CC;" value="F05: Registrar alvo inacessível" vertex="1">
+          <mxGeometry height="44" width="1500" x="40" y="20" as="geometry" />
+        </mxCell>
+        <mxCell id="F05-3" parent="1" style="text;html=1;align=left;verticalAlign=middle;fontSize=15;fontColor=#555555;" value="Contribui para: Achieve [Alvo registrado como inacessível após esgotar os caminhos alternativos] (G2.2)" vertex="1">
+          <mxGeometry height="29" width="1800" x="40" y="66" as="geometry" />
+        </mxCell>
+        <mxCell id="F05-4" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;fillColor=#FFFF00;strokeColor=#555555;fontColor=#333333;fontStyle=1;fontSize=14;shadow=1;dashed=1;strokeWidth=3;strokeColor=#777777;" value="Registrar alvo inacessível" vertex="1">
+          <mxGeometry height="70" width="250" x="835" y="239" as="geometry" />
+        </mxCell>
+        <mxCell id="F05-5" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;fillColor=#00BFFF;strokeColor=#555555;fontColor=#333333;fontStyle=1;fontSize=14;shadow=1;" value="Declarar o alvo inacessível só após esgotar rotas e posições alternativas" vertex="1">
+          <mxGeometry height="76" width="290" x="1170" y="150" as="geometry" />
+        </mxCell>
+        <mxCell id="F05-6" edge="1" parent="1" source="F05-4" style="edgeStyle=orthogonalEdgeStyle;curved=1;endArrow=none;html=1;strokeColor=#999999;strokeWidth=2;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="F05-5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="F05-7" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;fillColor=#00FF00;strokeColor=#555555;fontColor=#333333;fontStyle=1;fontSize=14;shadow=1;" value="3 rotas e 2 posições bloqueadas =&gt; A3 é &#39;inacessível&#39;" vertex="1">
+          <mxGeometry height="58" width="350" x="1530" y="125" as="geometry" />
+        </mxCell>
+        <mxCell id="F05-8" edge="1" parent="1" source="F05-5" style="edgeStyle=orthogonalEdgeStyle;curved=1;endArrow=none;html=1;strokeColor=#999999;strokeWidth=2;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="F05-7">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="F05-9" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;fillColor=#00FF00;strokeColor=#555555;fontColor=#333333;fontStyle=1;fontSize=14;shadow=1;" value="1 rota alternativa livre =&gt; usa a rota e A3 não é marcado" vertex="1">
+          <mxGeometry height="58" width="350" x="1530" y="193" as="geometry" />
+        </mxCell>
+        <mxCell id="F05-10" edge="1" parent="1" source="F05-5" style="edgeStyle=orthogonalEdgeStyle;curved=1;endArrow=none;html=1;strokeColor=#999999;strokeWidth=2;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="F05-9">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="F05-11" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;fillColor=#00BFFF;strokeColor=#555555;fontColor=#333333;fontStyle=1;fontSize=14;shadow=1;" value="Aceitar comando para remover ou adiar o alvo" vertex="1">
+          <mxGeometry height="58" width="290" x="1170" y="279" as="geometry" />
+        </mxCell>
+        <mxCell id="F05-12" edge="1" parent="1" source="F05-4" style="edgeStyle=orthogonalEdgeStyle;curved=1;endArrow=none;html=1;strokeColor=#999999;strokeWidth=2;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="F05-11">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="F05-13" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;fillColor=#00FF00;strokeColor=#555555;fontColor=#333333;fontStyle=1;fontSize=14;shadow=1;" value="Controlador adia A3 =&gt; A3 sai da lista da missão" vertex="1">
+          <mxGeometry height="58" width="350" x="1530" y="279" as="geometry" />
+        </mxCell>
+        <mxCell id="F05-14" edge="1" parent="1" source="F05-11" style="edgeStyle=orthogonalEdgeStyle;curved=1;endArrow=none;html=1;strokeColor=#999999;strokeWidth=2;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="F05-13">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="F05-15" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;fillColor=#FF8C00;strokeColor=#555555;fontColor=#333333;fontStyle=1;fontSize=14;shadow=1;" value="Um alvo inacessível pode ser retentado no fim da missão?" vertex="1">
+          <mxGeometry height="58" width="290" x="1170" y="365" as="geometry" />
+        </mxCell>
+        <mxCell id="F05-16" edge="1" parent="1" source="F05-4" style="edgeStyle=orthogonalEdgeStyle;curved=1;endArrow=none;html=1;strokeColor=#999999;strokeWidth=2;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="F05-15">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="F05-17" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;fillColor=#00BFFF;strokeColor=#555555;fontColor=#333333;fontStyle=1;fontSize=14;shadow=1;" value="Registrar o motivo e prosseguir com a missão" vertex="1">
+          <mxGeometry height="58" width="290" x="460" y="125" as="geometry" />
+        </mxCell>
+        <mxCell id="F05-18" edge="1" parent="1" source="F05-4" style="edgeStyle=orthogonalEdgeStyle;curved=1;endArrow=none;html=1;strokeColor=#999999;strokeWidth=2;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" target="F05-17">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="F05-19" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;fillColor=#00FF00;strokeColor=#555555;fontColor=#333333;fontStyle=1;fontSize=14;shadow=1;" value="A3 alagado =&gt; registra &#39;inacessível: alagamento&#39; e vai para A4" vertex="1">
+          <mxGeometry height="58" width="350" x="40" y="125" as="geometry" />
+        </mxCell>
+        <mxCell id="F05-20" edge="1" parent="1" source="F05-17" style="edgeStyle=orthogonalEdgeStyle;curved=1;endArrow=none;html=1;strokeColor=#999999;strokeWidth=2;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" target="F05-19">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="F05-21" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;fillColor=#00BFFF;strokeColor=#555555;fontColor=#333333;fontStyle=1;fontSize=14;shadow=1;" value="Notificar o Controlador sobre o alvo inacessível" vertex="1">
+          <mxGeometry height="58" width="290" x="460" y="245" as="geometry" />
+        </mxCell>
+        <mxCell id="F05-22" edge="1" parent="1" source="F05-4" style="edgeStyle=orthogonalEdgeStyle;curved=1;endArrow=none;html=1;strokeColor=#999999;strokeWidth=2;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" target="F05-21">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="F05-23" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;fillColor=#00FF00;strokeColor=#555555;fontColor=#333333;fontStyle=1;fontSize=14;shadow=1;" value="A3 inacessível =&gt; Controlador recebe alvo e motivo" vertex="1">
+          <mxGeometry height="58" width="350" x="40" y="211" as="geometry" />
+        </mxCell>
+        <mxCell id="F05-24" edge="1" parent="1" source="F05-21" style="edgeStyle=orthogonalEdgeStyle;curved=1;endArrow=none;html=1;strokeColor=#999999;strokeWidth=2;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" target="F05-23">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="F05-25" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;fillColor=#00FF00;strokeColor=#555555;fontColor=#333333;fontStyle=1;fontSize=14;shadow=1;" value="Controlador não responde =&gt; missão segue sem esperar" vertex="1">
+          <mxGeometry height="58" width="350" x="40" y="279" as="geometry" />
+        </mxCell>
+        <mxCell id="F05-26" edge="1" parent="1" source="F05-21" style="edgeStyle=orthogonalEdgeStyle;curved=1;endArrow=none;html=1;strokeColor=#999999;strokeWidth=2;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" target="F05-25">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="F05-27" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;fillColor=#FF8C00;strokeColor=#555555;fontColor=#333333;fontStyle=1;fontSize=14;shadow=1;" value="Qual o limite de tentativas ou de tempo na busca de alternativas?" vertex="1">
+          <mxGeometry height="58" width="290" x="460" y="365" as="geometry" />
+        </mxCell>
+        <mxCell id="F05-28" edge="1" parent="1" source="F05-4" style="edgeStyle=orthogonalEdgeStyle;curved=1;endArrow=none;html=1;strokeColor=#999999;strokeWidth=2;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" target="F05-27">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="F05-29" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFF00;strokeColor=#555555;fontSize=12;fontColor=#333333;" value="Funcionalidade" vertex="1">
+          <mxGeometry height="26" width="137" x="40" y="473" as="geometry" />
+        </mxCell>
+        <mxCell id="F05-30" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#00BFFF;strokeColor=#555555;fontSize=12;fontColor=#333333;" value="Regra (requisito)" vertex="1">
+          <mxGeometry height="26" width="151" x="197" y="473" as="geometry" />
+        </mxCell>
+        <mxCell id="F05-31" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#00FF00;strokeColor=#555555;fontSize=12;fontColor=#333333;" value="Exemplo (cenário)" vertex="1">
+          <mxGeometry height="26" width="159" x="368" y="473" as="geometry" />
+        </mxCell>
+        <mxCell id="F05-32" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FF8C00;strokeColor=#555555;fontSize=12;fontColor=#333333;" value="Pergunta / suposição em aberto" vertex="1">
+          <mxGeometry height="26" width="256" x="547" y="473" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram name="F06 Entregar os dados ao Software de Análise" id="bK04pcSWFGxarNPRuWu0">
+    <mxGraphModel grid="0" page="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" pageScale="1" pageWidth="1920" pageHeight="500" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="F06-2" parent="1" style="text;html=1;align=left;verticalAlign=middle;fontSize=30;fontColor=#3333CC;" value="F06: Entregar os dados ao Software de Análise" vertex="1">
+          <mxGeometry height="44" width="1500" x="40" y="20" as="geometry" />
+        </mxCell>
+        <mxCell id="F06-3" parent="1" style="text;html=1;align=left;verticalAlign=middle;fontSize=15;fontColor=#555555;" value="Contribui para: Achieve [Dados consolidados enviados ao Software de Análise] (G3.1)" vertex="1">
+          <mxGeometry height="29" width="1800" x="40" y="66" as="geometry" />
+        </mxCell>
+        <mxCell id="F06-4" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;fillColor=#FFFF00;strokeColor=#555555;fontColor=#333333;fontStyle=1;fontSize=14;shadow=1;dashed=1;strokeWidth=3;strokeColor=#777777;" value="Entregar os dados ao Software de Análise" vertex="1">
+          <mxGeometry height="70" width="250" x="835" y="230" as="geometry" />
+        </mxCell>
+        <mxCell id="F06-5" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;fillColor=#00BFFF;strokeColor=#555555;fontColor=#333333;fontStyle=1;fontSize=14;shadow=1;" value="Consolidar os dados em um pacote com o resultado de cada alvo" vertex="1">
+          <mxGeometry height="76" width="290" x="1170" y="132" as="geometry" />
+        </mxCell>
+        <mxCell id="F06-6" edge="1" parent="1" source="F06-4" style="edgeStyle=orthogonalEdgeStyle;curved=1;endArrow=none;html=1;strokeColor=#999999;strokeWidth=2;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="F06-5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="F06-7" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;fillColor=#00FF00;strokeColor=#555555;fontColor=#333333;fontStyle=1;fontSize=14;shadow=1;" value="A1 coletado, A2 com qualidade insuficiente, A3 inacessível =&gt; pacote com os 3 resultados" vertex="1">
+          <mxGeometry height="76" width="350" x="1530" y="132" as="geometry" />
+        </mxCell>
+        <mxCell id="F06-8" edge="1" parent="1" source="F06-5" style="edgeStyle=orthogonalEdgeStyle;curved=1;endArrow=none;html=1;strokeColor=#999999;strokeWidth=2;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="F06-7">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="F06-9" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;fillColor=#00BFFF;strokeColor=#555555;fontColor=#333333;fontStyle=1;fontSize=14;shadow=1;" value="Seguir o formato de dados acordado com o Software de Análise" vertex="1">
+          <mxGeometry height="76" width="290" x="1170" y="236" as="geometry" />
+        </mxCell>
+        <mxCell id="F06-10" edge="1" parent="1" source="F06-4" style="edgeStyle=orthogonalEdgeStyle;curved=1;endArrow=none;html=1;strokeColor=#999999;strokeWidth=2;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="F06-9">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="F06-11" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;fillColor=#00FF00;strokeColor=#555555;fontColor=#333333;fontStyle=1;fontSize=14;shadow=1;" value="Dado coletado =&gt; pacote traz alvo, tipo de dado, qualidade e horário" vertex="1">
+          <mxGeometry height="58" width="350" x="1530" y="245" as="geometry" />
+        </mxCell>
+        <mxCell id="F06-12" edge="1" parent="1" source="F06-9" style="edgeStyle=orthogonalEdgeStyle;curved=1;endArrow=none;html=1;strokeColor=#999999;strokeWidth=2;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="F06-11">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="F06-13" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;fillColor=#FF8C00;strokeColor=#555555;fontColor=#333333;fontStyle=1;fontSize=14;shadow=1;" value="Envia pacote parcial quando a missão é interrompida pelo LRS?" vertex="1">
+          <mxGeometry height="58" width="290" x="1170" y="340" as="geometry" />
+        </mxCell>
+        <mxCell id="F06-14" edge="1" parent="1" source="F06-4" style="edgeStyle=orthogonalEdgeStyle;curved=1;endArrow=none;html=1;strokeColor=#999999;strokeWidth=2;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="F06-13">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="F06-15" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;fillColor=#00BFFF;strokeColor=#555555;fontColor=#333333;fontStyle=1;fontSize=14;shadow=1;" value="Enviar o pacote automaticamente ao chegar à base" vertex="1">
+          <mxGeometry height="58" width="290" x="460" y="125" as="geometry" />
+        </mxCell>
+        <mxCell id="F06-16" edge="1" parent="1" source="F06-4" style="edgeStyle=orthogonalEdgeStyle;curved=1;endArrow=none;html=1;strokeColor=#999999;strokeWidth=2;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" target="F06-15">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="F06-17" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;fillColor=#00FF00;strokeColor=#555555;fontColor=#333333;fontStyle=1;fontSize=14;shadow=1;" value="RMMC chega à base com pacote pronto =&gt; envio inicia sem ação humana" vertex="1">
+          <mxGeometry height="58" width="350" x="40" y="125" as="geometry" />
+        </mxCell>
+        <mxCell id="F06-18" edge="1" parent="1" source="F06-15" style="edgeStyle=orthogonalEdgeStyle;curved=1;endArrow=none;html=1;strokeColor=#999999;strokeWidth=2;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" target="F06-17">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="F06-19" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;fillColor=#00BFFF;strokeColor=#555555;fontColor=#333333;fontStyle=1;fontSize=14;shadow=1;" value="Reenviar até a confirmação de recebimento" vertex="1">
+          <mxGeometry height="58" width="290" x="460" y="232" as="geometry" />
+        </mxCell>
+        <mxCell id="F06-20" edge="1" parent="1" source="F06-4" style="edgeStyle=orthogonalEdgeStyle;curved=1;endArrow=none;html=1;strokeColor=#999999;strokeWidth=2;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" target="F06-19">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="F06-21" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;fillColor=#00FF00;strokeColor=#555555;fontColor=#333333;fontStyle=1;fontSize=14;shadow=1;" value="Sem confirmação =&gt; reenvia o pacote" vertex="1">
+          <mxGeometry height="40" width="350" x="40" y="211" as="geometry" />
+        </mxCell>
+        <mxCell id="F06-22" edge="1" parent="1" source="F06-19" style="edgeStyle=orthogonalEdgeStyle;curved=1;endArrow=none;html=1;strokeColor=#999999;strokeWidth=2;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" target="F06-21">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="F06-23" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;fillColor=#00FF00;strokeColor=#555555;fontColor=#333333;fontStyle=1;fontSize=14;shadow=1;" value="Software confirma o recebimento =&gt; encerra o envio" vertex="1">
+          <mxGeometry height="58" width="350" x="40" y="261" as="geometry" />
+        </mxCell>
+        <mxCell id="F06-24" edge="1" parent="1" source="F06-19" style="edgeStyle=orthogonalEdgeStyle;curved=1;endArrow=none;html=1;strokeColor=#999999;strokeWidth=2;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" target="F06-23">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="F06-25" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;fillColor=#FF8C00;strokeColor=#555555;fontColor=#333333;fontStyle=1;fontSize=14;shadow=1;" value="Quantas vezes reenviar antes de alertar o Controlador?" vertex="1">
+          <mxGeometry height="58" width="290" x="460" y="347" as="geometry" />
+        </mxCell>
+        <mxCell id="F06-26" edge="1" parent="1" source="F06-4" style="edgeStyle=orthogonalEdgeStyle;curved=1;endArrow=none;html=1;strokeColor=#999999;strokeWidth=2;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" target="F06-25">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="F06-27" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFF00;strokeColor=#555555;fontSize=12;fontColor=#333333;" value="Funcionalidade" vertex="1">
+          <mxGeometry height="26" width="137" x="40" y="455" as="geometry" />
+        </mxCell>
+        <mxCell id="F06-28" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#00BFFF;strokeColor=#555555;fontSize=12;fontColor=#333333;" value="Regra (requisito)" vertex="1">
+          <mxGeometry height="26" width="151" x="197" y="455" as="geometry" />
+        </mxCell>
+        <mxCell id="F06-29" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#00FF00;strokeColor=#555555;fontSize=12;fontColor=#333333;" value="Exemplo (cenário)" vertex="1">
+          <mxGeometry height="26" width="159" x="368" y="455" as="geometry" />
+        </mxCell>
+        <mxCell id="F06-30" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FF8C00;strokeColor=#555555;fontSize=12;fontColor=#333333;" value="Pergunta / suposição em aberto" vertex="1">
+          <mxGeometry height="26" width="256" x="547" y="455" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram name="F07 Retornar à base com segurança" id="1NzBAit6VNOot9bZfuJ3">
+    <mxGraphModel grid="0" page="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" pageScale="1" pageWidth="1920" pageHeight="450" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="F07-2" parent="1" style="text;html=1;align=left;verticalAlign=middle;fontSize=30;fontColor=#3333CC;" value="F07: Retornar à base com segurança" vertex="1">
+          <mxGeometry height="44" width="1500" x="40" y="20" as="geometry" />
+        </mxCell>
+        <mxCell id="F07-3" parent="1" style="text;html=1;align=left;verticalAlign=middle;fontSize=15;fontColor=#555555;" value="Contribui para: Achieve [RMMC na Base de Recarga com segurança] (G3.2)" vertex="1">
+          <mxGeometry height="29" width="1800" x="40" y="66" as="geometry" />
+        </mxCell>
+        <mxCell id="F07-4" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;fillColor=#FFFF00;strokeColor=#555555;fontColor=#333333;fontStyle=1;fontSize=14;shadow=1;dashed=1;strokeWidth=3;strokeColor=#777777;" value="Retornar à base com segurança" vertex="1">
+          <mxGeometry height="70" width="250" x="835" y="205" as="geometry" />
+        </mxCell>
+        <mxCell id="F07-5" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;fillColor=#00BFFF;strokeColor=#555555;fontColor=#333333;fontStyle=1;fontSize=14;shadow=1;" value="Calcular a rota de retorno sobre a topologia do drone" vertex="1">
+          <mxGeometry height="58" width="290" x="1170" y="125" as="geometry" />
+        </mxCell>
+        <mxCell id="F07-6" edge="1" parent="1" source="F07-4" style="edgeStyle=orthogonalEdgeStyle;curved=1;endArrow=none;html=1;strokeColor=#999999;strokeWidth=2;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="F07-5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="F07-7" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;fillColor=#00FF00;strokeColor=#555555;fontColor=#333333;fontStyle=1;fontSize=14;shadow=1;" value="Missão concluída em A2 =&gt; requisita topologia e calcula a rota até a base" vertex="1">
+          <mxGeometry height="58" width="350" x="1530" y="125" as="geometry" />
+        </mxCell>
+        <mxCell id="F07-8" edge="1" parent="1" source="F07-5" style="edgeStyle=orthogonalEdgeStyle;curved=1;endArrow=none;html=1;strokeColor=#999999;strokeWidth=2;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="F07-7">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="F07-9" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;fillColor=#00BFFF;strokeColor=#555555;fontColor=#333333;fontStyle=1;fontSize=14;shadow=1;" value="Informar a posição ao Controlador durante o retorno" vertex="1">
+          <mxGeometry height="58" width="290" x="1170" y="211" as="geometry" />
+        </mxCell>
+        <mxCell id="F07-10" edge="1" parent="1" source="F07-4" style="edgeStyle=orthogonalEdgeStyle;curved=1;endArrow=none;html=1;strokeColor=#999999;strokeWidth=2;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="F07-9">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="F07-11" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;fillColor=#00FF00;strokeColor=#555555;fontColor=#333333;fontStyle=1;fontSize=14;shadow=1;" value="RMMC em retorno =&gt; posição atualizada no painel de status" vertex="1">
+          <mxGeometry height="58" width="350" x="1530" y="211" as="geometry" />
+        </mxCell>
+        <mxCell id="F07-12" edge="1" parent="1" source="F07-9" style="edgeStyle=orthogonalEdgeStyle;curved=1;endArrow=none;html=1;strokeColor=#999999;strokeWidth=2;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="F07-11">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="F07-13" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;fillColor=#FF8C00;strokeColor=#555555;fontColor=#333333;fontStyle=1;fontSize=14;shadow=1;" value="Com que frequência enviar a posição durante o retorno?" vertex="1">
+          <mxGeometry height="58" width="290" x="1170" y="297" as="geometry" />
+        </mxCell>
+        <mxCell id="F07-14" edge="1" parent="1" source="F07-4" style="edgeStyle=orthogonalEdgeStyle;curved=1;endArrow=none;html=1;strokeColor=#999999;strokeWidth=2;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="F07-13">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="F07-15" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;fillColor=#00BFFF;strokeColor=#555555;fontColor=#333333;fontStyle=1;fontSize=14;shadow=1;" value="Retornar de forma autônoma, sem intervenção humana" vertex="1">
+          <mxGeometry height="58" width="290" x="460" y="125" as="geometry" />
+        </mxCell>
+        <mxCell id="F07-16" edge="1" parent="1" source="F07-4" style="edgeStyle=orthogonalEdgeStyle;curved=1;endArrow=none;html=1;strokeColor=#999999;strokeWidth=2;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" target="F07-15">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="F07-17" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;fillColor=#00FF00;strokeColor=#555555;fontColor=#333333;fontStyle=1;fontSize=14;shadow=1;" value="Missão concluída =&gt; RMMC retorna sem comando do Controlador" vertex="1">
+          <mxGeometry height="58" width="350" x="40" y="125" as="geometry" />
+        </mxCell>
+        <mxCell id="F07-18" edge="1" parent="1" source="F07-15" style="edgeStyle=orthogonalEdgeStyle;curved=1;endArrow=none;html=1;strokeColor=#999999;strokeWidth=2;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" target="F07-17">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="F07-19" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;fillColor=#00BFFF;strokeColor=#555555;fontColor=#333333;fontStyle=1;fontSize=14;shadow=1;" value="Acoplar automaticamente guiado pelo sinal da base" vertex="1">
+          <mxGeometry height="58" width="290" x="460" y="211" as="geometry" />
+        </mxCell>
+        <mxCell id="F07-20" edge="1" parent="1" source="F07-4" style="edgeStyle=orthogonalEdgeStyle;curved=1;endArrow=none;html=1;strokeColor=#999999;strokeWidth=2;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" target="F07-19">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="F07-21" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;fillColor=#00FF00;strokeColor=#555555;fontColor=#333333;fontStyle=1;fontSize=14;shadow=1;" value="RMMC a 5 m da base =&gt; recebe o sinal e conclui o acoplamento" vertex="1">
+          <mxGeometry height="58" width="350" x="40" y="211" as="geometry" />
+        </mxCell>
+        <mxCell id="F07-22" edge="1" parent="1" source="F07-19" style="edgeStyle=orthogonalEdgeStyle;curved=1;endArrow=none;html=1;strokeColor=#999999;strokeWidth=2;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" target="F07-21">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="F07-23" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;fillColor=#FF8C00;strokeColor=#555555;fontColor=#333333;fontStyle=1;fontSize=14;shadow=1;" value="E se o caminho de volta estiver bloqueado?" vertex="1">
+          <mxGeometry height="58" width="290" x="460" y="297" as="geometry" />
+        </mxCell>
+        <mxCell id="F07-24" edge="1" parent="1" source="F07-4" style="edgeStyle=orthogonalEdgeStyle;curved=1;endArrow=none;html=1;strokeColor=#999999;strokeWidth=2;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" target="F07-23">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="F07-25" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFF00;strokeColor=#555555;fontSize=12;fontColor=#333333;" value="Funcionalidade" vertex="1">
+          <mxGeometry height="26" width="137" x="40" y="405" as="geometry" />
+        </mxCell>
+        <mxCell id="F07-26" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#00BFFF;strokeColor=#555555;fontSize=12;fontColor=#333333;" value="Regra (requisito)" vertex="1">
+          <mxGeometry height="26" width="151" x="197" y="405" as="geometry" />
+        </mxCell>
+        <mxCell id="F07-27" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#00FF00;strokeColor=#555555;fontSize=12;fontColor=#333333;" value="Exemplo (cenário)" vertex="1">
+          <mxGeometry height="26" width="159" x="368" y="405" as="geometry" />
+        </mxCell>
+        <mxCell id="F07-28" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FF8C00;strokeColor=#555555;fontSize=12;fontColor=#333333;" value="Pergunta / suposição em aberto" vertex="1">
+          <mxGeometry height="26" width="256" x="547" y="405" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram name="F08 Comunicar alertas e status ao Controlador" id="2H40yF8IEqa5RIJuyLEF">
+    <mxGraphModel grid="0" page="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" pageScale="1" pageWidth="1920" pageHeight="550" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="F08-2" parent="1" style="text;html=1;align=left;verticalAlign=middle;fontSize=30;fontColor=#3333CC;" value="F08: Comunicar alertas e status ao Controlador" vertex="1">
+          <mxGeometry height="44" width="1500" x="40" y="20" as="geometry" />
+        </mxCell>
+        <mxCell id="F08-3" parent="1" style="text;html=1;align=left;verticalAlign=middle;fontSize=15;fontColor=#555555;" value="Contribui para: Maintain [Controlador apto a intervir] · Achieve [Alertas e status de alvo comunicados ao Controlador] (G4.1)" vertex="1">
+          <mxGeometry height="29" width="1800" x="40" y="66" as="geometry" />
+        </mxCell>
+        <mxCell id="F08-4" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;fillColor=#FFFF00;strokeColor=#555555;fontColor=#333333;fontStyle=1;fontSize=14;shadow=1;dashed=1;strokeWidth=3;strokeColor=#777777;" value="Comunicar alertas e status ao Controlador" vertex="1">
+          <mxGeometry height="70" width="250" x="835" y="255" as="geometry" />
+        </mxCell>
+        <mxCell id="F08-5" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;fillColor=#00BFFF;strokeColor=#555555;fontColor=#333333;fontStyle=1;fontSize=14;shadow=1;" value="Enviar o status ao Controlador a cada evento relevante" vertex="1">
+          <mxGeometry height="58" width="290" x="1170" y="150" as="geometry" />
+        </mxCell>
+        <mxCell id="F08-6" edge="1" parent="1" source="F08-4" style="edgeStyle=orthogonalEdgeStyle;curved=1;endArrow=none;html=1;strokeColor=#999999;strokeWidth=2;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="F08-5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="F08-7" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;fillColor=#00FF00;strokeColor=#555555;fontColor=#333333;fontStyle=1;fontSize=14;shadow=1;" value="A1 coletado =&gt; status com resultado, qualidade e bateria" vertex="1">
+          <mxGeometry height="58" width="350" x="1530" y="150" as="geometry" />
+        </mxCell>
+        <mxCell id="F08-8" edge="1" parent="1" source="F08-5" style="edgeStyle=orthogonalEdgeStyle;curved=1;endArrow=none;html=1;strokeColor=#999999;strokeWidth=2;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="F08-7">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="F08-9" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;fillColor=#00BFFF;strokeColor=#555555;fontColor=#333333;fontStyle=1;fontSize=14;shadow=1;" value="Reenviar o alerta crítico até a confirmação de leitura" vertex="1">
+          <mxGeometry height="58" width="290" x="1170" y="256" as="geometry" />
+        </mxCell>
+        <mxCell id="F08-10" edge="1" parent="1" source="F08-4" style="edgeStyle=orthogonalEdgeStyle;curved=1;endArrow=none;html=1;strokeColor=#999999;strokeWidth=2;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="F08-9">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="F08-11" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;fillColor=#00FF00;strokeColor=#555555;fontColor=#333333;fontStyle=1;fontSize=14;shadow=1;" value="Sem confirmação =&gt; reenvia o alerta" vertex="1">
+          <mxGeometry height="40" width="350" x="1530" y="236" as="geometry" />
+        </mxCell>
+        <mxCell id="F08-12" edge="1" parent="1" source="F08-9" style="edgeStyle=orthogonalEdgeStyle;curved=1;endArrow=none;html=1;strokeColor=#999999;strokeWidth=2;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="F08-11">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="F08-13" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;fillColor=#00FF00;strokeColor=#555555;fontColor=#333333;fontStyle=1;fontSize=14;shadow=1;" value="Controlador confirma =&gt; para de reenviar" vertex="1">
+          <mxGeometry height="58" width="350" x="1530" y="286" as="geometry" />
+        </mxCell>
+        <mxCell id="F08-14" edge="1" parent="1" source="F08-9" style="edgeStyle=orthogonalEdgeStyle;curved=1;endArrow=none;html=1;strokeColor=#999999;strokeWidth=2;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="F08-13">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="F08-15" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;fillColor=#FF8C00;strokeColor=#555555;fontColor=#333333;fontStyle=1;fontSize=14;shadow=1;" value="Qual o intervalo de reenvio do alerta crítico?" vertex="1">
+          <mxGeometry height="58" width="290" x="1170" y="372" as="geometry" />
+        </mxCell>
+        <mxCell id="F08-16" edge="1" parent="1" source="F08-4" style="edgeStyle=orthogonalEdgeStyle;curved=1;endArrow=none;html=1;strokeColor=#999999;strokeWidth=2;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="F08-15">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="F08-17" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;fillColor=#00BFFF;strokeColor=#555555;fontColor=#333333;fontStyle=1;fontSize=14;shadow=1;" value="Entregar alertas críticos em até 10 s" vertex="1">
+          <mxGeometry height="58" width="290" x="460" y="159" as="geometry" />
+        </mxCell>
+        <mxCell id="F08-18" edge="1" parent="1" source="F08-4" style="edgeStyle=orthogonalEdgeStyle;curved=1;endArrow=none;html=1;strokeColor=#999999;strokeWidth=2;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" target="F08-17">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="F08-19" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;fillColor=#00FF00;strokeColor=#555555;fontColor=#333333;fontStyle=1;fontSize=14;shadow=1;" value="Bateria no LRS, alerta recebido em 8 s =&gt; atende o requisito" vertex="1">
+          <mxGeometry height="58" width="350" x="40" y="125" as="geometry" />
+        </mxCell>
+        <mxCell id="F08-20" edge="1" parent="1" source="F08-17" style="edgeStyle=orthogonalEdgeStyle;curved=1;endArrow=none;html=1;strokeColor=#999999;strokeWidth=2;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" target="F08-19">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="F08-21" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;fillColor=#00FF00;strokeColor=#555555;fontColor=#333333;fontStyle=1;fontSize=14;shadow=1;" value="Alerta recebido em 12 s =&gt; não atende o requisito" vertex="1">
+          <mxGeometry height="58" width="350" x="40" y="193" as="geometry" />
+        </mxCell>
+        <mxCell id="F08-22" edge="1" parent="1" source="F08-17" style="edgeStyle=orthogonalEdgeStyle;curved=1;endArrow=none;html=1;strokeColor=#999999;strokeWidth=2;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" target="F08-21">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="F08-23" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;fillColor=#00BFFF;strokeColor=#555555;fontColor=#333333;fontStyle=1;fontSize=14;shadow=1;" value="Classificar os alertas por prioridade" vertex="1">
+          <mxGeometry height="58" width="290" x="460" y="295" as="geometry" />
+        </mxCell>
+        <mxCell id="F08-24" edge="1" parent="1" source="F08-4" style="edgeStyle=orthogonalEdgeStyle;curved=1;endArrow=none;html=1;strokeColor=#999999;strokeWidth=2;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" target="F08-23">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="F08-25" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;fillColor=#00FF00;strokeColor=#555555;fontColor=#333333;fontStyle=1;fontSize=14;shadow=1;" value="Bateria insuficiente =&gt; crítico" vertex="1">
+          <mxGeometry height="40" width="350" x="40" y="279" as="geometry" />
+        </mxCell>
+        <mxCell id="F08-26" edge="1" parent="1" source="F08-23" style="edgeStyle=orthogonalEdgeStyle;curved=1;endArrow=none;html=1;strokeColor=#999999;strokeWidth=2;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" target="F08-25">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="F08-27" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;fillColor=#00FF00;strokeColor=#555555;fontColor=#333333;fontStyle=1;fontSize=14;shadow=1;" value="A1 coletado =&gt; informativo" vertex="1">
+          <mxGeometry height="40" width="350" x="40" y="329" as="geometry" />
+        </mxCell>
+        <mxCell id="F08-28" edge="1" parent="1" source="F08-23" style="edgeStyle=orthogonalEdgeStyle;curved=1;endArrow=none;html=1;strokeColor=#999999;strokeWidth=2;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" target="F08-27">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="F08-31" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFF00;strokeColor=#555555;fontSize=12;fontColor=#333333;" value="Funcionalidade" vertex="1">
+          <mxGeometry height="26" width="137" x="40" y="505" as="geometry" />
+        </mxCell>
+        <mxCell id="F08-32" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#00BFFF;strokeColor=#555555;fontSize=12;fontColor=#333333;" value="Regra (requisito)" vertex="1">
+          <mxGeometry height="26" width="151" x="197" y="505" as="geometry" />
+        </mxCell>
+        <mxCell id="F08-33" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#00FF00;strokeColor=#555555;fontSize=12;fontColor=#333333;" value="Exemplo (cenário)" vertex="1">
+          <mxGeometry height="26" width="159" x="368" y="505" as="geometry" />
+        </mxCell>
+        <mxCell id="F08-34" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FF8C00;strokeColor=#555555;fontSize=12;fontColor=#333333;" value="Pergunta / suposição em aberto" vertex="1">
+          <mxGeometry height="26" width="256" x="547" y="505" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram name="F09 Aplicar as decisões do Controlador" id="GqhZ-ahJMWCgR5VpIiYX">
+    <mxGraphModel grid="0" page="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" pageScale="1" pageWidth="1920" pageHeight="518" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="F09-2" parent="1" style="text;html=1;align=left;verticalAlign=middle;fontSize=30;fontColor=#3333CC;" value="F09: Aplicar as decisões do Controlador" vertex="1">
+          <mxGeometry height="44" width="1500" x="40" y="20" as="geometry" />
+        </mxCell>
+        <mxCell id="F09-3" parent="1" style="text;html=1;align=left;verticalAlign=middle;fontSize=15;fontColor=#555555;" value="Contribui para: Maintain [Controlador apto a intervir] · Achieve [Decisões do Controlador aplicadas pelo RMMC] (G4.2)" vertex="1">
+          <mxGeometry height="29" width="1800" x="40" y="66" as="geometry" />
+        </mxCell>
+        <mxCell id="F09-4" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;fillColor=#FFFF00;strokeColor=#555555;fontColor=#333333;fontStyle=1;fontSize=14;shadow=1;dashed=1;strokeWidth=3;strokeColor=#777777;" value="Aplicar as decisões do Controlador" vertex="1">
+          <mxGeometry height="70" width="250" x="835" y="239" as="geometry" />
+        </mxCell>
+        <mxCell id="F09-5" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;fillColor=#00BFFF;strokeColor=#555555;fontColor=#333333;fontStyle=1;fontSize=14;shadow=1;" value="Aceitar comandos padronizados: recarregar, ajustar lista, abortar, retomar" vertex="1">
+          <mxGeometry height="76" width="290" x="1170" y="150" as="geometry" />
+        </mxCell>
+        <mxCell id="F09-6" edge="1" parent="1" source="F09-4" style="edgeStyle=orthogonalEdgeStyle;curved=1;endArrow=none;html=1;strokeColor=#999999;strokeWidth=2;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="F09-5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="F09-7" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;fillColor=#00FF00;strokeColor=#555555;fontColor=#333333;fontStyle=1;fontSize=14;shadow=1;" value="Comando &#39;abortar&#39; =&gt; RMMC executa a interrupção" vertex="1">
+          <mxGeometry height="58" width="350" x="1530" y="125" as="geometry" />
+        </mxCell>
+        <mxCell id="F09-8" edge="1" parent="1" source="F09-5" style="edgeStyle=orthogonalEdgeStyle;curved=1;endArrow=none;html=1;strokeColor=#999999;strokeWidth=2;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="F09-7">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="F09-9" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;fillColor=#00FF00;strokeColor=#555555;fontColor=#333333;fontStyle=1;fontSize=14;shadow=1;" value="Texto livre &#39;volta logo&#39; =&gt; comando não é interpretado" vertex="1">
+          <mxGeometry height="58" width="350" x="1530" y="193" as="geometry" />
+        </mxCell>
+        <mxCell id="F09-10" edge="1" parent="1" source="F09-5" style="edgeStyle=orthogonalEdgeStyle;curved=1;endArrow=none;html=1;strokeColor=#999999;strokeWidth=2;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="F09-9">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="F09-11" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;fillColor=#FF8C00;strokeColor=#555555;fontColor=#333333;fontStyle=1;fontSize=14;shadow=1;" value="O comando &#39;tentar de novo&#39; na coleta segue as mesmas regras?" vertex="1">
+          <mxGeometry height="58" width="290" x="1170" y="279" as="geometry" />
+        </mxCell>
+        <mxCell id="F09-12" edge="1" parent="1" source="F09-4" style="edgeStyle=orthogonalEdgeStyle;curved=1;endArrow=none;html=1;strokeColor=#999999;strokeWidth=2;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="F09-11">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="F09-15" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;fillColor=#00BFFF;strokeColor=#555555;fontColor=#333333;fontStyle=1;fontSize=14;shadow=1;" value="Confirmar a execução de cada comando" vertex="1">
+          <mxGeometry height="58" width="290" x="460" y="168" as="geometry" />
+        </mxCell>
+        <mxCell id="F09-16" edge="1" parent="1" source="F09-4" style="edgeStyle=orthogonalEdgeStyle;curved=1;endArrow=none;html=1;strokeColor=#999999;strokeWidth=2;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" target="F09-15">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="F09-17" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;fillColor=#00FF00;strokeColor=#555555;fontColor=#333333;fontStyle=1;fontSize=14;shadow=1;" value="Comando &#39;ajustar lista&#39; executado =&gt; confirmação enviada ao Controlador" vertex="1">
+          <mxGeometry height="58" width="350" x="40" y="168" as="geometry" />
+        </mxCell>
+        <mxCell id="F09-18" edge="1" parent="1" source="F09-15" style="edgeStyle=orthogonalEdgeStyle;curved=1;endArrow=none;html=1;strokeColor=#999999;strokeWidth=2;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" target="F09-17">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="F09-19" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;fillColor=#00BFFF;strokeColor=#555555;fontColor=#333333;fontStyle=1;fontSize=14;shadow=1;" value="Rejeitar comando inseguro com justificativa" vertex="1">
+          <mxGeometry height="58" width="290" x="460" y="288" as="geometry" />
+        </mxCell>
+        <mxCell id="F09-20" edge="1" parent="1" source="F09-4" style="edgeStyle=orthogonalEdgeStyle;curved=1;endArrow=none;html=1;strokeColor=#999999;strokeWidth=2;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" target="F09-19">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="F09-21" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;fillColor=#00FF00;strokeColor=#555555;fontColor=#333333;fontStyle=1;fontSize=14;shadow=1;" value="&#39;Retomar&#39; com carga 5% =&gt; rejeitado: carga insuficiente" vertex="1">
+          <mxGeometry height="58" width="350" x="40" y="254" as="geometry" />
+        </mxCell>
+        <mxCell id="F09-22" edge="1" parent="1" source="F09-19" style="edgeStyle=orthogonalEdgeStyle;curved=1;endArrow=none;html=1;strokeColor=#999999;strokeWidth=2;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" target="F09-21">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="F09-23" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;fillColor=#00FF00;strokeColor=#555555;fontColor=#333333;fontStyle=1;fontSize=14;shadow=1;" value="&#39;Avançar&#39; com bateria abaixo do LRS =&gt; rejeitado: abaixo do LRS" vertex="1">
+          <mxGeometry height="58" width="350" x="40" y="322" as="geometry" />
+        </mxCell>
+        <mxCell id="F09-24" edge="1" parent="1" source="F09-19" style="edgeStyle=orthogonalEdgeStyle;curved=1;endArrow=none;html=1;strokeColor=#999999;strokeWidth=2;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" target="F09-23">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="F09-25" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFF00;strokeColor=#555555;fontSize=12;fontColor=#333333;" value="Funcionalidade" vertex="1">
+          <mxGeometry height="26" width="137" x="40" y="473" as="geometry" />
+        </mxCell>
+        <mxCell id="F09-26" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#00BFFF;strokeColor=#555555;fontSize=12;fontColor=#333333;" value="Regra (requisito)" vertex="1">
+          <mxGeometry height="26" width="151" x="197" y="473" as="geometry" />
+        </mxCell>
+        <mxCell id="F09-27" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#00FF00;strokeColor=#555555;fontSize=12;fontColor=#333333;" value="Exemplo (cenário)" vertex="1">
+          <mxGeometry height="26" width="159" x="368" y="473" as="geometry" />
+        </mxCell>
+        <mxCell id="F09-28" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FF8C00;strokeColor=#555555;fontSize=12;fontColor=#333333;" value="Pergunta / suposição em aberto" vertex="1">
+          <mxGeometry height="26" width="256" x="547" y="473" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram name="F10 Executar a missão dentro da autonomia" id="jAZHIvTD9TTRtTGzCxaK">
+    <mxGraphModel grid="0" page="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" pageScale="1" pageWidth="1920" pageHeight="518" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="F10-2" parent="1" style="text;html=1;align=left;verticalAlign=middle;fontSize=30;fontColor=#3333CC;" value="F10: Executar a missão dentro da autonomia" vertex="1">
+          <mxGeometry height="44" width="1500" x="40" y="20" as="geometry" />
+        </mxCell>
+        <mxCell id="F10-3" parent="1" style="text;html=1;align=left;verticalAlign=middle;fontSize=15;fontColor=#555555;" value="Contribui para: Achieve [Missão executada dentro da autonomia da bateria] (G5.1) · Maximize [Cobertura dos alvos opcionais]" vertex="1">
+          <mxGeometry height="29" width="1800" x="40" y="66" as="geometry" />
+        </mxCell>
+        <mxCell id="F10-4" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;fillColor=#FFFF00;strokeColor=#555555;fontColor=#333333;fontStyle=1;fontSize=14;shadow=1;dashed=1;strokeWidth=3;strokeColor=#777777;" value="Executar a missão dentro da autonomia" vertex="1">
+          <mxGeometry height="70" width="250" x="835" y="239" as="geometry" />
+        </mxCell>
+        <mxCell id="F10-5" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;fillColor=#00BFFF;strokeColor=#555555;fontColor=#333333;fontStyle=1;fontSize=14;shadow=1;" value="Visitar alvos opcionais somente após os obrigatórios" vertex="1">
+          <mxGeometry height="58" width="290" x="1170" y="125" as="geometry" />
+        </mxCell>
+        <mxCell id="F10-6" edge="1" parent="1" source="F10-4" style="edgeStyle=orthogonalEdgeStyle;curved=1;endArrow=none;html=1;strokeColor=#999999;strokeWidth=2;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="F10-5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="F10-7" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;fillColor=#00FF00;strokeColor=#555555;fontColor=#333333;fontStyle=1;fontSize=14;shadow=1;" value="A1 obrigatório pendente e A2 opcional =&gt; visita A1 antes de A2" vertex="1">
+          <mxGeometry height="58" width="350" x="1530" y="125" as="geometry" />
+        </mxCell>
+        <mxCell id="F10-8" edge="1" parent="1" source="F10-5" style="edgeStyle=orthogonalEdgeStyle;curved=1;endArrow=none;html=1;strokeColor=#999999;strokeWidth=2;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="F10-7">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="F10-9" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;fillColor=#00BFFF;strokeColor=#555555;fontColor=#333333;fontStyle=1;fontSize=14;shadow=1;" value="Concluir a missão quando todo obrigatório tem resultado explícito" vertex="1">
+          <mxGeometry height="76" width="290" x="1170" y="236" as="geometry" />
+        </mxCell>
+        <mxCell id="F10-10" edge="1" parent="1" source="F10-4" style="edgeStyle=orthogonalEdgeStyle;curved=1;endArrow=none;html=1;strokeColor=#999999;strokeWidth=2;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="F10-9">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="F10-11" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;fillColor=#00FF00;strokeColor=#555555;fontColor=#333333;fontStyle=1;fontSize=14;shadow=1;" value="A1 coletado, A3 inacessível =&gt; missão concluída" vertex="1">
+          <mxGeometry height="58" width="350" x="1530" y="211" as="geometry" />
+        </mxCell>
+        <mxCell id="F10-12" edge="1" parent="1" source="F10-9" style="edgeStyle=orthogonalEdgeStyle;curved=1;endArrow=none;html=1;strokeColor=#999999;strokeWidth=2;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="F10-11">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="F10-13" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;fillColor=#00FF00;strokeColor=#555555;fontColor=#333333;fontStyle=1;fontSize=14;shadow=1;" value="A2 obrigatório sem resultado =&gt; missão não concluída" vertex="1">
+          <mxGeometry height="58" width="350" x="1530" y="279" as="geometry" />
+        </mxCell>
+        <mxCell id="F10-14" edge="1" parent="1" source="F10-9" style="edgeStyle=orthogonalEdgeStyle;curved=1;endArrow=none;html=1;strokeColor=#999999;strokeWidth=2;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="F10-13">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="F10-15" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;fillColor=#FF8C00;strokeColor=#555555;fontColor=#333333;fontStyle=1;fontSize=14;shadow=1;" value="Como medir o tempo disponível da missão?" vertex="1">
+          <mxGeometry height="58" width="290" x="1170" y="365" as="geometry" />
+        </mxCell>
+        <mxCell id="F10-16" edge="1" parent="1" source="F10-4" style="edgeStyle=orthogonalEdgeStyle;curved=1;endArrow=none;html=1;strokeColor=#999999;strokeWidth=2;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="F10-15">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="F10-17" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;fillColor=#00BFFF;strokeColor=#555555;fontColor=#333333;fontStyle=1;fontSize=14;shadow=1;" value="Visitar opcional só com margem de energia e de tempo" vertex="1">
+          <mxGeometry height="58" width="290" x="460" y="193" as="geometry" />
+        </mxCell>
+        <mxCell id="F10-18" edge="1" parent="1" source="F10-4" style="edgeStyle=orthogonalEdgeStyle;curved=1;endArrow=none;html=1;strokeColor=#999999;strokeWidth=2;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" target="F10-17">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="F10-19" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;fillColor=#00FF00;strokeColor=#555555;fontColor=#333333;fontStyle=1;fontSize=14;shadow=1;" value="Sobram 25%; A2 custa 10% e o retorno 12% =&gt; visita A2" vertex="1">
+          <mxGeometry height="58" width="350" x="40" y="159" as="geometry" />
+        </mxCell>
+        <mxCell id="F10-20" edge="1" parent="1" source="F10-17" style="edgeStyle=orthogonalEdgeStyle;curved=1;endArrow=none;html=1;strokeColor=#999999;strokeWidth=2;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" target="F10-19">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="F10-21" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;fillColor=#00FF00;strokeColor=#555555;fontColor=#333333;fontStyle=1;fontSize=14;shadow=1;" value="Sobram 15%; A2 e retorno custam 22% =&gt; dispensa A2 e retorna" vertex="1">
+          <mxGeometry height="58" width="350" x="40" y="227" as="geometry" />
+        </mxCell>
+        <mxCell id="F10-22" edge="1" parent="1" source="F10-17" style="edgeStyle=orthogonalEdgeStyle;curved=1;endArrow=none;html=1;strokeColor=#999999;strokeWidth=2;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" target="F10-21">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="F10-23" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;fillColor=#FF8C00;strokeColor=#555555;fontColor=#333333;fontStyle=1;fontSize=14;shadow=1;" value="Pode reordenar os alvos para economizar energia ou segue a ordem do Planejador?" vertex="1">
+          <mxGeometry height="76" width="290" x="460" y="313" as="geometry" />
+        </mxCell>
+        <mxCell id="F10-24" edge="1" parent="1" source="F10-4" style="edgeStyle=orthogonalEdgeStyle;curved=1;endArrow=none;html=1;strokeColor=#999999;strokeWidth=2;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" target="F10-23">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="F10-25" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFF00;strokeColor=#555555;fontSize=12;fontColor=#333333;" value="Funcionalidade" vertex="1">
+          <mxGeometry height="26" width="137" x="40" y="473" as="geometry" />
+        </mxCell>
+        <mxCell id="F10-26" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#00BFFF;strokeColor=#555555;fontSize=12;fontColor=#333333;" value="Regra (requisito)" vertex="1">
+          <mxGeometry height="26" width="151" x="197" y="473" as="geometry" />
+        </mxCell>
+        <mxCell id="F10-27" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#00FF00;strokeColor=#555555;fontSize=12;fontColor=#333333;" value="Exemplo (cenário)" vertex="1">
+          <mxGeometry height="26" width="159" x="368" y="473" as="geometry" />
+        </mxCell>
+        <mxCell id="F10-28" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FF8C00;strokeColor=#555555;fontSize=12;fontColor=#333333;" value="Pergunta / suposição em aberto" vertex="1">
+          <mxGeometry height="26" width="256" x="547" y="473" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram name="F11 Retornar ao atingir o LRS e retomar a missão" id="sSo-Y7AscRvc5UWvudch">
+    <mxGraphModel grid="0" page="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" pageScale="1" pageWidth="1920" pageHeight="572" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="F11-2" parent="1" style="text;html=1;align=left;verticalAlign=middle;fontSize=30;fontColor=#3333CC;" value="F11: Retornar ao atingir o LRS e retomar a missão" vertex="1">
+          <mxGeometry height="44" width="1500" x="40" y="20" as="geometry" />
+        </mxCell>
+        <mxCell id="F11-3" parent="1" style="text;html=1;align=left;verticalAlign=middle;fontSize=15;fontColor=#555555;" value="Contribui para: Avoid [RMMC sem energia para retornar à base] · Achieve [Retorno seguro ao atingir o LRS e retomada após a recarga] (G5.2)" vertex="1">
+          <mxGeometry height="29" width="1800" x="40" y="66" as="geometry" />
+        </mxCell>
+        <mxCell id="F11-4" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;fillColor=#FFFF00;strokeColor=#555555;fontColor=#333333;fontStyle=1;fontSize=14;shadow=1;dashed=1;strokeWidth=3;strokeColor=#777777;" value="Retornar ao atingir o LRS e retomar a missão" vertex="1">
+          <mxGeometry height="70" width="250" x="835" y="266" as="geometry" />
+        </mxCell>
+        <mxCell id="F11-5" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;fillColor=#00BFFF;strokeColor=#555555;fontColor=#333333;fontStyle=1;fontSize=14;shadow=1;" value="Monitorar a bateria continuamente, com gatilho no LRS" vertex="1">
+          <mxGeometry height="76" width="290" x="1170" y="186" as="geometry" />
+        </mxCell>
+        <mxCell id="F11-6" edge="1" parent="1" source="F11-4" style="edgeStyle=orthogonalEdgeStyle;curved=1;endArrow=none;html=1;strokeColor=#999999;strokeWidth=2;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="F11-5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="F11-7" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;fillColor=#00FF00;strokeColor=#555555;fontColor=#333333;fontStyle=1;fontSize=14;shadow=1;" value="Bateria 14%, LRS 15% =&gt; missão é interrompida" vertex="1">
+          <mxGeometry height="58" width="350" x="1530" y="161" as="geometry" />
+        </mxCell>
+        <mxCell id="F11-8" edge="1" parent="1" source="F11-5" style="edgeStyle=orthogonalEdgeStyle;curved=1;endArrow=none;html=1;strokeColor=#999999;strokeWidth=2;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="F11-7">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="F11-9" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;fillColor=#00FF00;strokeColor=#555555;fontColor=#333333;fontStyle=1;fontSize=14;shadow=1;" value="Bateria 40%, LRS 15% =&gt; missão continua" vertex="1">
+          <mxGeometry height="58" width="350" x="1530" y="229" as="geometry" />
+        </mxCell>
+        <mxCell id="F11-10" edge="1" parent="1" source="F11-5" style="edgeStyle=orthogonalEdgeStyle;curved=1;endArrow=none;html=1;strokeColor=#999999;strokeWidth=2;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="F11-9">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="F11-11" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;fillColor=#00BFFF;strokeColor=#555555;fontColor=#333333;fontStyle=1;fontSize=14;shadow=1;" value="Retomar a partir do estado salvo, sem repetir alvos" vertex="1">
+          <mxGeometry height="58" width="290" x="1170" y="349" as="geometry" />
+        </mxCell>
+        <mxCell id="F11-12" edge="1" parent="1" source="F11-4" style="edgeStyle=orthogonalEdgeStyle;curved=1;endArrow=none;html=1;strokeColor=#999999;strokeWidth=2;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="F11-11">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="F11-13" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;fillColor=#00FF00;strokeColor=#555555;fontColor=#333333;fontStyle=1;fontSize=14;shadow=1;" value="Recarga completa =&gt; retoma em A3; A1 e A2 não são revisitados" vertex="1">
+          <mxGeometry height="58" width="350" x="1530" y="315" as="geometry" />
+        </mxCell>
+        <mxCell id="F11-14" edge="1" parent="1" source="F11-11" style="edgeStyle=orthogonalEdgeStyle;curved=1;endArrow=none;html=1;strokeColor=#999999;strokeWidth=2;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="F11-13">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="F11-15" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;fillColor=#00FF00;strokeColor=#555555;fontColor=#333333;fontStyle=1;fontSize=14;shadow=1;" value="Controlador remove A5 antes da retomada =&gt; retoma sem A5" vertex="1">
+          <mxGeometry height="58" width="350" x="1530" y="383" as="geometry" />
+        </mxCell>
+        <mxCell id="F11-16" edge="1" parent="1" source="F11-11" style="edgeStyle=orthogonalEdgeStyle;curved=1;endArrow=none;html=1;strokeColor=#999999;strokeWidth=2;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="F11-15">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="F11-17" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;fillColor=#00BFFF;strokeColor=#555555;fontColor=#333333;fontStyle=1;fontSize=14;shadow=1;" value="Salvar o estado e alertar o Controlador ao interromper" vertex="1">
+          <mxGeometry height="58" width="290" x="460" y="134" as="geometry" />
+        </mxCell>
+        <mxCell id="F11-18" edge="1" parent="1" source="F11-4" style="edgeStyle=orthogonalEdgeStyle;curved=1;endArrow=none;html=1;strokeColor=#999999;strokeWidth=2;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" target="F11-17">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="F11-19" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;fillColor=#00FF00;strokeColor=#555555;fontColor=#333333;fontStyle=1;fontSize=14;shadow=1;" value="LRS atingido a caminho de A3 =&gt; salva A3 pendente e A1, A2 coletados; alerta enviado" vertex="1">
+          <mxGeometry height="76" width="350" x="40" y="125" as="geometry" />
+        </mxCell>
+        <mxCell id="F11-20" edge="1" parent="1" source="F11-17" style="edgeStyle=orthogonalEdgeStyle;curved=1;endArrow=none;html=1;strokeColor=#999999;strokeWidth=2;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" target="F11-19">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="F11-21" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;fillColor=#00BFFF;strokeColor=#555555;fontColor=#333333;fontStyle=1;fontSize=14;shadow=1;" value="Retornar à base e recarregar de forma autônoma" vertex="1">
+          <mxGeometry height="58" width="290" x="460" y="229" as="geometry" />
+        </mxCell>
+        <mxCell id="F11-22" edge="1" parent="1" source="F11-4" style="edgeStyle=orthogonalEdgeStyle;curved=1;endArrow=none;html=1;strokeColor=#999999;strokeWidth=2;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" target="F11-21">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="F11-23" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;fillColor=#00FF00;strokeColor=#555555;fontColor=#333333;fontStyle=1;fontSize=14;shadow=1;" value="Estado salvo =&gt; RMMC retorna, acopla e recarrega até 100%" vertex="1">
+          <mxGeometry height="58" width="350" x="40" y="229" as="geometry" />
+        </mxCell>
+        <mxCell id="F11-24" edge="1" parent="1" source="F11-21" style="edgeStyle=orthogonalEdgeStyle;curved=1;endArrow=none;html=1;strokeColor=#999999;strokeWidth=2;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" target="F11-23">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="F11-25" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;fillColor=#FF8C00;strokeColor=#555555;fontColor=#333333;fontStyle=1;fontSize=14;shadow=1;" value="Retomar se o alvo pendente deixou de ser relevante após a recarga?" vertex="1">
+          <mxGeometry height="76" width="290" x="460" y="315" as="geometry" />
+        </mxCell>
+        <mxCell id="F11-26" edge="1" parent="1" source="F11-4" style="edgeStyle=orthogonalEdgeStyle;curved=1;endArrow=none;html=1;strokeColor=#999999;strokeWidth=2;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" target="F11-25">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="F11-27" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;fillColor=#FF8C00;strokeColor=#555555;fontColor=#333333;fontStyle=1;fontSize=14;shadow=1;" value="E se o LRS não bastar para chegar à base?" vertex="1">
+          <mxGeometry height="58" width="290" x="460" y="419" as="geometry" />
+        </mxCell>
+        <mxCell id="F11-28" edge="1" parent="1" source="F11-4" style="edgeStyle=orthogonalEdgeStyle;curved=1;endArrow=none;html=1;strokeColor=#999999;strokeWidth=2;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" target="F11-27">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="F11-29" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFF00;strokeColor=#555555;fontSize=12;fontColor=#333333;" value="Funcionalidade" vertex="1">
+          <mxGeometry height="26" width="137" x="40" y="527" as="geometry" />
+        </mxCell>
+        <mxCell id="F11-30" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#00BFFF;strokeColor=#555555;fontSize=12;fontColor=#333333;" value="Regra (requisito)" vertex="1">
+          <mxGeometry height="26" width="151" x="197" y="527" as="geometry" />
+        </mxCell>
+        <mxCell id="F11-31" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#00FF00;strokeColor=#555555;fontSize=12;fontColor=#333333;" value="Exemplo (cenário)" vertex="1">
+          <mxGeometry height="26" width="159" x="368" y="527" as="geometry" />
+        </mxCell>
+        <mxCell id="F11-32" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FF8C00;strokeColor=#555555;fontSize=12;fontColor=#333333;" value="Pergunta / suposição em aberto" vertex="1">
+          <mxGeometry height="26" width="256" x="547" y="527" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

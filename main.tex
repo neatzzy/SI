@@ -11,9 +11,12 @@
 \usepackage{textcomp}
 \usepackage{gensymb}
 \usepackage{tikz}
-\usetikzlibrary{arrows.meta,calc,shapes.symbols,shapes.geometric,backgrounds}
+\usetikzlibrary{arrows.meta,calc,shapes.symbols,shapes.geometric,backgrounds,positioning}
 \usepackage{adjustbox}
 \usepackage{pdflscape}
+\usepackage{longtable}
+\usepackage{float}
+\usepackage{needspace}
 
 % Estilos e macros dos Domain Scenarios
 \tikzset{
@@ -79,6 +82,15 @@
     imdel/.style={draw=violet!60, fill=violet!10, align=center, font=\scriptsize, inner sep=3pt},
     imdis/.style={draw=black!50, dashed, fill=black!5, text=black!60, align=center, font=\scriptsize, inner sep=3pt},
     imed/.style={rounded corners=3pt, black!60}
+}
+
+% Estilos dos Example Maps
+\tikzset{
+    emstory/.style={draw=black!70, fill=yellow!60, rounded corners=3pt, align=center, font=\small\bfseries, inner sep=4pt, text width=6cm},
+    emrule/.style={draw=black!60, fill=cyan!30, rounded corners=3pt, align=center, font=\scriptsize, inner sep=3pt, text width=2.6cm},
+    emex/.style={draw=black!60, fill=green!30, rounded corners=3pt, align=center, font=\scriptsize, inner sep=3pt, text width=2.6cm},
+    emq/.style={draw=black!60, fill=orange!40, rounded corners=3pt, align=center, font=\scriptsize, inner sep=3pt, text width=2.6cm},
+    emed/.style={rounded corners=2pt, black!60}
 }
 
 \begin{document}
@@ -1084,6 +1096,8 @@ Cada \textit{Impact Map} (Figuras~\ref{fig:im-G1-1} a \ref{fig:im-G5-2}) relacio
   \label{fig:im-G5-2}
 \end{figure}
 
+\newpage
+
 \subsection{Goal Model (v2)}
 
 A segunda versão do \textit{Goal Model} incorpora ao modelo v1 as \textit{domain assumptions} e as \textit{expectations} que surgiram nos \textit{Impact Maps}. As suposições de domínio, representadas em trapézio, são condições do ambiente das quais o cumprimento de cada objetivo folha depende, como a estabilidade dos obstáculos entre a leitura do drone e a passagem do robô ou a disponibilidade de um canal de comunicação na base. As \textit{expectations}, representadas como objetivos, são responsabilidades atribuídas a agentes do ambiente, no caso a disponibilidade do Controlador antes do início e durante a missão. Cada objetivo folha G1.1, G1.2, G2.1.1, G2.1.2, G2.2, G3.1, G3.2, G4.1, G4.2, G5.1 e G5.2 recebe, por meio de um refinamento, as suposições levantadas no seu \textit{Impact Map}. A Figura~\ref{fig:gm2} apresenta o \textit{Goal Model} (v2).
@@ -1092,129 +1106,129 @@ A segunda versão do \textit{Goal Model} incorpora ao modelo v1 as \textit{domai
   \begin{figure}[htbp]
     \centering
     \begin{adjustbox}{max width=\linewidth}
-    \begin{tikzpicture}
-      \node[goal,text width=1.96cm,minimum height=0.00cm] (n1995fa) at (25.82,-0.95) {\textit{Achieve} [Dados confiáveis dos alvos disponíveis para análise agrícola]};
-      \node[sgoal,text width=1.10cm,minimum height=0.00cm] (n22a5fc) at (34.50,-2.23) {\textit{Maximize} [Qualidade dos dados coletados]};
-      \node[sgoal,text width=1.11cm,minimum height=0.00cm] (na860d9) at (34.67,-1.10) {\textit{Maximize} [Cobertura dos alvos opcionais]};
-      \node[goal,text width=1.11cm,minimum height=0.00cm] (nb25d06) at (14.85,-3.00) {\textit{Achieve} [Missão iniciada com energia suficiente]};
-      \node[goal,text width=1.57cm,minimum height=0.00cm] (na51f57) at (13.72,-4.80) {\textit{Achieve} [Suficiência da bateria para a missão avaliada antes do início]};
-      \node[goal,text width=1.11cm,minimum height=0.00cm] (nfaf818) at (15.67,-4.80) {\textit{Achieve} [Início da missão autorizado]};
-      \node[goal,text width=1.46cm,minimum height=0.00cm] (n85e911) at (24.76,-4.76) {\textit{Achieve} [RMMC na Base de Recarga com segurança]};
-      \node[goal,text width=1.25cm,minimum height=0.00cm] (n010557) at (18.86,-3.24) {\textit{Achieve} [Cada alvo obrigatório com resultado explícito de visita]};
-      \node[goal,text width=1.29cm,minimum height=0.00cm] (n2e5d20) at (17.62,-4.83) {\textit{Achieve} [Alvo visitado e coletado]};
-      \node[goal,text width=1.11cm,minimum height=0.00cm] (n00d26e) at (16.56,-6.09) {\textit{Achieve} [Alvo alcançado]};
-      \node[goal,text width=1.35cm,minimum height=0.00cm] (n7d48c8) at (18.28,-6.07) {\textit{Achieve} [Coleta do alvo concluída]};
-      \node[goal,text width=1.64cm,minimum height=0.00cm] (n2a4d3c) at (19.76,-4.84) {\textit{Achieve} [Alvo registrado como inacessível após esgotar os caminhos alternativos]};
-      \node[goal,text width=1.66cm,minimum height=0.00cm] (nbe6f52) at (23.90,-3.18) {\textit{Achieve} [Dados coletados entregues ao Software de Análise]};
-      \node[goal,text width=1.32cm,minimum height=0.00cm] (n568d51) at (22.64,-4.86) {\textit{Achieve} [Dados consolidados enviados ao Software de Análise]};
-      \node[goal,text width=1.75cm,minimum height=0.00cm] (nb082e9) at (28.21,-3.26) {\textit{Maintain} [Controlador apto a intervir]};
-      \node[goal,text width=1.43cm,minimum height=0.00cm] (nba221a) at (27.43,-4.86) {\textit{Achieve} [Alertas e status de alvo comunicados ao Controlador]};
-      \node[goal,text width=1.32cm,minimum height=0.00cm] (ncd5c95) at (29.40,-4.86) {\textit{Achieve} [Decisões do Controlador aplicadas pelo RMMC]};
-      \node[goal,text width=1.60cm,minimum height=0.00cm] (na9e1cc) at (32.34,-3.23) {\textit{Avoid} [RMMC sem energia para retornar à base]};
-      \node[goal,text width=1.41cm,minimum height=0.00cm] (nc7a95a) at (31.87,-4.80) {\textit{Achieve} [Missão concluída sem atingir o LRS]};
-      \node[goal,text width=1.38cm,minimum height=0.00cm] (n345613) at (34.08,-4.86) {\textit{Achieve} [Missão retomada após interrupção por LRS]};
-      \node[dprop,text width=1.80cm,minimum height=0.00cm] (nbd88e2) at (13.72,-9.00) {\textit{Domain assumption} [Consumo por trecho do terreno é previsível]};
-      \node[dprop,text width=1.80cm,minimum height=0.00cm] (n7fc557) at (13.72,-10.90) {\textit{Domain assumption} [Sensor de bateria mede a carga corretamente]};
-      \node[dprop,text width=1.80cm,minimum height=0.00cm] (n367fb3) at (16.12,-9.00) {\textit{Domain assumption} [Tempo de recarga é compatível com a janela da missão]};
-      \node[dprop,text width=1.80cm,minimum height=0.00cm] (nbe2f0c) at (16.12,-10.90) {\textit{Domain assumption} [Estimativa de consumo reflete o consumo real]};
-      \node[goal,text width=1.80cm,minimum height=0.00cm] (n0d0b58) at (16.12,-12.80) {\textit{Expectation} [Controlador está disponível antes do início]};
-      \node[dprop,text width=1.80cm,minimum height=0.00cm] (na13e75) at (18.52,-9.00) {\textit{Domain assumption} [Obstáculos permanecem estáveis entre a leitura do drone e a passagem do robô]};
-      \node[dprop,text width=1.80cm,minimum height=0.00cm] (n1e2e53) at (18.52,-10.90) {\textit{Domain assumption} [Georreferenciamento dos alvos é preciso]};
-      \node[dprop,text width=1.80cm,minimum height=0.00cm] (n9dac56) at (20.92,-9.00) {\textit{Domain assumption} [Sensores estão calibrados]};
-      \node[dprop,text width=1.80cm,minimum height=0.00cm] (n9b384e) at (20.92,-10.90) {\textit{Domain assumption} [Condições do alvo não mudam entre as tentativas]};
-      \node[dprop,text width=1.80cm,minimum height=0.00cm] (nbf8a64) at (23.32,-9.00) {\textit{Domain assumption} [Topologia do drone cobre toda a área entre o RMMC e o alvo]};
-      \node[dprop,text width=1.80cm,minimum height=0.00cm] (n2f7c41) at (25.72,-9.00) {\textit{Domain assumption} [Há canal de comunicação disponível na base]};
-      \node[dprop,text width=1.80cm,minimum height=0.00cm] (n881b4a) at (28.12,-9.00) {\textit{Domain assumption} [Sempre existe um caminho transitável até a base]};
-      \node[dprop,text width=1.80cm,minimum height=0.00cm] (n4e15c7) at (30.52,-9.00) {\textit{Domain assumption} [Há cobertura de comunicação no campo]};
-      \node[goal,text width=1.80cm,minimum height=0.00cm] (n70d1b2) at (30.52,-10.90) {\textit{Expectation} [Controlador está disponível durante a missão]};
-      \node[dprop,text width=1.80cm,minimum height=0.00cm] (n7100b1) at (32.92,-9.00) {\textit{Domain assumption} [Há canal de comunicação entre estação e RMMC]};
-      \node[dprop,text width=1.80cm,minimum height=0.00cm] (nc86114) at (32.92,-10.90) {\textit{Domain assumption} [Controlador tem autoridade sobre a missão]};
-      \node[dprop,text width=1.80cm,minimum height=0.00cm] (nc91390) at (35.32,-9.00) {\textit{Domain assumption} [Estimativa de consumo é confiável]};
-      \node[dprop,text width=1.80cm,minimum height=0.00cm] (nab72a3) at (37.72,-9.00) {\textit{Domain assumption} [O LRS basta para chegar à base de qualquer ponto da área]};
-      \node[dprop,text width=1.80cm,minimum height=0.00cm] (nc66622) at (37.72,-10.90) {\textit{Domain assumption} [Alvos pendentes continuam relevantes após a recarga]};
-      \node[dprop,text width=1.80cm,minimum height=0.00cm] (n236dc5) at (37.72,-12.80) {\textit{Domain assumption} [Tempo de recarga é compatível com a janela da missão]};
-      \node[hub] (h0) at (25.66,-2.21) {};
-      \node[hub] (h1) at (14.75,-3.73) {};
-      \node[hub] (h2) at (18.21,-3.93) {};
-      \node[hub] (h3) at (19.21,-3.97) {};
-      \node[hub] (h4) at (17.49,-5.43) {};
-      \node[hub] (h5) at (28.10,-3.95) {};
-      \node[hub] (h6) at (31.98,-3.99) {};
-      \node[hub] (h7) at (33.11,-3.96) {};
-      \node[hub] (h8) at (23.79,-3.98) {};
-      \node[hub] (h9) at (13.72,-7.80) {};
-      \node[hub] (h10) at (16.12,-7.80) {};
-      \node[hub] (h11) at (18.52,-7.80) {};
-      \node[hub] (h12) at (20.92,-7.80) {};
-      \node[hub] (h13) at (23.32,-7.80) {};
-      \node[hub] (h14) at (25.72,-7.80) {};
-      \node[hub] (h15) at (28.12,-7.80) {};
-      \node[hub] (h16) at (30.52,-7.80) {};
-      \node[hub] (h17) at (32.92,-7.80) {};
-      \node[hub] (h18) at (35.32,-7.80) {};
-      \node[hub] (h19) at (37.72,-7.80) {};
-      \begin{pgfonlayer}{background}
-      \draw[thick] (nb25d06) -- (h0);
-      \draw[thick] (n010557) -- (h0);
-      \draw[thick] (nbe6f52) -- (h0);
-      \draw[thick] (nb082e9) -- (h0);
-      \draw[thick] (na9e1cc) -- (h0);
-      \draw[thick] (n22a5fc) -- (h0);
-      \draw[thick] (na860d9) -- (h0);
-      \draw[->,thick] (h0) -- (n1995fa);
-      \draw[thick] (na51f57) -- (h1);
-      \draw[thick] (nfaf818) -- (h1);
-      \draw[->,thick] (h1) -- (nb25d06);
-      \draw[thick] (n2e5d20) -- (h2);
-      \draw[->,thick] (h2) -- (n010557);
-      \draw[thick] (n2a4d3c) -- (h3);
-      \draw[->,thick] (h3) -- (n010557);
-      \draw[thick] (n00d26e) -- (h4);
-      \draw[thick] (n7d48c8) -- (h4);
-      \draw[->,thick] (h4) -- (n2e5d20);
-      \draw[thick] (nba221a) -- (h5);
-      \draw[thick] (ncd5c95) -- (h5);
-      \draw[->,thick] (h5) -- (nb082e9);
-      \draw[thick] (nc7a95a) -- (h6);
-      \draw[->,thick] (h6) -- (na9e1cc);
-      \draw[thick] (n345613) -- (h7);
-      \draw[->,thick] (h7) -- (na9e1cc);
-      \draw[thick] (n568d51) -- (h8);
-      \draw[thick] (n85e911) -- (h8);
-      \draw[->,thick] (h8) -- (nbe6f52);
-      \draw[thick] (nbd88e2) -- (h9);
-      \draw[thick] (n7fc557) -- (h9);
-      \draw[->,thick] (h9) -- (na51f57);
-      \draw[thick] (n367fb3) -- (h10);
-      \draw[thick] (nbe2f0c) -- (h10);
-      \draw[thick] (n0d0b58) -- (h10);
-      \draw[->,thick] (h10) -- (nfaf818);
-      \draw[thick] (na13e75) -- (h11);
-      \draw[thick] (n1e2e53) -- (h11);
-      \draw[->,thick] (h11) -- (n00d26e);
-      \draw[thick] (n9dac56) -- (h12);
-      \draw[thick] (n9b384e) -- (h12);
-      \draw[->,thick] (h12) -- (n7d48c8);
-      \draw[thick] (nbf8a64) -- (h13);
-      \draw[->,thick] (h13) -- (n2a4d3c);
-      \draw[thick] (n2f7c41) -- (h14);
-      \draw[->,thick] (h14) -- (n568d51);
-      \draw[thick] (n881b4a) -- (h15);
-      \draw[->,thick] (h15) -- (n85e911);
-      \draw[thick] (n4e15c7) -- (h16);
-      \draw[thick] (n70d1b2) -- (h16);
-      \draw[->,thick] (h16) -- (nba221a);
-      \draw[thick] (n7100b1) -- (h17);
-      \draw[thick] (nc86114) -- (h17);
-      \draw[->,thick] (h17) -- (ncd5c95);
-      \draw[thick] (nc91390) -- (h18);
-      \draw[->,thick] (h18) -- (nc7a95a);
-      \draw[thick] (nab72a3) -- (h19);
-      \draw[thick] (nc66622) -- (h19);
-      \draw[thick] (n236dc5) -- (h19);
-      \draw[->,thick] (h19) -- (n345613);
-      \end{pgfonlayer}
-    \end{tikzpicture}
+      \begin{tikzpicture}
+        \node[goal,text width=1.96cm,minimum height=0.00cm] (n1995fa) at (25.82,-0.95) {\textit{Achieve} [Dados confiáveis dos alvos disponíveis para análise agrícola]};
+        \node[sgoal,text width=1.10cm,minimum height=0.00cm] (n22a5fc) at (34.50,-2.23) {\textit{Maximize} [Qualidade dos dados coletados]};
+        \node[sgoal,text width=1.11cm,minimum height=0.00cm] (na860d9) at (34.67,-1.10) {\textit{Maximize} [Cobertura dos alvos opcionais]};
+        \node[goal,text width=1.11cm,minimum height=0.00cm] (nb25d06) at (14.85,-3.00) {\textit{Achieve} [Missão iniciada com energia suficiente]};
+        \node[goal,text width=1.57cm,minimum height=0.00cm] (na51f57) at (13.72,-4.80) {\textit{Achieve} [Suficiência da bateria para a missão avaliada antes do início]};
+        \node[goal,text width=1.11cm,minimum height=0.00cm] (nfaf818) at (15.67,-4.80) {\textit{Achieve} [Início da missão autorizado]};
+        \node[goal,text width=1.46cm,minimum height=0.00cm] (n85e911) at (24.76,-4.76) {\textit{Achieve} [RMMC na Base de Recarga com segurança]};
+        \node[goal,text width=1.25cm,minimum height=0.00cm] (n010557) at (18.86,-3.24) {\textit{Achieve} [Cada alvo obrigatório com resultado explícito de visita]};
+        \node[goal,text width=1.29cm,minimum height=0.00cm] (n2e5d20) at (17.62,-4.83) {\textit{Achieve} [Alvo visitado e coletado]};
+        \node[goal,text width=1.11cm,minimum height=0.00cm] (n00d26e) at (16.56,-6.09) {\textit{Achieve} [Alvo alcançado]};
+        \node[goal,text width=1.35cm,minimum height=0.00cm] (n7d48c8) at (18.28,-6.07) {\textit{Achieve} [Coleta do alvo concluída]};
+        \node[goal,text width=1.64cm,minimum height=0.00cm] (n2a4d3c) at (19.76,-4.84) {\textit{Achieve} [Alvo registrado como inacessível após esgotar os caminhos alternativos]};
+        \node[goal,text width=1.66cm,minimum height=0.00cm] (nbe6f52) at (23.90,-3.18) {\textit{Achieve} [Dados coletados entregues ao Software de Análise]};
+        \node[goal,text width=1.32cm,minimum height=0.00cm] (n568d51) at (22.64,-4.86) {\textit{Achieve} [Dados consolidados enviados ao Software de Análise]};
+        \node[goal,text width=1.75cm,minimum height=0.00cm] (nb082e9) at (28.21,-3.26) {\textit{Maintain} [Controlador apto a intervir]};
+        \node[goal,text width=1.43cm,minimum height=0.00cm] (nba221a) at (27.43,-4.86) {\textit{Achieve} [Alertas e status de alvo comunicados ao Controlador]};
+        \node[goal,text width=1.32cm,minimum height=0.00cm] (ncd5c95) at (29.40,-4.86) {\textit{Achieve} [Decisões do Controlador aplicadas pelo RMMC]};
+        \node[goal,text width=1.60cm,minimum height=0.00cm] (na9e1cc) at (32.34,-3.23) {\textit{Avoid} [RMMC sem energia para retornar à base]};
+        \node[goal,text width=1.41cm,minimum height=0.00cm] (nc7a95a) at (31.87,-4.80) {\textit{Achieve} [Missão concluída sem atingir o LRS]};
+        \node[goal,text width=1.38cm,minimum height=0.00cm] (n345613) at (34.08,-4.86) {\textit{Achieve} [Missão retomada após interrupção por LRS]};
+        \node[dprop,text width=1.80cm,minimum height=0.00cm] (nbd88e2) at (13.72,-9.00) {\textit{Domain assumption} [Consumo por trecho do terreno é previsível]};
+        \node[dprop,text width=1.80cm,minimum height=0.00cm] (n7fc557) at (13.72,-10.90) {\textit{Domain assumption} [Sensor de bateria mede a carga corretamente]};
+        \node[dprop,text width=1.80cm,minimum height=0.00cm] (n367fb3) at (16.12,-9.00) {\textit{Domain assumption} [Tempo de recarga é compatível com a janela da missão]};
+        \node[dprop,text width=1.80cm,minimum height=0.00cm] (nbe2f0c) at (16.12,-10.90) {\textit{Domain assumption} [Estimativa de consumo reflete o consumo real]};
+        \node[goal,text width=1.80cm,minimum height=0.00cm] (n0d0b58) at (16.12,-12.80) {\textit{Expectation} [Controlador está disponível antes do início]};
+        \node[dprop,text width=1.80cm,minimum height=0.00cm] (na13e75) at (18.52,-9.00) {\textit{Domain assumption} [Obstáculos permanecem estáveis entre a leitura do drone e a passagem do robô]};
+        \node[dprop,text width=1.80cm,minimum height=0.00cm] (n1e2e53) at (18.52,-10.90) {\textit{Domain assumption} [Georreferenciamento dos alvos é preciso]};
+        \node[dprop,text width=1.80cm,minimum height=0.00cm] (n9dac56) at (20.92,-9.00) {\textit{Domain assumption} [Sensores estão calibrados]};
+        \node[dprop,text width=1.80cm,minimum height=0.00cm] (n9b384e) at (20.92,-10.90) {\textit{Domain assumption} [Condições do alvo não mudam entre as tentativas]};
+        \node[dprop,text width=1.80cm,minimum height=0.00cm] (nbf8a64) at (23.32,-9.00) {\textit{Domain assumption} [Topologia do drone cobre toda a área entre o RMMC e o alvo]};
+        \node[dprop,text width=1.80cm,minimum height=0.00cm] (n2f7c41) at (25.72,-9.00) {\textit{Domain assumption} [Há canal de comunicação disponível na base]};
+        \node[dprop,text width=1.80cm,minimum height=0.00cm] (n881b4a) at (28.12,-9.00) {\textit{Domain assumption} [Sempre existe um caminho transitável até a base]};
+        \node[dprop,text width=1.80cm,minimum height=0.00cm] (n4e15c7) at (30.52,-9.00) {\textit{Domain assumption} [Há cobertura de comunicação no campo]};
+        \node[goal,text width=1.80cm,minimum height=0.00cm] (n70d1b2) at (30.52,-10.90) {\textit{Expectation} [Controlador está disponível durante a missão]};
+        \node[dprop,text width=1.80cm,minimum height=0.00cm] (n7100b1) at (32.92,-9.00) {\textit{Domain assumption} [Há canal de comunicação entre estação e RMMC]};
+        \node[dprop,text width=1.80cm,minimum height=0.00cm] (nc86114) at (32.92,-10.90) {\textit{Domain assumption} [Controlador tem autoridade sobre a missão]};
+        \node[dprop,text width=1.80cm,minimum height=0.00cm] (nc91390) at (35.32,-9.00) {\textit{Domain assumption} [Estimativa de consumo é confiável]};
+        \node[dprop,text width=1.80cm,minimum height=0.00cm] (nab72a3) at (37.72,-9.00) {\textit{Domain assumption} [O LRS basta para chegar à base de qualquer ponto da área]};
+        \node[dprop,text width=1.80cm,minimum height=0.00cm] (nc66622) at (37.72,-10.90) {\textit{Domain assumption} [Alvos pendentes continuam relevantes após a recarga]};
+        \node[dprop,text width=1.80cm,minimum height=0.00cm] (n236dc5) at (37.72,-12.80) {\textit{Domain assumption} [Tempo de recarga é compatível com a janela da missão]};
+        \node[hub] (h0) at (25.66,-2.21) {};
+        \node[hub] (h1) at (14.75,-3.73) {};
+        \node[hub] (h2) at (18.21,-3.93) {};
+        \node[hub] (h3) at (19.21,-3.97) {};
+        \node[hub] (h4) at (17.49,-5.43) {};
+        \node[hub] (h5) at (28.10,-3.95) {};
+        \node[hub] (h6) at (31.98,-3.99) {};
+        \node[hub] (h7) at (33.11,-3.96) {};
+        \node[hub] (h8) at (23.79,-3.98) {};
+        \node[hub] (h9) at (13.72,-7.80) {};
+        \node[hub] (h10) at (16.12,-7.80) {};
+        \node[hub] (h11) at (18.52,-7.80) {};
+        \node[hub] (h12) at (20.92,-7.80) {};
+        \node[hub] (h13) at (23.32,-7.80) {};
+        \node[hub] (h14) at (25.72,-7.80) {};
+        \node[hub] (h15) at (28.12,-7.80) {};
+        \node[hub] (h16) at (30.52,-7.80) {};
+        \node[hub] (h17) at (32.92,-7.80) {};
+        \node[hub] (h18) at (35.32,-7.80) {};
+        \node[hub] (h19) at (37.72,-7.80) {};
+        \begin{pgfonlayer}{background}
+          \draw[thick] (nb25d06) -- (h0);
+          \draw[thick] (n010557) -- (h0);
+          \draw[thick] (nbe6f52) -- (h0);
+          \draw[thick] (nb082e9) -- (h0);
+          \draw[thick] (na9e1cc) -- (h0);
+          \draw[thick] (n22a5fc) -- (h0);
+          \draw[thick] (na860d9) -- (h0);
+          \draw[->,thick] (h0) -- (n1995fa);
+          \draw[thick] (na51f57) -- (h1);
+          \draw[thick] (nfaf818) -- (h1);
+          \draw[->,thick] (h1) -- (nb25d06);
+          \draw[thick] (n2e5d20) -- (h2);
+          \draw[->,thick] (h2) -- (n010557);
+          \draw[thick] (n2a4d3c) -- (h3);
+          \draw[->,thick] (h3) -- (n010557);
+          \draw[thick] (n00d26e) -- (h4);
+          \draw[thick] (n7d48c8) -- (h4);
+          \draw[->,thick] (h4) -- (n2e5d20);
+          \draw[thick] (nba221a) -- (h5);
+          \draw[thick] (ncd5c95) -- (h5);
+          \draw[->,thick] (h5) -- (nb082e9);
+          \draw[thick] (nc7a95a) -- (h6);
+          \draw[->,thick] (h6) -- (na9e1cc);
+          \draw[thick] (n345613) -- (h7);
+          \draw[->,thick] (h7) -- (na9e1cc);
+          \draw[thick] (n568d51) -- (h8);
+          \draw[thick] (n85e911) -- (h8);
+          \draw[->,thick] (h8) -- (nbe6f52);
+          \draw[thick] (nbd88e2) -- (h9);
+          \draw[thick] (n7fc557) -- (h9);
+          \draw[->,thick] (h9) -- (na51f57);
+          \draw[thick] (n367fb3) -- (h10);
+          \draw[thick] (nbe2f0c) -- (h10);
+          \draw[thick] (n0d0b58) -- (h10);
+          \draw[->,thick] (h10) -- (nfaf818);
+          \draw[thick] (na13e75) -- (h11);
+          \draw[thick] (n1e2e53) -- (h11);
+          \draw[->,thick] (h11) -- (n00d26e);
+          \draw[thick] (n9dac56) -- (h12);
+          \draw[thick] (n9b384e) -- (h12);
+          \draw[->,thick] (h12) -- (n7d48c8);
+          \draw[thick] (nbf8a64) -- (h13);
+          \draw[->,thick] (h13) -- (n2a4d3c);
+          \draw[thick] (n2f7c41) -- (h14);
+          \draw[->,thick] (h14) -- (n568d51);
+          \draw[thick] (n881b4a) -- (h15);
+          \draw[->,thick] (h15) -- (n85e911);
+          \draw[thick] (n4e15c7) -- (h16);
+          \draw[thick] (n70d1b2) -- (h16);
+          \draw[->,thick] (h16) -- (nba221a);
+          \draw[thick] (n7100b1) -- (h17);
+          \draw[thick] (nc86114) -- (h17);
+          \draw[->,thick] (h17) -- (ncd5c95);
+          \draw[thick] (nc91390) -- (h18);
+          \draw[->,thick] (h18) -- (nc7a95a);
+          \draw[thick] (nab72a3) -- (h19);
+          \draw[thick] (nc66622) -- (h19);
+          \draw[thick] (n236dc5) -- (h19);
+          \draw[->,thick] (h19) -- (n345613);
+        \end{pgfonlayer}
+      \end{tikzpicture}
     \end{adjustbox}
     \caption{\textit{Goal Model} (v2) do RMMC em KAOS.}
     \label{fig:gm2}
@@ -1225,7 +1239,607 @@ A segunda versão do \textit{Goal Model} incorpora ao modelo v1 as \textit{domai
 
 \subsection{Specification by Example: Example Mapping}
 
+Os \textit{Example Maps} detalham cada funcionalidade que contribui para os objetivos do \textit{Goal Model} (v2). Em cada mapa, o cartão amarelo é a funcionalidade, os cartões azuis são as regras (requisitos) que a compõem, os cartões verdes são os exemplos concretos que ilustram cada regra e os cartões laranja são as perguntas ou suposições ainda em aberto. Foram construídos onze mapas, um por funcionalidade (F01 a F11).
+
+\Needspace{9cm}
+\subsubsection{F01: Avaliar a bateria antes da missão}
+
+Contribui para: \textit{Achieve} [Suficiência da bateria para a missão avaliada antes do início] (G1.1).
+
+\begin{figure}[H]
+  \centering
+  \begin{adjustbox}{max width=\textwidth}
+    \begin{tikzpicture}
+      \node[emstory] (s) at (0.00,0) {Avaliar a bateria antes da missão};
+      \node[emrule] (c0_0) at (-7.25,-1.8) {Estimar o consumo da missão pela rota e pelas coletas};
+      \draw[emed] (s.south) -- ++(0,-0.45) -| (c0_0.north);
+      \node[emex,below=0.3cm of c0_0] (c0_1) {Rota de 1,2 km e 3 coletas $\Rightarrow$ consumo estimado de 38\%};
+      \draw[emed] (c0_0) -- (c0_1);
+      \node[emex,below=0.3cm of c0_1] (c0_2) {Mesma rota com +2 coletas térmicas $\Rightarrow$ consumo estimado de 47\%};
+      \draw[emed] (c0_1) -- (c0_2);
+      \node[emrule] (c1_0) at (-4.35,-1.8) {Exibir o custo energético estimado durante o planejamento};
+      \draw[emed] (s.south) -- ++(0,-0.45) -| (c1_0.north);
+      \node[emex,below=0.3cm of c1_0] (c1_1) {Planejador inclui o alvo A4 $\Rightarrow$ custo estimado sobe de 38\% para 45\%};
+      \draw[emed] (c1_0) -- (c1_1);
+      \node[emq] (c2_0) at (-1.45,-1.8) {Qual a margem de segurança sobre o consumo estimado?};
+      \draw[emed] (s.south) -- ++(0,-0.45) -| (c2_0.north);
+      \node[emrule] (c3_0) at (1.45,-1.8) {Comparar a carga atual com a necessária antes da partida};
+      \draw[emed] (s.south) -- ++(0,-0.45) -| (c3_0.north);
+      \node[emex,below=0.3cm of c3_0] (c3_1) {Carga 60\%, necessária 38\% $\Rightarrow$ bateria suficiente};
+      \draw[emed] (c3_0) -- (c3_1);
+      \node[emex,below=0.3cm of c3_1] (c3_2) {Carga 30\%, necessária 38\% $\Rightarrow$ bateria insuficiente};
+      \draw[emed] (c3_1) -- (c3_2);
+      \node[emrule] (c4_0) at (4.35,-1.8) {Exigir lista completa: alvos, ordem e tipos de dado};
+      \draw[emed] (s.south) -- ++(0,-0.45) -| (c4_0.north);
+      \node[emex,below=0.3cm of c4_0] (c4_1) {Alvo A2 sem tipo de dado $\Rightarrow$ missão não é avaliada};
+      \draw[emed] (c4_0) -- (c4_1);
+      \node[emex,below=0.3cm of c4_1] (c4_2) {Lista completa $\Rightarrow$ avaliação de bateria é executada};
+      \draw[emed] (c4_1) -- (c4_2);
+      \node[emq] (c5_0) at (7.25,-1.8) {A carga necessária inclui a energia do retorno à base?};
+      \draw[emed] (s.south) -- ++(0,-0.45) -| (c5_0.north);
+    \end{tikzpicture}
+  \end{adjustbox}
+  \caption{\textit{Example Map} da funcionalidade Avaliar a bateria antes da missão.}
+  \label{fig:em-F01}
+\end{figure}
+
+\Needspace{9cm}
+\subsubsection{F02: Autorizar o início da missão}
+
+Contribui para: \textit{Achieve} [Início da missão autorizado] (G1.2).
+
+\begin{figure}[H]
+  \centering
+  \begin{adjustbox}{max width=\textwidth}
+    \begin{tikzpicture}
+      \node[emstory] (s) at (0.00,0) {Autorizar o início da missão};
+      \node[emrule] (c0_0) at (-7.25,-1.8) {Autorizar o início automaticamente se a carga cobre os alvos obrigatórios};
+      \draw[emed] (s.south) -- ++(0,-0.45) -| (c0_0.north);
+      \node[emex,below=0.3cm of c0_0] (c0_1) {Carga 80\%, necessária 45\% $\Rightarrow$ missão inicia sem aprovação};
+      \draw[emed] (c0_0) -- (c0_1);
+      \node[emrule] (c1_0) at (-4.35,-1.8) {Recarregar antes do início quando o Controlador ordenar};
+      \draw[emed] (s.south) -- ++(0,-0.45) -| (c1_0.north);
+      \node[emex,below=0.3cm of c1_0] (c1_1) {Ordem 'recarregar' $\Rightarrow$ RMMC vai à base, carrega, reavalia e inicia};
+      \draw[emed] (c1_0) -- (c1_1);
+      \node[emex,below=0.3cm of c1_1] (c1_2) {Necessária 110\% da capacidade $\Rightarrow$ recarga não resolve, lista precisa ser ajustada};
+      \draw[emed] (c1_1) -- (c1_2);
+      \node[emq] (c2_0) at (-1.45,-1.8) {O sistema deve sugerir quais alvos remover?};
+      \draw[emed] (s.south) -- ++(0,-0.45) -| (c2_0.north);
+      \node[emrule] (c3_0) at (1.45,-1.8) {Bloquear o início e alertar o Controlador se a carga é insuficiente};
+      \draw[emed] (s.south) -- ++(0,-0.45) -| (c3_0.north);
+      \node[emex,below=0.3cm of c3_0] (c3_1) {Carga 30\%, necessária 45\%, máxima 100\% $\Rightarrow$ alerta com os 3 valores e missão não inicia};
+      \draw[emed] (c3_0) -- (c3_1);
+      \node[emrule] (c4_0) at (4.35,-1.8) {Reavaliar a bateria após o Controlador ajustar a lista};
+      \draw[emed] (s.south) -- ++(0,-0.45) -| (c4_0.north);
+      \node[emex,below=0.3cm of c4_0] (c4_1) {Remove A3 (opcional): necessária cai de 45\% para 40\%, carga 60\% $\Rightarrow$ inicia};
+      \draw[emed] (c4_0) -- (c4_1);
+      \node[emex,below=0.3cm of c4_1] (c4_2) {Após o ajuste necessária 70\%, carga 60\% $\Rightarrow$ continua bloqueada};
+      \draw[emed] (c4_1) -- (c4_2);
+      \node[emq] (c5_0) at (7.25,-1.8) {Por quanto tempo a missão pode aguardar a decisão do Controlador?};
+      \draw[emed] (s.south) -- ++(0,-0.45) -| (c5_0.north);
+    \end{tikzpicture}
+  \end{adjustbox}
+  \caption{\textit{Example Map} da funcionalidade Autorizar o início da missão.}
+  \label{fig:em-F02}
+\end{figure}
+
+\Needspace{9cm}
+\subsubsection{F03: Alcançar o alvo}
+
+Contribui para: \textit{Achieve} [Alvo alcançado] (G2.1.1).
+
+\begin{figure}[H]
+  \centering
+  \begin{adjustbox}{max width=\textwidth}
+    \begin{tikzpicture}
+      \node[emstory] (s) at (0.00,0) {Alcançar o alvo};
+      \node[emrule] (c0_0) at (-7.25,-1.8) {Verificar a acessibilidade do alvo com a topologia do drone antes de ir};
+      \draw[emed] (s.south) -- ++(0,-0.45) -| (c0_0.north);
+      \node[emex,below=0.3cm of c0_0] (c0_1) {Drone informa trecho livre até A1 $\Rightarrow$ RMMC segue para A1};
+      \draw[emed] (c0_0) -- (c0_1);
+      \node[emex,below=0.3cm of c0_1] (c0_2) {Drone informa árvore caída até A1 $\Rightarrow$ caminho planejado é bloqueado};
+      \draw[emed] (c0_1) -- (c0_2);
+      \node[emrule] (c1_0) at (-4.35,-1.8) {Requisitar a topologia ao drone antes de cada deslocamento};
+      \draw[emed] (s.south) -- ++(0,-0.45) -| (c1_0.north);
+      \node[emex,below=0.3cm of c1_0] (c1_1) {Parte de A1 para A2 $\Rightarrow$ requisita topologia do trecho A1–A2};
+      \draw[emed] (c1_0) -- (c1_1);
+      \node[emq] (c2_0) at (-1.45,-1.8) {O que fazer se o drone não responder?};
+      \draw[emed] (s.south) -- ++(0,-0.45) -| (c2_0.north);
+      \node[emrule] (c3_0) at (1.45,-1.8) {Buscar rota ou posição de coleta alternativa diante de obstáculo};
+      \draw[emed] (s.south) -- ++(0,-0.45) -| (c3_0.north);
+      \node[emex,below=0.3cm of c3_0] (c3_1) {Rota norte bloqueada, rota leste livre $\Rightarrow$ alcança A1 pela leste};
+      \draw[emed] (c3_0) -- (c3_1);
+      \node[emex,below=0.3cm of c3_1] (c3_2) {Todas as rotas bloqueadas, posição a 3 m livre $\Rightarrow$ coleta da posição alternativa};
+      \draw[emed] (c3_1) -- (c3_2);
+      \node[emrule] (c4_0) at (4.35,-1.8) {Rejeitar coordenadas inválidas no cadastro de alvos};
+      \draw[emed] (s.south) -- ++(0,-0.45) -| (c4_0.north);
+      \node[emex,below=0.3cm of c4_0] (c4_1) {Latitude 95\degree{} $\Rightarrow$ alvo rejeitado};
+      \draw[emed] (c4_0) -- (c4_1);
+      \node[emex,below=0.3cm of c4_1] (c4_2) {Coordenada fora da área da fazenda $\Rightarrow$ alvo rejeitado};
+      \draw[emed] (c4_1) -- (c4_2);
+      \node[emq] (c5_0) at (7.25,-1.8) {Qual a distância máxima de uma posição alternativa?};
+      \draw[emed] (s.south) -- ++(0,-0.45) -| (c5_0.north);
+    \end{tikzpicture}
+  \end{adjustbox}
+  \caption{\textit{Example Map} da funcionalidade Alcançar o alvo.}
+  \label{fig:em-F03}
+\end{figure}
+
+\Needspace{9cm}
+\subsubsection{F04: Coletar o dado do alvo com qualidade}
+
+Contribui para: \textit{Achieve} [Coleta do alvo concluída] (G2.1.2) · \textit{Maximize} [Qualidade dos dados coletados].
+
+\begin{figure}[H]
+  \centering
+  \begin{adjustbox}{max width=\textwidth}
+    \begin{tikzpicture}
+      \node[emstory] (s) at (0.00,0) {Coletar o dado do alvo com qualidade};
+      \node[emrule] (c0_0) at (-8.70,-1.8) {Avaliar a qualidade de cada leitura por critério configurável};
+      \draw[emed] (s.south) -- ++(0,-0.45) -| (c0_0.north);
+      \node[emex,below=0.3cm of c0_0] (c0_1) {Nitidez 0,9, limiar 0,8 $\Rightarrow$ leitura aprovada};
+      \draw[emed] (c0_0) -- (c0_1);
+      \node[emex,below=0.3cm of c0_1] (c0_2) {Nitidez 0,6, limiar 0,8 $\Rightarrow$ leitura reprovada};
+      \draw[emed] (c0_1) -- (c0_2);
+      \node[emrule] (c1_0) at (-5.80,-1.8) {Registrar 'qualidade insuficiente' com a melhor leitura e seguir};
+      \draw[emed] (s.south) -- ++(0,-0.45) -| (c1_0.north);
+      \node[emex,below=0.3cm of c1_0] (c1_1) {Nitidez 0,5; 0,6 e 0,55 $\Rightarrow$ registra a de 0,6 e vai ao próximo alvo};
+      \draw[emed] (c1_0) -- (c1_1);
+      \node[emq] (c2_0) at (-2.90,-1.8) {Quem define o limiar de qualidade de cada tipo de dado?};
+      \draw[emed] (s.south) -- ++(0,-0.45) -| (c2_0.north);
+      \node[emq] (c3_0) at (0.00,-1.8) {O Controlador pode mandar 'tentar de novo' manualmente?};
+      \draw[emed] (s.south) -- ++(0,-0.45) -| (c3_0.north);
+      \node[emrule] (c4_0) at (2.90,-1.8) {Repetir até 2 vezes, ajustando posição ou parâmetro do sensor};
+      \draw[emed] (s.south) -- ++(0,-0.45) -| (c4_0.north);
+      \node[emex,below=0.3cm of c4_0] (c4_1) {1ª reprovada, 2ª aprovada após ajuste de ganho $\Rightarrow$ coleta aprovada com 2 tentativas};
+      \draw[emed] (c4_0) -- (c4_1);
+      \node[emex,below=0.3cm of c4_1] (c4_2) {3 leituras reprovadas $\Rightarrow$ não faz a 4ª tentativa};
+      \draw[emed] (c4_1) -- (c4_2);
+      \node[emrule] (c5_0) at (5.80,-1.8) {Associar cada dado ao alvo e às informações da coleta};
+      \draw[emed] (s.south) -- ++(0,-0.45) -| (c5_0.north);
+      \node[emex,below=0.3cm of c5_0] (c5_1) {Dado coletado em A1 $\Rightarrow$ guarda alvo A1, nº de tentativas, parâmetros e horário};
+      \draw[emed] (c5_0) -- (c5_1);
+      \node[emq] (c6_0) at (8.70,-1.8) {Ajustar primeiro a posição ou o parâmetro do sensor?};
+      \draw[emed] (s.south) -- ++(0,-0.45) -| (c6_0.north);
+    \end{tikzpicture}
+  \end{adjustbox}
+  \caption{\textit{Example Map} da funcionalidade Coletar o dado do alvo com qualidade.}
+  \label{fig:em-F04}
+\end{figure}
+
+\Needspace{9cm}
+\subsubsection{F05: Registrar alvo inacessível}
+
+Contribui para: \textit{Achieve} [Alvo registrado como inacessível após esgotar os caminhos alternativos] (G2.2).
+
+\begin{figure}[H]
+  \centering
+  \begin{adjustbox}{max width=\textwidth}
+    \begin{tikzpicture}
+      \node[emstory] (s) at (0.00,0) {Registrar alvo inacessível};
+      \node[emrule] (c0_0) at (-7.25,-1.8) {Declarar o alvo inacessível só após esgotar rotas e posições alternativas};
+      \draw[emed] (s.south) -- ++(0,-0.45) -| (c0_0.north);
+      \node[emex,below=0.3cm of c0_0] (c0_1) {3 rotas e 2 posições bloqueadas $\Rightarrow$ A3 é 'inacessível'};
+      \draw[emed] (c0_0) -- (c0_1);
+      \node[emex,below=0.3cm of c0_1] (c0_2) {1 rota alternativa livre $\Rightarrow$ usa a rota e A3 não é marcado};
+      \draw[emed] (c0_1) -- (c0_2);
+      \node[emrule] (c1_0) at (-4.35,-1.8) {Aceitar comando para remover ou adiar o alvo};
+      \draw[emed] (s.south) -- ++(0,-0.45) -| (c1_0.north);
+      \node[emex,below=0.3cm of c1_0] (c1_1) {Controlador adia A3 $\Rightarrow$ A3 sai da lista da missão};
+      \draw[emed] (c1_0) -- (c1_1);
+      \node[emq] (c2_0) at (-1.45,-1.8) {Um alvo inacessível pode ser retentado no fim da missão?};
+      \draw[emed] (s.south) -- ++(0,-0.45) -| (c2_0.north);
+      \node[emrule] (c3_0) at (1.45,-1.8) {Registrar o motivo e prosseguir com a missão};
+      \draw[emed] (s.south) -- ++(0,-0.45) -| (c3_0.north);
+      \node[emex,below=0.3cm of c3_0] (c3_1) {A3 alagado $\Rightarrow$ registra 'inacessível: alagamento' e vai para A4};
+      \draw[emed] (c3_0) -- (c3_1);
+      \node[emrule] (c4_0) at (4.35,-1.8) {Notificar o Controlador sobre o alvo inacessível};
+      \draw[emed] (s.south) -- ++(0,-0.45) -| (c4_0.north);
+      \node[emex,below=0.3cm of c4_0] (c4_1) {A3 inacessível $\Rightarrow$ Controlador recebe alvo e motivo};
+      \draw[emed] (c4_0) -- (c4_1);
+      \node[emex,below=0.3cm of c4_1] (c4_2) {Controlador não responde $\Rightarrow$ missão segue sem esperar};
+      \draw[emed] (c4_1) -- (c4_2);
+      \node[emq] (c5_0) at (7.25,-1.8) {Qual o limite de tentativas ou de tempo na busca de alternativas?};
+      \draw[emed] (s.south) -- ++(0,-0.45) -| (c5_0.north);
+    \end{tikzpicture}
+  \end{adjustbox}
+  \caption{\textit{Example Map} da funcionalidade Registrar alvo inacessível.}
+  \label{fig:em-F05}
+\end{figure}
+
+\Needspace{9cm}
+\subsubsection{F06: Entregar os dados ao Software de Análise}
+
+Contribui para: \textit{Achieve} [Dados consolidados enviados ao Software de Análise] (G3.1).
+
+\begin{figure}[H]
+  \centering
+  \begin{adjustbox}{max width=\textwidth}
+    \begin{tikzpicture}
+      \node[emstory] (s) at (0.00,0) {Entregar os dados ao Software de Análise};
+      \node[emrule] (c0_0) at (-7.25,-1.8) {Consolidar os dados em um pacote com o resultado de cada alvo};
+      \draw[emed] (s.south) -- ++(0,-0.45) -| (c0_0.north);
+      \node[emex,below=0.3cm of c0_0] (c0_1) {A1 coletado, A2 com qualidade insuficiente, A3 inacessível $\Rightarrow$ pacote com os 3 resultados};
+      \draw[emed] (c0_0) -- (c0_1);
+      \node[emrule] (c1_0) at (-4.35,-1.8) {Seguir o formato de dados acordado com o Software de Análise};
+      \draw[emed] (s.south) -- ++(0,-0.45) -| (c1_0.north);
+      \node[emex,below=0.3cm of c1_0] (c1_1) {Dado coletado $\Rightarrow$ pacote traz alvo, tipo de dado, qualidade e horário};
+      \draw[emed] (c1_0) -- (c1_1);
+      \node[emq] (c2_0) at (-1.45,-1.8) {Envia pacote parcial quando a missão é interrompida pelo LRS?};
+      \draw[emed] (s.south) -- ++(0,-0.45) -| (c2_0.north);
+      \node[emrule] (c3_0) at (1.45,-1.8) {Enviar o pacote automaticamente ao chegar à base};
+      \draw[emed] (s.south) -- ++(0,-0.45) -| (c3_0.north);
+      \node[emex,below=0.3cm of c3_0] (c3_1) {RMMC chega à base com pacote pronto $\Rightarrow$ envio inicia sem ação humana};
+      \draw[emed] (c3_0) -- (c3_1);
+      \node[emrule] (c4_0) at (4.35,-1.8) {Reenviar até a confirmação de recebimento};
+      \draw[emed] (s.south) -- ++(0,-0.45) -| (c4_0.north);
+      \node[emex,below=0.3cm of c4_0] (c4_1) {Sem confirmação $\Rightarrow$ reenvia o pacote};
+      \draw[emed] (c4_0) -- (c4_1);
+      \node[emex,below=0.3cm of c4_1] (c4_2) {Software confirma o recebimento $\Rightarrow$ encerra o envio};
+      \draw[emed] (c4_1) -- (c4_2);
+      \node[emq] (c5_0) at (7.25,-1.8) {Quantas vezes reenviar antes de alertar o Controlador?};
+      \draw[emed] (s.south) -- ++(0,-0.45) -| (c5_0.north);
+    \end{tikzpicture}
+  \end{adjustbox}
+  \caption{\textit{Example Map} da funcionalidade Entregar os dados ao Software de Análise.}
+  \label{fig:em-F06}
+\end{figure}
+
+\Needspace{9cm}
+\subsubsection{F07: Retornar à base com segurança}
+
+Contribui para: \textit{Achieve} [RMMC na Base de Recarga com segurança] (G3.2).
+
+\begin{figure}[H]
+  \centering
+  \begin{adjustbox}{max width=\textwidth}
+    \begin{tikzpicture}
+      \node[emstory] (s) at (0.00,0) {Retornar à base com segurança};
+      \node[emrule] (c0_0) at (-7.25,-1.8) {Calcular a rota de retorno sobre a topologia do drone};
+      \draw[emed] (s.south) -- ++(0,-0.45) -| (c0_0.north);
+      \node[emex,below=0.3cm of c0_0] (c0_1) {Missão concluída em A2 $\Rightarrow$ requisita topologia e calcula a rota até a base};
+      \draw[emed] (c0_0) -- (c0_1);
+      \node[emrule] (c1_0) at (-4.35,-1.8) {Informar a posição ao Controlador durante o retorno};
+      \draw[emed] (s.south) -- ++(0,-0.45) -| (c1_0.north);
+      \node[emex,below=0.3cm of c1_0] (c1_1) {RMMC em retorno $\Rightarrow$ posição atualizada no painel de status};
+      \draw[emed] (c1_0) -- (c1_1);
+      \node[emq] (c2_0) at (-1.45,-1.8) {Com que frequência enviar a posição durante o retorno?};
+      \draw[emed] (s.south) -- ++(0,-0.45) -| (c2_0.north);
+      \node[emrule] (c3_0) at (1.45,-1.8) {Retornar de forma autônoma, sem intervenção humana};
+      \draw[emed] (s.south) -- ++(0,-0.45) -| (c3_0.north);
+      \node[emex,below=0.3cm of c3_0] (c3_1) {Missão concluída $\Rightarrow$ RMMC retorna sem comando do Controlador};
+      \draw[emed] (c3_0) -- (c3_1);
+      \node[emrule] (c4_0) at (4.35,-1.8) {Acoplar automaticamente guiado pelo sinal da base};
+      \draw[emed] (s.south) -- ++(0,-0.45) -| (c4_0.north);
+      \node[emex,below=0.3cm of c4_0] (c4_1) {RMMC a 5 m da base $\Rightarrow$ recebe o sinal e conclui o acoplamento};
+      \draw[emed] (c4_0) -- (c4_1);
+      \node[emq] (c5_0) at (7.25,-1.8) {E se o caminho de volta estiver bloqueado?};
+      \draw[emed] (s.south) -- ++(0,-0.45) -| (c5_0.north);
+    \end{tikzpicture}
+  \end{adjustbox}
+  \caption{\textit{Example Map} da funcionalidade Retornar à base com segurança.}
+  \label{fig:em-F07}
+\end{figure}
+
+\Needspace{9cm}
+\subsubsection{F08: Comunicar alertas e status ao Controlador}
+
+Contribui para: \textit{Maintain} [Controlador apto a intervir] · \textit{Achieve} [Alertas e status de alvo comunicados ao Controlador] (G4.1).
+
+\begin{figure}[H]
+  \centering
+  \begin{adjustbox}{max width=\textwidth}
+    \begin{tikzpicture}
+      \node[emstory] (s) at (0.00,0) {Comunicar alertas e status ao Controlador};
+      \node[emrule] (c0_0) at (-5.80,-1.8) {Enviar o status ao Controlador a cada evento relevante};
+      \draw[emed] (s.south) -- ++(0,-0.45) -| (c0_0.north);
+      \node[emex,below=0.3cm of c0_0] (c0_1) {A1 coletado $\Rightarrow$ status com resultado, qualidade e bateria};
+      \draw[emed] (c0_0) -- (c0_1);
+      \node[emrule] (c1_0) at (-2.90,-1.8) {Reenviar o alerta crítico até a confirmação de leitura};
+      \draw[emed] (s.south) -- ++(0,-0.45) -| (c1_0.north);
+      \node[emex,below=0.3cm of c1_0] (c1_1) {Sem confirmação $\Rightarrow$ reenvia o alerta};
+      \draw[emed] (c1_0) -- (c1_1);
+      \node[emex,below=0.3cm of c1_1] (c1_2) {Controlador confirma $\Rightarrow$ para de reenviar};
+      \draw[emed] (c1_1) -- (c1_2);
+      \node[emq] (c2_0) at (0.00,-1.8) {Qual o intervalo de reenvio do alerta crítico?};
+      \draw[emed] (s.south) -- ++(0,-0.45) -| (c2_0.north);
+      \node[emrule] (c3_0) at (2.90,-1.8) {Entregar alertas críticos em até 10 s};
+      \draw[emed] (s.south) -- ++(0,-0.45) -| (c3_0.north);
+      \node[emex,below=0.3cm of c3_0] (c3_1) {Bateria no LRS, alerta recebido em 8 s $\Rightarrow$ atende o requisito};
+      \draw[emed] (c3_0) -- (c3_1);
+      \node[emex,below=0.3cm of c3_1] (c3_2) {Alerta recebido em 12 s $\Rightarrow$ não atende o requisito};
+      \draw[emed] (c3_1) -- (c3_2);
+      \node[emrule] (c4_0) at (5.80,-1.8) {Classificar os alertas por prioridade};
+      \draw[emed] (s.south) -- ++(0,-0.45) -| (c4_0.north);
+      \node[emex,below=0.3cm of c4_0] (c4_1) {Bateria insuficiente $\Rightarrow$ crítico};
+      \draw[emed] (c4_0) -- (c4_1);
+      \node[emex,below=0.3cm of c4_1] (c4_2) {A1 coletado $\Rightarrow$ informativo};
+      \draw[emed] (c4_1) -- (c4_2);
+    \end{tikzpicture}
+  \end{adjustbox}
+  \caption{\textit{Example Map} da funcionalidade Comunicar alertas e status ao Controlador.}
+  \label{fig:em-F08}
+\end{figure}
+
+\Needspace{9cm}
+\subsubsection{F09: Aplicar as decisões do Controlador}
+
+Contribui para: \textit{Maintain} [Controlador apto a intervir] · \textit{Achieve} [Decisões do Controlador aplicadas pelo RMMC] (G4.2).
+
+\begin{figure}[H]
+  \centering
+  \begin{adjustbox}{max width=\textwidth}
+    \begin{tikzpicture}
+      \node[emstory] (s) at (0.00,0) {Aplicar as decisões do Controlador};
+      \node[emrule] (c0_0) at (-4.35,-1.8) {Aceitar comandos padronizados: recarregar, ajustar lista, abortar, retomar};
+      \draw[emed] (s.south) -- ++(0,-0.45) -| (c0_0.north);
+      \node[emex,below=0.3cm of c0_0] (c0_1) {Comando 'abortar' $\Rightarrow$ RMMC executa a interrupção};
+      \draw[emed] (c0_0) -- (c0_1);
+      \node[emex,below=0.3cm of c0_1] (c0_2) {Texto livre 'volta logo' $\Rightarrow$ comando não é interpretado};
+      \draw[emed] (c0_1) -- (c0_2);
+      \node[emq] (c1_0) at (-1.45,-1.8) {O comando 'tentar de novo' na coleta segue as mesmas regras?};
+      \draw[emed] (s.south) -- ++(0,-0.45) -| (c1_0.north);
+      \node[emrule] (c2_0) at (1.45,-1.8) {Confirmar a execução de cada comando};
+      \draw[emed] (s.south) -- ++(0,-0.45) -| (c2_0.north);
+      \node[emex,below=0.3cm of c2_0] (c2_1) {Comando 'ajustar lista' executado $\Rightarrow$ confirmação enviada ao Controlador};
+      \draw[emed] (c2_0) -- (c2_1);
+      \node[emrule] (c3_0) at (4.35,-1.8) {Rejeitar comando inseguro com justificativa};
+      \draw[emed] (s.south) -- ++(0,-0.45) -| (c3_0.north);
+      \node[emex,below=0.3cm of c3_0] (c3_1) {'Retomar' com carga 5\% $\Rightarrow$ rejeitado: carga insuficiente};
+      \draw[emed] (c3_0) -- (c3_1);
+      \node[emex,below=0.3cm of c3_1] (c3_2) {'Avançar' com bateria abaixo do LRS $\Rightarrow$ rejeitado: abaixo do LRS};
+      \draw[emed] (c3_1) -- (c3_2);
+    \end{tikzpicture}
+  \end{adjustbox}
+  \caption{\textit{Example Map} da funcionalidade Aplicar as decisões do Controlador.}
+  \label{fig:em-F09}
+\end{figure}
+
+\Needspace{9cm}
+\subsubsection{F10: Executar a missão dentro da autonomia}
+
+Contribui para: \textit{Achieve} [Missão executada dentro da autonomia da bateria] (G5.1) · \textit{Maximize} [Cobertura dos alvos opcionais].
+
+\begin{figure}[H]
+  \centering
+  \begin{adjustbox}{max width=\textwidth}
+    \begin{tikzpicture}
+      \node[emstory] (s) at (0.00,0) {Executar a missão dentro da autonomia};
+      \node[emrule] (c0_0) at (-5.80,-1.8) {Visitar alvos opcionais somente após os obrigatórios};
+      \draw[emed] (s.south) -- ++(0,-0.45) -| (c0_0.north);
+      \node[emex,below=0.3cm of c0_0] (c0_1) {A1 obrigatório pendente e A2 opcional $\Rightarrow$ visita A1 antes de A2};
+      \draw[emed] (c0_0) -- (c0_1);
+      \node[emrule] (c1_0) at (-2.90,-1.8) {Concluir a missão quando todo obrigatório tem resultado explícito};
+      \draw[emed] (s.south) -- ++(0,-0.45) -| (c1_0.north);
+      \node[emex,below=0.3cm of c1_0] (c1_1) {A1 coletado, A3 inacessível $\Rightarrow$ missão concluída};
+      \draw[emed] (c1_0) -- (c1_1);
+      \node[emex,below=0.3cm of c1_1] (c1_2) {A2 obrigatório sem resultado $\Rightarrow$ missão não concluída};
+      \draw[emed] (c1_1) -- (c1_2);
+      \node[emq] (c2_0) at (0.00,-1.8) {Como medir o tempo disponível da missão?};
+      \draw[emed] (s.south) -- ++(0,-0.45) -| (c2_0.north);
+      \node[emrule] (c3_0) at (2.90,-1.8) {Visitar opcional só com margem de energia e de tempo};
+      \draw[emed] (s.south) -- ++(0,-0.45) -| (c3_0.north);
+      \node[emex,below=0.3cm of c3_0] (c3_1) {Sobram 25\%; A2 custa 10\% e o retorno 12\% $\Rightarrow$ visita A2};
+      \draw[emed] (c3_0) -- (c3_1);
+      \node[emex,below=0.3cm of c3_1] (c3_2) {Sobram 15\%; A2 e retorno custam 22\% $\Rightarrow$ dispensa A2 e retorna};
+      \draw[emed] (c3_1) -- (c3_2);
+      \node[emq] (c4_0) at (5.80,-1.8) {Pode reordenar os alvos para economizar energia ou segue a ordem do Planejador?};
+      \draw[emed] (s.south) -- ++(0,-0.45) -| (c4_0.north);
+    \end{tikzpicture}
+  \end{adjustbox}
+  \caption{\textit{Example Map} da funcionalidade Executar a missão dentro da autonomia.}
+  \label{fig:em-F10}
+\end{figure}
+
+\Needspace{9cm}
+\subsubsection{F11: Retornar ao atingir o LRS e retomar a missão}
+
+Contribui para: \textit{Avoid} [RMMC sem energia para retornar à base] · \textit{Achieve} [Retorno seguro ao atingir o LRS e retomada após a recarga] (G5.2).
+
+\begin{figure}[H]
+  \centering
+  \begin{adjustbox}{max width=\textwidth}
+    \begin{tikzpicture}
+      \node[emstory] (s) at (0.00,0) {Retornar ao atingir o LRS e retomar a missão};
+      \node[emrule] (c0_0) at (-7.25,-1.8) {Monitorar a bateria continuamente, com gatilho no LRS};
+      \draw[emed] (s.south) -- ++(0,-0.45) -| (c0_0.north);
+      \node[emex,below=0.3cm of c0_0] (c0_1) {Bateria 14\%, LRS 15\% $\Rightarrow$ missão é interrompida};
+      \draw[emed] (c0_0) -- (c0_1);
+      \node[emex,below=0.3cm of c0_1] (c0_2) {Bateria 40\%, LRS 15\% $\Rightarrow$ missão continua};
+      \draw[emed] (c0_1) -- (c0_2);
+      \node[emrule] (c1_0) at (-4.35,-1.8) {Retomar a partir do estado salvo, sem repetir alvos};
+      \draw[emed] (s.south) -- ++(0,-0.45) -| (c1_0.north);
+      \node[emex,below=0.3cm of c1_0] (c1_1) {Recarga completa $\Rightarrow$ retoma em A3; A1 e A2 não são revisitados};
+      \draw[emed] (c1_0) -- (c1_1);
+      \node[emex,below=0.3cm of c1_1] (c1_2) {Controlador remove A5 antes da retomada $\Rightarrow$ retoma sem A5};
+      \draw[emed] (c1_1) -- (c1_2);
+      \node[emrule] (c2_0) at (-1.45,-1.8) {Salvar o estado e alertar o Controlador ao interromper};
+      \draw[emed] (s.south) -- ++(0,-0.45) -| (c2_0.north);
+      \node[emex,below=0.3cm of c2_0] (c2_1) {LRS atingido a caminho de A3 $\Rightarrow$ salva A3 pendente e A1, A2 coletados; alerta enviado};
+      \draw[emed] (c2_0) -- (c2_1);
+      \node[emrule] (c3_0) at (1.45,-1.8) {Retornar à base e recarregar de forma autônoma};
+      \draw[emed] (s.south) -- ++(0,-0.45) -| (c3_0.north);
+      \node[emex,below=0.3cm of c3_0] (c3_1) {Estado salvo $\Rightarrow$ RMMC retorna, acopla e recarrega até 100\%};
+      \draw[emed] (c3_0) -- (c3_1);
+      \node[emq] (c4_0) at (4.35,-1.8) {Retomar se o alvo pendente deixou de ser relevante após a recarga?};
+      \draw[emed] (s.south) -- ++(0,-0.45) -| (c4_0.north);
+      \node[emq] (c5_0) at (7.25,-1.8) {E se o LRS não bastar para chegar à base?};
+      \draw[emed] (s.south) -- ++(0,-0.45) -| (c5_0.north);
+    \end{tikzpicture}
+  \end{adjustbox}
+  \caption{\textit{Example Map} da funcionalidade Retornar ao atingir o LRS e retomar a missão.}
+  \label{fig:em-F11}
+\end{figure}
+
+
+
 \subsection{Specification by Example: BDD (Gherkin)}
+
+Cada exemplo dos \textit{Example Maps} foi escrito como um cenário em Gherkin, com as palavras-chave em português: \textbf{DADO} (\textit{Given}), \textbf{QUANDO} (\textit{When}) e \textbf{ENTÃO} (\textit{Then}). A coluna da esquerda indica o objetivo do \textit{Goal Model} ao qual o cenário se refere e a coluna da direita descreve o comportamento desejado.
+
+\Needspace{6cm}
+\subsubsection{F01: Avaliar a bateria antes da missão}
+
+\begin{longtable}{|p{4.3cm}|p{10.2cm}|}
+  \caption{BDD da funcionalidade F01.}                                                                                                                                                                                                                                                                                                                                       \\
+  \hline \textbf{Objetivo (Goal)}                                                                                                                               & \textbf{Comportamento Desejado (Desired Behaviour)}                                                                                                                                                        \\ \hline \endfirsthead
+  \hline \textbf{Objetivo (Goal)}                                                                                                                               & \textbf{Comportamento Desejado (Desired Behaviour)}                                                                                                                                                        \\ \hline \endhead
+  \textbf{Achieve} [Suficiência da bateria para a missão avaliada antes do início] (G1.1)\newline{\scriptsize\textit{Cenário: Estimativa por rota e coletas}}   & \textbf{DADO} que o Planejador cadastrou uma rota de 1,2 km com 3 coletas\newline \textbf{QUANDO} o sistema estima o consumo da missão\newline \textbf{ENTÃO} o consumo estimado é de 38\%.                \\ \hline
+  \textbf{Achieve} [Suficiência da bateria para a missão avaliada antes do início] (G1.1)\newline{\scriptsize\textit{Cenário: Estimativa com coletas térmicas}} & \textbf{DADO} que a mesma rota recebeu 2 coletas térmicas adicionais\newline \textbf{QUANDO} o sistema estima o consumo da missão\newline \textbf{ENTÃO} o consumo estimado é de 47\%.                     \\ \hline
+  \textbf{Achieve} [Suficiência da bateria para a missão avaliada antes do início] (G1.1)\newline{\scriptsize\textit{Cenário: Custo exibido no planejamento}}   & \textbf{DADO} que a missão em planejamento tem custo estimado de 38\%\newline \textbf{QUANDO} o Planejador inclui o alvo A4\newline \textbf{ENTÃO} o custo energético exibido sobe de 38\% para 45\%.      \\ \hline
+  \textbf{Achieve} [Suficiência da bateria para a missão avaliada antes do início] (G1.1)\newline{\scriptsize\textit{Cenário: Bateria suficiente}}              & \textbf{DADO} que a carga atual é de 60\% e a carga necessária é de 38\%\newline \textbf{QUANDO} o sistema compara as cargas antes da partida\newline \textbf{ENTÃO} a bateria é considerada suficiente.   \\ \hline
+  \textbf{Achieve} [Suficiência da bateria para a missão avaliada antes do início] (G1.1)\newline{\scriptsize\textit{Cenário: Bateria insuficiente}}            & \textbf{DADO} que a carga atual é de 30\% e a carga necessária é de 38\%\newline \textbf{QUANDO} o sistema compara as cargas antes da partida\newline \textbf{ENTÃO} a bateria é considerada insuficiente. \\ \hline
+  \textbf{Achieve} [Suficiência da bateria para a missão avaliada antes do início] (G1.1)\newline{\scriptsize\textit{Cenário: Alvo sem tipo de dado}}           & \textbf{DADO} que o alvo A2 está na lista sem tipo de dado\newline \textbf{QUANDO} a missão é enviada para avaliação\newline \textbf{ENTÃO} a missão não é avaliada.                                       \\ \hline
+  \textbf{Achieve} [Suficiência da bateria para a missão avaliada antes do início] (G1.1)\newline{\scriptsize\textit{Cenário: Lista completa}}                  & \textbf{DADO} que todos os alvos têm ordem e tipo de dado definidos\newline \textbf{QUANDO} a missão é enviada para avaliação\newline \textbf{ENTÃO} a avaliação de bateria é executada.                   \\ \hline
+\end{longtable}
+
+\Needspace{6cm}
+\subsubsection{F02: Autorizar o início da missão}
+
+\begin{longtable}{|p{4.3cm}|p{10.2cm}|}
+  \caption{BDD da funcionalidade F02.}                                                                                                                                                                                                                                                                                                                                       \\
+  \hline \textbf{Objetivo (Goal)}                                                                                              & \textbf{Comportamento Desejado (Desired Behaviour)}                                                                                                                                                                                         \\ \hline \endfirsthead
+  \hline \textbf{Objetivo (Goal)}                                                                                              & \textbf{Comportamento Desejado (Desired Behaviour)}                                                                                                                                                                                         \\ \hline \endhead
+  \textbf{Achieve} [Início da missão autorizado] (G1.2)\newline{\scriptsize\textit{Cenário: Início automático}}                & \textbf{DADO} que a carga é de 80\% e a carga necessária é de 45\%\newline \textbf{QUANDO} o sistema avalia o início da missão\newline \textbf{ENTÃO} a missão inicia sem aprovação do Controlador.                                         \\ \hline
+  \textbf{Achieve} [Início da missão autorizado] (G1.2)\newline{\scriptsize\textit{Cenário: Recarga antes do início}}          & \textbf{DADO} que a carga é insuficiente e o Controlador ordenou ‘recarregar’\newline \textbf{QUANDO} o RMMC chega à base e conclui a recarga\newline \textbf{ENTÃO} o sistema reavalia a bateria e inicia a missão.                        \\ \hline
+  \textbf{Achieve} [Início da missão autorizado] (G1.2)\newline{\scriptsize\textit{Cenário: Recarga não resolve}}              & \textbf{DADO} que a carga necessária é de 110\% da capacidade da bateria\newline \textbf{QUANDO} o Controlador ordena ‘recarregar’\newline \textbf{ENTÃO} a recarga não resolve e a lista de alvos precisa ser ajustada.                    \\ \hline
+  \textbf{Achieve} [Início da missão autorizado] (G1.2)\newline{\scriptsize\textit{Cenário: Início bloqueado com diagnóstico}} & \textbf{DADO} que a carga é de 30\%, a necessária é de 45\% e a máxima é de 100\%\newline \textbf{QUANDO} o sistema avalia o início da missão\newline \textbf{ENTÃO} o Controlador recebe um alerta com os 3 valores e a missão não inicia. \\ \hline
+  \textbf{Achieve} [Início da missão autorizado] (G1.2)\newline{\scriptsize\textit{Cenário: Ajuste da lista libera o início}}  & \textbf{DADO} que a carga é de 60\% e o Controlador removeu o alvo opcional A3, reduzindo a necessária de 45\% para 40\%\newline \textbf{QUANDO} o sistema reavalia a bateria\newline \textbf{ENTÃO} a missão inicia.                       \\ \hline
+  \textbf{Achieve} [Início da missão autorizado] (G1.2)\newline{\scriptsize\textit{Cenário: Ajuste insuficiente}}              & \textbf{DADO} que a carga é de 60\% e, após o ajuste, a carga necessária é de 70\%\newline \textbf{QUANDO} o sistema reavalia a bateria\newline \textbf{ENTÃO} a missão continua bloqueada.                                                 \\ \hline
+\end{longtable}
+
+\Needspace{6cm}
+\subsubsection{F03: Alcançar o alvo}
+
+\begin{longtable}{|p{4.3cm}|p{10.2cm}|}
+  \caption{BDD da funcionalidade F03.}                                                                                                                                                                                                                                                                                                                         \\
+  \hline \textbf{Objetivo (Goal)}                                                                                  & \textbf{Comportamento Desejado (Desired Behaviour)}                                                                                                                                                                                       \\ \hline \endfirsthead
+  \hline \textbf{Objetivo (Goal)}                                                                                  & \textbf{Comportamento Desejado (Desired Behaviour)}                                                                                                                                                                                       \\ \hline \endhead
+  \textbf{Achieve} [Alvo alcançado] (G2.1.1)\newline{\scriptsize\textit{Cenário: Trecho livre}}                    & \textbf{DADO} que o drone informa trecho livre até o alvo A1\newline \textbf{QUANDO} o RMMC verifica a acessibilidade do alvo\newline \textbf{ENTÃO} o RMMC segue para A1.                                                                \\ \hline
+  \textbf{Achieve} [Alvo alcançado] (G2.1.1)\newline{\scriptsize\textit{Cenário: Caminho bloqueado}}               & \textbf{DADO} que o drone informa uma árvore caída no caminho até A1\newline \textbf{QUANDO} o RMMC verifica a acessibilidade do alvo\newline \textbf{ENTÃO} o caminho planejado é considerado bloqueado.                                 \\ \hline
+  \textbf{Achieve} [Alvo alcançado] (G2.1.1)\newline{\scriptsize\textit{Cenário: Topologia antes do deslocamento}} & \textbf{DADO} que o RMMC parte de A1 para A2\newline \textbf{QUANDO} o deslocamento é iniciado\newline \textbf{ENTÃO} o RMMC requisita ao drone a topologia do trecho A1–A2.                                                              \\ \hline
+  \textbf{Achieve} [Alvo alcançado] (G2.1.1)\newline{\scriptsize\textit{Cenário: Rota alternativa}}                & \textbf{DADO} que a rota norte está bloqueada e a rota leste está livre\newline \textbf{QUANDO} o RMMC busca um caminho até A1\newline \textbf{ENTÃO} o RMMC alcança A1 pela rota leste.                                                  \\ \hline
+  \textbf{Achieve} [Alvo alcançado] (G2.1.1)\newline{\scriptsize\textit{Cenário: Posição alternativa de coleta}}   & \textbf{DADO} que todas as rotas até o alvo estão bloqueadas e existe uma posição livre a 3 m do alvo\newline \textbf{QUANDO} o RMMC busca uma posição de acesso\newline \textbf{ENTÃO} a coleta é feita a partir da posição alternativa. \\ \hline
+  \textbf{Achieve} [Alvo alcançado] (G2.1.1)\newline{\scriptsize\textit{Cenário: Latitude inválida}}               & \textbf{DADO} que o Planejador cadastra um alvo com latitude de 95\degree{}\newline \textbf{QUANDO} o cadastro é validado\newline \textbf{ENTÃO} o alvo é rejeitado.                                                                      \\ \hline
+  \textbf{Achieve} [Alvo alcançado] (G2.1.1)\newline{\scriptsize\textit{Cenário: Coordenada fora da fazenda}}      & \textbf{DADO} que o Planejador cadastra um alvo com coordenada fora da área da fazenda\newline \textbf{QUANDO} o cadastro é validado\newline \textbf{ENTÃO} o alvo é rejeitado.                                                           \\ \hline
+\end{longtable}
+
+\Needspace{6cm}
+\subsubsection{F04: Coletar o dado do alvo com qualidade}
+
+\begin{longtable}{|p{4.3cm}|p{10.2cm}|}
+  \caption{BDD da funcionalidade F04.}                                                                                                                                                                                                                                                                                                                                            \\
+  \hline \textbf{Objetivo (Goal)}                                                                                      & \textbf{Comportamento Desejado (Desired Behaviour)}                                                                                                                                                                                                      \\ \hline \endfirsthead
+  \hline \textbf{Objetivo (Goal)}                                                                                      & \textbf{Comportamento Desejado (Desired Behaviour)}                                                                                                                                                                                                      \\ \hline \endhead
+  \textbf{Achieve} [Coleta do alvo concluída] (G2.1.2)\newline{\scriptsize\textit{Cenário: Leitura aprovada}}          & \textbf{DADO} que o limiar de nitidez é 0,8 e a leitura obteve nitidez 0,9\newline \textbf{QUANDO} o sistema avalia a qualidade da leitura\newline \textbf{ENTÃO} a leitura é aprovada.                                                                  \\ \hline
+  \textbf{Achieve} [Coleta do alvo concluída] (G2.1.2)\newline{\scriptsize\textit{Cenário: Leitura reprovada}}         & \textbf{DADO} que o limiar de nitidez é 0,8 e a leitura obteve nitidez 0,6\newline \textbf{QUANDO} o sistema avalia a qualidade da leitura\newline \textbf{ENTÃO} a leitura é reprovada.                                                                 \\ \hline
+  \textbf{Achieve} [Coleta do alvo concluída] (G2.1.2)\newline{\scriptsize\textit{Cenário: Melhor leitura registrada}} & \textbf{DADO} que as leituras obtiveram nitidez 0,5, 0,6 e 0,55 e todas foram reprovadas\newline \textbf{QUANDO} as tentativas se esgotam\newline \textbf{ENTÃO} o sistema registra ‘qualidade insuficiente’ com a leitura de 0,6 e vai ao próximo alvo. \\ \hline
+  \textbf{Achieve} [Coleta do alvo concluída] (G2.1.2)\newline{\scriptsize\textit{Cenário: Aprovada após ajuste}}      & \textbf{DADO} que a 1ª leitura foi reprovada\newline \textbf{QUANDO} o RMMC ajusta o ganho do sensor e repete a coleta e a 2ª leitura é aprovada\newline \textbf{ENTÃO} a coleta é aprovada com 2 tentativas.                                            \\ \hline
+  \textbf{Achieve} [Coleta do alvo concluída] (G2.1.2)\newline{\scriptsize\textit{Cenário: Limite de tentativas}}      & \textbf{DADO} que as 3 leituras do alvo foram reprovadas\newline \textbf{QUANDO} o sistema avalia a necessidade de nova tentativa\newline \textbf{ENTÃO} o RMMC não faz a 4ª tentativa.                                                                  \\ \hline
+  \textbf{Achieve} [Coleta do alvo concluída] (G2.1.2)\newline{\scriptsize\textit{Cenário: Dado associado à coleta}}   & \textbf{DADO} que o dado foi coletado no alvo A1\newline \textbf{QUANDO} o RMMC registra o dado\newline \textbf{ENTÃO} o sistema guarda o alvo A1, o nº de tentativas, os parâmetros e o horário.                                                        \\ \hline
+\end{longtable}
+
+\Needspace{6cm}
+\subsubsection{F05: Registrar alvo inacessível}
+
+\begin{longtable}{|p{4.3cm}|p{10.2cm}|}
+  \caption{BDD da funcionalidade F05.}                                                                                                                                                                                                                                                                                                                           \\
+  \hline \textbf{Objetivo (Goal)}                                                                                                                                 & \textbf{Comportamento Desejado (Desired Behaviour)}                                                                                                                                          \\ \hline \endfirsthead
+  \hline \textbf{Objetivo (Goal)}                                                                                                                                 & \textbf{Comportamento Desejado (Desired Behaviour)}                                                                                                                                          \\ \hline \endhead
+  \textbf{Achieve} [Alvo registrado como inacessível após esgotar os caminhos alternativos] (G2.2)\newline{\scriptsize\textit{Cenário: Alvo esgotado}}            & \textbf{DADO} que 3 rotas e 2 posições alternativas até A3 estão bloqueadas\newline \textbf{QUANDO} o RMMC esgota as alternativas\newline \textbf{ENTÃO} A3 é registrado como ‘inacessível’. \\ \hline
+  \textbf{Achieve} [Alvo registrado como inacessível após esgotar os caminhos alternativos] (G2.2)\newline{\scriptsize\textit{Cenário: Rota alternativa livre}}   & \textbf{DADO} que existe 1 rota alternativa livre até A3\newline \textbf{QUANDO} o RMMC busca um caminho\newline \textbf{ENTÃO} o RMMC usa a rota e A3 não é marcado como inacessível.       \\ \hline
+  \textbf{Achieve} [Alvo registrado como inacessível após esgotar os caminhos alternativos] (G2.2)\newline{\scriptsize\textit{Cenário: Controlador adia o alvo}}  & \textbf{DADO} que A3 está inacessível e o Controlador envia o comando de adiar\newline \textbf{QUANDO} o RMMC recebe o comando\newline \textbf{ENTÃO} A3 sai da lista da missão.             \\ \hline
+  \textbf{Achieve} [Alvo registrado como inacessível após esgotar os caminhos alternativos] (G2.2)\newline{\scriptsize\textit{Cenário: Motivo registrado}}        & \textbf{DADO} que A3 está alagado\newline \textbf{QUANDO} o RMMC declara o alvo inacessível\newline \textbf{ENTÃO} o sistema registra ‘inacessível: alagamento’ e segue para A4.             \\ \hline
+  \textbf{Achieve} [Alvo registrado como inacessível após esgotar os caminhos alternativos] (G2.2)\newline{\scriptsize\textit{Cenário: Controlador notificado}}   & \textbf{DADO} que A3 foi declarado inacessível\newline \textbf{QUANDO} o sistema registra o resultado do alvo\newline \textbf{ENTÃO} o Controlador recebe o alvo e o motivo.                 \\ \hline
+  \textbf{Achieve} [Alvo registrado como inacessível após esgotar os caminhos alternativos] (G2.2)\newline{\scriptsize\textit{Cenário: Controlador sem resposta}} & \textbf{DADO} que o Controlador foi notificado e não responde\newline \textbf{QUANDO} o RMMC aguarda uma decisão\newline \textbf{ENTÃO} a missão segue sem esperar.                          \\ \hline
+\end{longtable}
+
+\Needspace{6cm}
+\subsubsection{F06: Entregar os dados ao Software de Análise}
+
+\begin{longtable}{|p{4.3cm}|p{10.2cm}|}
+  \caption{BDD da funcionalidade F06.}                                                                                                                                                                                                                                                                                                                            \\
+  \hline \textbf{Objetivo (Goal)}                                                                                                                   & \textbf{Comportamento Desejado (Desired Behaviour)}                                                                                                                                                         \\ \hline \endfirsthead
+  \hline \textbf{Objetivo (Goal)}                                                                                                                   & \textbf{Comportamento Desejado (Desired Behaviour)}                                                                                                                                                         \\ \hline \endhead
+  \textbf{Achieve} [Dados consolidados enviados ao Software de Análise] (G3.1)\newline{\scriptsize\textit{Cenário: Pacote com todos os resultados}} & \textbf{DADO} que A1 foi coletado, A2 teve qualidade insuficiente e A3 foi inacessível\newline \textbf{QUANDO} o sistema consolida os dados da missão\newline \textbf{ENTÃO} o pacote traz os 3 resultados. \\ \hline
+  \textbf{Achieve} [Dados consolidados enviados ao Software de Análise] (G3.1)\newline{\scriptsize\textit{Cenário: Formato acordado}}               & \textbf{DADO} que um dado foi coletado\newline \textbf{QUANDO} o sistema monta o pacote\newline \textbf{ENTÃO} o pacote traz alvo, tipo de dado, qualidade e horário.                                       \\ \hline
+  \textbf{Achieve} [Dados consolidados enviados ao Software de Análise] (G3.1)\newline{\scriptsize\textit{Cenário: Envio automático}}               & \textbf{DADO} que o RMMC chegou à base com o pacote pronto\newline \textbf{QUANDO} a chegada é detectada\newline \textbf{ENTÃO} o envio inicia sem ação humana.                                             \\ \hline
+  \textbf{Achieve} [Dados consolidados enviados ao Software de Análise] (G3.1)\newline{\scriptsize\textit{Cenário: Reenvio sem confirmação}}        & \textbf{DADO} que o pacote foi enviado e o Software de Análise não confirmou\newline \textbf{QUANDO} o tempo de espera da confirmação se esgota\newline \textbf{ENTÃO} o sistema reenvia o pacote.          \\ \hline
+  \textbf{Achieve} [Dados consolidados enviados ao Software de Análise] (G3.1)\newline{\scriptsize\textit{Cenário: Recebimento confirmado}}         & \textbf{DADO} que o pacote foi enviado\newline \textbf{QUANDO} o Software de Análise confirma o recebimento\newline \textbf{ENTÃO} o sistema encerra o envio.                                               \\ \hline
+\end{longtable}
+
+\Needspace{6cm}
+\subsubsection{F07: Retornar à base com segurança}
+
+\begin{longtable}{|p{4.3cm}|p{10.2cm}|}
+  \caption{BDD da funcionalidade F07.}                                                                                                                                                                                                                                                                              \\
+  \hline \textbf{Objetivo (Goal)}                                                                                                 & \textbf{Comportamento Desejado (Desired Behaviour)}                                                                                                                             \\ \hline \endfirsthead
+  \hline \textbf{Objetivo (Goal)}                                                                                                 & \textbf{Comportamento Desejado (Desired Behaviour)}                                                                                                                             \\ \hline \endhead
+  \textbf{Achieve} [RMMC na Base de Recarga com segurança] (G3.2)\newline{\scriptsize\textit{Cenário: Rota de retorno}}           & \textbf{DADO} que a missão foi concluída em A2\newline \textbf{QUANDO} o RMMC inicia o retorno\newline \textbf{ENTÃO} o RMMC requisita a topologia e calcula a rota até a base. \\ \hline
+  \textbf{Achieve} [RMMC na Base de Recarga com segurança] (G3.2)\newline{\scriptsize\textit{Cenário: Posição durante o retorno}} & \textbf{DADO} que o RMMC está em retorno\newline \textbf{QUANDO} a posição do RMMC muda\newline \textbf{ENTÃO} a posição é atualizada no painel de status.                      \\ \hline
+  \textbf{Achieve} [RMMC na Base de Recarga com segurança] (G3.2)\newline{\scriptsize\textit{Cenário: Retorno autônomo}}          & \textbf{DADO} que a missão foi concluída\newline \textbf{QUANDO} o RMMC inicia o retorno\newline \textbf{ENTÃO} o RMMC retorna sem comando do Controlador.                      \\ \hline
+  \textbf{Achieve} [RMMC na Base de Recarga com segurança] (G3.2)\newline{\scriptsize\textit{Cenário: Acoplamento automático}}    & \textbf{DADO} que o RMMC está a 5 m da base\newline \textbf{QUANDO} o RMMC recebe o sinal da base\newline \textbf{ENTÃO} o RMMC conclui o acoplamento.                          \\ \hline
+\end{longtable}
+
+\Needspace{6cm}
+\subsubsection{F08: Comunicar alertas e status ao Controlador}
+
+\begin{longtable}{|p{4.3cm}|p{10.2cm}|}
+  \caption{BDD da funcionalidade F08.}                                                                                                                                                                                                                                                                                            \\
+  \hline \textbf{Objetivo (Goal)}                                                                                                               & \textbf{Comportamento Desejado (Desired Behaviour)}                                                                                                                             \\ \hline \endfirsthead
+  \hline \textbf{Objetivo (Goal)}                                                                                                               & \textbf{Comportamento Desejado (Desired Behaviour)}                                                                                                                             \\ \hline \endhead
+  \textbf{Achieve} [Alertas e status de alvo comunicados ao Controlador] (G4.1)\newline{\scriptsize\textit{Cenário: Status por evento}}         & \textbf{DADO} que o alvo A1 foi coletado\newline \textbf{QUANDO} o evento é registrado\newline \textbf{ENTÃO} o Controlador recebe o status com resultado, qualidade e bateria. \\ \hline
+  \textbf{Achieve} [Alertas e status de alvo comunicados ao Controlador] (G4.1)\newline{\scriptsize\textit{Cenário: Reenvio do alerta crítico}} & \textbf{DADO} que um alerta crítico foi enviado e não foi confirmado\newline \textbf{QUANDO} o tempo de espera se esgota\newline \textbf{ENTÃO} o sistema reenvia o alerta.     \\ \hline
+  \textbf{Achieve} [Alertas e status de alvo comunicados ao Controlador] (G4.1)\newline{\scriptsize\textit{Cenário: Alerta confirmado}}         & \textbf{DADO} que um alerta crítico foi reenviado\newline \textbf{QUANDO} o Controlador confirma a leitura\newline \textbf{ENTÃO} o sistema para de reenviar.                   \\ \hline
+  \textbf{Achieve} [Alertas e status de alvo comunicados ao Controlador] (G4.1)\newline{\scriptsize\textit{Cenário: Entrega dentro do prazo}}   & \textbf{DADO} que a bateria atingiu o LRS\newline \textbf{QUANDO} o alerta crítico é recebido em 8 s\newline \textbf{ENTÃO} o requisito de entrega em até 10 s é atendido.      \\ \hline
+  \textbf{Achieve} [Alertas e status de alvo comunicados ao Controlador] (G4.1)\newline{\scriptsize\textit{Cenário: Entrega fora do prazo}}     & \textbf{DADO} que a bateria atingiu o LRS\newline \textbf{QUANDO} o alerta crítico é recebido em 12 s\newline \textbf{ENTÃO} o requisito de entrega em até 10 s não é atendido. \\ \hline
+  \textbf{Achieve} [Alertas e status de alvo comunicados ao Controlador] (G4.1)\newline{\scriptsize\textit{Cenário: Alerta crítico}}            & \textbf{DADO} que a bateria é insuficiente\newline \textbf{QUANDO} o sistema gera o alerta\newline \textbf{ENTÃO} o alerta é classificado como crítico.                         \\ \hline
+  \textbf{Achieve} [Alertas e status de alvo comunicados ao Controlador] (G4.1)\newline{\scriptsize\textit{Cenário: Alerta informativo}}        & \textbf{DADO} que o alvo A1 foi coletado\newline \textbf{QUANDO} o sistema gera o alerta\newline \textbf{ENTÃO} o alerta é classificado como informativo.                       \\ \hline
+\end{longtable}
+
+\Needspace{6cm}
+\subsubsection{F09: Aplicar as decisões do Controlador}
+
+\begin{longtable}{|p{4.3cm}|p{10.2cm}|}
+  \caption{BDD da funcionalidade F09.}                                                                                                                                                                                                                                                                                                   \\
+  \hline \textbf{Objetivo (Goal)}                                                                                                     & \textbf{Comportamento Desejado (Desired Behaviour)}                                                                                                                                              \\ \hline \endfirsthead
+  \hline \textbf{Objetivo (Goal)}                                                                                                     & \textbf{Comportamento Desejado (Desired Behaviour)}                                                                                                                                              \\ \hline \endhead
+  \textbf{Achieve} [Decisões do Controlador aplicadas pelo RMMC] (G4.2)\newline{\scriptsize\textit{Cenário: Comando abortar}}         & \textbf{DADO} que a missão está em andamento\newline \textbf{QUANDO} o Controlador envia o comando padronizado ‘abortar’\newline \textbf{ENTÃO} o RMMC executa a interrupção.                    \\ \hline
+  \textbf{Achieve} [Decisões do Controlador aplicadas pelo RMMC] (G4.2)\newline{\scriptsize\textit{Cenário: Texto livre}}             & \textbf{DADO} que a missão está em andamento\newline \textbf{QUANDO} o Controlador envia o texto livre ‘volta logo’\newline \textbf{ENTÃO} o comando não é interpretado.                         \\ \hline
+  \textbf{Achieve} [Decisões do Controlador aplicadas pelo RMMC] (G4.2)\newline{\scriptsize\textit{Cenário: Confirmação de execução}} & \textbf{DADO} que o Controlador enviou o comando ‘ajustar lista’\newline \textbf{QUANDO} o RMMC executa o comando\newline \textbf{ENTÃO} o Controlador recebe a confirmação de execução.         \\ \hline
+  \textbf{Achieve} [Decisões do Controlador aplicadas pelo RMMC] (G4.2)\newline{\scriptsize\textit{Cenário: Retomar com carga baixa}} & \textbf{DADO} que a carga é de 5\%\newline \textbf{QUANDO} o Controlador envia o comando ‘retomar’\newline \textbf{ENTÃO} o comando é rejeitado com a justificativa ‘carga insuficiente’.        \\ \hline
+  \textbf{Achieve} [Decisões do Controlador aplicadas pelo RMMC] (G4.2)\newline{\scriptsize\textit{Cenário: Avançar abaixo do LRS}}   & \textbf{DADO} que a bateria está abaixo do LRS\newline \textbf{QUANDO} o Controlador envia o comando ‘avançar’\newline \textbf{ENTÃO} o comando é rejeitado com a justificativa ‘abaixo do LRS’. \\ \hline
+\end{longtable}
+
+\Needspace{6cm}
+\subsubsection{F10: Executar a missão dentro da autonomia}
+
+\begin{longtable}{|p{4.3cm}|p{10.2cm}|}
+  \caption{BDD da funcionalidade F10.}                                                                                                                                                                                                                                                                                                      \\
+  \hline \textbf{Objetivo (Goal)}                                                                                                               & \textbf{Comportamento Desejado (Desired Behaviour)}                                                                                                                                       \\ \hline \endfirsthead
+  \hline \textbf{Objetivo (Goal)}                                                                                                               & \textbf{Comportamento Desejado (Desired Behaviour)}                                                                                                                                       \\ \hline \endhead
+  \textbf{Achieve} [Missão executada dentro da autonomia da bateria] (G5.1)\newline{\scriptsize\textit{Cenário: Obrigatório antes do opcional}} & \textbf{DADO} que A1 é obrigatório e está pendente e A2 é opcional\newline \textbf{QUANDO} o RMMC escolhe o próximo alvo\newline \textbf{ENTÃO} o RMMC visita A1 antes de A2.             \\ \hline
+  \textbf{Achieve} [Missão executada dentro da autonomia da bateria] (G5.1)\newline{\scriptsize\textit{Cenário: Missão concluída}}              & \textbf{DADO} que A1 foi coletado e A3 foi registrado como inacessível\newline \textbf{QUANDO} todos os obrigatórios têm resultado explícito\newline \textbf{ENTÃO} a missão é concluída. \\ \hline
+  \textbf{Achieve} [Missão executada dentro da autonomia da bateria] (G5.1)\newline{\scriptsize\textit{Cenário: Obrigatório sem resultado}}     & \textbf{DADO} que A2 é obrigatório e não tem resultado\newline \textbf{QUANDO} o RMMC avalia o fim da missão\newline \textbf{ENTÃO} a missão não é concluída.                             \\ \hline
+  \textbf{Achieve} [Missão executada dentro da autonomia da bateria] (G5.1)\newline{\scriptsize\textit{Cenário: Opcional com margem}}           & \textbf{DADO} que sobram 25\% de energia, A2 custa 10\% e o retorno custa 12\%\newline \textbf{QUANDO} o RMMC avalia a visita ao opcional\newline \textbf{ENTÃO} o RMMC visita A2.        \\ \hline
+  \textbf{Achieve} [Missão executada dentro da autonomia da bateria] (G5.1)\newline{\scriptsize\textit{Cenário: Opcional sem margem}}           & \textbf{DADO} que sobram 15\% de energia e A2 e o retorno custam 22\%\newline \textbf{QUANDO} o RMMC avalia a visita ao opcional\newline \textbf{ENTÃO} o RMMC dispensa A2 e retorna.     \\ \hline
+\end{longtable}
+
+\Needspace{6cm}
+\subsubsection{F11: Retornar ao atingir o LRS e retomar a missão}
+
+\begin{longtable}{|p{4.3cm}|p{10.2cm}|}
+  \caption{BDD da funcionalidade F11.}                                                                                                                                                                                                                                                                                                                                       \\
+  \hline \textbf{Objetivo (Goal)}                                                                                                                            & \textbf{Comportamento Desejado (Desired Behaviour)}                                                                                                                                                           \\ \hline \endfirsthead
+  \hline \textbf{Objetivo (Goal)}                                                                                                                            & \textbf{Comportamento Desejado (Desired Behaviour)}                                                                                                                                                           \\ \hline \endhead
+  \textbf{Achieve} [Retorno seguro ao atingir o LRS e retomada após a recarga] (G5.2)\newline{\scriptsize\textit{Cenário: Gatilho do LRS}}                   & \textbf{DADO} que a bateria está em 14\% e o LRS é de 15\%\newline \textbf{QUANDO} o monitoramento verifica a bateria\newline \textbf{ENTÃO} a missão é interrompida.                                         \\ \hline
+  \textbf{Achieve} [Retorno seguro ao atingir o LRS e retomada após a recarga] (G5.2)\newline{\scriptsize\textit{Cenário: Missão continua}}                  & \textbf{DADO} que a bateria está em 40\% e o LRS é de 15\%\newline \textbf{QUANDO} o monitoramento verifica a bateria\newline \textbf{ENTÃO} a missão continua.                                               \\ \hline
+  \textbf{Achieve} [Retorno seguro ao atingir o LRS e retomada após a recarga] (G5.2)\newline{\scriptsize\textit{Cenário: Retomada sem repetição}}           & \textbf{DADO} que a recarga foi completada e A1 e A2 já foram coletados\newline \textbf{QUANDO} a missão é retomada\newline \textbf{ENTÃO} a missão retoma em A3 e A1 e A2 não são revisitados.               \\ \hline
+  \textbf{Achieve} [Retorno seguro ao atingir o LRS e retomada após a recarga] (G5.2)\newline{\scriptsize\textit{Cenário: Lista ajustada antes da retomada}} & \textbf{DADO} que o Controlador removeu A5 antes da retomada\newline \textbf{QUANDO} a missão é retomada\newline \textbf{ENTÃO} a missão retoma sem A5.                                                       \\ \hline
+  \textbf{Achieve} [Retorno seguro ao atingir o LRS e retomada após a recarga] (G5.2)\newline{\scriptsize\textit{Cenário: Estado salvo no LRS}}              & \textbf{DADO} que o LRS foi atingido a caminho de A3\newline \textbf{QUANDO} a missão é interrompida\newline \textbf{ENTÃO} o sistema salva A3 como pendente e A1 e A2 como coletados e alerta o Controlador. \\ \hline
+  \textbf{Achieve} [Retorno seguro ao atingir o LRS e retomada após a recarga] (G5.2)\newline{\scriptsize\textit{Cenário: Retorno e recarga autônomos}}      & \textbf{DADO} que o estado da missão foi salvo\newline \textbf{QUANDO} o RMMC inicia o retorno\newline \textbf{ENTÃO} o RMMC retorna, acopla e recarrega até 100\%.                                           \\ \hline
+\end{longtable}
+
 
 \subsection{Goal Model (final)}
 
