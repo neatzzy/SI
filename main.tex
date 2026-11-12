@@ -11,7 +11,7 @@
 \usepackage{textcomp}
 \usepackage{gensymb}
 \usepackage{tikz}
-\usetikzlibrary{arrows.meta,calc,shapes.symbols,shapes.geometric}
+\usetikzlibrary{arrows.meta,calc,shapes.symbols,shapes.geometric,backgrounds}
 \usepackage{adjustbox}
 \usepackage{pdflscape}
 
@@ -34,7 +34,9 @@
       append after command={\pgfextra{\draw[thick] ($(\tikzlastnode.north west)+(0.14,0)$) -- (\tikzlastnode.north east) -- ($(\tikzlastnode.south east)-(0.14,0)$) -- (\tikzlastnode.south west) -- cycle;}}},
     sgoal/.style={draw=none, align=center, inner sep=3pt, font=\fontsize{4}{4.5}\selectfont, execute at begin node={\hyphenpenalty=10000 \exhyphenpenalty=10000 \relax},
       append after command={\pgfextra{\draw[thick,dashed] ($(\tikzlastnode.north west)+(0.14,0)$) -- (\tikzlastnode.north east) -- ($(\tikzlastnode.south east)-(0.14,0)$) -- (\tikzlastnode.south west) -- cycle;}}},
-    hub/.style={draw, thick, circle, fill=white, minimum size=0.22cm, inner sep=0pt}
+    hub/.style={draw, thick, circle, fill=white, minimum size=0.22cm, inner sep=0pt},
+    dprop/.style={draw=none, fill=white, align=center, inner sep=3pt, font=\fontsize{4}{4.5}\selectfont, execute at begin node={\hyphenpenalty=10000 \exhyphenpenalty=10000 \relax},
+      append after command={\pgfextra{\draw[thick] (\tikzlastnode.north west) -- (\tikzlastnode.north east) -- (\tikzlastnode.south east) -- (\tikzlastnode.south west) -- cycle;}}}
 }
 
 % Ícones dos Domain Scenarios
@@ -1082,7 +1084,142 @@ Cada \textit{Impact Map} (Figuras~\ref{fig:im-G1-1} a \ref{fig:im-G5-2}) relacio
   \label{fig:im-G5-2}
 \end{figure}
 
-\subsection{Goal Model (v2) e Goal-Feature Mapping}
+\subsection{Goal Model (v2)}
+
+A segunda versão do \textit{Goal Model} incorpora ao modelo v1 as \textit{domain assumptions} e as \textit{expectations} que surgiram nos \textit{Impact Maps}. As suposições de domínio, representadas em trapézio, são condições do ambiente das quais o cumprimento de cada objetivo folha depende, como a estabilidade dos obstáculos entre a leitura do drone e a passagem do robô ou a disponibilidade de um canal de comunicação na base. As \textit{expectations}, representadas como objetivos, são responsabilidades atribuídas a agentes do ambiente, no caso a disponibilidade do Controlador antes do início e durante a missão. Cada objetivo folha G1.1, G1.2, G2.1.1, G2.1.2, G2.2, G3.1, G3.2, G4.1, G4.2, G5.1 e G5.2 recebe, por meio de um refinamento, as suposições levantadas no seu \textit{Impact Map}. A Figura~\ref{fig:gm2} apresenta o \textit{Goal Model} (v2).
+
+\begin{landscape}
+  \begin{figure}[htbp]
+    \centering
+    \begin{adjustbox}{max width=\linewidth}
+    \begin{tikzpicture}
+      \node[goal,text width=1.96cm,minimum height=0.00cm] (n1995fa) at (25.82,-0.95) {\textit{Achieve} [Dados confiáveis dos alvos disponíveis para análise agrícola]};
+      \node[sgoal,text width=1.10cm,minimum height=0.00cm] (n22a5fc) at (34.50,-2.23) {\textit{Maximize} [Qualidade dos dados coletados]};
+      \node[sgoal,text width=1.11cm,minimum height=0.00cm] (na860d9) at (34.67,-1.10) {\textit{Maximize} [Cobertura dos alvos opcionais]};
+      \node[goal,text width=1.11cm,minimum height=0.00cm] (nb25d06) at (14.85,-3.00) {\textit{Achieve} [Missão iniciada com energia suficiente]};
+      \node[goal,text width=1.57cm,minimum height=0.00cm] (na51f57) at (13.72,-4.80) {\textit{Achieve} [Suficiência da bateria para a missão avaliada antes do início]};
+      \node[goal,text width=1.11cm,minimum height=0.00cm] (nfaf818) at (15.67,-4.80) {\textit{Achieve} [Início da missão autorizado]};
+      \node[goal,text width=1.46cm,minimum height=0.00cm] (n85e911) at (24.76,-4.76) {\textit{Achieve} [RMMC na Base de Recarga com segurança]};
+      \node[goal,text width=1.25cm,minimum height=0.00cm] (n010557) at (18.86,-3.24) {\textit{Achieve} [Cada alvo obrigatório com resultado explícito de visita]};
+      \node[goal,text width=1.29cm,minimum height=0.00cm] (n2e5d20) at (17.62,-4.83) {\textit{Achieve} [Alvo visitado e coletado]};
+      \node[goal,text width=1.11cm,minimum height=0.00cm] (n00d26e) at (16.56,-6.09) {\textit{Achieve} [Alvo alcançado]};
+      \node[goal,text width=1.35cm,minimum height=0.00cm] (n7d48c8) at (18.28,-6.07) {\textit{Achieve} [Coleta do alvo concluída]};
+      \node[goal,text width=1.64cm,minimum height=0.00cm] (n2a4d3c) at (19.76,-4.84) {\textit{Achieve} [Alvo registrado como inacessível após esgotar os caminhos alternativos]};
+      \node[goal,text width=1.66cm,minimum height=0.00cm] (nbe6f52) at (23.90,-3.18) {\textit{Achieve} [Dados coletados entregues ao Software de Análise]};
+      \node[goal,text width=1.32cm,minimum height=0.00cm] (n568d51) at (22.64,-4.86) {\textit{Achieve} [Dados consolidados enviados ao Software de Análise]};
+      \node[goal,text width=1.75cm,minimum height=0.00cm] (nb082e9) at (28.21,-3.26) {\textit{Maintain} [Controlador apto a intervir]};
+      \node[goal,text width=1.43cm,minimum height=0.00cm] (nba221a) at (27.43,-4.86) {\textit{Achieve} [Alertas e status de alvo comunicados ao Controlador]};
+      \node[goal,text width=1.32cm,minimum height=0.00cm] (ncd5c95) at (29.40,-4.86) {\textit{Achieve} [Decisões do Controlador aplicadas pelo RMMC]};
+      \node[goal,text width=1.60cm,minimum height=0.00cm] (na9e1cc) at (32.34,-3.23) {\textit{Avoid} [RMMC sem energia para retornar à base]};
+      \node[goal,text width=1.41cm,minimum height=0.00cm] (nc7a95a) at (31.87,-4.80) {\textit{Achieve} [Missão concluída sem atingir o LRS]};
+      \node[goal,text width=1.38cm,minimum height=0.00cm] (n345613) at (34.08,-4.86) {\textit{Achieve} [Missão retomada após interrupção por LRS]};
+      \node[dprop,text width=1.80cm,minimum height=0.00cm] (nbd88e2) at (13.72,-9.00) {\textit{Domain assumption} [Consumo por trecho do terreno é previsível]};
+      \node[dprop,text width=1.80cm,minimum height=0.00cm] (n7fc557) at (13.72,-10.90) {\textit{Domain assumption} [Sensor de bateria mede a carga corretamente]};
+      \node[dprop,text width=1.80cm,minimum height=0.00cm] (n367fb3) at (16.12,-9.00) {\textit{Domain assumption} [Tempo de recarga é compatível com a janela da missão]};
+      \node[dprop,text width=1.80cm,minimum height=0.00cm] (nbe2f0c) at (16.12,-10.90) {\textit{Domain assumption} [Estimativa de consumo reflete o consumo real]};
+      \node[goal,text width=1.80cm,minimum height=0.00cm] (n0d0b58) at (16.12,-12.80) {\textit{Expectation} [Controlador está disponível antes do início]};
+      \node[dprop,text width=1.80cm,minimum height=0.00cm] (na13e75) at (18.52,-9.00) {\textit{Domain assumption} [Obstáculos permanecem estáveis entre a leitura do drone e a passagem do robô]};
+      \node[dprop,text width=1.80cm,minimum height=0.00cm] (n1e2e53) at (18.52,-10.90) {\textit{Domain assumption} [Georreferenciamento dos alvos é preciso]};
+      \node[dprop,text width=1.80cm,minimum height=0.00cm] (n9dac56) at (20.92,-9.00) {\textit{Domain assumption} [Sensores estão calibrados]};
+      \node[dprop,text width=1.80cm,minimum height=0.00cm] (n9b384e) at (20.92,-10.90) {\textit{Domain assumption} [Condições do alvo não mudam entre as tentativas]};
+      \node[dprop,text width=1.80cm,minimum height=0.00cm] (nbf8a64) at (23.32,-9.00) {\textit{Domain assumption} [Topologia do drone cobre toda a área entre o RMMC e o alvo]};
+      \node[dprop,text width=1.80cm,minimum height=0.00cm] (n2f7c41) at (25.72,-9.00) {\textit{Domain assumption} [Há canal de comunicação disponível na base]};
+      \node[dprop,text width=1.80cm,minimum height=0.00cm] (n881b4a) at (28.12,-9.00) {\textit{Domain assumption} [Sempre existe um caminho transitável até a base]};
+      \node[dprop,text width=1.80cm,minimum height=0.00cm] (n4e15c7) at (30.52,-9.00) {\textit{Domain assumption} [Há cobertura de comunicação no campo]};
+      \node[goal,text width=1.80cm,minimum height=0.00cm] (n70d1b2) at (30.52,-10.90) {\textit{Expectation} [Controlador está disponível durante a missão]};
+      \node[dprop,text width=1.80cm,minimum height=0.00cm] (n7100b1) at (32.92,-9.00) {\textit{Domain assumption} [Há canal de comunicação entre estação e RMMC]};
+      \node[dprop,text width=1.80cm,minimum height=0.00cm] (nc86114) at (32.92,-10.90) {\textit{Domain assumption} [Controlador tem autoridade sobre a missão]};
+      \node[dprop,text width=1.80cm,minimum height=0.00cm] (nc91390) at (35.32,-9.00) {\textit{Domain assumption} [Estimativa de consumo é confiável]};
+      \node[dprop,text width=1.80cm,minimum height=0.00cm] (nab72a3) at (37.72,-9.00) {\textit{Domain assumption} [O LRS basta para chegar à base de qualquer ponto da área]};
+      \node[dprop,text width=1.80cm,minimum height=0.00cm] (nc66622) at (37.72,-10.90) {\textit{Domain assumption} [Alvos pendentes continuam relevantes após a recarga]};
+      \node[dprop,text width=1.80cm,minimum height=0.00cm] (n236dc5) at (37.72,-12.80) {\textit{Domain assumption} [Tempo de recarga é compatível com a janela da missão]};
+      \node[hub] (h0) at (25.66,-2.21) {};
+      \node[hub] (h1) at (14.75,-3.73) {};
+      \node[hub] (h2) at (18.21,-3.93) {};
+      \node[hub] (h3) at (19.21,-3.97) {};
+      \node[hub] (h4) at (17.49,-5.43) {};
+      \node[hub] (h5) at (28.10,-3.95) {};
+      \node[hub] (h6) at (31.98,-3.99) {};
+      \node[hub] (h7) at (33.11,-3.96) {};
+      \node[hub] (h8) at (23.79,-3.98) {};
+      \node[hub] (h9) at (13.72,-7.80) {};
+      \node[hub] (h10) at (16.12,-7.80) {};
+      \node[hub] (h11) at (18.52,-7.80) {};
+      \node[hub] (h12) at (20.92,-7.80) {};
+      \node[hub] (h13) at (23.32,-7.80) {};
+      \node[hub] (h14) at (25.72,-7.80) {};
+      \node[hub] (h15) at (28.12,-7.80) {};
+      \node[hub] (h16) at (30.52,-7.80) {};
+      \node[hub] (h17) at (32.92,-7.80) {};
+      \node[hub] (h18) at (35.32,-7.80) {};
+      \node[hub] (h19) at (37.72,-7.80) {};
+      \begin{pgfonlayer}{background}
+      \draw[thick] (nb25d06) -- (h0);
+      \draw[thick] (n010557) -- (h0);
+      \draw[thick] (nbe6f52) -- (h0);
+      \draw[thick] (nb082e9) -- (h0);
+      \draw[thick] (na9e1cc) -- (h0);
+      \draw[thick] (n22a5fc) -- (h0);
+      \draw[thick] (na860d9) -- (h0);
+      \draw[->,thick] (h0) -- (n1995fa);
+      \draw[thick] (na51f57) -- (h1);
+      \draw[thick] (nfaf818) -- (h1);
+      \draw[->,thick] (h1) -- (nb25d06);
+      \draw[thick] (n2e5d20) -- (h2);
+      \draw[->,thick] (h2) -- (n010557);
+      \draw[thick] (n2a4d3c) -- (h3);
+      \draw[->,thick] (h3) -- (n010557);
+      \draw[thick] (n00d26e) -- (h4);
+      \draw[thick] (n7d48c8) -- (h4);
+      \draw[->,thick] (h4) -- (n2e5d20);
+      \draw[thick] (nba221a) -- (h5);
+      \draw[thick] (ncd5c95) -- (h5);
+      \draw[->,thick] (h5) -- (nb082e9);
+      \draw[thick] (nc7a95a) -- (h6);
+      \draw[->,thick] (h6) -- (na9e1cc);
+      \draw[thick] (n345613) -- (h7);
+      \draw[->,thick] (h7) -- (na9e1cc);
+      \draw[thick] (n568d51) -- (h8);
+      \draw[thick] (n85e911) -- (h8);
+      \draw[->,thick] (h8) -- (nbe6f52);
+      \draw[thick] (nbd88e2) -- (h9);
+      \draw[thick] (n7fc557) -- (h9);
+      \draw[->,thick] (h9) -- (na51f57);
+      \draw[thick] (n367fb3) -- (h10);
+      \draw[thick] (nbe2f0c) -- (h10);
+      \draw[thick] (n0d0b58) -- (h10);
+      \draw[->,thick] (h10) -- (nfaf818);
+      \draw[thick] (na13e75) -- (h11);
+      \draw[thick] (n1e2e53) -- (h11);
+      \draw[->,thick] (h11) -- (n00d26e);
+      \draw[thick] (n9dac56) -- (h12);
+      \draw[thick] (n9b384e) -- (h12);
+      \draw[->,thick] (h12) -- (n7d48c8);
+      \draw[thick] (nbf8a64) -- (h13);
+      \draw[->,thick] (h13) -- (n2a4d3c);
+      \draw[thick] (n2f7c41) -- (h14);
+      \draw[->,thick] (h14) -- (n568d51);
+      \draw[thick] (n881b4a) -- (h15);
+      \draw[->,thick] (h15) -- (n85e911);
+      \draw[thick] (n4e15c7) -- (h16);
+      \draw[thick] (n70d1b2) -- (h16);
+      \draw[->,thick] (h16) -- (nba221a);
+      \draw[thick] (n7100b1) -- (h17);
+      \draw[thick] (nc86114) -- (h17);
+      \draw[->,thick] (h17) -- (ncd5c95);
+      \draw[thick] (nc91390) -- (h18);
+      \draw[->,thick] (h18) -- (nc7a95a);
+      \draw[thick] (nab72a3) -- (h19);
+      \draw[thick] (nc66622) -- (h19);
+      \draw[thick] (n236dc5) -- (h19);
+      \draw[->,thick] (h19) -- (n345613);
+      \end{pgfonlayer}
+    \end{tikzpicture}
+    \end{adjustbox}
+    \caption{\textit{Goal Model} (v2) do RMMC em KAOS.}
+    \label{fig:gm2}
+  \end{figure}
+\end{landscape}
 
 \section{Fase 4: Formulação}
 
