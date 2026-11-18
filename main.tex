@@ -37,6 +37,10 @@
       append after command={\pgfextra{\draw[thick] ($(\tikzlastnode.north west)+(0.14,0)$) -- (\tikzlastnode.north east) -- ($(\tikzlastnode.south east)-(0.14,0)$) -- (\tikzlastnode.south west) -- cycle;}}},
     sgoal/.style={draw=none, align=center, inner sep=3pt, font=\fontsize{4}{4.5}\selectfont, execute at begin node={\hyphenpenalty=10000 \exhyphenpenalty=10000 \relax},
       append after command={\pgfextra{\draw[thick,dashed] ($(\tikzlastnode.north west)+(0.14,0)$) -- (\tikzlastnode.north east) -- ($(\tikzlastnode.south east)-(0.14,0)$) -- (\tikzlastnode.south west) -- cycle;}}},
+    deliv/.style={draw=none, align=center, inner sep=4pt, font=\fontsize{4}{4.5}\selectfont, execute at begin node={\hyphenpenalty=10000 \exhyphenpenalty=10000 \relax},
+      append after command={\pgfextra{\filldraw[thick,fill=white] (\tikzlastnode.west) -- ($(\tikzlastnode.north west)+(0.25,0)$) -- ($(\tikzlastnode.north east)-(0.25,0)$) -- (\tikzlastnode.east) -- ($(\tikzlastnode.south east)-(0.25,0)$) -- ($(\tikzlastnode.south west)+(0.25,0)$) -- cycle;}}},
+    expect/.style={draw=none, align=center, inner sep=3pt, font=\fontsize{4}{4.5}\selectfont, execute at begin node={\hyphenpenalty=10000 \exhyphenpenalty=10000 \relax},
+      append after command={\pgfextra{\filldraw[thick,fill=white] ($(\tikzlastnode.north west)+(0.14,0)$) -- (\tikzlastnode.north east) -- ($(\tikzlastnode.south east)-(0.14,0)$) -- (\tikzlastnode.south west) -- cycle;}}},
     hub/.style={draw, thick, circle, fill=white, minimum size=0.22cm, inner sep=0pt},
     dprop/.style={draw=none, fill=white, align=center, inner sep=3pt, font=\fontsize{4}{4.5}\selectfont, execute at begin node={\hyphenpenalty=10000 \exhyphenpenalty=10000 \relax},
       append after command={\pgfextra{\draw[thick] (\tikzlastnode.north west) -- (\tikzlastnode.north east) -- (\tikzlastnode.south east) -- (\tikzlastnode.south west) -- cycle;}}}
@@ -1842,6 +1846,157 @@ Cada exemplo dos \textit{Example Maps} foi escrito como um cenário em Gherkin, 
 
 
 \subsection{Goal Model (final)}
+
+A versão final do \textit{Goal Model} refina o v2 com o que foi produzido na Fase 4. Os \textit{Example Maps} e os cenários em Gherkin detalharam o comportamento esperado de cada objetivo folha, e esse detalhamento foi incorporado ao modelo na forma de \textit{deliverables}, representados em hexágono, que são as entregas do sistema que viabilizam cada objetivo, como o estimador de consumo da missão e a retomada automática a partir do estado salvo. Os objetivos intermediários foram consolidados em relação ao v2, e cada objetivo folha passa a ser refinado por suas suposições de domínio (trapézio), \textit{expectations} sobre o Controlador e \textit{deliverables}. A Figura~\ref{fig:gmfinal} apresenta o \textit{Goal Model} final.
+
+\begin{landscape}
+  \begin{figure}[htbp]
+    \centering
+    \begin{adjustbox}{max width=\linewidth}
+      \begin{tikzpicture}
+        \node[goal,text width=2.00cm] (r) at (12.50,-1.00) {\textit{Achieve} [Dados confiáveis dos alvos disponíveis para análise agrícola]};
+        \node[sgoal,text width=1.10cm] (sq) at (26.50,-2.40) {\textit{Maximize} [Qualidade dos dados coletados]};
+        \node[sgoal,text width=1.10cm] (sc) at (26.50,-1.20) {\textit{Maximize} [Cobertura dos alvos opcionais]};
+        \node[goal,text width=1.20cm] (a1) at (1.20,-3.20) {\textit{Achieve} [Missão iniciada com energia suficiente]};
+        \node[goal,text width=1.30cm] (a2) at (7.80,-3.20) {\textit{Achieve} [Cada alvo obrigatório com resultado explícito de visita]};
+        \node[goal,text width=1.40cm] (a3) at (13.20,-3.20) {\textit{Achieve} [Dados coletados entregues ao Software de Análise]};
+        \node[goal,text width=1.50cm] (a4) at (18.00,-3.20) {\textit{Maintain} [Controlador apto a intervir]};
+        \node[goal,text width=1.50cm] (a5) at (22.80,-3.20) {\textit{Avoid} [RMMC sem energia para retornar à base]};
+        \node[goal,text width=1.50cm] (b1) at (0.00,-5.00) {\textit{Achieve} [Suficiência da bateria para a missão avaliada antes do início]};
+        \node[goal,text width=1.20cm] (b2) at (2.40,-5.00) {\textit{Achieve} [Início da missão autorizado]};
+        \node[goal,text width=1.30cm] (c1) at (6.00,-5.00) {\textit{Achieve} [Alvo visitado e coletado]};
+        \node[goal,text width=1.70cm] (c2) at (9.60,-5.00) {\textit{Achieve} [Alvo registrado como inacessível após esgotar os caminhos alternativos]};
+        \node[goal,text width=1.40cm] (e1) at (12.00,-5.00) {\textit{Achieve} [Dados consolidados enviados ao Software de Análise]};
+        \node[goal,text width=1.40cm] (e2) at (14.40,-5.00) {\textit{Achieve} [RMMC na Base de Recarga com segurança]};
+        \node[goal,text width=1.50cm] (f1) at (16.80,-5.00) {\textit{Achieve} [Alertas e status de alvo comunicados ao Controlador]};
+        \node[goal,text width=1.40cm] (f2) at (19.20,-5.00) {\textit{Achieve} [Decisões do Controlador aplicadas pelo RMMC]};
+        \node[goal,text width=1.40cm] (g1) at (21.60,-5.00) {\textit{Achieve} [Missão concluída sem atingir o LRS]};
+        \node[goal,text width=1.40cm] (g2) at (24.00,-5.00) {\textit{Achieve} [Missão retomada após interrupção por LRS]};
+        \node[goal,text width=1.10cm] (d1) at (4.80,-6.60) {\textit{Achieve} [Alvo alcançado]};
+        \node[goal,text width=1.30cm] (d2) at (7.20,-6.60) {\textit{Achieve} [Coleta do alvo concluída]};
+        \node[dprop,text width=1.90cm] (lb10) at (0.00,-9.20) {\textit{Domain assumption} [Consumo por trecho do terreno é previsível]};
+        \node[dprop,text width=1.90cm] (lb11) at (0.00,-11.10) {\textit{Domain assumption} [Sensor de bateria mede a carga corretamente]};
+        \node[deliv,text width=1.90cm] (lb12) at (0.00,-13.00) {\textit{Deliverable} [Estimador de consumo da missão]};
+        \node[expect,text width=1.90cm] (lb20) at (2.40,-9.20) {\textit{Expectation} [Controlador está disponível antes do início]};
+        \node[deliv,text width=1.90cm] (lb21) at (2.40,-11.10) {\textit{Deliverable} [Autorização automática do início quando a carga cobre os alvos obrigatórios]};
+        \node[dprop,text width=1.90cm] (ld10) at (4.80,-9.20) {\textit{Domain assumption} [Obstáculos permanecem estáveis entre a leitura do drone e a passagem do robô]};
+        \node[dprop,text width=1.90cm] (ld11) at (4.80,-11.10) {\textit{Domain assumption} [Georreferenciamento dos alvos é preciso]};
+        \node[deliv,text width=1.90cm] (ld12) at (4.80,-13.00) {\textit{Deliverable} [Planejamento de rota até o alvo sobre a topologia]};
+        \node[dprop,text width=1.90cm] (ld20) at (7.20,-9.20) {\textit{Domain assumption} [Sensores estão calibrados]};
+        \node[deliv,text width=1.90cm] (ld21) at (7.20,-11.10) {\textit{Deliverable} [Critério de qualidade configurável por tipo de dado]};
+        \node[deliv,text width=1.90cm] (ld22) at (7.20,-13.00) {\textit{Deliverable} [Avaliação automática da qualidade de cada leitura]};
+        \node[dprop,text width=1.90cm] (lc20) at (9.60,-9.20) {\textit{Domain assumption} [Topologia do drone cobre toda a área entre o RMMC e o alvo]};
+        \node[deliv,text width=1.90cm] (lc21) at (9.60,-11.10) {\textit{Deliverable} [Critério de esgotamento]};
+        \node[dprop,text width=1.90cm] (le10) at (12.00,-9.20) {\textit{Domain assumption} [Há canal de comunicação disponível na base]};
+        \node[deliv,text width=1.90cm] (le11) at (12.00,-11.10) {\textit{Deliverable} [Consolidação em pacote único da missão, com o resultado de cada alvo]};
+        \node[dprop,text width=1.90cm] (le20) at (14.40,-9.20) {\textit{Domain assumption} [Sempre existe um caminho transitável até a base]};
+        \node[deliv,text width=1.90cm] (le21) at (14.40,-11.10) {\textit{Deliverable} [Navegação autônoma de retorno]};
+        \node[dprop,text width=1.90cm] (lf10) at (16.80,-9.20) {\textit{Domain assumption} [Há cobertura de comunicação no campo]};
+        \node[expect,text width=1.90cm] (lf11) at (16.80,-11.10) {\textit{Expectation} [Controlador está disponível durante a missão]};
+        \node[deliv,text width=1.90cm] (lf12) at (16.80,-13.00) {\textit{Deliverable} [Envio de status a cada evento]};
+        \node[dprop,text width=1.90cm] (lf20) at (19.20,-9.20) {\textit{Domain assumption} [Há canal de comunicação entre estação e RMMC]};
+        \node[deliv,text width=1.90cm] (lf21) at (19.20,-11.10) {\textit{Deliverable} [Comandos padronizados]};
+        \node[dprop,text width=1.90cm] (lg10) at (21.60,-9.20) {\textit{Domain assumption} [Estimativa de consumo é confiável]};
+        \node[deliv,text width=1.90cm] (lg11) at (21.60,-11.10) {\textit{Deliverable} [Visita a opcionais só após os obrigatórios, somente com margem de energia e tempo]};
+        \node[dprop,text width=1.90cm] (lg20) at (24.00,-9.20) {\textit{Domain assumption} [O LRS basta para chegar à base de qualquer ponto da área]};
+        \node[dprop,text width=1.90cm] (lg21) at (24.00,-11.10) {\textit{Domain assumption} [Alvos pendentes continuam relevantes após a recarga]};
+        \node[dprop,text width=1.90cm] (lg22) at (24.00,-13.00) {\textit{Domain assumption} [Tempo de recarga é compatível com a janela da missão]};
+        \node[deliv,text width=1.90cm] (lg23) at (24.00,-14.90) {\textit{Deliverable} [Retomada automática a partir do estado salvo após a recarga]};
+        \node[hub] (h0) at (12.50,-2.30) {};
+        \node[hub] (h1) at (1.20,-4.00) {};
+        \node[hub] (h2) at (7.40,-4.00) {};
+        \node[hub] (h3) at (8.50,-4.00) {};
+        \node[hub] (h4) at (6.00,-5.80) {};
+        \node[hub] (h5) at (13.20,-4.00) {};
+        \node[hub] (h6) at (18.00,-4.00) {};
+        \node[hub] (h7) at (22.20,-4.00) {};
+        \node[hub] (h8) at (23.40,-4.00) {};
+        \node[hub] (hl0) at (0.00,-8.00) {};
+        \node[hub] (hl1) at (2.40,-8.00) {};
+        \node[hub] (hl2) at (4.80,-8.00) {};
+        \node[hub] (hl3) at (7.20,-8.00) {};
+        \node[hub] (hl4) at (9.60,-8.00) {};
+        \node[hub] (hl5) at (12.00,-8.00) {};
+        \node[hub] (hl6) at (14.40,-8.00) {};
+        \node[hub] (hl7) at (16.80,-8.00) {};
+        \node[hub] (hl8) at (19.20,-8.00) {};
+        \node[hub] (hl9) at (21.60,-8.00) {};
+        \node[hub] (hl10) at (24.00,-8.00) {};
+        \begin{pgfonlayer}{background}
+          \draw[thick] (a1) -- (h0);
+          \draw[thick] (a2) -- (h0);
+          \draw[thick] (a3) -- (h0);
+          \draw[thick] (a4) -- (h0);
+          \draw[thick] (a5) -- (h0);
+          \draw[thick] (sq) -- (h0);
+          \draw[thick] (sc) -- (h0);
+          \draw[->,thick] (h0) -- (r);
+          \draw[thick] (b1) -- (h1);
+          \draw[thick] (b2) -- (h1);
+          \draw[->,thick] (h1) -- (a1);
+          \draw[thick] (c1) -- (h2);
+          \draw[->,thick] (h2) -- (a2);
+          \draw[thick] (c2) -- (h3);
+          \draw[->,thick] (h3) -- (a2);
+          \draw[thick] (d1) -- (h4);
+          \draw[thick] (d2) -- (h4);
+          \draw[->,thick] (h4) -- (c1);
+          \draw[thick] (e1) -- (h5);
+          \draw[thick] (e2) -- (h5);
+          \draw[->,thick] (h5) -- (a3);
+          \draw[thick] (f1) -- (h6);
+          \draw[thick] (f2) -- (h6);
+          \draw[->,thick] (h6) -- (a4);
+          \draw[thick] (g1) -- (h7);
+          \draw[->,thick] (h7) -- (a5);
+          \draw[thick] (g2) -- (h8);
+          \draw[->,thick] (h8) -- (a5);
+          \draw[thick] (lb10) -- (hl0);
+          \draw[thick] (lb11) -- (hl0);
+          \draw[thick] (lb12) -- (hl0);
+          \draw[->,thick] (hl0) -- (b1);
+          \draw[thick] (lb20) -- (hl1);
+          \draw[thick] (lb21) -- (hl1);
+          \draw[->,thick] (hl1) -- (b2);
+          \draw[thick] (ld10) -- (hl2);
+          \draw[thick] (ld11) -- (hl2);
+          \draw[thick] (ld12) -- (hl2);
+          \draw[->,thick] (hl2) -- (d1);
+          \draw[thick] (ld20) -- (hl3);
+          \draw[thick] (ld21) -- (hl3);
+          \draw[thick] (ld22) -- (hl3);
+          \draw[->,thick] (hl3) -- (d2);
+          \draw[thick] (lc20) -- (hl4);
+          \draw[thick] (lc21) -- (hl4);
+          \draw[->,thick] (hl4) -- (c2);
+          \draw[thick] (le10) -- (hl5);
+          \draw[thick] (le11) -- (hl5);
+          \draw[->,thick] (hl5) -- (e1);
+          \draw[thick] (le20) -- (hl6);
+          \draw[thick] (le21) -- (hl6);
+          \draw[->,thick] (hl6) -- (e2);
+          \draw[thick] (lf10) -- (hl7);
+          \draw[thick] (lf11) -- (hl7);
+          \draw[thick] (lf12) -- (hl7);
+          \draw[->,thick] (hl7) -- (f1);
+          \draw[thick] (lf20) -- (hl8);
+          \draw[thick] (lf21) -- (hl8);
+          \draw[->,thick] (hl8) -- (f2);
+          \draw[thick] (lg10) -- (hl9);
+          \draw[thick] (lg11) -- (hl9);
+          \draw[->,thick] (hl9) -- (g1);
+          \draw[thick] (lg20) -- (hl10);
+          \draw[thick] (lg21) -- (hl10);
+          \draw[thick] (lg22) -- (hl10);
+          \draw[thick] (lg23) -- (hl10);
+          \draw[->,thick] (hl10) -- (g2);
+        \end{pgfonlayer}
+      \end{tikzpicture}
+    \end{adjustbox}
+    \caption{\textit{Goal Model} final do RMMC em KAOS.}
+    \label{fig:gmfinal}
+  \end{figure}
+\end{landscape}
 
 \section{Fase 5: Validação}
 
