@@ -1,0 +1,184 @@
+// =====================================================================
+// RMMC - Robo de Monitoramento Multimodal de Cultivos
+// Especificacao SLEEC derivada dos BDDs (F01 a F11) e do Goal Model final
+// Convencao: eventos comecam com maiuscula; measures com minuscula.
+// Cada regra traz, no comentario, a funcionalidade e o goal de origem.
+// =====================================================================
+def_start
+    // ---------- eventos do ambiente (atores externos) ----------
+    event PlanejadorEnviaMissao
+    event PlanejadorCadastraAlvo
+    event ControladorOrdenaRecarga
+    event ControladorAjustaLista
+    event ControladorAdiaAlvo
+    event ControladorEnviaComando
+    event ControladorConfirmaLeitura
+    event DroneMandaInfo
+    event BaseEmiteSinal
+    event RecargaConcluida
+    event SoftwareConfirmaRecebimento
+    event TempoConfirmacaoEsgotado
+    event TempoAlertaEsgotado
+    event LeituraBateria
+    event RoboChegaAoAlvo
+    event RoboChegaNaBase
+    event RoboMudaPosicao
+
+    // ---------- eventos do RMMC (respostas) ----------
+    event RoboAvaliaBateria
+    event RoboRejeitaMissao
+    event RoboIniciaMissao
+    event RoboAlertaBateriaInsuficiente
+    event RoboSolicitaAjusteLista
+    event RoboRejeitaAlvo
+    event RoboRequisitaTopologia
+    event RoboSegueParaAlvo
+    event RoboBuscaAlternativa
+    event RoboUsaPosicaoAlternativa
+    event RoboRegistraAlvoInacessivel
+    event RoboNotificaAlvoInacessivel
+    event RoboRemoveAlvoDaLista
+    event RoboColetaDado
+    event RoboAvaliaQualidade
+    event RoboRegistraColetaAprovada
+    event RoboAjustaERepeteColeta
+    event RoboRegistraQualidadeInsuficiente
+    event RoboAssociaDadoAoAlvo
+    event RoboEnviaStatus
+    event RoboSelecionaProximoAlvo
+    event RoboVisitaAlvoOpcional
+    event RoboConcluiMissao
+    event RoboVaiParaBaseRecarga
+    event RoboAtualizaPainel
+    event RoboAcopla
+    event RoboEnviaPacote
+    event RoboEncerraEnvio
+    event RoboEnviaAlertaCritico
+    event RoboEncerraReenvio
+    event RoboExecutaComando
+    event RoboIgnoraComando
+    event RoboRejeitaComando
+    event RoboConfirmaExecucao
+    event RoboInterrompeMissao
+    event RoboSalvaEstado
+    event RoboRetomaMissao
+
+    // ---------- measures ----------
+    // b_baixa: abaixo do LRS | b_media: acima do LRS, sem margem para opcional | b_alta: com margem
+    measure bateriaRobo: scale(b_baixa, b_media, b_alta)
+    measure listaCompleta: boolean
+    measure cargaCobreObrigatorios: boolean
+    measure capacidadeMaximaCobreMissao: boolean
+    measure coordenadaValida: boolean
+    measure caminhoPlanejadoLivre: boolean
+    measure existeRotaAlternativa: boolean
+    measure existePosicaoAlternativa: boolean
+    measure qualidadeAprovada: boolean
+    measure tentativasDeColeta: numeric
+    measure existeObrigatorioPendente: boolean
+    measure existeOpcionalPendente: boolean
+    measure tempoDisponivel: boolean
+    measure roboEmMissao: boolean
+    measure roboEmRetorno: boolean
+    measure missaoInterrompida: boolean
+    measure missaoConcluida: boolean
+    measure pacoteConfirmado: boolean
+    measure alertaConfirmado: boolean
+    measure comandoPadronizado: boolean
+    measure comandoSeguro: boolean
+
+    constant MAX_TENTATIVAS = 3
+def_end
+
+rule_start
+    // ===== F01: Avaliar a bateria antes da missao (G1.1) =====
+    // Lista completa => avaliacao executada; alvo sem tipo de dado => missao nao e avaliada
+    R01_1 when PlanejadorEnviaMissao then RoboAvaliaBateria within 10 seconds
+          unless (not {listaCompleta}) then RoboRejeitaMissao
+
+    // ===== F02: Autorizar o inicio da missao (G1.2) =====
+    // Carga cobre os obrigatorios => inicia sem aprovacao; senao bloqueia e alerta em ate 10 s
+    R02_1 when RoboAvaliaBateria then RoboIniciaMissao
+          unless (not {cargaCobreObrigatorios}) then RoboAlertaBateriaInsuficiente within 10 seconds
+    // Ordem 'recarregar' => vai a base; se nem a carga maxima basta, a lista precisa ser ajustada
+    R02_2 when ControladorOrdenaRecarga then RoboVaiParaBaseRecarga
+          unless (not {capacidadeMaximaCobreMissao}) then RoboSolicitaAjusteLista
+    // Controlador ajusta a lista => bateria e reavaliada
+    R02_3 when ControladorAjustaLista then RoboAvaliaBateria within 10 seconds
+    // Recarga antes do inicio => reavalia; recarga apos interrupcao por LRS => retoma (F11)
+    R02_4 when RecargaConcluida then RoboAvaliaBateria within 10 seconds
+          unless {missaoInterrompida} then RoboRetomaMissao
+
+    // ===== F03: Alcancar o alvo (G2.1.1) =====
+    // Coordenada invalida ou fora da fazenda => alvo rejeitado
+    R03_1 when PlanejadorCadastraAlvo and (not {coordenadaValida}) then RoboRejeitaAlvo
+    // Antes de cada deslocamento requisita a topologia ao drone
+    R03_2 when RoboSelecionaProximoAlvo then RoboRequisitaTopologia within 5 seconds
+    // Trecho livre => segue; caminho bloqueado => busca alternativa
+    R03_3 when DroneMandaInfo and {roboEmMissao} then RoboSegueParaAlvo
+          unless (not {caminhoPlanejadoLivre}) then RoboBuscaAlternativa
+    // Rota alternativa => segue; so posicao alternativa => coleta dela; nenhuma => inacessivel (F05)
+    R03_4 when RoboBuscaAlternativa then RoboSegueParaAlvo
+          unless (not {existeRotaAlternativa}) then RoboUsaPosicaoAlternativa
+          unless ((not {existeRotaAlternativa}) and (not {existePosicaoAlternativa})) then RoboRegistraAlvoInacessivel
+
+    // ===== F04: Coletar o dado do alvo com qualidade (G2.1.2) =====
+    R04_1 when RoboChegaAoAlvo then RoboColetaDado
+    R04_2 when RoboUsaPosicaoAlternativa then RoboColetaDado
+    R04_3 when RoboColetaDado then RoboAvaliaQualidade within 5 seconds
+    R04_4 when RoboAjustaERepeteColeta then RoboAvaliaQualidade within 5 seconds
+    // Aprovada => registra; reprovada => ajusta e repete; 3 reprovadas => 'qualidade insuficiente' (nao ha 4a tentativa)
+    R04_5 when RoboAvaliaQualidade then RoboRegistraColetaAprovada
+          unless (not {qualidadeAprovada}) then RoboAjustaERepeteColeta
+          unless ((not {qualidadeAprovada}) and ({tentativasDeColeta} >= MAX_TENTATIVAS)) then RoboRegistraQualidadeInsuficiente
+    // Todo dado e associado ao alvo e as informacoes da coleta; status vai ao Controlador (F08)
+    R04_6 when RoboRegistraColetaAprovada then RoboAssociaDadoAoAlvo
+    R04_7 when RoboRegistraQualidadeInsuficiente then RoboAssociaDadoAoAlvo
+    R04_8 when RoboAssociaDadoAoAlvo then RoboEnviaStatus within 10 seconds
+
+    // ===== F05: Registrar alvo inacessivel (G2.2) =====
+    // Controlador recebe alvo e motivo; a missao segue sem esperar resposta
+    R05_1 when RoboRegistraAlvoInacessivel then RoboNotificaAlvoInacessivel within 10 seconds
+    R05_2 when RoboNotificaAlvoInacessivel then RoboSelecionaProximoAlvo within 30 seconds
+    R05_3 when ControladorAdiaAlvo then RoboRemoveAlvoDaLista
+
+    // ===== F10: Executar a missao dentro da autonomia (G5.1) =====
+    // Obrigatorio pendente vem antes de opcional; sem obrigatorio pendente a missao esta concluida
+    R10_1 when RoboEnviaStatus and {roboEmMissao} then RoboSelecionaProximoAlvo
+          unless (not {existeObrigatorioPendente}) then RoboConcluiMissao
+    // Opcional so com margem de energia e de tempo; senao dispensa e retorna
+    R10_2 when RoboConcluiMissao then RoboVaiParaBaseRecarga
+          unless (({existeOpcionalPendente} and {tempoDisponivel}) and ({bateriaRobo} = b_alta)) then RoboVisitaAlvoOpcional
+
+    // ===== F07: Retornar a base com seguranca (G3.2) =====
+    R07_1 when RoboVaiParaBaseRecarga then RoboRequisitaTopologia within 5 seconds
+    R07_2 when RoboMudaPosicao and {roboEmRetorno} then RoboAtualizaPainel within 10 seconds
+    R07_3 when BaseEmiteSinal and {roboEmRetorno} then RoboAcopla
+
+    // ===== F06: Entregar os dados ao Software de Analise (G3.1) =====
+    R06_1 when RoboChegaNaBase and {missaoConcluida} then RoboEnviaPacote within 1 minutes
+    R06_2 when TempoConfirmacaoEsgotado and (not {pacoteConfirmado}) then RoboEnviaPacote within 1 minutes
+    R06_3 when SoftwareConfirmaRecebimento then RoboEncerraEnvio
+
+    // ===== F08: Comunicar alertas e status ao Controlador (G4.1) =====
+    // Alerta critico sem confirmacao => reenvia; confirmado => para de reenviar
+    R08_1 when TempoAlertaEsgotado and (not {alertaConfirmado}) then RoboEnviaAlertaCritico within 10 seconds
+    R08_2 when ControladorConfirmaLeitura then RoboEncerraReenvio
+
+    // ===== F09: Aplicar as decisoes do Controlador (G4.2) =====
+    // Texto livre nao e interpretado; comando inseguro (ex.: 'retomar' com 5%, 'avancar' abaixo do LRS) e rejeitado
+    R09_1 when ControladorEnviaComando then RoboExecutaComando
+          unless (not {comandoPadronizado}) then RoboIgnoraComando
+          unless ({comandoPadronizado} and (not {comandoSeguro})) then RoboRejeitaComando
+    R09_2 when RoboExecutaComando then RoboConfirmaExecucao within 10 seconds
+
+    // ===== F11: Retornar ao atingir o LRS e retomar a missao (G5.2) =====
+    // Bateria abaixo do LRS durante a missao => interrompe
+    R11_1 when LeituraBateria and ({roboEmMissao} and ({bateriaRobo} = b_baixa)) then RoboInterrompeMissao within 5 seconds
+    // Ao interromper: salva o estado, alerta o Controlador em ate 10 s e retorna sozinho
+    R11_2 when RoboInterrompeMissao then RoboSalvaEstado within 5 seconds
+    R11_3 when RoboInterrompeMissao then RoboEnviaAlertaCritico within 10 seconds
+    R11_4 when RoboSalvaEstado then RoboVaiParaBaseRecarga
+    // Retomada parte do estado salvo: vai ao alvo pendente, sem revisitar os concluidos
+    R11_5 when RoboRetomaMissao then RoboSelecionaProximoAlvo within 30 seconds
+rule_end

@@ -138,9 +138,9 @@
 
 Este trabalho aplica o processo de Engenharia de Requisitos ao problema do \textit{Monitoramento Multimodal de Cultivos}, no qual um robô autônomo percorre uma área agrícola para coletar dados de um conjunto predefinido de alvos georreferenciados, com apoio de um drone que fornece informações sobre a topologia do local. O contexto envolve restrições relevantes: verificação de bateria antes e durante a missão, tratamento de alvos inacessíveis por meio de posições alternativas, avaliação de qualidade dos dados com até duas novas tentativas, retorno seguro à base com retomada da missão após a recarga, visita a alvos opcionais apenas quando houver tempo e energia, e possibilidade de monitoramento e intervenção humana.
 
-O desenvolvimento seguiu as fases de Iniciação, Investigação, Decisão, Formulação e Validação. Foram utilizados Diagrama de Contexto e \textit{Stakeholder Onion Diagram}, Cenários de Domínio, Mapa de Impacto, Especificação por Exemplos (\textit{Example Map} com BDDs) e \textit{Goal Models} em KAOS, evoluídos nas versões v1, v2 e final, com uso de \textit{goal patterns}. O resultado é um conjunto de objetivos, requisitos de máquina e suposições de domínio claros, relevantes, completos e rastreáveis, discutidos com as partes interessadas em \textit{workshop} de validação.
+O desenvolvimento seguiu as fases de Iniciação, Investigação, Decisão, Formulação e Validação. Foram utilizados Diagrama de Contexto e \textit{Stakeholder Onion Diagram}, Cenários de Domínio, Mapa de Impacto, Especificação por Exemplos (\textit{Example Map} com BDDs) e \textit{Goal Models} em KAOS, evoluídos nas versões v1, v2 e final, com uso de \textit{goal patterns}. As regras de comportamento foram formalizadas em SLEEC e verificadas quanto a conflitos e redundâncias com a ferramenta LEGOS-SLEEC. O resultado é um conjunto de objetivos, requisitos de máquina e suposições de domínio claros, relevantes, completos e rastreáveis, discutidos com as partes interessadas em \textit{workshop} de validação.
 
-\textbf{Palavras-chave:} Engenharia de Requisitos, Goal Models, Impact Map, Behaviour Driven Development.
+\textbf{Palavras-chave:} Engenharia de Requisitos, Goal Models, Impact Map, Behaviour Driven Development, SLEEC.
 
 \section{Introdução}
 
@@ -150,7 +150,7 @@ A complexidade do problema reside nas restrições operacionais do ambiente agr�
 
 Há ainda requisitos de qualidade e de adaptação. Cada coleta precisa ter a qualidade avaliada, e uma leitura insatisfatória pode ser repetida até duas vezes antes de ser registrada como falha. Os alvos opcionais só devem ser visitados quando sobrarem tempo e energia, sem comprometer os alvos obrigatórios nem o retorno à base. Por fim, o sistema deve permitir que um operador humano acompanhe a missão e intervenha quando necessário.
 
-Essas restrições interagem entre si: visitar um alvo opcional consome a energia que poderia ser necessária para repetir uma coleta, e uma posição alternativa mais distante reduz a margem de retorno. Para traduzir essas regras em especificações claras e verificáveis, este documento apresenta a modelagem do sistema ao longo das fases de Iniciação, Investigação, Decisão, Formulação e Validação. A abordagem parte do entendimento das partes interessadas e das fronteiras do sistema, passa pela investigação de cenários e pela definição de objetivos, e chega à especificação por exemplos e à validação com as partes interessadas.
+Essas restrições interagem entre si: visitar um alvo opcional consome a energia que poderia ser necessária para repetir uma coleta, e uma posição alternativa mais distante reduz a margem de retorno. Para traduzir essas regras em especificações claras e verificáveis, este documento apresenta a modelagem do sistema ao longo das fases de Iniciação, Investigação, Decisão, Formulação e Validação. A abordagem parte do entendimento das partes interessadas e das fronteiras do sistema, passa pela investigação de cenários e pela definição de objetivos, e chega à especificação por exemplos, à formalização das regras em SLEEC e à validação com as partes interessadas.
 
 \section{Fundamentação Teórica}
 
@@ -160,7 +160,7 @@ Nesta seção, apresenta-se a base teórica das técnicas e modelos adotados ao 
   \item \textbf{Fase 1 (Iniciação):} utilização do \textit{Context Diagram} para mapear a fronteira do sistema e suas interações com os atores, acompanhado do \textit{Stakeholder Onion Diagram} para classificar as partes interessadas em camadas de envolvimento.
   \item \textbf{Fase 2 (Investigação):} emprego de \textit{Domain Scenarios} para narrar o fluxo de eventos e o tratamento de exceções, e construção da primeira versão do \textit{Goal Model} em KAOS para traduzir as regras do domínio em objetivos.
   \item \textbf{Fase 3 (Decisão):} aplicação do \textit{Impact Map} para alinhar os objetivos com o comportamento dos atores e as funcionalidades do sistema, resultando na evolução para o \textit{Goal Model} (v2), com uso de \textit{goal patterns}.
-  \item \textbf{Fase 4 (Formulação):} uso de \textit{Specification by Example} (\textit{Example Maps} e BDDs) para criar critérios de aceite executáveis, consolidando os requisitos no \textit{Goal Model} final.
+  \item \textbf{Fase 4 (Formulação):} uso de \textit{Specification by Example} (\textit{Example Maps} e BDDs) para criar critérios de aceite executáveis, consolidando os requisitos no \textit{Goal Model} final, e formalização desses critérios como regras SLEEC, cuja consistência é verificada com a ferramenta LEGOS-SLEEC.
   \item \textbf{Fase 5 (Validação):} discussão dos resultados com as partes interessadas em \textit{workshop}.
 \end{itemize}
 
@@ -1998,6 +1998,109 @@ A versão final do \textit{Goal Model} refina o v2 com o que foi produzido na Fa
   \end{figure}
 \end{landscape}
 
+\subsection{Especificação SLEEC}
+
+As regras de comportamento descritas nos cenários BDD foram formalizadas em SLEEC, uma linguagem de domínio específico para especificar regras normativas de agentes autônomos, isto é, regras que delimitam o comportamento aceitável de um sistema que interage com pessoas (GETIR YAMAN et al., 2024). O nome vem das categorias de norma que a linguagem cobre: sociais, legais, éticas, empáticas e culturais (\textit{social, legal, ethical, empathetic and cultural}). A sintaxe se aproxima da linguagem natural, o que permite que as regras sejam lidas por pessoas sem formação técnica e, ao mesmo tempo, verificadas por ferramentas.
+
+Uma especificação SLEEC tem duas partes. O bloco de definições declara o vocabulário: \textbf{eventos} (\texttt{event}), que são ocorrências instantâneas, como o robô receber uma missão ou iniciar o retorno; \textbf{medidas} (\texttt{measure}), que representam o estado do mundo no momento de um evento e podem ser booleanas, numéricas ou de escala; e \textbf{constantes} (\texttt{constant}). O bloco de regras usa esse vocabulário no formato:
+
+\begin{center}
+\texttt{when} \textit{evento} [\texttt{and} \textit{condição}] \texttt{then} \textit{resposta} [\texttt{within} \textit{prazo}] [\texttt{unless} \textit{exceção} [\texttt{then} \textit{resposta alternativa}]]
+\end{center}
+
+A cláusula \texttt{within} impõe um prazo para a resposta, e a cláusula \texttt{unless} (\textit{defeater}) descreve uma circunstância em que a regra não se aplica ou em que outra resposta passa a ser exigida. No RMMC, essa formalização permite verificar, antes da implementação, se as regras derivadas dos BDDs são consistentes entre si, o que é especialmente relevante para as regras de segurança, como o retorno ao atingir o LRS, e para a interação com o Controlador da Missão.
+
+\Needspace{6cm}
+\subsubsection{Construção da especificação}
+
+A especificação foi derivada dos cenários BDD e está organizada pelas mesmas funcionalidades (F01 a F11). O arquivo completo, \texttt{sleec/rmmc.sleec}, acompanha este relatório. O bloco de definições contém 54 eventos, 21 medidas e uma constante:
+
+\begin{itemize}
+    \item \textbf{Eventos de entrada} (17): ações dos atores externos e ocorrências percebidas pelo robô, como \texttt{PlanejadorEnviaMissao}, \texttt{DroneMandaInfo}, \texttt{ControladorEnviaComando}, \texttt{LeituraBateria} e \texttt{RoboChegaAoAlvo}.
+    \item \textbf{Eventos de resposta} (37): ações do RMMC, como \texttt{RoboIniciaMissao}, \texttt{RoboBuscaAlternativa} e \texttt{RoboVaiParaBaseRecarga}.
+    \item \textbf{Medidas}: \texttt{bateriaRobo}, de escala, com três níveis (\texttt{b\_baixa}, abaixo do LRS; \texttt{b\_media}, acima do LRS, mas sem margem para alvos opcionais; \texttt{b\_alta}, com margem); \texttt{tentativasDeColeta}, numérica; e 19 medidas booleanas, como \texttt{cargaCobreObrigatorios}, \texttt{qualidadeAprovada} e \texttt{roboEmMissao}.
+    \item \textbf{Constante}: \texttt{MAX\_TENTATIVAS = 3}, o limite de leituras por alvo.
+\end{itemize}
+
+O bloco de regras contém 37 regras, identificadas pela funcionalidade de origem (por exemplo, R11\_1 é a primeira regra de F11). A tradução dos BDDs seguiu uma correspondência direta: o \textbf{DADO} de cada cenário virou a condição sobre as medidas, o \textbf{QUANDO} virou o evento gatilho e o \textbf{ENTÃO} virou a resposta. Os valores concretos dos cenários foram abstraídos para as medidas: no cenário ``Gatilho do LRS'' de F11, ``bateria em 14\% com LRS de 15\%'' passou a ser \texttt{bateriaRobo = b\_baixa}. Os desvios de um mesmo gatilho foram escritos como exceções (\texttt{unless}) da mesma regra, e não como regras separadas, para que duas regras nunca exijam respostas opostas ao mesmo evento. A Figura~\ref{fig:sleecregras} mostra duas regras: R11\_1, que vem do cenário ``Gatilho do LRS'', e R04\_5, que reúne os cenários ``Leitura aprovada'', ``Leitura reprovada'' e ``Limite de tentativas'' de F04.
+
+\begin{figure}[H]
+\centering
+\footnotesize
+\begin{verbatim}
+R11_1 when LeituraBateria
+        and ({roboEmMissao} and ({bateriaRobo} = b_baixa))
+      then RoboInterrompeMissao within 5 seconds
+
+R04_5 when RoboAvaliaQualidade then RoboRegistraColetaAprovada
+      unless (not {qualidadeAprovada})
+        then RoboAjustaERepeteColeta
+      unless ((not {qualidadeAprovada}) and
+              ({tentativasDeColeta} >= MAX_TENTATIVAS))
+        then RoboRegistraQualidadeInsuficiente
+\end{verbatim}
+\normalsize
+\caption{Exemplos de regras SLEEC do RMMC derivadas dos BDDs de F11 e F04.}
+\label{fig:sleecregras}
+\end{figure}
+
+A Tabela~\ref{tab:sleecregras} relaciona as regras às funcionalidades e aos objetivos do \textit{Goal Model}, o que mantém a rastreabilidade entre o modelo de objetivos, os cenários BDD e as regras formais.
+
+\begin{table}[H]
+\centering
+\caption{Regras SLEEC por funcionalidade e objetivo do \textit{Goal Model}.}
+\label{tab:sleecregras}
+\begin{tabular}{|p{7.4cm}|p{2.9cm}|l|}
+\hline
+\textbf{Funcionalidade} & \textbf{Regras} & \textbf{Objetivo} \\ \hline
+F01: Avaliar a bateria antes da missão & R01\_1 & G1.1 \\ \hline
+F02: Autorizar o início da missão & R02\_1 a R02\_4 & G1.2 \\ \hline
+F03: Alcançar o alvo & R03\_1 a R03\_4 & G2.1.1 \\ \hline
+F04: Coletar o dado do alvo com qualidade & R04\_1 a R04\_8 & G2.1.2 \\ \hline
+F05: Registrar alvo inacessível & R05\_1 a R05\_3 & G2.2 \\ \hline
+F06: Entregar os dados ao Software de Análise & R06\_1 a R06\_3 & G3.1 \\ \hline
+F07: Retornar à base com segurança & R07\_1 a R07\_3 & G3.2 \\ \hline
+F08: Comunicar alertas e status ao Controlador & R08\_1 e R08\_2 & G4.1 \\ \hline
+F09: Aplicar as decisões do Controlador & R09\_1 e R09\_2 & G4.2 \\ \hline
+F10: Executar a missão dentro da autonomia & R10\_1 e R10\_2 & G5.1 \\ \hline
+F11: Retornar ao atingir o LRS e retomar a missão & R11\_1 a R11\_5 & G5.2 \\ \hline
+\end{tabular}
+\end{table}
+
+\Needspace{6cm}
+\subsubsection{Verificação com o LEGOS-SLEEC}
+
+A especificação foi verificada com o LEGOS-SLEEC (KOLYAKOV et al., 2025), ferramenta da Universidade de Toronto que analisa a bem-formação de regras SLEEC. A ferramenta traduz as regras para fórmulas lógicas e as resolve com o \textit{solver} Z3. Foram executadas três análises: conflitos, conflitos situacionais e redundância. Em cada uma, a ferramenta percorre as regras na ordem do arquivo; por isso, na saída, \texttt{rule\_36} corresponde a R11\_4 e \texttt{rule\_37} a R11\_5. As figuras desta seção mostram o trecho final de cada análise, referente às regras de F11, e o resultado consolidado.
+
+\textbf{Conflitos.} A análise verifica, para cada regra, se existe ao menos um cenário em que ela é cumprida junto com todas as demais. As 37 regras foram classificadas como \textit{Not Conflicting}. A Figura~\ref{fig:sleecconflitos} mostra os cenários encontrados para R11\_4 e R11\_5. Em R11\_4, ao salvar o estado, o robô vai para a base e requisita a topologia ao drone, como exige R07\_1. Em R11\_5, ao retomar a missão, o robô seleciona o próximo alvo e requisita a topologia, como exige R03\_2. Nenhum dos dois cenários contradiz outra regra. A tupla final \texttt{(False, ..., [])} indica que nenhum conflito foi encontrado e que a lista de regras conflitantes está vazia.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\linewidth]{sleec/conflitos.png}
+\caption{Análise de conflitos: cenários de R11\_4 e R11\_5 e resultado final, sem conflitos entre as 37 regras.}
+\label{fig:sleecconflitos}
+\end{figure}
+
+\textbf{Conflitos situacionais.} Antes dessa análise, a ferramenta normaliza as regras, separando cada exceção (\texttt{unless}) em uma obrigação com condição explícita; as 37 regras resultaram em 50 obrigações. Em seguida, verifica se existe alguma situação em que duas obrigações se contradigam. Todas resultaram em \textit{unsat}, ou seja, o \textit{solver} não encontrou nenhuma situação desse tipo, e o resultado final \texttt{(False, '', [])} confirma a ausência de conflitos situacionais. A Figura~\ref{fig:sleecsituacionais} mostra as obrigações de F09 e F11. Na saída, a ferramenta escreve as respostas imediatas como \texttt{within 0 seconds} e os níveis de escala pela posição: \texttt{bateriaRobo = 0} corresponde a \texttt{b\_baixa}.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\linewidth]{sleec/situacionais.png}
+\caption{Análise de conflitos situacionais: obrigações normalizadas de F09 e F11 verificadas como \textit{unsat} e resultado final.}
+\label{fig:sleecsituacionais}
+\end{figure}
+
+\textbf{Redundância.} A análise verifica, para cada regra, se as demais já garantem a resposta que ela exige; nesse caso, a regra poderia ser removida. As 37 regras foram classificadas como \textit{Not Redundant}. Para cada uma, a ferramenta apresenta um cenário em que o gatilho ocorre e nenhuma outra regra garante a resposta. Na Figura~\ref{fig:sleecredundancia}, por exemplo, sem R11\_4 nada obrigaria o robô a ir para a base depois de salvar o estado, e sem R11\_5 nada obrigaria a seleção do próximo alvo após a retomada.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\linewidth]{sleec/redundancia.png}
+\caption{Análise de redundância: R11\_4 e R11\_5 classificadas como não redundantes e resultado final.}
+\label{fig:sleecredundancia}
+\end{figure}
+
+Com as três análises, conclui-se que o conjunto de regras é consistente, sem conflitos gerais nem situacionais, e mínimo, sem regras redundantes. As análises de \textit{concerns} e de \textit{purposes}, que a ferramenta também oferece, não foram aplicadas, porque dependem de blocos adicionais na especificação.
+
 \section{Fase 5: Validação}
 
 \section{Conclusão}
@@ -2006,5 +2109,9 @@ A versão final do \textit{Goal Model} refina o v2 com o que foi produzido na Fa
 \section{Referência}
 
 \noindent
+GETIR YAMAN, S. et al. Specification, validation and verification of social, legal, ethical, empathetic and cultural requirements for autonomous agents. \textit{Journal of Systems and Software}, 2024. DOI: 10.1016/j.jss.2024.112229.
+
+\noindent
+KOLYAKOV, K.; MARSSO, L.; FENG, N.; QUAN, J.; CHECHIK, M. LEGOS-SLEEC: Tool for Formalizing and Analyzing Normative Requirements. In: \textit{Proceedings of the IEEE/ACM International Conference on Software Engineering: Companion (ICSE-Companion)}. 2025. p. 33--36.
 
 \end{document}
