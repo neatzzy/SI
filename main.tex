@@ -17,6 +17,8 @@
 \usepackage{longtable}
 \usepackage{float}
 \usepackage{needspace}
+\usepackage{url}
+\usepackage[alf]{abntex2cite}
 
 % Estilos e macros dos Domain Scenarios
 \tikzset{
@@ -154,21 +156,20 @@ Essas restrições interagem entre si: visitar um alvo opcional consome a energi
 
 \section{Fundamentação Teórica}
 
-Nesta seção, apresenta-se a base teórica das técnicas e modelos adotados ao longo das fases do projeto:
+A Engenharia de Requisitos trata da identificação dos objetivos que um sistema deve satisfazer, da operacionalização desses objetivos em requisitos sobre o comportamento da máquina e da explicitação das suposições sobre o ambiente das quais esse comportamento depende \cite{lamsweerde2009,letier2020}. Nesta seção, apresenta-se a base teórica das técnicas e modelos adotados ao longo das fases do projeto:
 
 \begin{itemize}
   \item \textbf{Fase 1 (Iniciação):} utilização do \textit{Context Diagram} para mapear a fronteira do sistema e suas interações com os atores, acompanhado do \textit{Stakeholder Onion Diagram} para classificar as partes interessadas em camadas de envolvimento.
   \item \textbf{Fase 2 (Investigação):} emprego de \textit{Domain Scenarios} para narrar o fluxo de eventos e o tratamento de exceções, e construção da primeira versão do \textit{Goal Model} em KAOS para traduzir as regras do domínio em objetivos.
   \item \textbf{Fase 3 (Decisão):} aplicação do \textit{Impact Map} para alinhar os objetivos com o comportamento dos atores e as funcionalidades do sistema, resultando na evolução para o \textit{Goal Model} (v2), com uso de \textit{goal patterns}.
   \item \textbf{Fase 4 (Formulação):} uso de \textit{Specification by Example} (\textit{Example Maps} e BDDs) para criar critérios de aceite executáveis, consolidando os requisitos no \textit{Goal Model} final, e formalização desses critérios como regras SLEEC, cuja consistência é verificada com a ferramenta LEGOS-SLEEC.
-  \item \textbf{Fase 5 (Validação):} discussão dos resultados com as partes interessadas em \textit{workshop}.
 \end{itemize}
 
 \section{Fase 1: Iniciação}
 
 \subsection{Diagrama de Contexto}
 
-O Diagrama de Contexto delimita a fronteira do Sistema de Controle do Robô de Monitoramento Multimodal de Cultivos (RMMC) e mostra os fluxos trocados com os atores e sistemas externos. O RMMC é tratado como uma única caixa, sem detalhar sua estrutura interna.
+O Diagrama de Contexto delimita a fronteira do Sistema de Controle do Robô de Monitoramento Multimodal de Cultivos (RMMC) e mostra os fluxos trocados com os atores e sistemas externos. O RMMC é tratado como uma única caixa, sem detalhar sua estrutura interna, de modo que o foco recaia sobre o contexto de trabalho e as interfaces com o ambiente \cite{robertson2012}.
 
 Dois atores humanos interagem com o sistema. O \textbf{Planejador da Missão} envia os \textit{dados da missão} (alvos georreferenciados obrigatórios e opcionais). O \textbf{Controlador da Missão} recebe \textit{alertas de bateria e status da missão} e, quando necessário, devolve \textit{ajustes de alvos}, \textit{comandos de recarga} e \textit{comandos de controle}.
 
@@ -221,7 +222,7 @@ A Figura~\ref{fig:contexto} apresenta o diagrama. A linha tracejada delimita a f
 
 \subsection{Stakeholder Onion Diagram}
 
-O \textit{Stakeholder Onion Diagram} (Figura~\ref{fig:onion}) classifica as partes interessadas em camadas concêntricas de envolvimento com o RMMC: \textit{Operational Area} (usuários diretos e tecnologias de interface), \textit{Containing Business} (cliente e beneficiários funcionais) e \textit{Wider Environment} (afetados, reguladores e fornecedor). A \textit{Development Team} aparece à parte.
+O \textit{Stakeholder Onion Diagram} (Figura~\ref{fig:onion}) classifica as partes interessadas em camadas concêntricas de envolvimento com o RMMC: \textit{Operational Area} (usuários diretos e tecnologias de interface), \textit{Containing Business} (cliente e beneficiários funcionais) e \textit{Wider Environment} (afetados, reguladores e fornecedor). A \textit{Development Team} aparece à parte. A identificação sistemática das partes interessadas evita que fontes relevantes de requisitos sejam ignoradas \cite{robertson2012}.
 
 \begin{figure}[htbp]
   \centering
@@ -279,7 +280,7 @@ O \textit{Stakeholder Onion Diagram} (Figura~\ref{fig:onion}) classifica as part
 
 \subsection{Domain Scenarios}
 
-Os \textit{Domain Scenarios} narram sequências de eventos do mundo em que o RMMC atua. Cada passo segue a estrutura \textit{ator primário, ação, objeto, participante}, e os estados citados entre parênteses nos cenários aparecem em \textit{stickers}.
+Os \textit{Domain Scenarios} narram sequências de eventos do mundo em que o RMMC atua. Cada passo segue a estrutura \textit{ator primário, ação, objeto, participante}, e os estados citados entre parênteses nos cenários aparecem em \textit{stickers}. Cenários concretos ajudam a elicitar e a validar requisitos, pois são mais fáceis de discutir com as partes interessadas do que formulações abstratas, e servem de ponto de partida para a identificação de objetivos \cite{lamsweerde2009}.
 
 \subsubsection{Cenário 1: ciclo completo sem falhas, com alvo opcional}
 
@@ -524,7 +525,7 @@ Os \textit{Domain Scenarios} narram sequências de eventos do mundo em que o RMM
 
 \subsection{Goal Model (v1)}
 
-A primeira versão do \textit{Goal Model} foi construída a partir dos Cenários de Domínio descritos na seção anterior. Cada passo dos cenários, bem como cada exceção tratada, foi traduzido em um objetivo, de modo que as regras do domínio ficassem registradas de forma explícita e rastreável. O modelo segue a notação KAOS e utiliza os padrões de formulação \textit{Achieve}, \textit{Maintain} e \textit{Avoid} para distinguir, respectivamente, estados que o sistema deve atingir, condições que devem ser preservadas ao longo da missão e situações que devem ser evitadas. Os \textit{softgoals}, representados pelo padrão \textit{Maximize}, capturam as qualidades desejadas que não possuem critério de satisfação absoluto.
+A primeira versão do \textit{Goal Model} foi construída a partir dos Cenários de Domínio descritos na seção anterior. Cada passo dos cenários, bem como cada exceção tratada, foi traduzido em um objetivo, de modo que as regras do domínio ficassem registradas de forma explícita e rastreável. O modelo segue a notação KAOS \cite{lamsweerde2009} e utiliza os padrões de formulação \textit{Achieve}, \textit{Maintain} e \textit{Avoid} para distinguir, respectivamente, estados que o sistema deve atingir, condições que devem ser preservadas ao longo da missão e situações que devem ser evitadas. Os \textit{softgoals}, representados pelo padrão \textit{Maximize}, capturam as qualidades desejadas que não possuem critério de satisfação absoluto.
 
 A Figura~\ref{fig:gm1} apresenta o \textit{Goal Model} (v1) completo, com o objetivo raiz, os objetivos G1 a G5, seus refinamentos e os \textit{softgoals}. O objetivo raiz, \textit{Achieve} [Dados confiáveis dos alvos disponíveis para análise agrícola], expressa a razão de ser do RMMC e é refinado em cinco objetivos de nível superior, cada um responsável por uma dimensão da missão:
 
@@ -1104,7 +1105,7 @@ Cada \textit{Impact Map} (Figuras~\ref{fig:im-G1-1} a \ref{fig:im-G5-2}) relacio
 
 \subsection{Goal Model (v2)}
 
-A segunda versão do \textit{Goal Model} incorpora ao modelo v1 as \textit{domain assumptions} e as \textit{expectations} que surgiram nos \textit{Impact Maps}. As suposições de domínio, representadas em trapézio, são condições do ambiente das quais o cumprimento de cada objetivo folha depende, como a estabilidade dos obstáculos entre a leitura do drone e a passagem do robô ou a disponibilidade de um canal de comunicação na base. As \textit{expectations}, representadas como objetivos, são responsabilidades atribuídas a agentes do ambiente, no caso a disponibilidade do Controlador antes do início e durante a missão. Cada objetivo folha G1.1, G1.2, G2.1.1, G2.1.2, G2.2, G3.1, G3.2, G4.1, G4.2, G5.1 e G5.2 recebe, por meio de um refinamento, as suposições levantadas no seu \textit{Impact Map}. A Figura~\ref{fig:gm2} apresenta o \textit{Goal Model} (v2).
+A segunda versão do \textit{Goal Model} incorpora ao modelo v1 as \textit{domain assumptions} e as \textit{expectations} que surgiram nos \textit{Impact Maps}. As suposições de domínio, representadas em trapézio, são condições do ambiente das quais o cumprimento de cada objetivo folha depende \cite{letier2020}, como a estabilidade dos obstáculos entre a leitura do drone e a passagem do robô ou a disponibilidade de um canal de comunicação na base. As \textit{expectations}, representadas como objetivos, são responsabilidades atribuídas a agentes do ambiente \cite{lamsweerde2009}, no caso a disponibilidade do Controlador antes do início e durante a missão. Cada objetivo folha G1.1, G1.2, G2.1.1, G2.1.2, G2.2, G3.1, G3.2, G4.1, G4.2, G5.1 e G5.2 recebe, por meio de um refinamento, as suposições levantadas no seu \textit{Impact Map}. A Figura~\ref{fig:gm2} apresenta o \textit{Goal Model} (v2).
 
 \begin{landscape}
   \begin{figure}[htbp]
@@ -1679,170 +1680,655 @@ Contribui para: \textit{Avoid} [RMMC sem energia para retornar à base] · \text
 
 \subsection{Specification by Example: BDD (Gherkin)}
 
-Cada exemplo dos \textit{Example Maps} foi escrito como um cenário em Gherkin, com as palavras-chave em português: \textbf{DADO} (\textit{Given}), \textbf{QUANDO} (\textit{When}) e \textbf{ENTÃO} (\textit{Then}). A coluna da esquerda indica o objetivo do \textit{Goal Model} ao qual o cenário se refere e a coluna da direita descreve o comportamento desejado.
+Cada \textit{Example Map} foi escrito como uma \textit{Feature} em Gherkin. As regras (cartões azuis) viram blocos \texttt{Rule} e cada exemplo (cartão verde) vira um \texttt{Scenario} dentro da regra que ilustra. As palavras-chave estruturais seguem o Gherkin em inglês (\texttt{Feature}, \texttt{Rule}, \texttt{Scenario}) e os passos usam as palavras-chave em português: \texttt{Dado} (\textit{Given}), \texttt{Quando} (\textit{When}), \texttt{Então} (\textit{Then}), \texttt{E} (\textit{And}) e \texttt{Mas} (\textit{But}). Os cenários foram detalhados com passos adicionais onde o exemplo do mapa deixava pré-condições ou efeitos implícitos. Antes de cada \textit{Feature} indica-se o objetivo do \textit{Goal Model} ao qual ela contribui.
 
-\Needspace{6cm}
+\Needspace{8cm}
 \subsubsection{F01: Avaliar a bateria antes da missão}
 
-\begin{longtable}{|p{4.3cm}|p{10.2cm}|}
-  \caption{BDD da funcionalidade F01.}                                                                                                                                                                                                                                                                                                                                       \\
-  \hline \textbf{Objetivo (Goal)}                                                                                                                               & \textbf{Comportamento Desejado (Desired Behaviour)}                                                                                                                                                        \\ \hline \endfirsthead
-  \hline \textbf{Objetivo (Goal)}                                                                                                                               & \textbf{Comportamento Desejado (Desired Behaviour)}                                                                                                                                                        \\ \hline \endhead
-  \textbf{Achieve} [Suficiência da bateria para a missão avaliada antes do início] (G1.1)\newline{\scriptsize\textit{Cenário: Estimativa por rota e coletas}}   & \textbf{DADO} que o Planejador cadastrou uma rota de 1,2 km com 3 coletas\newline \textbf{QUANDO} o sistema estima o consumo da missão\newline \textbf{ENTÃO} o consumo estimado é de 38\%.                \\ \hline
-  \textbf{Achieve} [Suficiência da bateria para a missão avaliada antes do início] (G1.1)\newline{\scriptsize\textit{Cenário: Estimativa com coletas térmicas}} & \textbf{DADO} que a mesma rota recebeu 2 coletas térmicas adicionais\newline \textbf{QUANDO} o sistema estima o consumo da missão\newline \textbf{ENTÃO} o consumo estimado é de 47\%.                     \\ \hline
-  \textbf{Achieve} [Suficiência da bateria para a missão avaliada antes do início] (G1.1)\newline{\scriptsize\textit{Cenário: Custo exibido no planejamento}}   & \textbf{DADO} que a missão em planejamento tem custo estimado de 38\%\newline \textbf{QUANDO} o Planejador inclui o alvo A4\newline \textbf{ENTÃO} o custo energético exibido sobe de 38\% para 45\%.      \\ \hline
-  \textbf{Achieve} [Suficiência da bateria para a missão avaliada antes do início] (G1.1)\newline{\scriptsize\textit{Cenário: Bateria suficiente}}              & \textbf{DADO} que a carga atual é de 60\% e a carga necessária é de 38\%\newline \textbf{QUANDO} o sistema compara as cargas antes da partida\newline \textbf{ENTÃO} a bateria é considerada suficiente.   \\ \hline
-  \textbf{Achieve} [Suficiência da bateria para a missão avaliada antes do início] (G1.1)\newline{\scriptsize\textit{Cenário: Bateria insuficiente}}            & \textbf{DADO} que a carga atual é de 30\% e a carga necessária é de 38\%\newline \textbf{QUANDO} o sistema compara as cargas antes da partida\newline \textbf{ENTÃO} a bateria é considerada insuficiente. \\ \hline
-  \textbf{Achieve} [Suficiência da bateria para a missão avaliada antes do início] (G1.1)\newline{\scriptsize\textit{Cenário: Alvo sem tipo de dado}}           & \textbf{DADO} que o alvo A2 está na lista sem tipo de dado\newline \textbf{QUANDO} a missão é enviada para avaliação\newline \textbf{ENTÃO} a missão não é avaliada.                                       \\ \hline
-  \textbf{Achieve} [Suficiência da bateria para a missão avaliada antes do início] (G1.1)\newline{\scriptsize\textit{Cenário: Lista completa}}                  & \textbf{DADO} que todos os alvos têm ordem e tipo de dado definidos\newline \textbf{QUANDO} a missão é enviada para avaliação\newline \textbf{ENTÃO} a avaliação de bateria é executada.                   \\ \hline
-\end{longtable}
+Contribui para: \textit{Achieve} [Suficiência da bateria para a missão avaliada antes do início] (G1.1).
 
-\Needspace{6cm}
+{\small
+\begin{verbatim}
+Feature: Avaliar a bateria antes da missão
+
+  Rule: O consumo da missão deve ser estimado pela rota e pelas
+        coletas
+
+    Scenario: Estimativa por rota e coletas
+      Dado que o Planejador cadastrou uma rota de 1,2 km
+      E que a missão tem 3 coletas
+      Quando o sistema estima o consumo da missão
+      Então o consumo estimado deve ser de 38%
+
+    Scenario: Estimativa com coletas térmicas adicionais
+      Dado que o Planejador cadastrou uma rota de 1,2 km com 3
+          coletas
+      E que o Planejador incluiu 2 coletas térmicas adicionais
+      Quando o sistema estima o consumo da missão
+      Então o consumo estimado deve ser de 47%
+
+  Rule: O custo energético estimado deve ser exibido durante o
+        planejamento
+
+    Scenario: Custo atualizado ao incluir um alvo
+      Dado que a missão em planejamento tem custo estimado de 38%
+      Quando o Planejador inclui o alvo A4
+      Então o custo energético exibido deve subir de 38% para 45%
+
+  Rule: A carga atual deve ser comparada com a carga necessária
+        antes da partida
+
+    Scenario: Bateria suficiente
+      Dado que a carga atual do RMMC é de 60%
+      E que a carga necessária para a missão é de 38%
+      Quando o sistema compara as cargas antes da partida
+      Então a bateria deve ser considerada suficiente
+
+    Scenario: Bateria insuficiente
+      Dado que a carga atual do RMMC é de 30%
+      E que a carga necessária para a missão é de 38%
+      Quando o sistema compara as cargas antes da partida
+      Então a bateria deve ser considerada insuficiente
+
+  Rule: A missão só deve ser avaliada com a lista completa de
+        alvos, ordem e tipos de dado
+
+    Scenario: Alvo sem tipo de dado
+      Dado que a missão tem os alvos A1, A2 e A3 com ordem
+          definida
+      Mas o alvo A2 está sem tipo de dado
+      Quando a missão é enviada para avaliação
+      Então a missão não deve ser avaliada
+      E o Planejador deve ser informado de que falta o tipo de
+          dado de A2
+
+    Scenario: Lista completa
+      Dado que todos os alvos da missão têm ordem e tipo de dado
+          definidos
+      Quando a missão é enviada para avaliação
+      Então a avaliação de bateria deve ser executada
+\end{verbatim}
+}
+
+\Needspace{8cm}
 \subsubsection{F02: Autorizar o início da missão}
 
-\begin{longtable}{|p{4.3cm}|p{10.2cm}|}
-  \caption{BDD da funcionalidade F02.}                                                                                                                                                                                                                                                                                                                                       \\
-  \hline \textbf{Objetivo (Goal)}                                                                                              & \textbf{Comportamento Desejado (Desired Behaviour)}                                                                                                                                                                                         \\ \hline \endfirsthead
-  \hline \textbf{Objetivo (Goal)}                                                                                              & \textbf{Comportamento Desejado (Desired Behaviour)}                                                                                                                                                                                         \\ \hline \endhead
-  \textbf{Achieve} [Início da missão autorizado] (G1.2)\newline{\scriptsize\textit{Cenário: Início automático}}                & \textbf{DADO} que a carga é de 80\% e a carga necessária é de 45\%\newline \textbf{QUANDO} o sistema avalia o início da missão\newline \textbf{ENTÃO} a missão inicia sem aprovação do Controlador.                                         \\ \hline
-  \textbf{Achieve} [Início da missão autorizado] (G1.2)\newline{\scriptsize\textit{Cenário: Recarga antes do início}}          & \textbf{DADO} que a carga é insuficiente e o Controlador ordenou ‘recarregar’\newline \textbf{QUANDO} o RMMC chega à base e conclui a recarga\newline \textbf{ENTÃO} o sistema reavalia a bateria e inicia a missão.                        \\ \hline
-  \textbf{Achieve} [Início da missão autorizado] (G1.2)\newline{\scriptsize\textit{Cenário: Recarga não resolve}}              & \textbf{DADO} que a carga necessária é de 110\% da capacidade da bateria\newline \textbf{QUANDO} o Controlador ordena ‘recarregar’\newline \textbf{ENTÃO} a recarga não resolve e a lista de alvos precisa ser ajustada.                    \\ \hline
-  \textbf{Achieve} [Início da missão autorizado] (G1.2)\newline{\scriptsize\textit{Cenário: Início bloqueado com diagnóstico}} & \textbf{DADO} que a carga é de 30\%, a necessária é de 45\% e a máxima é de 100\%\newline \textbf{QUANDO} o sistema avalia o início da missão\newline \textbf{ENTÃO} o Controlador recebe um alerta com os 3 valores e a missão não inicia. \\ \hline
-  \textbf{Achieve} [Início da missão autorizado] (G1.2)\newline{\scriptsize\textit{Cenário: Ajuste da lista libera o início}}  & \textbf{DADO} que a carga é de 60\% e o Controlador removeu o alvo opcional A3, reduzindo a necessária de 45\% para 40\%\newline \textbf{QUANDO} o sistema reavalia a bateria\newline \textbf{ENTÃO} a missão inicia.                       \\ \hline
-  \textbf{Achieve} [Início da missão autorizado] (G1.2)\newline{\scriptsize\textit{Cenário: Ajuste insuficiente}}              & \textbf{DADO} que a carga é de 60\% e, após o ajuste, a carga necessária é de 70\%\newline \textbf{QUANDO} o sistema reavalia a bateria\newline \textbf{ENTÃO} a missão continua bloqueada.                                                 \\ \hline
-\end{longtable}
+Contribui para: \textit{Achieve} [Início da missão autorizado] (G1.2).
 
-\Needspace{6cm}
+{\small
+\begin{verbatim}
+Feature: Autorizar o início da missão
+
+  Rule: O início deve ser autorizado automaticamente se a carga
+        cobre os alvos obrigatórios
+
+    Scenario: Início automático
+      Dado que a carga atual do RMMC é de 80%
+      E que a carga necessária para os alvos obrigatórios é de 45%
+      Quando o sistema avalia o início da missão
+      Então a missão deve iniciar
+      E nenhuma aprovação do Controlador deve ser exigida
+
+  Rule: O RMMC deve recarregar antes do início quando o
+        Controlador ordenar
+
+    Scenario: Recarga antes do início
+      Dado que a carga atual é insuficiente para a missão
+      E que o Controlador ordenou 'recarregar'
+      Quando o RMMC chega à base e conclui a recarga
+      Então o sistema deve reavaliar a bateria
+      E a missão deve iniciar
+
+    Scenario: Recarga não resolve
+      Dado que a carga necessária é de 110% da capacidade da
+          bateria
+      Quando o Controlador ordena 'recarregar'
+      Então o Controlador deve ser informado de que a recarga não
+          resolve
+      E a lista de alvos deve precisar de ajuste antes do início
+
+  Rule: O início deve ser bloqueado e o Controlador alertado se a
+        carga é insuficiente
+
+    Scenario: Início bloqueado com diagnóstico
+      Dado que a carga atual do RMMC é de 30%
+      E que a carga necessária para a missão é de 45%
+      E que a carga máxima da bateria é de 100%
+      Quando o sistema avalia o início da missão
+      Então a missão não deve iniciar
+      E o Controlador deve receber um alerta com os 3 valores
+
+  Rule: A bateria deve ser reavaliada após o Controlador ajustar a
+        lista de alvos
+
+    Scenario: Ajuste da lista libera o início
+      Dado que a carga atual do RMMC é de 60%
+      E que a carga necessária para a missão é de 45%
+      Quando o Controlador remove o alvo opcional A3
+      E o sistema reavalia a bateria
+      Então a carga necessária deve cair para 40%
+      E a missão deve iniciar
+
+    Scenario: Ajuste insuficiente
+      Dado que a carga atual do RMMC é de 60%
+      E que, após o ajuste da lista, a carga necessária é de 70%
+      Quando o sistema reavalia a bateria
+      Então a missão deve continuar bloqueada
+      E o Controlador deve receber um novo alerta
+\end{verbatim}
+}
+
+\Needspace{8cm}
 \subsubsection{F03: Alcançar o alvo}
 
-\begin{longtable}{|p{4.3cm}|p{10.2cm}|}
-  \caption{BDD da funcionalidade F03.}                                                                                                                                                                                                                                                                                                                         \\
-  \hline \textbf{Objetivo (Goal)}                                                                                  & \textbf{Comportamento Desejado (Desired Behaviour)}                                                                                                                                                                                       \\ \hline \endfirsthead
-  \hline \textbf{Objetivo (Goal)}                                                                                  & \textbf{Comportamento Desejado (Desired Behaviour)}                                                                                                                                                                                       \\ \hline \endhead
-  \textbf{Achieve} [Alvo alcançado] (G2.1.1)\newline{\scriptsize\textit{Cenário: Trecho livre}}                    & \textbf{DADO} que o drone informa trecho livre até o alvo A1\newline \textbf{QUANDO} o RMMC verifica a acessibilidade do alvo\newline \textbf{ENTÃO} o RMMC segue para A1.                                                                \\ \hline
-  \textbf{Achieve} [Alvo alcançado] (G2.1.1)\newline{\scriptsize\textit{Cenário: Caminho bloqueado}}               & \textbf{DADO} que o drone informa uma árvore caída no caminho até A1\newline \textbf{QUANDO} o RMMC verifica a acessibilidade do alvo\newline \textbf{ENTÃO} o caminho planejado é considerado bloqueado.                                 \\ \hline
-  \textbf{Achieve} [Alvo alcançado] (G2.1.1)\newline{\scriptsize\textit{Cenário: Topologia antes do deslocamento}} & \textbf{DADO} que o RMMC parte de A1 para A2\newline \textbf{QUANDO} o deslocamento é iniciado\newline \textbf{ENTÃO} o RMMC requisita ao drone a topologia do trecho A1–A2.                                                              \\ \hline
-  \textbf{Achieve} [Alvo alcançado] (G2.1.1)\newline{\scriptsize\textit{Cenário: Rota alternativa}}                & \textbf{DADO} que a rota norte está bloqueada e a rota leste está livre\newline \textbf{QUANDO} o RMMC busca um caminho até A1\newline \textbf{ENTÃO} o RMMC alcança A1 pela rota leste.                                                  \\ \hline
-  \textbf{Achieve} [Alvo alcançado] (G2.1.1)\newline{\scriptsize\textit{Cenário: Posição alternativa de coleta}}   & \textbf{DADO} que todas as rotas até o alvo estão bloqueadas e existe uma posição livre a 3 m do alvo\newline \textbf{QUANDO} o RMMC busca uma posição de acesso\newline \textbf{ENTÃO} a coleta é feita a partir da posição alternativa. \\ \hline
-  \textbf{Achieve} [Alvo alcançado] (G2.1.1)\newline{\scriptsize\textit{Cenário: Latitude inválida}}               & \textbf{DADO} que o Planejador cadastra um alvo com latitude de 95\degree{}\newline \textbf{QUANDO} o cadastro é validado\newline \textbf{ENTÃO} o alvo é rejeitado.                                                                      \\ \hline
-  \textbf{Achieve} [Alvo alcançado] (G2.1.1)\newline{\scriptsize\textit{Cenário: Coordenada fora da fazenda}}      & \textbf{DADO} que o Planejador cadastra um alvo com coordenada fora da área da fazenda\newline \textbf{QUANDO} o cadastro é validado\newline \textbf{ENTÃO} o alvo é rejeitado.                                                           \\ \hline
-\end{longtable}
+Contribui para: \textit{Achieve} [Alvo alcançado] (G2.1.1).
 
-\Needspace{6cm}
+{\small
+\begin{verbatim}
+Feature: Alcançar o alvo
+
+  Rule: A acessibilidade do alvo deve ser verificada com a
+        topologia do drone antes do deslocamento
+
+    Scenario: Trecho livre
+      Dado que o RMMC está pronto para seguir para o alvo A1
+      E que o drone informa trecho livre até A1
+      Quando o RMMC verifica a acessibilidade do alvo
+      Então o RMMC deve seguir para A1
+
+    Scenario: Caminho bloqueado
+      Dado que o RMMC está pronto para seguir para o alvo A1
+      E que o drone informa uma árvore caída no caminho até A1
+      Quando o RMMC verifica a acessibilidade do alvo
+      Então o caminho planejado deve ser considerado bloqueado
+
+  Rule: A topologia deve ser requisitada ao drone antes de cada
+        deslocamento
+
+    Scenario: Topologia antes do deslocamento
+      Dado que o RMMC concluiu a coleta em A1
+      E que o próximo alvo é A2
+      Quando o deslocamento de A1 para A2 é iniciado
+      Então o RMMC deve requisitar ao drone a topologia do trecho
+          A1-A2
+
+  Rule: Diante de obstáculo, o RMMC deve buscar rota ou posição de
+        coleta alternativa
+
+    Scenario: Rota alternativa
+      Dado que a rota norte até A1 está bloqueada
+      E que a rota leste até A1 está livre
+      Quando o RMMC busca um caminho até A1
+      Então o RMMC deve alcançar A1 pela rota leste
+
+    Scenario: Posição alternativa de coleta
+      Dado que todas as rotas até o alvo A1 estão bloqueadas
+      E que existe uma posição livre a 3 m de A1
+      Quando o RMMC busca uma posição de acesso
+      Então o RMMC deve se deslocar para a posição alternativa
+      E a coleta deve ser feita a partir dessa posição
+
+  Rule: Coordenadas inválidas devem ser rejeitadas no cadastro de
+        alvos
+
+    Scenario: Latitude inválida
+      Dado que o Planejador cadastra um alvo com latitude de 95°
+      Quando o cadastro é validado
+      Então o alvo deve ser rejeitado
+
+    Scenario: Coordenada fora da fazenda
+      Dado que o Planejador cadastra um alvo com coordenada fora
+          da área da fazenda
+      Quando o cadastro é validado
+      Então o alvo deve ser rejeitado
+\end{verbatim}
+}
+
+\Needspace{8cm}
 \subsubsection{F04: Coletar o dado do alvo com qualidade}
 
-\begin{longtable}{|p{4.3cm}|p{10.2cm}|}
-  \caption{BDD da funcionalidade F04.}                                                                                                                                                                                                                                                                                                                                            \\
-  \hline \textbf{Objetivo (Goal)}                                                                                      & \textbf{Comportamento Desejado (Desired Behaviour)}                                                                                                                                                                                                      \\ \hline \endfirsthead
-  \hline \textbf{Objetivo (Goal)}                                                                                      & \textbf{Comportamento Desejado (Desired Behaviour)}                                                                                                                                                                                                      \\ \hline \endhead
-  \textbf{Achieve} [Coleta do alvo concluída] (G2.1.2)\newline{\scriptsize\textit{Cenário: Leitura aprovada}}          & \textbf{DADO} que o limiar de nitidez é 0,8 e a leitura obteve nitidez 0,9\newline \textbf{QUANDO} o sistema avalia a qualidade da leitura\newline \textbf{ENTÃO} a leitura é aprovada.                                                                  \\ \hline
-  \textbf{Achieve} [Coleta do alvo concluída] (G2.1.2)\newline{\scriptsize\textit{Cenário: Leitura reprovada}}         & \textbf{DADO} que o limiar de nitidez é 0,8 e a leitura obteve nitidez 0,6\newline \textbf{QUANDO} o sistema avalia a qualidade da leitura\newline \textbf{ENTÃO} a leitura é reprovada.                                                                 \\ \hline
-  \textbf{Achieve} [Coleta do alvo concluída] (G2.1.2)\newline{\scriptsize\textit{Cenário: Melhor leitura registrada}} & \textbf{DADO} que as leituras obtiveram nitidez 0,5, 0,6 e 0,55 e todas foram reprovadas\newline \textbf{QUANDO} as tentativas se esgotam\newline \textbf{ENTÃO} o sistema registra ‘qualidade insuficiente’ com a leitura de 0,6 e vai ao próximo alvo. \\ \hline
-  \textbf{Achieve} [Coleta do alvo concluída] (G2.1.2)\newline{\scriptsize\textit{Cenário: Aprovada após ajuste}}      & \textbf{DADO} que a 1ª leitura foi reprovada\newline \textbf{QUANDO} o RMMC ajusta o ganho do sensor e repete a coleta e a 2ª leitura é aprovada\newline \textbf{ENTÃO} a coleta é aprovada com 2 tentativas.                                            \\ \hline
-  \textbf{Achieve} [Coleta do alvo concluída] (G2.1.2)\newline{\scriptsize\textit{Cenário: Limite de tentativas}}      & \textbf{DADO} que as 3 leituras do alvo foram reprovadas\newline \textbf{QUANDO} o sistema avalia a necessidade de nova tentativa\newline \textbf{ENTÃO} o RMMC não faz a 4ª tentativa.                                                                  \\ \hline
-  \textbf{Achieve} [Coleta do alvo concluída] (G2.1.2)\newline{\scriptsize\textit{Cenário: Dado associado à coleta}}   & \textbf{DADO} que o dado foi coletado no alvo A1\newline \textbf{QUANDO} o RMMC registra o dado\newline \textbf{ENTÃO} o sistema guarda o alvo A1, o nº de tentativas, os parâmetros e o horário.                                                        \\ \hline
-\end{longtable}
+Contribui para: \textit{Achieve} [Coleta do alvo concluída] (G2.1.2) · \textit{Maximize} [Qualidade dos dados coletados].
 
-\Needspace{6cm}
+{\small
+\begin{verbatim}
+Feature: Coletar o dado do alvo com qualidade
+
+  Rule: A qualidade de cada leitura deve ser avaliada por um
+        critério configurável
+
+    Scenario: Leitura aprovada
+      Dado que o limiar de nitidez configurado é 0,8
+      E que o RMMC fez uma leitura em A1 com nitidez 0,9
+      Quando o sistema avalia a qualidade da leitura
+      Então a leitura deve ser aprovada
+
+    Scenario: Leitura reprovada
+      Dado que o limiar de nitidez configurado é 0,8
+      E que o RMMC fez uma leitura em A1 com nitidez 0,6
+      Quando o sistema avalia a qualidade da leitura
+      Então a leitura deve ser reprovada
+
+  Rule: Uma leitura reprovada deve ser repetida até 2 vezes, com
+        ajuste de posição ou de parâmetro do sensor
+
+    Scenario: Aprovação na segunda tentativa
+      Dado que a primeira leitura em A1 foi reprovada
+      Quando o RMMC ajusta o ganho do sensor
+      E faz uma nova leitura
+      E a nova leitura é aprovada
+      Então a coleta deve ser aprovada com 2 tentativas
+
+    Scenario: Limite de tentativas atingido
+      Dado que o RMMC fez 3 leituras em A1
+      E que as 3 leituras foram reprovadas
+      Quando o sistema decide o próximo passo da coleta
+      Então o RMMC não deve fazer uma 4ª tentativa
+
+  Rule: Após esgotar as tentativas, a melhor leitura deve ser
+        registrada como 'qualidade insuficiente'
+
+    Scenario: Registro da melhor leitura
+      Dado que o limiar de nitidez configurado é 0,8
+      E que as 3 leituras em A1 tiveram nitidez 0,5, 0,6 e 0,55
+      Quando o sistema registra o resultado da coleta
+      Então a leitura de nitidez 0,6 deve ser registrada
+      E o resultado de A1 deve ser 'qualidade insuficiente'
+      E o RMMC deve seguir para o próximo alvo
+
+  Rule: Cada dado deve ser associado ao alvo e às informações da
+        coleta
+
+    Scenario: Metadados da coleta
+      Dado que o RMMC coletou um dado aprovado em A1
+      Quando o dado é armazenado
+      Então o registro deve conter o alvo A1
+      E o número de tentativas
+      E os parâmetros do sensor
+      E o horário da coleta
+\end{verbatim}
+}
+
+\Needspace{8cm}
 \subsubsection{F05: Registrar alvo inacessível}
 
-\begin{longtable}{|p{4.3cm}|p{10.2cm}|}
-  \caption{BDD da funcionalidade F05.}                                                                                                                                                                                                                                                                                                                           \\
-  \hline \textbf{Objetivo (Goal)}                                                                                                                                 & \textbf{Comportamento Desejado (Desired Behaviour)}                                                                                                                                          \\ \hline \endfirsthead
-  \hline \textbf{Objetivo (Goal)}                                                                                                                                 & \textbf{Comportamento Desejado (Desired Behaviour)}                                                                                                                                          \\ \hline \endhead
-  \textbf{Achieve} [Alvo registrado como inacessível após esgotar os caminhos alternativos] (G2.2)\newline{\scriptsize\textit{Cenário: Alvo esgotado}}            & \textbf{DADO} que 3 rotas e 2 posições alternativas até A3 estão bloqueadas\newline \textbf{QUANDO} o RMMC esgota as alternativas\newline \textbf{ENTÃO} A3 é registrado como ‘inacessível’. \\ \hline
-  \textbf{Achieve} [Alvo registrado como inacessível após esgotar os caminhos alternativos] (G2.2)\newline{\scriptsize\textit{Cenário: Rota alternativa livre}}   & \textbf{DADO} que existe 1 rota alternativa livre até A3\newline \textbf{QUANDO} o RMMC busca um caminho\newline \textbf{ENTÃO} o RMMC usa a rota e A3 não é marcado como inacessível.       \\ \hline
-  \textbf{Achieve} [Alvo registrado como inacessível após esgotar os caminhos alternativos] (G2.2)\newline{\scriptsize\textit{Cenário: Controlador adia o alvo}}  & \textbf{DADO} que A3 está inacessível e o Controlador envia o comando de adiar\newline \textbf{QUANDO} o RMMC recebe o comando\newline \textbf{ENTÃO} A3 sai da lista da missão.             \\ \hline
-  \textbf{Achieve} [Alvo registrado como inacessível após esgotar os caminhos alternativos] (G2.2)\newline{\scriptsize\textit{Cenário: Motivo registrado}}        & \textbf{DADO} que A3 está alagado\newline \textbf{QUANDO} o RMMC declara o alvo inacessível\newline \textbf{ENTÃO} o sistema registra ‘inacessível: alagamento’ e segue para A4.             \\ \hline
-  \textbf{Achieve} [Alvo registrado como inacessível após esgotar os caminhos alternativos] (G2.2)\newline{\scriptsize\textit{Cenário: Controlador notificado}}   & \textbf{DADO} que A3 foi declarado inacessível\newline \textbf{QUANDO} o sistema registra o resultado do alvo\newline \textbf{ENTÃO} o Controlador recebe o alvo e o motivo.                 \\ \hline
-  \textbf{Achieve} [Alvo registrado como inacessível após esgotar os caminhos alternativos] (G2.2)\newline{\scriptsize\textit{Cenário: Controlador sem resposta}} & \textbf{DADO} que o Controlador foi notificado e não responde\newline \textbf{QUANDO} o RMMC aguarda uma decisão\newline \textbf{ENTÃO} a missão segue sem esperar.                          \\ \hline
-\end{longtable}
+Contribui para: \textit{Achieve} [Alvo registrado como inacessível após esgotar os caminhos alternativos] (G2.2).
 
-\Needspace{6cm}
+{\small
+\begin{verbatim}
+Feature: Registrar alvo inacessível
+
+  Rule: O alvo só deve ser declarado inacessível após esgotar
+        rotas e posições alternativas
+
+    Scenario: Alternativas esgotadas
+      Dado que o RMMC tentou 3 rotas até o alvo A3
+      E que as 3 rotas estão bloqueadas
+      E que as 2 posições alternativas de coleta estão bloqueadas
+      Quando o RMMC avalia o acesso a A3
+      Então A3 deve ser marcado como 'inacessível'
+
+    Scenario: Ainda há rota alternativa
+      Dado que a rota planejada até o alvo A3 está bloqueada
+      E que existe 1 rota alternativa livre
+      Quando o RMMC avalia o acesso a A3
+      Então o RMMC deve seguir pela rota alternativa
+      E A3 não deve ser marcado como 'inacessível'
+
+  Rule: O motivo deve ser registrado e a missão deve prosseguir
+
+    Scenario: Alvo alagado
+      Dado que o alvo A3 foi declarado inacessível por alagamento
+      E que o próximo alvo da lista é A4
+      Quando o RMMC registra o resultado de A3
+      Então o registro deve ser 'inacessível: alagamento'
+      E o RMMC deve seguir para A4
+
+  Rule: O Controlador deve ser notificado sobre o alvo inacessível
+
+    Scenario: Notificação ao Controlador
+      Dado que o alvo A3 foi declarado inacessível
+      Quando o RMMC registra o resultado de A3
+      Então o Controlador deve receber o alvo e o motivo
+
+    Scenario: Controlador não responde
+      Dado que o Controlador foi notificado de que A3 está
+          inacessível
+      E que o Controlador não respondeu
+      Quando o RMMC decide o próximo passo
+      Então a missão deve seguir sem esperar a resposta
+
+  Rule: O RMMC deve aceitar comando do Controlador para remover ou
+        adiar o alvo
+
+    Scenario: Controlador adia o alvo
+      Dado que o alvo A3 foi declarado inacessível
+      Quando o Controlador envia o comando 'adiar A3'
+      Então A3 deve sair da lista da missão atual
+\end{verbatim}
+}
+
+\Needspace{8cm}
 \subsubsection{F06: Entregar os dados ao Software de Análise}
 
-\begin{longtable}{|p{4.3cm}|p{10.2cm}|}
-  \caption{BDD da funcionalidade F06.}                                                                                                                                                                                                                                                                                                                            \\
-  \hline \textbf{Objetivo (Goal)}                                                                                                                   & \textbf{Comportamento Desejado (Desired Behaviour)}                                                                                                                                                         \\ \hline \endfirsthead
-  \hline \textbf{Objetivo (Goal)}                                                                                                                   & \textbf{Comportamento Desejado (Desired Behaviour)}                                                                                                                                                         \\ \hline \endhead
-  \textbf{Achieve} [Dados consolidados enviados ao Software de Análise] (G3.1)\newline{\scriptsize\textit{Cenário: Pacote com todos os resultados}} & \textbf{DADO} que A1 foi coletado, A2 teve qualidade insuficiente e A3 foi inacessível\newline \textbf{QUANDO} o sistema consolida os dados da missão\newline \textbf{ENTÃO} o pacote traz os 3 resultados. \\ \hline
-  \textbf{Achieve} [Dados consolidados enviados ao Software de Análise] (G3.1)\newline{\scriptsize\textit{Cenário: Formato acordado}}               & \textbf{DADO} que um dado foi coletado\newline \textbf{QUANDO} o sistema monta o pacote\newline \textbf{ENTÃO} o pacote traz alvo, tipo de dado, qualidade e horário.                                       \\ \hline
-  \textbf{Achieve} [Dados consolidados enviados ao Software de Análise] (G3.1)\newline{\scriptsize\textit{Cenário: Envio automático}}               & \textbf{DADO} que o RMMC chegou à base com o pacote pronto\newline \textbf{QUANDO} a chegada é detectada\newline \textbf{ENTÃO} o envio inicia sem ação humana.                                             \\ \hline
-  \textbf{Achieve} [Dados consolidados enviados ao Software de Análise] (G3.1)\newline{\scriptsize\textit{Cenário: Reenvio sem confirmação}}        & \textbf{DADO} que o pacote foi enviado e o Software de Análise não confirmou\newline \textbf{QUANDO} o tempo de espera da confirmação se esgota\newline \textbf{ENTÃO} o sistema reenvia o pacote.          \\ \hline
-  \textbf{Achieve} [Dados consolidados enviados ao Software de Análise] (G3.1)\newline{\scriptsize\textit{Cenário: Recebimento confirmado}}         & \textbf{DADO} que o pacote foi enviado\newline \textbf{QUANDO} o Software de Análise confirma o recebimento\newline \textbf{ENTÃO} o sistema encerra o envio.                                               \\ \hline
-\end{longtable}
+Contribui para: \textit{Achieve} [Dados consolidados enviados ao Software de Análise] (G3.1).
 
-\Needspace{6cm}
+{\small
+\begin{verbatim}
+Feature: Entregar os dados ao Software de Análise
+
+  Rule: Os dados devem ser consolidados em um pacote com o
+        resultado de cada alvo
+
+    Scenario: Pacote com resultados diferentes
+      Dado que a missão terminou com os seguintes resultados:
+        | alvo | resultado               |
+        | A1   | coletado                |
+        | A2   | qualidade insuficiente  |
+        | A3   | inacessível             |
+      Quando o sistema consolida os dados da missão
+      Então o pacote deve conter os 3 resultados
+
+  Rule: O pacote deve seguir o formato acordado com o Software de
+        Análise
+
+    Scenario: Campos do pacote
+      Dado que o RMMC coletou um dado em A1
+      Quando o dado é incluído no pacote
+      Então o registro deve conter o alvo, o tipo de dado, a
+          qualidade e o horário
+
+  Rule: O pacote deve ser enviado automaticamente ao chegar à base
+
+    Scenario: Envio automático
+      Dado que o pacote da missão está pronto
+      Quando o RMMC chega à base
+      Então o envio ao Software de Análise deve iniciar
+      E nenhuma ação humana deve ser necessária
+
+  Rule: O pacote deve ser reenviado até a confirmação de
+        recebimento
+
+    Scenario: Sem confirmação
+      Dado que o RMMC enviou o pacote ao Software de Análise
+      E que a confirmação de recebimento não chegou
+      Quando o prazo de confirmação expira
+      Então o RMMC deve reenviar o pacote
+
+    Scenario: Recebimento confirmado
+      Dado que o RMMC enviou o pacote ao Software de Análise
+      Quando o Software de Análise confirma o recebimento
+      Então o RMMC deve encerrar o envio
+\end{verbatim}
+}
+
+\Needspace{8cm}
 \subsubsection{F07: Retornar à base com segurança}
 
-\begin{longtable}{|p{4.3cm}|p{10.2cm}|}
-  \caption{BDD da funcionalidade F07.}                                                                                                                                                                                                                                                                              \\
-  \hline \textbf{Objetivo (Goal)}                                                                                                 & \textbf{Comportamento Desejado (Desired Behaviour)}                                                                                                                             \\ \hline \endfirsthead
-  \hline \textbf{Objetivo (Goal)}                                                                                                 & \textbf{Comportamento Desejado (Desired Behaviour)}                                                                                                                             \\ \hline \endhead
-  \textbf{Achieve} [RMMC na Base de Recarga com segurança] (G3.2)\newline{\scriptsize\textit{Cenário: Rota de retorno}}           & \textbf{DADO} que a missão foi concluída em A2\newline \textbf{QUANDO} o RMMC inicia o retorno\newline \textbf{ENTÃO} o RMMC requisita a topologia e calcula a rota até a base. \\ \hline
-  \textbf{Achieve} [RMMC na Base de Recarga com segurança] (G3.2)\newline{\scriptsize\textit{Cenário: Posição durante o retorno}} & \textbf{DADO} que o RMMC está em retorno\newline \textbf{QUANDO} a posição do RMMC muda\newline \textbf{ENTÃO} a posição é atualizada no painel de status.                      \\ \hline
-  \textbf{Achieve} [RMMC na Base de Recarga com segurança] (G3.2)\newline{\scriptsize\textit{Cenário: Retorno autônomo}}          & \textbf{DADO} que a missão foi concluída\newline \textbf{QUANDO} o RMMC inicia o retorno\newline \textbf{ENTÃO} o RMMC retorna sem comando do Controlador.                      \\ \hline
-  \textbf{Achieve} [RMMC na Base de Recarga com segurança] (G3.2)\newline{\scriptsize\textit{Cenário: Acoplamento automático}}    & \textbf{DADO} que o RMMC está a 5 m da base\newline \textbf{QUANDO} o RMMC recebe o sinal da base\newline \textbf{ENTÃO} o RMMC conclui o acoplamento.                          \\ \hline
-\end{longtable}
+Contribui para: \textit{Achieve} [RMMC na Base de Recarga com segurança] (G3.2).
 
-\Needspace{6cm}
+{\small
+\begin{verbatim}
+Feature: Retornar à base com segurança
+
+  Rule: A rota de retorno deve ser calculada sobre a topologia do
+        drone
+
+    Scenario: Cálculo da rota de retorno
+      Dado que o RMMC concluiu a missão no alvo A2
+      Quando o RMMC inicia o retorno
+      Então o RMMC deve requisitar ao drone a topologia do trecho
+          até a base
+      E deve calcular a rota até a base sobre essa topologia
+
+  Rule: O retorno deve ser autônomo, sem intervenção humana
+
+    Scenario: Retorno sem comando
+      Dado que o RMMC concluiu a missão
+      E que o Controlador não enviou nenhum comando
+      Quando o RMMC decide o próximo passo
+      Então o RMMC deve retornar à base
+
+  Rule: A posição deve ser informada ao Controlador durante o
+        retorno
+
+    Scenario: Posição no painel de status
+      Dado que o RMMC está retornando à base
+      Quando o RMMC muda de posição
+      Então a posição deve ser atualizada no painel de status do
+          Controlador
+
+  Rule: O acoplamento deve ser automático, guiado pelo sinal da
+        base
+
+    Scenario: Acoplamento automático
+      Dado que o RMMC está retornando à base
+      Quando o RMMC chega a 5 m da base
+      Então o RMMC deve receber o sinal da base
+      E deve concluir o acoplamento
+\end{verbatim}
+}
+
+\Needspace{8cm}
 \subsubsection{F08: Comunicar alertas e status ao Controlador}
 
-\begin{longtable}{|p{4.3cm}|p{10.2cm}|}
-  \caption{BDD da funcionalidade F08.}                                                                                                                                                                                                                                                                                            \\
-  \hline \textbf{Objetivo (Goal)}                                                                                                               & \textbf{Comportamento Desejado (Desired Behaviour)}                                                                                                                             \\ \hline \endfirsthead
-  \hline \textbf{Objetivo (Goal)}                                                                                                               & \textbf{Comportamento Desejado (Desired Behaviour)}                                                                                                                             \\ \hline \endhead
-  \textbf{Achieve} [Alertas e status de alvo comunicados ao Controlador] (G4.1)\newline{\scriptsize\textit{Cenário: Status por evento}}         & \textbf{DADO} que o alvo A1 foi coletado\newline \textbf{QUANDO} o evento é registrado\newline \textbf{ENTÃO} o Controlador recebe o status com resultado, qualidade e bateria. \\ \hline
-  \textbf{Achieve} [Alertas e status de alvo comunicados ao Controlador] (G4.1)\newline{\scriptsize\textit{Cenário: Reenvio do alerta crítico}} & \textbf{DADO} que um alerta crítico foi enviado e não foi confirmado\newline \textbf{QUANDO} o tempo de espera se esgota\newline \textbf{ENTÃO} o sistema reenvia o alerta.     \\ \hline
-  \textbf{Achieve} [Alertas e status de alvo comunicados ao Controlador] (G4.1)\newline{\scriptsize\textit{Cenário: Alerta confirmado}}         & \textbf{DADO} que um alerta crítico foi reenviado\newline \textbf{QUANDO} o Controlador confirma a leitura\newline \textbf{ENTÃO} o sistema para de reenviar.                   \\ \hline
-  \textbf{Achieve} [Alertas e status de alvo comunicados ao Controlador] (G4.1)\newline{\scriptsize\textit{Cenário: Entrega dentro do prazo}}   & \textbf{DADO} que a bateria atingiu o LRS\newline \textbf{QUANDO} o alerta crítico é recebido em 8 s\newline \textbf{ENTÃO} o requisito de entrega em até 10 s é atendido.      \\ \hline
-  \textbf{Achieve} [Alertas e status de alvo comunicados ao Controlador] (G4.1)\newline{\scriptsize\textit{Cenário: Entrega fora do prazo}}     & \textbf{DADO} que a bateria atingiu o LRS\newline \textbf{QUANDO} o alerta crítico é recebido em 12 s\newline \textbf{ENTÃO} o requisito de entrega em até 10 s não é atendido. \\ \hline
-  \textbf{Achieve} [Alertas e status de alvo comunicados ao Controlador] (G4.1)\newline{\scriptsize\textit{Cenário: Alerta crítico}}            & \textbf{DADO} que a bateria é insuficiente\newline \textbf{QUANDO} o sistema gera o alerta\newline \textbf{ENTÃO} o alerta é classificado como crítico.                         \\ \hline
-  \textbf{Achieve} [Alertas e status de alvo comunicados ao Controlador] (G4.1)\newline{\scriptsize\textit{Cenário: Alerta informativo}}        & \textbf{DADO} que o alvo A1 foi coletado\newline \textbf{QUANDO} o sistema gera o alerta\newline \textbf{ENTÃO} o alerta é classificado como informativo.                       \\ \hline
-\end{longtable}
+Contribui para: \textit{Maintain} [Controlador apto a intervir] · \textit{Achieve} [Alertas e status de alvo comunicados ao Controlador] (G4.1).
 
-\Needspace{6cm}
+{\small
+\begin{verbatim}
+Feature: Comunicar alertas e status ao Controlador
+
+  Rule: O status deve ser enviado ao Controlador a cada evento
+        relevante
+
+    Scenario: Status após coleta
+      Dado que o RMMC está em missão
+      Quando o RMMC conclui a coleta em A1
+      Então o Controlador deve receber o status com o resultado, a
+          qualidade e a bateria
+
+  Rule: Os alertas devem ser classificados por prioridade
+
+    Scenario: Alerta crítico
+      Dado que a bateria do RMMC está insuficiente para a missão
+      Quando o sistema gera o alerta
+      Então o alerta deve ser classificado como crítico
+
+    Scenario: Alerta informativo
+      Dado que o RMMC concluiu a coleta em A1
+      Quando o sistema gera o alerta
+      Então o alerta deve ser classificado como informativo
+
+  Rule: Alertas críticos devem ser entregues em até 10 s
+
+    Scenario: Entrega no prazo
+      Dado que a bateria atingiu o LRS
+      Quando o alerta crítico é recebido pelo Controlador em 8 s
+      Então a entrega deve atender ao requisito
+
+    Scenario: Entrega fora do prazo
+      Dado que a bateria atingiu o LRS
+      Quando o alerta crítico é recebido pelo Controlador em 12 s
+      Então a entrega não deve atender ao requisito
+
+  Rule: O alerta crítico deve ser reenviado até a confirmação de
+        leitura
+
+    Scenario: Sem confirmação de leitura
+      Dado que o RMMC enviou um alerta crítico ao Controlador
+      E que a confirmação de leitura não chegou
+      Quando o intervalo de reenvio expira
+      Então o RMMC deve reenviar o alerta
+
+    Scenario: Leitura confirmada
+      Dado que o RMMC enviou um alerta crítico ao Controlador
+      Quando o Controlador confirma a leitura
+      Então o RMMC deve parar de reenviar o alerta
+\end{verbatim}
+}
+
+\Needspace{8cm}
 \subsubsection{F09: Aplicar as decisões do Controlador}
 
-\begin{longtable}{|p{4.3cm}|p{10.2cm}|}
-  \caption{BDD da funcionalidade F09.}                                                                                                                                                                                                                                                                                                   \\
-  \hline \textbf{Objetivo (Goal)}                                                                                                     & \textbf{Comportamento Desejado (Desired Behaviour)}                                                                                                                                              \\ \hline \endfirsthead
-  \hline \textbf{Objetivo (Goal)}                                                                                                     & \textbf{Comportamento Desejado (Desired Behaviour)}                                                                                                                                              \\ \hline \endhead
-  \textbf{Achieve} [Decisões do Controlador aplicadas pelo RMMC] (G4.2)\newline{\scriptsize\textit{Cenário: Comando abortar}}         & \textbf{DADO} que a missão está em andamento\newline \textbf{QUANDO} o Controlador envia o comando padronizado ‘abortar’\newline \textbf{ENTÃO} o RMMC executa a interrupção.                    \\ \hline
-  \textbf{Achieve} [Decisões do Controlador aplicadas pelo RMMC] (G4.2)\newline{\scriptsize\textit{Cenário: Texto livre}}             & \textbf{DADO} que a missão está em andamento\newline \textbf{QUANDO} o Controlador envia o texto livre ‘volta logo’\newline \textbf{ENTÃO} o comando não é interpretado.                         \\ \hline
-  \textbf{Achieve} [Decisões do Controlador aplicadas pelo RMMC] (G4.2)\newline{\scriptsize\textit{Cenário: Confirmação de execução}} & \textbf{DADO} que o Controlador enviou o comando ‘ajustar lista’\newline \textbf{QUANDO} o RMMC executa o comando\newline \textbf{ENTÃO} o Controlador recebe a confirmação de execução.         \\ \hline
-  \textbf{Achieve} [Decisões do Controlador aplicadas pelo RMMC] (G4.2)\newline{\scriptsize\textit{Cenário: Retomar com carga baixa}} & \textbf{DADO} que a carga é de 5\%\newline \textbf{QUANDO} o Controlador envia o comando ‘retomar’\newline \textbf{ENTÃO} o comando é rejeitado com a justificativa ‘carga insuficiente’.        \\ \hline
-  \textbf{Achieve} [Decisões do Controlador aplicadas pelo RMMC] (G4.2)\newline{\scriptsize\textit{Cenário: Avançar abaixo do LRS}}   & \textbf{DADO} que a bateria está abaixo do LRS\newline \textbf{QUANDO} o Controlador envia o comando ‘avançar’\newline \textbf{ENTÃO} o comando é rejeitado com a justificativa ‘abaixo do LRS’. \\ \hline
-\end{longtable}
+Contribui para: \textit{Maintain} [Controlador apto a intervir] · \textit{Achieve} [Decisões do Controlador aplicadas pelo RMMC] (G4.2).
 
-\Needspace{6cm}
+{\small
+\begin{verbatim}
+Feature: Aplicar as decisões do Controlador
+
+  Rule: Só devem ser aceitos comandos padronizados: recarregar,
+        ajustar lista, abortar e retomar
+
+    Scenario: Comando padronizado
+      Dado que o RMMC está em missão
+      Quando o Controlador envia o comando 'abortar'
+      Então o RMMC deve interromper a missão
+
+    Scenario: Texto livre
+      Dado que o RMMC está em missão
+      Quando o Controlador envia o texto 'volta logo'
+      Então o comando não deve ser interpretado
+      E o RMMC deve manter a missão em andamento
+
+  Rule: A execução de cada comando deve ser confirmada ao
+        Controlador
+
+    Scenario: Confirmação de execução
+      Dado que o Controlador enviou o comando 'ajustar lista'
+      Quando o RMMC conclui a execução do comando
+      Então o Controlador deve receber a confirmação da execução
+
+  Rule: Um comando inseguro deve ser rejeitado com justificativa
+
+    Scenario: Retomar com carga insuficiente
+      Dado que a carga atual do RMMC é de 5%
+      Quando o Controlador envia o comando 'retomar'
+      Então o comando deve ser rejeitado
+      E o Controlador deve receber a justificativa 'carga
+          insuficiente'
+
+    Scenario: Avançar abaixo do LRS
+      Dado que a bateria do RMMC está abaixo do LRS
+      Quando o Controlador envia o comando 'avançar'
+      Então o comando deve ser rejeitado
+      E o Controlador deve receber a justificativa 'abaixo do LRS'
+\end{verbatim}
+}
+
+\Needspace{8cm}
 \subsubsection{F10: Executar a missão dentro da autonomia}
 
-\begin{longtable}{|p{4.3cm}|p{10.2cm}|}
-  \caption{BDD da funcionalidade F10.}                                                                                                                                                                                                                                                                                                      \\
-  \hline \textbf{Objetivo (Goal)}                                                                                                               & \textbf{Comportamento Desejado (Desired Behaviour)}                                                                                                                                       \\ \hline \endfirsthead
-  \hline \textbf{Objetivo (Goal)}                                                                                                               & \textbf{Comportamento Desejado (Desired Behaviour)}                                                                                                                                       \\ \hline \endhead
-  \textbf{Achieve} [Missão executada dentro da autonomia da bateria] (G5.1)\newline{\scriptsize\textit{Cenário: Obrigatório antes do opcional}} & \textbf{DADO} que A1 é obrigatório e está pendente e A2 é opcional\newline \textbf{QUANDO} o RMMC escolhe o próximo alvo\newline \textbf{ENTÃO} o RMMC visita A1 antes de A2.             \\ \hline
-  \textbf{Achieve} [Missão executada dentro da autonomia da bateria] (G5.1)\newline{\scriptsize\textit{Cenário: Missão concluída}}              & \textbf{DADO} que A1 foi coletado e A3 foi registrado como inacessível\newline \textbf{QUANDO} todos os obrigatórios têm resultado explícito\newline \textbf{ENTÃO} a missão é concluída. \\ \hline
-  \textbf{Achieve} [Missão executada dentro da autonomia da bateria] (G5.1)\newline{\scriptsize\textit{Cenário: Obrigatório sem resultado}}     & \textbf{DADO} que A2 é obrigatório e não tem resultado\newline \textbf{QUANDO} o RMMC avalia o fim da missão\newline \textbf{ENTÃO} a missão não é concluída.                             \\ \hline
-  \textbf{Achieve} [Missão executada dentro da autonomia da bateria] (G5.1)\newline{\scriptsize\textit{Cenário: Opcional com margem}}           & \textbf{DADO} que sobram 25\% de energia, A2 custa 10\% e o retorno custa 12\%\newline \textbf{QUANDO} o RMMC avalia a visita ao opcional\newline \textbf{ENTÃO} o RMMC visita A2.        \\ \hline
-  \textbf{Achieve} [Missão executada dentro da autonomia da bateria] (G5.1)\newline{\scriptsize\textit{Cenário: Opcional sem margem}}           & \textbf{DADO} que sobram 15\% de energia e A2 e o retorno custam 22\%\newline \textbf{QUANDO} o RMMC avalia a visita ao opcional\newline \textbf{ENTÃO} o RMMC dispensa A2 e retorna.     \\ \hline
-\end{longtable}
+Contribui para: \textit{Achieve} [Missão executada dentro da autonomia da bateria] (G5.1) · \textit{Maximize} [Cobertura dos alvos opcionais].
 
-\Needspace{6cm}
+{\small
+\begin{verbatim}
+Feature: Executar a missão dentro da autonomia
+
+  Rule: Alvos opcionais só devem ser visitados após os
+        obrigatórios
+
+    Scenario: Obrigatório antes do opcional
+      Dado que o alvo obrigatório A1 está pendente
+      E que o alvo opcional A2 está pendente
+      Quando o RMMC escolhe o próximo alvo
+      Então o RMMC deve visitar A1 antes de A2
+
+  Rule: A missão só deve ser concluída quando todo alvo
+        obrigatório tiver resultado explícito
+
+    Scenario: Todos os obrigatórios com resultado
+      Dado que o alvo obrigatório A1 foi coletado
+      E que o alvo obrigatório A3 foi registrado como inacessível
+      Quando o sistema verifica o término da missão
+      Então a missão deve ser concluída
+
+    Scenario: Obrigatório sem resultado
+      Dado que o alvo obrigatório A2 não tem resultado registrado
+      Quando o sistema verifica o término da missão
+      Então a missão não deve ser concluída
+
+  Rule: Um alvo opcional só deve ser visitado se houver margem de
+        energia e de tempo
+
+    Scenario: Opcional com margem
+      Dado que os alvos obrigatórios foram concluídos
+      E que sobram 25% de energia
+      E que visitar o alvo opcional A2 custa 10%
+      E que o retorno à base custa 12%
+      Quando o RMMC avalia a visita ao opcional
+      Então o RMMC deve visitar A2
+
+    Scenario: Opcional sem margem
+      Dado que os alvos obrigatórios foram concluídos
+      E que sobram 15% de energia
+      E que visitar o alvo opcional A2 e retornar à base custa 22%
+      Quando o RMMC avalia a visita ao opcional
+      Então o RMMC deve dispensar A2
+      E deve retornar à base
+\end{verbatim}
+}
+
+\Needspace{8cm}
 \subsubsection{F11: Retornar ao atingir o LRS e retomar a missão}
 
-\begin{longtable}{|p{4.3cm}|p{10.2cm}|}
-  \caption{BDD da funcionalidade F11.}                                                                                                                                                                                                                                                                                                                                       \\
-  \hline \textbf{Objetivo (Goal)}                                                                                                                            & \textbf{Comportamento Desejado (Desired Behaviour)}                                                                                                                                                           \\ \hline \endfirsthead
-  \hline \textbf{Objetivo (Goal)}                                                                                                                            & \textbf{Comportamento Desejado (Desired Behaviour)}                                                                                                                                                           \\ \hline \endhead
-  \textbf{Achieve} [Retorno seguro ao atingir o LRS e retomada após a recarga] (G5.2)\newline{\scriptsize\textit{Cenário: Gatilho do LRS}}                   & \textbf{DADO} que a bateria está em 14\% e o LRS é de 15\%\newline \textbf{QUANDO} o monitoramento verifica a bateria\newline \textbf{ENTÃO} a missão é interrompida.                                         \\ \hline
-  \textbf{Achieve} [Retorno seguro ao atingir o LRS e retomada após a recarga] (G5.2)\newline{\scriptsize\textit{Cenário: Missão continua}}                  & \textbf{DADO} que a bateria está em 40\% e o LRS é de 15\%\newline \textbf{QUANDO} o monitoramento verifica a bateria\newline \textbf{ENTÃO} a missão continua.                                               \\ \hline
-  \textbf{Achieve} [Retorno seguro ao atingir o LRS e retomada após a recarga] (G5.2)\newline{\scriptsize\textit{Cenário: Retomada sem repetição}}           & \textbf{DADO} que a recarga foi completada e A1 e A2 já foram coletados\newline \textbf{QUANDO} a missão é retomada\newline \textbf{ENTÃO} a missão retoma em A3 e A1 e A2 não são revisitados.               \\ \hline
-  \textbf{Achieve} [Retorno seguro ao atingir o LRS e retomada após a recarga] (G5.2)\newline{\scriptsize\textit{Cenário: Lista ajustada antes da retomada}} & \textbf{DADO} que o Controlador removeu A5 antes da retomada\newline \textbf{QUANDO} a missão é retomada\newline \textbf{ENTÃO} a missão retoma sem A5.                                                       \\ \hline
-  \textbf{Achieve} [Retorno seguro ao atingir o LRS e retomada após a recarga] (G5.2)\newline{\scriptsize\textit{Cenário: Estado salvo no LRS}}              & \textbf{DADO} que o LRS foi atingido a caminho de A3\newline \textbf{QUANDO} a missão é interrompida\newline \textbf{ENTÃO} o sistema salva A3 como pendente e A1 e A2 como coletados e alerta o Controlador. \\ \hline
-  \textbf{Achieve} [Retorno seguro ao atingir o LRS e retomada após a recarga] (G5.2)\newline{\scriptsize\textit{Cenário: Retorno e recarga autônomos}}      & \textbf{DADO} que o estado da missão foi salvo\newline \textbf{QUANDO} o RMMC inicia o retorno\newline \textbf{ENTÃO} o RMMC retorna, acopla e recarrega até 100\%.                                           \\ \hline
-\end{longtable}
+Contribui para: \textit{Avoid} [RMMC sem energia para retornar à base] · \textit{Achieve} [Retorno seguro ao atingir o LRS e retomada após a recarga] (G5.2).
+
+{\small
+\begin{verbatim}
+Feature: Retornar ao atingir o LRS e retomar a missão
+
+  Rule: A bateria deve ser monitorada continuamente, com gatilho
+        no LRS
+
+    Scenario: Gatilho do LRS
+      Dado que o LRS configurado é de 15%
+      E que a bateria do RMMC está em 14%
+      Quando o monitoramento verifica a bateria
+      Então a missão deve ser interrompida
+
+    Scenario: Missão continua
+      Dado que o LRS configurado é de 15%
+      E que a bateria do RMMC está em 40%
+      Quando o monitoramento verifica a bateria
+      Então a missão deve continuar
+
+  Rule: Ao interromper, o estado da missão deve ser salvo e o
+        Controlador alertado
+
+    Scenario: Estado salvo no LRS
+      Dado que os alvos A1 e A2 já foram coletados
+      E que o RMMC está a caminho de A3
+      Quando o LRS é atingido
+      Então o sistema deve salvar A3 como pendente
+      E deve salvar A1 e A2 como coletados
+      E o Controlador deve receber um alerta crítico
+
+  Rule: O retorno à base e a recarga devem ser autônomos
+
+    Scenario: Retorno e recarga autônomos
+      Dado que o estado da missão foi salvo
+      Quando o RMMC inicia o retorno
+      Então o RMMC deve retornar à base
+      E deve acoplar à base
+      E deve recarregar até 100%
+
+  Rule: A missão deve ser retomada a partir do estado salvo, sem
+        repetir alvos
+
+    Scenario: Retomada sem repetição
+      Dado que a recarga foi concluída
+      E que A1 e A2 estão salvos como coletados
+      E que A3 está salvo como pendente
+      Quando a missão é retomada
+      Então o RMMC deve seguir para A3
+      E A1 e A2 não devem ser revisitados
+
+    Scenario: Lista ajustada antes da retomada
+      Dado que a recarga foi concluída
+      E que o Controlador removeu o alvo A5 antes da retomada
+      Quando a missão é retomada
+      Então a missão deve seguir sem A5
+\end{verbatim}
+}
 
 
 \subsection{Goal Model (final)}
@@ -2000,12 +2486,12 @@ A versão final do \textit{Goal Model} refina o v2 com o que foi produzido na Fa
 
 \subsection{Especificação SLEEC}
 
-As regras de comportamento descritas nos cenários BDD foram formalizadas em SLEEC, uma linguagem de domínio específico para especificar regras normativas de agentes autônomos, isto é, regras que delimitam o comportamento aceitável de um sistema que interage com pessoas (GETIR YAMAN et al., 2024). O nome vem das categorias de norma que a linguagem cobre: sociais, legais, éticas, empáticas e culturais (\textit{social, legal, ethical, empathetic and cultural}). A sintaxe se aproxima da linguagem natural, o que permite que as regras sejam lidas por pessoas sem formação técnica e, ao mesmo tempo, verificadas por ferramentas.
+As regras de comportamento descritas nos cenários BDD foram formalizadas em SLEEC, uma linguagem de domínio específico para especificar regras normativas de agentes autônomos, isto é, regras que delimitam o comportamento aceitável de um sistema que interage com pessoas \cite{getiryaman2024}. O nome vem das categorias de norma que a linguagem cobre: sociais, legais, éticas, empáticas e culturais (\textit{social, legal, ethical, empathetic and cultural}). A sintaxe se aproxima da linguagem natural, o que permite que as regras sejam lidas por pessoas sem formação técnica e, ao mesmo tempo, verificadas por ferramentas.
 
 Uma especificação SLEEC tem duas partes. O bloco de definições declara o vocabulário: \textbf{eventos} (\texttt{event}), que são ocorrências instantâneas, como o robô receber uma missão ou iniciar o retorno; \textbf{medidas} (\texttt{measure}), que representam o estado do mundo no momento de um evento e podem ser booleanas, numéricas ou de escala; e \textbf{constantes} (\texttt{constant}). O bloco de regras usa esse vocabulário no formato:
 
 \begin{center}
-\texttt{when} \textit{evento} [\texttt{and} \textit{condição}] \texttt{then} \textit{resposta} [\texttt{within} \textit{prazo}] [\texttt{unless} \textit{exceção} [\texttt{then} \textit{resposta alternativa}]]
+  \texttt{when} \textit{evento} [\texttt{and} \textit{condição}] \texttt{then} \textit{resposta} [\texttt{within} \textit{prazo}] [\texttt{unless} \textit{exceção} [\texttt{then} \textit{resposta alternativa}]]
 \end{center}
 
 A cláusula \texttt{within} impõe um prazo para a resposta, e a cláusula \texttt{unless} (\textit{defeater}) descreve uma circunstância em que a regra não se aplica ou em que outra resposta passa a ser exigida. No RMMC, essa formalização permite verificar, antes da implementação, se as regras derivadas dos BDDs são consistentes entre si, o que é especialmente relevante para as regras de segurança, como o retorno ao atingir o LRS, e para a interação com o Controlador da Missão.
@@ -2016,18 +2502,18 @@ A cláusula \texttt{within} impõe um prazo para a resposta, e a cláusula \text
 A especificação foi derivada dos cenários BDD e está organizada pelas mesmas funcionalidades (F01 a F11). O arquivo completo, \texttt{sleec/rmmc.sleec}, acompanha este relatório. O bloco de definições contém 54 eventos, 21 medidas e uma constante:
 
 \begin{itemize}
-    \item \textbf{Eventos de entrada} (17): ações dos atores externos e ocorrências percebidas pelo robô, como \texttt{PlanejadorEnviaMissao}, \texttt{DroneMandaInfo}, \texttt{ControladorEnviaComando}, \texttt{LeituraBateria} e \texttt{RoboChegaAoAlvo}.
-    \item \textbf{Eventos de resposta} (37): ações do RMMC, como \texttt{RoboIniciaMissao}, \texttt{RoboBuscaAlternativa} e \texttt{RoboVaiParaBaseRecarga}.
-    \item \textbf{Medidas}: \texttt{bateriaRobo}, de escala, com três níveis (\texttt{b\_baixa}, abaixo do LRS; \texttt{b\_media}, acima do LRS, mas sem margem para alvos opcionais; \texttt{b\_alta}, com margem); \texttt{tentativasDeColeta}, numérica; e 19 medidas booleanas, como \texttt{cargaCobreObrigatorios}, \texttt{qualidadeAprovada} e \texttt{roboEmMissao}.
-    \item \textbf{Constante}: \texttt{MAX\_TENTATIVAS = 3}, o limite de leituras por alvo.
+  \item \textbf{Eventos de entrada} (17): ações dos atores externos e ocorrências percebidas pelo robô, como \texttt{PlanejadorEnviaMissao}, \texttt{DroneMandaInfo}, \texttt{ControladorEnviaComando}, \texttt{LeituraBateria} e \texttt{RoboChegaAoAlvo}.
+  \item \textbf{Eventos de resposta} (37): ações do RMMC, como \texttt{RoboIniciaMissao}, \texttt{RoboBuscaAlternativa} e \texttt{RoboVaiParaBaseRecarga}.
+  \item \textbf{Medidas}: \texttt{bateriaRobo}, de escala, com três níveis (\texttt{b\_baixa}, abaixo do LRS; \texttt{b\_media}, acima do LRS, mas sem margem para alvos opcionais; \texttt{b\_alta}, com margem); \texttt{tentativasDeColeta}, numérica; e 19 medidas booleanas, como \texttt{cargaCobreObrigatorios}, \texttt{qualidadeAprovada} e \texttt{roboEmMissao}.
+  \item \textbf{Constante}: \texttt{MAX\_TENTATIVAS = 3}, o limite de leituras por alvo.
 \end{itemize}
 
 O bloco de regras contém 37 regras, identificadas pela funcionalidade de origem (por exemplo, R11\_1 é a primeira regra de F11). A tradução dos BDDs seguiu uma correspondência direta: o \textbf{DADO} de cada cenário virou a condição sobre as medidas, o \textbf{QUANDO} virou o evento gatilho e o \textbf{ENTÃO} virou a resposta. Os valores concretos dos cenários foram abstraídos para as medidas: no cenário ``Gatilho do LRS'' de F11, ``bateria em 14\% com LRS de 15\%'' passou a ser \texttt{bateriaRobo = b\_baixa}. Os desvios de um mesmo gatilho foram escritos como exceções (\texttt{unless}) da mesma regra, e não como regras separadas, para que duas regras nunca exijam respostas opostas ao mesmo evento. A Figura~\ref{fig:sleecregras} mostra duas regras: R11\_1, que vem do cenário ``Gatilho do LRS'', e R04\_5, que reúne os cenários ``Leitura aprovada'', ``Leitura reprovada'' e ``Limite de tentativas'' de F04.
 
 \begin{figure}[H]
-\centering
-\footnotesize
-\begin{verbatim}
+  \centering
+  \footnotesize
+  \begin{verbatim}
 R11_1 when LeituraBateria
         and ({roboEmMissao} and ({bateriaRobo} = b_baixa))
       then RoboInterrompeMissao within 5 seconds
@@ -2039,79 +2525,81 @@ R04_5 when RoboAvaliaQualidade then RoboRegistraColetaAprovada
               ({tentativasDeColeta} >= MAX_TENTATIVAS))
         then RoboRegistraQualidadeInsuficiente
 \end{verbatim}
-\normalsize
-\caption{Exemplos de regras SLEEC do RMMC derivadas dos BDDs de F11 e F04.}
-\label{fig:sleecregras}
+  \normalsize
+  \caption{Exemplos de regras SLEEC do RMMC derivadas dos BDDs de F11 e F04.}
+  \label{fig:sleecregras}
 \end{figure}
 
 A Tabela~\ref{tab:sleecregras} relaciona as regras às funcionalidades e aos objetivos do \textit{Goal Model}, o que mantém a rastreabilidade entre o modelo de objetivos, os cenários BDD e as regras formais.
 
 \begin{table}[H]
-\centering
-\caption{Regras SLEEC por funcionalidade e objetivo do \textit{Goal Model}.}
-\label{tab:sleecregras}
-\begin{tabular}{|p{7.4cm}|p{2.9cm}|l|}
-\hline
-\textbf{Funcionalidade} & \textbf{Regras} & \textbf{Objetivo} \\ \hline
-F01: Avaliar a bateria antes da missão & R01\_1 & G1.1 \\ \hline
-F02: Autorizar o início da missão & R02\_1 a R02\_4 & G1.2 \\ \hline
-F03: Alcançar o alvo & R03\_1 a R03\_4 & G2.1.1 \\ \hline
-F04: Coletar o dado do alvo com qualidade & R04\_1 a R04\_8 & G2.1.2 \\ \hline
-F05: Registrar alvo inacessível & R05\_1 a R05\_3 & G2.2 \\ \hline
-F06: Entregar os dados ao Software de Análise & R06\_1 a R06\_3 & G3.1 \\ \hline
-F07: Retornar à base com segurança & R07\_1 a R07\_3 & G3.2 \\ \hline
-F08: Comunicar alertas e status ao Controlador & R08\_1 e R08\_2 & G4.1 \\ \hline
-F09: Aplicar as decisões do Controlador & R09\_1 e R09\_2 & G4.2 \\ \hline
-F10: Executar a missão dentro da autonomia & R10\_1 e R10\_2 & G5.1 \\ \hline
-F11: Retornar ao atingir o LRS e retomar a missão & R11\_1 a R11\_5 & G5.2 \\ \hline
-\end{tabular}
+  \centering
+  \caption{Regras SLEEC por funcionalidade e objetivo do \textit{Goal Model}.}
+  \label{tab:sleecregras}
+  \begin{tabular}{|p{7.4cm}|p{2.9cm}|l|}
+    \hline
+    \textbf{Funcionalidade}                           & \textbf{Regras} & \textbf{Objetivo} \\ \hline
+    F01: Avaliar a bateria antes da missão            & R01\_1          & G1.1              \\ \hline
+    F02: Autorizar o início da missão                 & R02\_1 a R02\_4 & G1.2              \\ \hline
+    F03: Alcançar o alvo                              & R03\_1 a R03\_4 & G2.1.1            \\ \hline
+    F04: Coletar o dado do alvo com qualidade         & R04\_1 a R04\_8 & G2.1.2            \\ \hline
+    F05: Registrar alvo inacessível                   & R05\_1 a R05\_3 & G2.2              \\ \hline
+    F06: Entregar os dados ao Software de Análise     & R06\_1 a R06\_3 & G3.1              \\ \hline
+    F07: Retornar à base com segurança                & R07\_1 a R07\_3 & G3.2              \\ \hline
+    F08: Comunicar alertas e status ao Controlador    & R08\_1 e R08\_2 & G4.1              \\ \hline
+    F09: Aplicar as decisões do Controlador           & R09\_1 e R09\_2 & G4.2              \\ \hline
+    F10: Executar a missão dentro da autonomia        & R10\_1 e R10\_2 & G5.1              \\ \hline
+    F11: Retornar ao atingir o LRS e retomar a missão & R11\_1 a R11\_5 & G5.2              \\ \hline
+  \end{tabular}
 \end{table}
 
 \Needspace{6cm}
 \subsubsection{Verificação com o LEGOS-SLEEC}
 
-A especificação foi verificada com o LEGOS-SLEEC (KOLYAKOV et al., 2025), ferramenta da Universidade de Toronto que analisa a bem-formação de regras SLEEC. A ferramenta traduz as regras para fórmulas lógicas e as resolve com o \textit{solver} Z3. Foram executadas três análises: conflitos, conflitos situacionais e redundância. Em cada uma, a ferramenta percorre as regras na ordem do arquivo; por isso, na saída, \texttt{rule\_36} corresponde a R11\_4 e \texttt{rule\_37} a R11\_5. As figuras desta seção mostram o trecho final de cada análise, referente às regras de F11, e o resultado consolidado.
+A especificação foi verificada com o LEGOS-SLEEC \cite{kolyakov2025}, ferramenta da Universidade de Toronto que analisa a bem-formação de regras SLEEC. A ferramenta traduz as regras para fórmulas lógicas e as resolve com o \textit{solver} Z3. Foram executadas três análises: conflitos, conflitos situacionais e redundância. Em cada uma, a ferramenta percorre as regras na ordem do arquivo; por isso, na saída, \texttt{rule\_36} corresponde a R11\_4 e \texttt{rule\_37} a R11\_5. As figuras desta seção mostram o trecho final de cada análise, referente às regras de F11, e o resultado consolidado.
 
 \textbf{Conflitos.} A análise verifica, para cada regra, se existe ao menos um cenário em que ela é cumprida junto com todas as demais. As 37 regras foram classificadas como \textit{Not Conflicting}. A Figura~\ref{fig:sleecconflitos} mostra os cenários encontrados para R11\_4 e R11\_5. Em R11\_4, ao salvar o estado, o robô vai para a base e requisita a topologia ao drone, como exige R07\_1. Em R11\_5, ao retomar a missão, o robô seleciona o próximo alvo e requisita a topologia, como exige R03\_2. Nenhum dos dois cenários contradiz outra regra. A tupla final \texttt{(False, ..., [])} indica que nenhum conflito foi encontrado e que a lista de regras conflitantes está vazia.
 
 \begin{figure}[H]
-\centering
-\includegraphics[width=\linewidth]{sleec/conflitos.png}
-\caption{Análise de conflitos: cenários de R11\_4 e R11\_5 e resultado final, sem conflitos entre as 37 regras.}
-\label{fig:sleecconflitos}
+  \centering
+  \includegraphics[width=\linewidth]{sleec/conflitos_boron.png}
+  \caption{Análise de conflitos: cenários de R11\_4 e R11\_5 e resultado final, sem conflitos entre as 37 regras.}
+  \label{fig:sleecconflitos}
 \end{figure}
 
 \textbf{Conflitos situacionais.} Antes dessa análise, a ferramenta normaliza as regras, separando cada exceção (\texttt{unless}) em uma obrigação com condição explícita; as 37 regras resultaram em 50 obrigações. Em seguida, verifica se existe alguma situação em que duas obrigações se contradigam. Todas resultaram em \textit{unsat}, ou seja, o \textit{solver} não encontrou nenhuma situação desse tipo, e o resultado final \texttt{(False, '', [])} confirma a ausência de conflitos situacionais. A Figura~\ref{fig:sleecsituacionais} mostra as obrigações de F09 e F11. Na saída, a ferramenta escreve as respostas imediatas como \texttt{within 0 seconds} e os níveis de escala pela posição: \texttt{bateriaRobo = 0} corresponde a \texttt{b\_baixa}.
 
 \begin{figure}[H]
-\centering
-\includegraphics[width=\linewidth]{sleec/situacionais.png}
-\caption{Análise de conflitos situacionais: obrigações normalizadas de F09 e F11 verificadas como \textit{unsat} e resultado final.}
-\label{fig:sleecsituacionais}
+  \centering
+  \includegraphics[width=\linewidth]{sleec/situacionais_boron.png}
+  \caption{Análise de conflitos situacionais: obrigações normalizadas de F09 e F11 verificadas como \textit{unsat} e resultado final.}
+  \label{fig:sleecsituacionais}
 \end{figure}
 
 \textbf{Redundância.} A análise verifica, para cada regra, se as demais já garantem a resposta que ela exige; nesse caso, a regra poderia ser removida. As 37 regras foram classificadas como \textit{Not Redundant}. Para cada uma, a ferramenta apresenta um cenário em que o gatilho ocorre e nenhuma outra regra garante a resposta. Na Figura~\ref{fig:sleecredundancia}, por exemplo, sem R11\_4 nada obrigaria o robô a ir para a base depois de salvar o estado, e sem R11\_5 nada obrigaria a seleção do próximo alvo após a retomada.
 
 \begin{figure}[H]
-\centering
-\includegraphics[width=\linewidth]{sleec/redundancia.png}
-\caption{Análise de redundância: R11\_4 e R11\_5 classificadas como não redundantes e resultado final.}
-\label{fig:sleecredundancia}
+  \centering
+  \includegraphics[width=\linewidth]{sleec/redundancia_boron.png}
+  \caption{Análise de redundância: R11\_4 e R11\_5 classificadas como não redundantes e resultado final.}
+  \label{fig:sleecredundancia}
 \end{figure}
 
 Com as três análises, conclui-se que o conjunto de regras é consistente, sem conflitos gerais nem situacionais, e mínimo, sem regras redundantes. As análises de \textit{concerns} e de \textit{purposes}, que a ferramenta também oferece, não foram aplicadas, porque dependem de blocos adicionais na especificação.
 
-\section{Fase 5: Validação}
-
 \section{Conclusão}
 
+Este trabalho aplicou um processo de Engenharia de Requisitos orientado a objetivos ao problema do \textit{Monitoramento Multimodal de Cultivos}, conduzindo o RMMC desde a delimitação do problema até a especificação formal das regras de comportamento. As fases de Iniciação, Investigação, Decisão e Formulação produziram artefatos encadeados, em que cada modelo partiu do anterior e o refinou, de modo que os requisitos finais podem ser rastreados até a necessidade que os originou.
 
-\section{Referência}
+Na Iniciação, o Diagrama de Contexto fixou a fronteira do sistema e as interfaces com o Planejador, o Controlador, o Drone, a Base de Recarga e o Software de Análise, e o \textit{Stakeholder Onion Diagram} identificou as partes interessadas e o seu grau de envolvimento. Na Investigação, os sete Cenários de Domínio descreveram o ciclo da missão e as exceções centrais do problema (bateria insuficiente antes e durante a missão, alvo inacessível e coleta com qualidade insuficiente) e serviram de base para o \textit{Goal Model} (v1), que organizou o objetivo raiz em cinco objetivos de alto nível, G1 a G5. Na Decisão, os onze \textit{Impact Maps}, um por objetivo folha, relacionaram cada objetivo aos atores, aos impactos esperados e às entregas, e trouxeram à tona as suposições de domínio e as \textit{expectations} sobre o Controlador incorporadas ao \textit{Goal Model} (v2). Essa separação entre o que a máquina deve garantir e o que depende do ambiente é o que permite argumentar que os requisitos, somados às suposições, satisfazem os objetivos \cite{letier2020}.
 
-\noindent
-GETIR YAMAN, S. et al. Specification, validation and verification of social, legal, ethical, empathetic and cultural requirements for autonomous agents. \textit{Journal of Systems and Software}, 2024. DOI: 10.1016/j.jss.2024.112229.
+Na Formulação, a Especificação por Exemplos transformou os objetivos em critérios de aceite concretos. Os onze \textit{Example Maps} registraram as regras, os exemplos e 21 perguntas em aberto, e os cenários em Gherkin reescreveram esses exemplos em 42 regras e 64 cenários, com valores concretos que tornam cada requisito verificável. Esse detalhamento foi levado ao \textit{Goal Model} final na forma de \textit{deliverables}, fechando o ciclo entre objetivos, comportamento esperado e entregas do sistema. Por fim, as regras foram formalizadas em SLEEC, em 37 regras sobre 54 eventos e 21 medidas, e a verificação com o LEGOS-SLEEC mostrou que o conjunto é consistente, sem conflitos gerais nem situacionais, e mínimo, sem regras redundantes. A detecção de inconsistências antes da implementação é particularmente valiosa nas regras de segurança, como o retorno ao atingir o LRS, em que um conflito entre obrigações levaria a um comportamento indefinido do robô em campo.
 
-\noindent
-KOLYAKOV, K.; MARSSO, L.; FENG, N.; QUAN, J.; CHECHIK, M. LEGOS-SLEEC: Tool for Formalizing and Analyzing Normative Requirements. In: \textit{Proceedings of the IEEE/ACM International Conference on Software Engineering: Companion (ICSE-Companion)}. 2025. p. 33--36.
+O processo evidenciou que as restrições do problema não podem ser tratadas isoladamente. A decisão de visitar um alvo opcional, de repetir uma coleta ou de usar uma posição alternativa consome a mesma reserva de energia que garante o retorno à base, e foi a modelagem por objetivos, com os padrões \textit{Achieve}, \textit{Maintain} e \textit{Avoid} \cite{lamsweerde2009}, que tornou essas dependências explícitas. Do mesmo modo, a passagem de exemplos para regras formais exigiu decisões que os cenários deixavam implícitas, como representar os desvios de um mesmo gatilho como exceções (\texttt{unless}) de uma única regra, para que duas regras nunca exijam respostas opostas ao mesmo evento.
+
+O trabalho tem limitações que indicam os próximos passos. As 21 perguntas registradas nos \textit{Example Maps}, como a margem de segurança sobre o consumo estimado, o comportamento quando o drone não responde e a conduta quando o LRS não basta para alcançar a base, ainda precisam ser respondidas pelas partes interessadas e podem gerar novas regras e suposições. A formalização em SLEEC abstraiu os valores numéricos dos cenários em medidas qualitativas, e as análises de \textit{concerns} e de \textit{purposes} do LEGOS-SLEEC não foram aplicadas por dependerem de blocos adicionais na especificação. Como trabalhos futuros, propõe-se responder às perguntas em aberto, estender a especificação SLEEC com esses blocos e automatizar os cenários Gherkin como testes de aceitação, de modo que os critérios definidos neste relatório passem a verificar diretamente a implementação do RMMC.
+
+
+\bibliography{bibliography}
 
 \end{document}
